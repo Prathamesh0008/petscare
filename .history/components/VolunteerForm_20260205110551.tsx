@@ -161,7 +161,7 @@ export default function VolunteerForm() {
               <button
                 key={option.value}
                 type="button"
-                onClick={() => toggleAvailability(option.value)}
+                
                 className={`p-4 rounded-xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${
                   watch('availability').includes(option.value)
                     ? 'border-amber-500 bg-amber-50 text-amber-700'
