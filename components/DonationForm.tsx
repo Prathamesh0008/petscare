@@ -1,9 +1,11 @@
+//petscare\components\DonationForm.tsx
 'use client';
 
 type DonationType = 'one-time' | 'monthly' | 'yearly';
 
 interface DonationFormProps {
   donationType: DonationType;
+   defaultAmount?: number;
 }
 
 export default function DonationForm({ donationType }: DonationFormProps) {

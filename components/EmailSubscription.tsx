@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { FaEnvelope, FaArrowRight } from 'react-icons/fa';
 
 export default function EmailSubscription() {
   const [email, setEmail] = useState('');
@@ -10,73 +11,78 @@ export default function EmailSubscription() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
-    
     setLoading(false);
     setSubscribed(true);
     setEmail('');
-    
-    // Reset after 5 seconds
     setTimeout(() => setSubscribed(false), 5000);
   };
 
   return (
-    <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-lg shadow-lg p-8">
-      <div className="text-center">
-        <div className="text-4xl mb-4">✉️</div>
-        <h3 className="text-2xl font-bold mb-2">Stay Updated</h3>
-        <p className="mb-6 opacity-90">
-          Get the latest adoption stories, events, and pet care tips
-        </p>
+    <div className="bg-white border border-gray-200 rounded-xl p-6">
+      <div className="flex items-start gap-4 mb-4">
+        <div className="w-10 h-10 bg-amber-50 rounded-lg flex items-center justify-center flex-shrink-0">
+          <FaEnvelope className="text-amber-600" />
+        </div>
+        <div className="flex-1">
+          <h3 className="font-semibold text-gray-900 mb-1">
+            Stay Updated
+          </h3>
+          <p className="text-sm text-gray-600">
+            Get adoption stories and pet care tips.
+          </p>
+        </div>
       </div>
 
       {subscribed ? (
-        <div className="text-center">
-          <div className="text-green-300 text-4xl mb-4">✓</div>
-          <h4 className="text-xl font-bold mb-2">Thank You!</h4>
-          <p>You've been subscribed to our newsletter</p>
+        <div className="text-center py-3 bg-emerald-50 rounded-lg">
+          <div className="text-emerald-700 font-medium text-sm">
+            ✓ Thank you for subscribing!
+          </div>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div>
+        <form onSubmit={handleSubmit} className="space-y-3">
+          <div className="flex gap-2">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="Your email address"
+              placeholder="Your email"
               required
-              className="w-full p-4 rounded-lg text-gray-900"
+              className="flex-1 px-4 py-2.5 border border-gray-300 rounded-lg focus:border-amber-500 focus:outline-none text-sm min-w-0"
             />
+            <button
+              type="submit"
+              disabled={loading || !email}
+              className="px-4 py-2.5 bg-amber-500 text-white font-medium rounded-lg hover:bg-amber-600 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center gap-2 text-sm whitespace-nowrap"
+            >
+              {loading ? (
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                  <span>...</span>
+                </div>
+              ) : (
+                <>
+                  <span>Join</span>
+                  <FaArrowRight className="text-xs" />
+                </>
+              )}
+            </button>
           </div>
           
-          <div className="flex items-center">
+          <div className="flex items-start gap-2">
             <input
               type="checkbox"
               id="consent"
               required
-              className="mr-3"
+              className="mt-0.5 w-3.5 h-3.5 text-amber-600 border-gray-300 rounded focus:ring-amber-500"
             />
-            <label htmlFor="consent" className="text-sm">
-              I agree to receive emails about adoptions and events
+            <label htmlFor="consent" className="text-xs text-gray-600">
+              I agree to receive updates. Unsubscribe anytime.
             </label>
           </div>
-          
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-white text-blue-600 font-bold py-3 rounded-lg hover:bg-gray-100 disabled:opacity-50"
-          >
-            {loading ? 'Subscribing...' : 'Subscribe Now'}
-          </button>
         </form>
       )}
-
-      <div className="mt-6 text-center text-sm opacity-80">
-        <p>Join 5,000+ pet lovers in our community</p>
-        <p className="mt-1">No spam, unsubscribe anytime</p>
-      </div>
     </div>
   );
 }

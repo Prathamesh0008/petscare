@@ -1,3 +1,4 @@
+//petscare\lib\animals.ts
 import { Animal } from '@/types';
 import { getAnimalImage } from './utils';
 

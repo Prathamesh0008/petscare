@@ -4,4 +4,5 @@ export interface Animal {
   type: string;
   description?: string;
   images?: string[];
+  size: 'Medium',
 }

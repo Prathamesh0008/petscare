@@ -1,7 +1,9 @@
+//petscare\app\animals\[id]\medical\page.tsx
 'use client';
 
 import { notFound } from 'next/navigation';
-import { animals } from '@/lib/animals';
+import { getAnimalById } from '@/lib/animals';
+
 import Link from 'next/link';
 
 interface PageProps {
@@ -11,8 +13,8 @@ interface PageProps {
 }
 
 export default function AnimalMedicalPage({ params }: PageProps) {
-  const animal = animals.find(a => a.id === params.id);
-  
+  const animal = getAnimalById(params.id);
+
   if (!animal) {
     notFound();
   }

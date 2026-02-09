@@ -1,156 +1,235 @@
+// petscare/components/Hero.tsx - Updated with button below text
 'use client';
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { FaPaw, FaHeart, FaUsers, FaArrowRight } from 'react-icons/fa';
+import { FaPaw, FaHeart, FaUsers, FaArrowRight, FaHandsHelping, FaHome } from 'react-icons/fa';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  const heroImages = [
+    'https://images.unsplash.com/photo-1552053831-71594a27632d?w=1920&auto=format&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=1920&auto=format&fit=crop&q=80',
+    'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=1920&auto=format&fit=crop&q=80',
+  ];
 
   useEffect(() => {
-    // Trigger animation after component mounts
-    setTimeout(() => setIsLoaded(true), 100);
+    const interval = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+    return () => clearInterval(interval);
   }, []);
 
+  const stats = [
+    { icon: <FaPaw />, value: '150+', label: 'Rescued Animals' },
+    { icon: <FaHeart />, value: '120+', label: 'Happy Adoptions' },
+    { icon: <FaUsers />, value: '50+', label: 'Active Volunteers' },
+    { icon: <FaHome />, value: '200+', label: 'Families Created' }
+  ];
+
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image Container with Ken Burns Effect */}
+    <section className="relative py-16 lg:py-24 overflow-hidden">
+      {/* Background */}
       <div className="absolute inset-0 z-0">
-        <div className={`absolute inset-0 bg-gradient-to-br from-amber-900/80 via-orange-800/70 to-amber-900/80 z-10 transition-opacity duration-1000 ${isLoaded ? 'opacity-60' : 'opacity-100'}`}></div>
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-orange-50" />
         
-        {/* Main Background Image */}
-        <div className={`absolute inset-0 transition-all duration-7000 ${isLoaded ? 'scale-100' : 'scale-125'} transform-gpu`}>
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
+        {/* Image Slideshow */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentImage}
+            className="absolute inset-0"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5 }}
             style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1552053831-71594a27632d?w=1920&auto=format&fit=crop&q=80')`,
+              backgroundImage: `url(${heroImages[currentImage]})`,
+              backgroundSize: 'cover',
               backgroundPosition: 'center',
             }}
-          />
-        </div>
-        
-        {/* Secondary Background Images for layered effect */}
-        <div className={`absolute inset-0 transition-all duration-5000 ${isLoaded ? 'opacity-30 scale-100' : 'opacity-0 scale-110'} transform-gpu delay-300`}>
-          <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=1920&auto=format&fit=crop&q=80')`,
-              backgroundPosition: 'center',
-            }}
-          />
-        </div>
-        
-        {/* Gradient Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/20 z-20"></div>
-        <div className="absolute inset-0 bg-gradient-to-r from-amber-900/10 via-transparent to-orange-900/10 z-20"></div>
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-amber-900/30 via-amber-800/20 to-orange-900/20" />
+          </motion.div>
+        </AnimatePresence>
       </div>
 
-      {/* Animated Pattern Overlay */}
-      <div className="absolute inset-0 z-5 opacity-10">
-        <div 
-          className="absolute inset-0 animate-pulse-slow"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='1' fill-rule='evenodd'/%3E%3C/svg%3E")`,
-            backgroundSize: '100px'
-          }}
-        />
-      </div>
+      {/* Main Content */}
+      <div className="relative z-10 px-4 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left Column - Text Content */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Logo */}
+            <motion.div
+              className="inline-flex items-center gap-3 mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+            >
+              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
+                <FaPaw className="text-2xl text-amber-600" />
+              </div>
+              <span className="text-2xl font-bold text-gray-800">PawHaven</span>
+            </motion.div>
 
-      {/* Content */}
-      <div className="relative z-30 text-center text-white px-4 max-w-6xl mx-auto">
-        {/* Logo/Brand Animation */}
-        <div className={`mb-8 transition-all duration-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="flex justify-center mb-6">
-            <div className={`bg-white/20 backdrop-blur-md p-5 rounded-2xl border border-white/30 transition-all duration-1000 ${isLoaded ? 'scale-100 rotate-0' : 'scale-90 rotate-12'}`}>
-              <FaPaw className="text-5xl animate-bounce-slow" />
+            {/* Main Heading */}
+            <motion.h1
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              A Safe Haven for{' '}
+              <span className="text-amber-600">Every Soul</span>
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              className="text-lg text-gray-600 mb-8 leading-relaxed"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+            >
+              We rescue, rehabilitate, and find loving homes for stray animals in Navi Mumbai. 
+              Join our mission to create a world where every animal is valued and protected.
+            </motion.p>
+
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-wrap gap-4 mb-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
+              <Link href="/animals">
+                <button className="px-8 py-3.5 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-colors">
+                  <span className="flex items-center gap-2">
+                    Meet Our Animals
+                    <FaArrowRight className="text-sm" />
+                  </span>
+                </button>
+              </Link>
+
+              <Link href="/donate">
+                <button className="px-8 py-3.5 bg-white border border-amber-300 text-amber-700 rounded-lg font-semibold hover:bg-amber-50 transition-colors">
+                  <span className="flex items-center gap-2">
+                    <FaHeart className="text-amber-600" />
+                    Support Our Work
+                  </span>
+                </button>
+              </Link>
+            </motion.div>
+
+            {/* Quick Stats */}
+            <motion.div
+              className="grid grid-cols-2 gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+            >
+              {stats.map((stat, index) => (
+                <div
+                  key={index}
+                  className="bg-white/90 rounded-lg p-4 shadow-sm"
+                >
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="text-amber-600">
+                      {stat.icon}
+                    </div>
+                    <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+                  </div>
+                  <div className="text-sm text-gray-600">{stat.label}</div>
+                </div>
+              ))}
+            </motion.div>
+          </motion.div>
+
+          {/* Right Column - Image */}
+          <motion.div
+            className="relative"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <div className="relative">
+              {/* Main Image Container */}
+              <div className="rounded-2xl overflow-hidden shadow-xl">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentImage}
+                    className="aspect-[3/4] w-full"
+                    initial={{ opacity: 0, scale: 1.05 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.95 }}
+                    transition={{ duration: 1 }}
+                    style={{
+                      backgroundImage: `url(${heroImages[currentImage]})`,
+                      backgroundSize: 'cover',
+                      backgroundPosition: 'center',
+                    }}
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-t from-amber-900/10 via-transparent to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Image Dots */}
+                <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                  {heroImages.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentImage(idx)}
+                      className={`w-2 h-2 rounded-full transition-all ${idx === currentImage ? 'bg-white' : 'bg-white/50 hover:bg-white/80'}`}
+                    />
+                  ))}
+                </div>
+              </div>
+
+              {/* Stats Card */}
+              <motion.div
+                className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-lg max-w-xs"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+              >
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+                    <FaHeart className="text-amber-600" />
+                  </div>
+                  <div className="font-semibold text-gray-900">120+ Happy Families</div>
+                </div>
+                <p className="text-sm text-gray-600">
+                  Join our community of happy pet owners
+                </p>
+              </motion.div>
             </div>
+          </motion.div>
+        </div>
+
+        {/* Bottom CTA - Button moved below the text */}
+        <motion.div
+          className="mt-16 text-center"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1 }}
+        >
+          <div className="mb-4">
+            <span className="text-sm font-medium text-gray-600">READY TO MAKE A DIFFERENCE?</span>
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-bold mb-4 tracking-tight">
-            <span className={`inline-block transition-all duration-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              Welcome to{' '}
-            </span>
-            <span className={`inline-block text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-300 font-extrabold transition-all duration-1000 delay-300 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-              PawHaven Vashi
-            </span>
-          </h1>
-        </div>
-
-        {/* Tagline */}
-        <p className={`text-xl md:text-2xl mb-10 max-w-3xl mx-auto transition-all duration-1000 delay-500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          A safe haven for stray dogs and cats in Navi Mumbai. 
-          We rescue, rehabilitate, and find forever homes for our furry friends.
-        </p>
-
-        {/* CTA Buttons */}
-        <div className={`flex flex-col sm:flex-row gap-4 justify-center mb-16 transition-all duration-1000 delay-700 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <Link 
-            href="/animals" 
-            className="group relative overflow-hidden bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl shadow-lg"
-          >
-            <span className="relative z-10 flex items-center justify-center gap-3">
-              Meet Our Animals
-              <FaArrowRight className="group-hover:translate-x-2 transition-transform duration-300" />
-            </span>
-            <span className="absolute inset-0 bg-gradient-to-r from-amber-600 to-orange-600 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
+          <Link href="/volunteer">
+            <button className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-amber-300 text-amber-700 rounded-lg font-semibold hover:bg-amber-50 transition-colors">
+              <FaHandsHelping />
+              Become a Volunteer
+              <FaArrowRight />
+            </button>
           </Link>
-          <Link 
-            href="/adopt" 
-            className="group relative overflow-hidden bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border-2 border-white/30 hover:border-white/50 px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-          >
-            <span className="relative z-10">Adopt a Friend</span>
-            <span className="absolute inset-0 bg-white/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></span>
-          </Link>
-        </div>
-
-        {/* Stats */}
-        <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 transition-all duration-1000 delay-1000 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-          <div className="group bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-amber-400 to-amber-500 rounded-full flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                <FaPaw className="text-2xl text-white" />
-              </div>
-              <div className="text-3xl font-bold mb-2">150+</div>
-              <div className="text-amber-100">Animals Rescued</div>
-            </div>
-          </div>
-          <div className="group bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-orange-400 to-orange-500 rounded-full flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                <FaHeart className="text-2xl text-white" />
-              </div>
-              <div className="text-3xl font-bold mb-2">120+</div>
-              <div className="text-amber-100">Successful Adoptions</div>
-            </div>
-          </div>
-          <div className="group bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-2xl hover:bg-white/20 transition-all duration-300 hover:scale-105">
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-400 to-red-500 rounded-full flex items-center justify-center mb-4 group-hover:rotate-12 transition-transform duration-300">
-                <FaUsers className="text-2xl text-white" />
-              </div>
-              <div className="text-3xl font-bold mb-2">50+</div>
-              <div className="text-amber-100">Active Volunteers</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      {/* <div className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-30 transition-all duration-1000 delay-1500 ${isLoaded ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
-        <div className="flex flex-col items-center">
-          <span className="text-white/70 text-sm mb-2">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-white/70 rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </div>
-      </div> */}
-
-      {/* Floating Elements */}
-      <div className="absolute top-20 left-10 z-20 animate-float-slow">
-        <div className="w-12 h-12 bg-gradient-to-r from-amber-400/30 to-orange-400/30 rounded-full blur-sm"></div>
-      </div>
-      <div className="absolute bottom-32 right-16 z-20 animate-float-slower">
-        <div className="w-16 h-16 bg-gradient-to-r from-orange-400/20 to-red-400/20 rounded-full blur-sm"></div>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,3 +1,4 @@
+//petscare\components\AnimalCard.tsx
 import Image from 'next/image';
 import Link from 'next/link';
 import { FaHeart, FaPaw, FaVenusMars, FaCalendarAlt, FaStethoscope } from 'react-icons/fa';

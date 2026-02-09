@@ -49,7 +49,7 @@ export interface Testimonial {
   adopterName: string;
   animalName: string;
   animalType: 'dog' | 'cat';
-
+ size?: 'Small' | 'Medium' | 'Large';
   quote: string;
 
   rating?: 1 | 2 | 3 | 4 | 5;

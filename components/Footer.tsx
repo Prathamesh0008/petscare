@@ -1,3 +1,4 @@
+//petscare\components\Footer.tsx
 import { FaFacebook, FaInstagram, FaTwitter, FaYoutube, FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 import Link from 'next/link';
 import { SHELTER_INFO } from '@/lib/constants';
@@ -8,7 +9,30 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-white pt-12 pb-8">
       <div className="container mx-auto px-4">
+         {/* Newsletter */}
+        <div className="bg-gray-800 rounded-xl p-6 mb-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <h3 className="text-xl font-bold mb-2">Stay Updated</h3>
+              <p className="text-gray-400">Subscribe to our newsletter for updates on new arrivals and events.</p>
+            </div>
+            <form className="flex gap-2">
+              <input
+                type="email"
+                placeholder="Your email address"
+                className="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500 flex-grow"
+              />
+              <button
+                type="submit"
+                className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
+              >
+                Subscribe
+              </button>
+            </form>
+          </div>
+        </div>
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+          
           {/* About */}
           <div>
             <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
@@ -122,28 +146,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Newsletter */}
-        <div className="bg-gray-800 rounded-xl p-6 mb-8">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div>
-              <h3 className="text-xl font-bold mb-2">Stay Updated</h3>
-              <p className="text-gray-400">Subscribe to our newsletter for updates on new arrivals and events.</p>
-            </div>
-            <form className="flex gap-2">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="px-4 py-3 rounded-lg bg-gray-900 border border-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-amber-500 flex-grow"
-              />
-              <button
-                type="submit"
-                className="bg-amber-500 hover:bg-amber-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
-        </div>
+       
 
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-gray-800">
