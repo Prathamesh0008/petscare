@@ -52,16 +52,6 @@ export default function VolunteerForm() {
     }
   };
 
-  const availabilityOptions: {
-  value: AvailabilityOption;
-  label: string;
-  icon: React.ReactNode;
-}[] = [
-  { value: 'weekday-morning', label: 'Weekday Morning', icon: <FaCalendar /> },
-  { value: 'weekday-evening', label: 'Weekday Evening', icon: <FaClock /> },
-  { value: 'weekend', label: 'Weekends', icon: <FaStar /> },
-];
-
   if (isSubmitted) {
     return (
       <div className="text-center py-12">
@@ -165,8 +155,11 @@ export default function VolunteerForm() {
           <label className="block text-gray-700 mb-2">Availability *</label>
           <p className="text-sm text-gray-600 mb-4">Select all that apply</p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {availabilityOptions.map((option) => (
-
+            {[
+              { value: 'weekday-morning', label: 'Weekday Morning', icon: <FaCalendar /> },
+              { value: 'weekday-evening', label: 'Weekday Evening', icon: <FaClock /> },
+              { value: 'weekend', label: 'Weekends', icon: <FaStar /> },
+            ].map((option) => (
               <button
                 key={option.value}
                 type="button"
