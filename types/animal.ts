@@ -1,3 +1,5 @@
+//petscare\types\animal.ts
+
 export interface Animal {
   id: string;
   name: string;

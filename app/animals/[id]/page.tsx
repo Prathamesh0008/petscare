@@ -1,287 +1,292 @@
-// petscare/app/animals/[id]/page.tsx
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { FaVenusMars, FaCalendarAlt, FaHeart, FaStethoscope, FaRupeeSign } from 'react-icons/fa';
+import Image from 'next/image';
+import Link from 'next/link';
 import { getAnimalById } from '@/lib/animals';
+import { 
+  FaArrowLeft, FaHeart, FaPaw, FaStethoscope, 
+  FaSyringe, FaHome, FaCheckCircle, FaVenusMars,
+  FaCalendarAlt, FaTag, FaDog, FaCat, FaUserMd,
+  FaShieldAlt, FaStar, FaInfoCircle
+} from 'react-icons/fa';
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
+export default async function AnimalDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
-export default function AnimalDetailsPage({ params }: PageProps) {
-  const animal = getAnimalById(params.id);
+  const animal = getAnimalById(id);
 
-  if (!animal) {
-    notFound();
-  }
+  if (!animal) return notFound();
 
+  const typeIcon = animal.type === 'dog' ? <FaDog /> : <FaCat />;
+  
   return (
-    <div className="min-h-screen bg-gray-50">
-      {/* Image Gallery */}
-      <div className="relative h-[420px] w-full">
-        <Image
-          src={animal.imageUrls[0]}
-          alt={animal.name}
-          fill
-          className="object-cover"
-          priority
-        />
+    <div className="min-h-screen bg-white">
+      {/* Back Button */}
+      <div className="container mx-auto px-4 pt-6">
+        <Link
+          href="/animals"
+          className="inline-flex items-center gap-2 text-gray-600 hover:text-emerald-600 transition-colors text-sm font-medium"
+        >
+          <FaArrowLeft /> Back to Animals
+        </Link>
       </div>
 
-      {/* Content */}
-      <div className="max-w-5xl mx-auto px-4 py-10">
-        <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
-
-          {/* Header */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">
-                {animal.name}
-              </h1>
-              <p className="text-gray-600 mt-1">{animal.breed}</p>
-            </div>
-
-            {animal.isUrgent && (
-              <span className="inline-flex items-center gap-2 bg-red-100 text-red-700 px-4 py-2 rounded-lg font-semibold">
-                <FaHeart />
-                Urgent Adoption
-              </span>
-            )}
-          </div>
-
-          {/* Quick Info */}
-          <div className="flex flex-wrap gap-6 text-gray-700 mb-6">
-            <div className="flex items-center gap-2">
-              <FaVenusMars className={animal.gender === 'male' ? 'text-blue-500' : 'text-pink-500'} />
-              <span className="capitalize font-medium">{animal.gender}</span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaCalendarAlt className="text-gray-400" />
-              <span>{animal.age}</span>
-            </div>
-
-            <div className="flex items-center gap-2">
-              <FaStethoscope className="text-gray-400" />
-              <span className="capitalize">{animal.healthStatus.replace('-', ' ')}</span>
-            </div>
-          </div>
-
-          {/* Description */}
-          <p className="text-gray-700 leading-relaxed mb-6">
-            {animal.description}
-          </p>
-
-          {/* Story */}
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
-              Rescue Story
-            </h2>
-            <p className="text-gray-700 leading-relaxed">
-              {animal.story}
-            </p>
-          </div>
-
-          {/* Personality */}
-          <div className="mb-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-2">
-              Personality
-            </h2>
-            <div className="flex flex-wrap gap-2">
-              {animal.personality.map((trait) => (
-                <span
-                  key={trait}
-                  className="bg-gray-100 text-gray-700 px-3 py-1 rounded-lg text-sm font-medium"
-                >
-                  {trait}
-                </span>
-              ))}
+      {/* Hero Section */}
+      <div className="container mx-auto px-4 mt-4">
+        <div className="relative h-[400px] w-full rounded-xl overflow-hidden">
+          <Image
+            src={animal.imageUrls[0]}
+            alt={animal.name}
+            fill
+            className="object-cover"
+            priority
+          />
+          
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+          
+          {/* Content */}
+          <div className="absolute bottom-6 left-6 right-6 text-white">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between">
+              <div>
+                <div className="flex items-center gap-3 mb-2">
+                  <div className="p-2 bg-white/20 backdrop-blur-sm rounded-lg">
+                    {typeIcon}
+                  </div>
+                  <h1 className="text-3xl md:text-4xl font-bold">{animal.name}</h1>
+                </div>
+                <div className="flex items-center gap-4 text-white/90">
+                  <div className="flex items-center gap-2">
+                    <FaTag />
+                    <span>{animal.breed}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FaCalendarAlt />
+                    <span>{animal.age}</span>
+                  </div>
+                </div>
+              </div>
+              
+              {animal.isUrgent && (
+                <div className="mt-4 md:mt-0">
+                  <div className="inline-flex items-center gap-2 bg-red-500 text-white px-4 py-2 rounded-lg font-semibold">
+                    <FaHeart /> Urgent Adoption
+                  </div>
+                </div>
+              )}
             </div>
           </div>
+        </div>
+      </div>
 
-          {/* Adoption Fee */}
-          <div className="flex items-center justify-between border-t pt-6">
-            <div className="flex items-center gap-2 text-lg font-semibold text-gray-900">
-              <FaRupeeSign />
-              {animal.adoptionFee}
+      {/* Main Content */}
+      <div className="container mx-auto px-4 mt-8 pb-16">
+        <div className="grid lg:grid-cols-3 gap-8">
+          {/* Left Column - Main Info */}
+          <div className="lg:col-span-2 space-y-8">
+            {/* About Section */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center">
+                  <FaInfoCircle className="text-emerald-600" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">About {animal.name}</h2>
+              </div>
+              <p className="text-gray-700 leading-relaxed">
+                {animal.story}
+              </p>
             </div>
 
-            <button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-3 rounded-lg font-semibold transition">
-              Start Adoption
-            </button>
+            {/* Personality */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
+                  <FaPaw className="text-amber-600" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">Personality & Traits</h2>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                {animal.personality.map((trait) => (
+                  <span
+                    key={trait}
+                    className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg text-sm font-medium hover:bg-emerald-50 hover:text-emerald-700 transition-colors flex items-center gap-2"
+                  >
+                    <FaStar className="text-amber-500 text-xs" />
+                    {trait}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Health & Care */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                  <FaUserMd className="text-blue-600" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">Health & Care</h2>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                      <FaSyringe className="text-blue-500" />
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Vaccination</div>
+                      <p className="text-gray-700 capitalize text-sm">{animal.vaccinationStatus}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-4 bg-gray-50 rounded-lg">
+                  <div className="flex items-center gap-3 mb-3">
+                    <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                      <FaHeart className="text-emerald-500" />
+                    </div>
+                    <div>
+                      <div className="font-medium text-gray-900">Health Status</div>
+                      <p className="text-gray-700 capitalize text-sm">{animal.healthStatus}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Gallery */}
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                  <FaHome className="text-purple-600" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900">Gallery</h2>
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                {animal.imageUrls.slice(1).map((img, index) => (
+                  <div key={index} className="relative aspect-square rounded-lg overflow-hidden">
+                    <Image
+                      src={img}
+                      alt={`${animal.name} photo ${index + 2}`}
+                      fill
+                      className="object-cover hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
 
+          {/* Right Column - Adoption Card */}
+          <div className="lg:col-span-1">
+            <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 sticky top-6">
+              <h3 className="text-xl font-bold text-gray-900 mb-6">Adoption Details</h3>
+              
+              <div className="space-y-6">
+                {/* Quick Info */}
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-gray-600">
+                      {typeIcon}
+                      <span>Type</span>
+                    </div>
+                    <span className="font-medium text-gray-900 capitalize">{animal.type}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <FaVenusMars />
+                      <span>Gender</span>
+                    </div>
+                    <span className="font-medium text-gray-900 capitalize">{animal.gender}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <FaCalendarAlt />
+                      <span>Age</span>
+                    </div>
+                    <span className="font-medium text-gray-900">{animal.age}</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-2 text-gray-600">
+                      <FaTag />
+                      <span>Breed</span>
+                    </div>
+                    <span className="font-medium text-gray-900">{animal.breed}</span>
+                  </div>
+                </div>
+
+                {/* Fee Section */}
+                <div className="p-4 bg-emerald-50 rounded-lg border border-emerald-100">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="font-medium text-gray-900">Adoption Fee</span>
+                    <span className="text-2xl font-bold text-emerald-600">₹{animal.adoptionFee}</span>
+                  </div>
+                  <p className="text-sm text-gray-600">
+                    Includes vaccination, deworming, microchipping, and spay/neuter
+                  </p>
+                </div>
+
+                {/* Included Services */}
+                <div className="space-y-3">
+                  <h4 className="font-medium text-gray-900">What's Included</h4>
+                  <div className="space-y-3">
+                    {[
+                      { text: 'Complete Vaccination', icon: FaSyringe },
+                      { text: 'Health Check-up', icon: FaStethoscope },
+                      { text: 'Basic Training', icon: FaPaw },
+                      { text: '1 Month Pet Insurance', icon: FaShieldAlt },
+                      { text: 'Adoption Kit', icon: FaHome }
+                    ].map((service, index) => (
+                      <div key={index} className="flex items-center gap-3">
+                        <div className="w-8 h-8 bg-emerald-100 rounded-lg flex items-center justify-center">
+                          <service.icon className="text-emerald-600 text-sm" />
+                        </div>
+                        <span className="text-gray-700 text-sm">{service.text}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Adoption Button */}
+                <div className="pt-4">
+                  <Link
+                    href="/contact"
+                    className="flex items-center justify-center gap-2 w-full bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-lg font-semibold transition-colors"
+                  >
+                    <FaHeart />
+                    Adopt {animal.name}
+                  </Link>
+                  <p className="text-center text-gray-600 text-sm mt-3">
+                    Need help? <a href="/contact" className="text-emerald-600 hover:text-emerald-700">Contact us</a>
+                  </p>
+                </div>
+
+                {/* Quick Stats */}
+                <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-200">
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-2">
+                      <FaCalendarAlt className="text-emerald-500" />
+                      <div className="text-lg font-bold text-emerald-600">30-day</div>
+                    </div>
+                    <div className="text-xs text-gray-600">Trial Period</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="flex items-center justify-center gap-2">
+                      <FaShieldAlt className="text-emerald-500" />
+                      <div className="text-lg font-bold text-emerald-600">24/7</div>
+                    </div>
+                    <div className="text-xs text-gray-600">Support</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   );
 }
-
-
-
-
-
-// //petscare\app\animals\[id]\page.tsx
-// // 'use client';
-
-// import { notFound } from 'next/navigation';
-// import Image from 'next/image';
-// import Link from 'next/link';
-// import { getAnimalById } from '@/lib/animals';
-// import { Animal } from '@/types';
-
-// import AdoptionForm from '@/components/AdoptionForm';
-// import ShareButtons from '@/components/ShareButtons';
-// import ARViewer from '@/components/ARViewer';
-
-
-// interface PageProps {
-//   params: {
-//     id: string;
-//   };
-// }
-
-// /* ------------------ STATUS HELPERS ------------------ */
-
-// type DerivedStatus = 'available' | 'urgent' | 'adopted';
-
-// const statusColors: Record<DerivedStatus, string> = {
-//   available: 'bg-green-100 text-green-800',
-//   urgent: 'bg-red-100 text-red-800',
-//   adopted: 'bg-blue-100 text-blue-800',
-// };
-
-// function getAnimalStatus(animal: Animal): DerivedStatus {
-//   if (animal.isAdopted) return 'adopted';
-//   if (animal.isUrgent) return 'urgent';
-//   return 'available';
-// }
-
-// /* ------------------ PAGE ------------------ */
-
-// export default function AnimalPage({ params }: PageProps) {
-//   // const animal = animals.find(a => a.id === params.id);
-// const animal = getAnimalById(params.id);
-//   if (!animal) {
-//     notFound();
-//   }
-
-//   const status = getAnimalStatus(animal);
-
-//   return (
-//     <div className="container mx-auto px-4 py-8">
-//       {/* Back */}
-//       <div className="mb-6">
-//         <Link href="/animals" className="text-blue-600 hover:underline">
-//           ← Back to All Animals
-//         </Link>
-//       </div>
-
-//       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-//         {/* LEFT */}
-//         <div className="lg:col-span-2">
-//           <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-//             {/* Header */}
-//             <div className="flex justify-between items-start mb-6">
-//               <div>
-//                 <h1 className="text-3xl font-bold">{animal.name}</h1>
-
-//                 <div className="flex items-center gap-4 mt-2">
-//                   <span
-//                     className={`px-3 py-1 rounded-full text-sm font-medium ${statusColors[status]}`}
-//                   >
-//                     {status.charAt(0).toUpperCase() + status.slice(1)}
-//                   </span>
-
-//                   <span className="text-gray-600">ID: {animal.id}</span>
-//                 </div>
-//               </div>
-
-//               <ShareButtons animal={animal} />
-//             </div>
-
-//             {/* Main Image */}
-//             <div className="mb-6">
-//               <div className="aspect-video bg-gray-200 rounded-lg overflow-hidden mb-4">
-//                 {animal.imageUrls?.[0] ? (
-//                   <Image
-//                     src={animal.imageUrls[0]}
-//                     alt={animal.name}
-//                     width={800}
-//                     height={450}
-//                     className="w-full h-full object-cover"
-//                   />
-//                 ) : (
-//                   <div className="flex items-center justify-center h-full text-6xl">
-//                     {animal.type === 'dog' ? '🐕' : '🐈'}
-//                   </div>
-//                 )}
-//               </div>
-
-//               {/* Thumbnails */}
-//               <div className="flex gap-2 overflow-x-auto">
-//                 {animal.imageUrls.map((img, idx) => (
-//                   <div
-//                     key={idx}
-//                     className="w-20 h-20 bg-gray-300 rounded overflow-hidden flex-shrink-0"
-//                   >
-//                     <Image
-//                       src={img}
-//                       alt={`${animal.name} ${idx + 1}`}
-//                       width={80}
-//                       height={80}
-//                       className="w-full h-full object-cover"
-//                     />
-//                   </div>
-//                 ))}
-//               </div>
-//             </div>
-
-//             {/* Description */}
-//             <div className="mb-6">
-//               <h2 className="text-xl font-bold mb-3">
-//                 About {animal.name}
-//               </h2>
-//               <p className="text-gray-700">{animal.description}</p>
-//             </div>
-//           </div>
-
-//           {/* AR */}
-//           <div className="bg-white rounded-lg shadow-lg p-6">
-//             <ARViewer animalType={animal.type} />
-//           </div>
-//         </div>
-
-//         {/* RIGHT */}
-//         <div>
-//           <div className="sticky top-6">
-//             <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-//               <h2 className="text-xl font-bold mb-4">
-//                 Adopt {animal.name}
-//               </h2>
-//               <AdoptionForm
-//                 animalId={animal.id}
-//                 animalName={animal.name}
-//               />
-//             </div>
-
-//             <div className="space-y-4">
-//               <button className="w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700">
-//                 Schedule a Visit
-//               </button>
-
-//               <Link
-//                 href={`/animals/${animal.id}/gallery`}
-//                 className="block w-full border-2 border-gray-300 text-gray-700 py-3 rounded-lg hover:bg-gray-50 text-center"
-//               >
-//                 View Full Gallery
-//               </Link>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

@@ -16,12 +16,15 @@ export default function AdoptionForm({ animalId, animalName }: AdoptionFormProps
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-    watch,
-  } = useForm<AdoptionFormValues>({
+ const {
+  register,
+  handleSubmit,
+  formState: { errors, isSubmitting },
+  watch,
+  trigger,
+  reset,
+} = useForm<AdoptionFormValues>({
+
     resolver: zodResolver(adoptionFormSchema),
     defaultValues: {
       animalId: animalId || '',

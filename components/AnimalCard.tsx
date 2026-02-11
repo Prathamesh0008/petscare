@@ -70,7 +70,7 @@ export default function AnimalCard({ animal }: AnimalCardProps) {
         
         <Link 
           href={`/animals/${animal.id}`}
-          className="block w-full btn-primary text-center"
+          className="block w-full btn-primary text-center text-black"
         >
           Meet {animal.name}
         </Link>

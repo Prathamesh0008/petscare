@@ -4,65 +4,68 @@
 import VolunteerForm from '@/components/VolunteerForm';
 import { 
   FaHandsHelping, FaCalendarAlt, FaUsers, FaHeart, 
-  FaPaw, FaCamera, FaAward, FaSmile, FaBookOpen, 
+  FaPaw, FaCamera, FaAward, FaBookOpen, 
   FaClock, FaMapMarkerAlt, FaCertificate, FaShieldAlt,
-  FaArrowRight, FaQuoteRight, FaCheckCircle, FaUserFriends
+  FaArrowRight, FaQuoteRight, FaCheckCircle, FaUserFriends,
+  FaStethoscope, FaHome, FaGraduationCap, FaBullhorn,
+  FaDog, FaCat, FaHeartbeat, FaUsers as FaPeopleGroup,
+  FaStar, FaChartLine
 } from 'react-icons/fa';
 
 const volunteerOpportunities = [
   {
     name: 'Animal Care Specialist',
     role: 'Daily Care & Comfort',
-    icon: '🐕',
+    icon: <FaDog />,
     description: 'Provide nurturing care, feeding, and monitoring of rescued animals',
     commitment: '6-8 hours/week',
     skills: ['Animal Handling', 'Patience', 'Observation'],
-    color: 'emerald'
+    color: 'amber'
   },
   {
     name: 'Adoption Ambassador',
     role: 'Family Matching Guide',
-    icon: '🏠',
+    icon: <FaHome />,
     description: 'Help families find their perfect match and guide through adoption process',
     commitment: '4-6 hours/week',
     skills: ['Communication', 'Empathy', 'Matching'],
-    color: 'amber'
+    color: 'orange'
   },
   {
     name: 'Medical Support Team',
     role: 'Health & Wellness',
-    icon: '🏥',
+    icon: <FaStethoscope />,
     description: 'Assist with medical care, medication, and recovery monitoring',
     commitment: '8-10 hours/week',
     skills: ['Medical Knowledge', 'Detail-oriented', 'Calmness'],
-    color: 'rose'
+    color: 'amber'
   },
   {
     name: 'Event & Outreach',
     role: 'Community Engagement',
-    icon: '🎪',
+    icon: <FaBullhorn />,
     description: 'Organize adoption events, fundraisers, and community awareness programs',
     commitment: 'Flexible hours',
     skills: ['Organization', 'Networking', 'Creativity'],
-    color: 'indigo'
+    color: 'orange'
   },
   {
     name: 'Training Companion',
     role: 'Behavior & Socialization',
-    icon: '🎓',
+    icon: <FaGraduationCap />,
     description: 'Work with animals on basic training, socialization, and confidence building',
     commitment: '6-8 hours/week',
     skills: ['Training Techniques', 'Patience', 'Consistency'],
-    color: 'blue'
+    color: 'amber'
   },
   {
     name: 'Content Creator',
     role: 'Storytelling & Media',
-    icon: '📷',
+    icon: <FaCamera />,
     description: 'Capture stories, photos, and videos to help animals find homes faster',
     commitment: 'Flexible hours',
     skills: ['Photography', 'Storytelling', 'Social Media'],
-    color: 'purple'
+    color: 'orange'
   },
 ];
 
@@ -116,21 +119,21 @@ const programHighlights = [
 
 export default function VolunteerPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-amber-50/20 to-emerald-50/10">
-      {/* Hero Section with Different Layout */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-emerald-400/20 via-amber-200/30 to-rose-300/20">
+    <div className="min-h-screen bg-gradient-to-b from-white via-amber-50/20 to-orange-50/10">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden bg-gradient-to-br from-amber-400/20 via-orange-200/30 to-amber-300/20">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
         <div className="container relative mx-auto px-4 py-24 md:py-32">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-12">
               <div className="lg:w-1/2">
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6">
-                  <span className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                  <span className="text-emerald-700 font-medium">Join Our Movement</span>
+                  <FaHeart className="text-amber-500" />
+                  <span className="text-amber-700 font-medium">Join Our Movement</span>
                 </div>
                 <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                  Share Your <span className="text-emerald-600">Heart</span>,<br />
-                  Change Their <span className="text-amber-600">World</span>
+                  Share Your <span className="text-amber-600">Heart</span>,<br />
+                  Change Their <span className="text-orange-600">World</span>
                 </h1>
                 <p className="text-xl text-gray-700 mb-8 leading-relaxed">
                   Your time and compassion can create miracles for animals in need. 
@@ -139,7 +142,7 @@ export default function VolunteerPage() {
                 <div className="flex flex-wrap gap-4">
                   <a 
                     href="#opportunities"
-                    className="px-8 py-4 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-emerald-200 transition-all duration-300 hover:-translate-y-0.5"
+                    className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold rounded-xl hover:shadow-lg hover:shadow-amber-200 transition-all duration-300 hover:-translate-y-0.5"
                   >
                     Explore Roles
                   </a>
@@ -154,10 +157,10 @@ export default function VolunteerPage() {
               
               <div className="lg:w-1/2">
                 <div className="relative">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-emerald-400/30 to-amber-400/30 rounded-3xl blur-xl"></div>
+                  <div className="absolute -inset-4 bg-gradient-to-r from-amber-400/30 to-orange-400/30 rounded-3xl blur-xl"></div>
                   <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
                     <div className="flex items-center gap-4 mb-6">
-                      <div className="p-3 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-xl">
+                      <div className="p-3 bg-gradient-to-br from-amber-400 to-amber-500 rounded-xl">
                         <FaUsers className="text-white text-2xl" />
                       </div>
                       <div>
@@ -168,19 +171,25 @@ export default function VolunteerPage() {
                     
                     <div className="space-y-6">
                       <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-gradient-to-br from-emerald-50 to-white p-4 rounded-xl border border-emerald-100">
-                          <div className="text-2xl font-bold text-emerald-600 mb-1">5,000+</div>
+                        <div className="bg-gradient-to-br from-amber-50 to-white p-4 rounded-xl border border-amber-100">
+                          <div className="flex items-center gap-2">
+                            <FaClock className="text-amber-500" />
+                            <div className="text-2xl font-bold text-amber-600">5,000+</div>
+                          </div>
                           <div className="text-sm text-gray-600">Hours Contributed</div>
                         </div>
-                        <div className="bg-gradient-to-br from-amber-50 to-white p-4 rounded-xl border border-amber-100">
-                          <div className="text-2xl font-bold text-amber-600 mb-1">1,200+</div>
+                        <div className="bg-gradient-to-br from-orange-50 to-white p-4 rounded-xl border border-orange-100">
+                          <div className="flex items-center gap-2">
+                            <FaHeart className="text-orange-500" />
+                            <div className="text-2xl font-bold text-orange-600">1,200+</div>
+                          </div>
                           <div className="text-sm text-gray-600">Animals Helped</div>
                         </div>
                       </div>
                       
                       <div className="pt-6 border-t border-gray-100">
                         <div className="flex items-center gap-3 text-sm">
-                          <FaClock className="text-gray-400" />
+                          <FaCalendarAlt className="text-gray-400" />
                           <span className="text-gray-600">Next orientation: <strong className="text-gray-900">This Saturday</strong></span>
                         </div>
                       </div>
@@ -193,12 +202,12 @@ export default function VolunteerPage() {
         </div>
       </div>
 
-      {/* Impact Stories - Different Layout */}
+      {/* Impact Stories */}
       <div className="container mx-auto px-4 py-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Stories That <span className="text-emerald-600">Inspire</span>
+              Stories That <span className="text-amber-600">Inspire</span>
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Hear from volunteers who have found purpose and joy in their journey with us
@@ -209,15 +218,15 @@ export default function VolunteerPage() {
             {impactStories.map((story, index) => (
               <div 
                 key={index}
-                className="group relative bg-white rounded-2xl border border-gray-200 p-8 hover:border-emerald-200 hover:shadow-xl transition-all duration-300"
+                className="group relative bg-white rounded-2xl border border-gray-200 p-8 hover:border-amber-200 hover:shadow-xl transition-all duration-300"
               >
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-emerald-100 to-amber-100 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <FaQuoteRight className="text-emerald-500 text-xl" />
+                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-amber-100 to-orange-100 rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <FaQuoteRight className="text-amber-500 text-xl" />
                 </div>
                 
                 <div className="mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-emerald-400 to-emerald-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl mb-4">
-                    {story.avatar}
+                  <div className="w-16 h-16 bg-gradient-to-br from-amber-400 to-amber-500 rounded-2xl flex items-center justify-center text-white font-bold text-xl mb-4">
+                    <FaUserFriends className="text-2xl" />
                   </div>
                   <p className="text-gray-700 italic text-lg leading-relaxed">"{story.quote}"</p>
                 </div>
@@ -232,17 +241,17 @@ export default function VolunteerPage() {
         </div>
       </div>
 
-      {/* Opportunities Section - Different Design */}
-      <div id="opportunities" className="bg-gradient-to-b from-white to-emerald-50/30 py-20">
+      {/* Opportunities Section */}
+      <div id="opportunities" className="bg-gradient-to-b from-white to-amber-50/30 py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 rounded-full mb-4">
-                <FaHandsHelping className="text-amber-600" />
-                <span className="text-amber-700 font-medium">Multiple Roles Available</span>
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full mb-4">
+                <FaHandsHelping className="text-orange-600" />
+                <span className="text-orange-700 font-medium">Multiple Roles Available</span>
               </div>
               <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                Find Your <span className="text-emerald-600">Perfect Role</span>
+                Find Your <span className="text-amber-600">Perfect Role</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Choose a volunteer path that aligns with your skills, interests, and schedule
@@ -253,18 +262,16 @@ export default function VolunteerPage() {
               {volunteerOpportunities.map((role, index) => (
                 <div 
                   key={index}
-                  className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-2xl hover:border-emerald-200 transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-2xl hover:border-amber-200 transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className={`p-6 ${
-                    role.color === 'emerald' ? 'bg-gradient-to-br from-emerald-500 to-emerald-600' :
                     role.color === 'amber' ? 'bg-gradient-to-br from-amber-500 to-amber-600' :
-                    role.color === 'rose' ? 'bg-gradient-to-br from-rose-500 to-rose-600' :
-                    role.color === 'indigo' ? 'bg-gradient-to-br from-indigo-500 to-indigo-600' :
-                    role.color === 'blue' ? 'bg-gradient-to-br from-blue-500 to-blue-600' :
-                    'bg-gradient-to-br from-purple-500 to-purple-600'
+                    'bg-gradient-to-br from-orange-500 to-orange-600'
                   }`}>
                     <div className="flex items-center justify-between">
-                      <div className="text-4xl">{role.icon}</div>
+                      <div className="text-3xl text-white">
+                        {role.icon}
+                      </div>
                       <span className="text-white/90 text-sm font-medium px-3 py-1 bg-white/20 rounded-full">
                         {role.commitment}
                       </span>
@@ -286,15 +293,16 @@ export default function VolunteerPage() {
                           {role.skills.map((skill, idx) => (
                             <span 
                               key={idx}
-                              className="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-full border border-gray-200"
+                              className="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-full border border-gray-200 flex items-center gap-1"
                             >
+                              <FaStar className="text-amber-500 text-xs" />
                               {skill}
                             </span>
                           ))}
                         </div>
                       </div>
                       
-                      <button className="w-full py-3 rounded-xl font-medium bg-gray-50 text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 hover:border-emerald-200 border border-gray-200 transition-colors duration-200 flex items-center justify-center gap-2">
+                      <button className="w-full py-3 rounded-xl font-medium bg-gray-50 text-gray-700 hover:bg-amber-50 hover:text-amber-700 hover:border-amber-200 border border-gray-200 transition-colors duration-200 flex items-center justify-center gap-2">
                         <span>Learn More</span>
                         <FaArrowRight className="text-sm" />
                       </button>
@@ -307,18 +315,18 @@ export default function VolunteerPage() {
         </div>
       </div>
 
-      {/* Program Highlights - Different Layout */}
+      {/* Program Highlights */}
       <div className="bg-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-rose-100 rounded-full mb-6">
-                  <FaAward className="text-rose-600" />
-                  <span className="text-rose-700 font-medium">Why Choose Us</span>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-orange-100 rounded-full mb-6">
+                  <FaAward className="text-orange-600" />
+                  <span className="text-orange-700 font-medium">Why Choose Us</span>
                 </div>
                 <h2 className="text-4xl font-bold text-gray-900 mb-6">
-                  More Than Just <span className="text-emerald-600">Volunteering</span>
+                  More Than Just <span className="text-amber-600">Volunteering</span>
                 </h2>
                 <p className="text-gray-700 text-lg mb-8 leading-relaxed">
                   We're committed to creating meaningful experiences that benefit both our 
@@ -329,13 +337,13 @@ export default function VolunteerPage() {
                 <div className="space-y-6">
                   {programHighlights.map((highlight, index) => (
                     <div key={index} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
-                      <div className="p-3 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-xl">
-                        <highlight.icon className="text-emerald-600 text-xl" />
+                      <div className="p-3 bg-gradient-to-br from-amber-100 to-amber-50 rounded-xl">
+                        <highlight.icon className="text-amber-600 text-xl" />
                       </div>
                       <div>
                         <div className="flex items-center gap-2 mb-1">
                           <h3 className="font-bold text-gray-900">{highlight.title}</h3>
-                          <span className="text-xs font-medium px-2 py-1 bg-emerald-100 text-emerald-700 rounded-full">
+                          <span className="text-xs font-medium px-2 py-1 bg-amber-100 text-amber-700 rounded-full">
                             {highlight.highlight}
                           </span>
                         </div>
@@ -348,12 +356,12 @@ export default function VolunteerPage() {
               
               <div>
                 <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-2xl p-10 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-emerald-500/10 to-amber-500/10 rounded-full -translate-y-24 translate-x-24"></div>
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-br from-amber-500/10 to-rose-500/10 rounded-full translate-y-24 -translate-x-24"></div>
+                  <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-amber-500/10 to-orange-500/10 rounded-full -translate-y-24 translate-x-24"></div>
+                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-br from-orange-500/10 to-amber-500/10 rounded-full translate-y-24 -translate-x-24"></div>
                   
                   <div className="relative">
                     <div className="text-center mb-8">
-                      <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-emerald-400 to-amber-400 rounded-2xl mb-6 mx-auto">
+                      <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-400 rounded-2xl mb-6 mx-auto">
                         <FaShieldAlt className="text-white text-3xl" />
                       </div>
                       <h3 className="text-2xl font-bold text-white mb-4">Your Safety First</h3>
@@ -372,7 +380,7 @@ export default function VolunteerPage() {
                         'Health and wellness support'
                       ].map((item, idx) => (
                         <div key={idx} className="flex items-center gap-3 text-white">
-                          <FaCheckCircle className="text-emerald-400" />
+                          <FaCheckCircle className="text-amber-400" />
                           <span>{item}</span>
                         </div>
                       ))}
@@ -385,8 +393,8 @@ export default function VolunteerPage() {
         </div>
       </div>
 
-      {/* Application Section - Different Design */}
-      <div id="apply" className="bg-gradient-to-br from-emerald-50 via-amber-50/30 to-white py-20">
+      {/* Application Section */}
+      <div id="apply" className="bg-gradient-to-br from-amber-50 via-orange-50/30 to-white py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
@@ -394,7 +402,7 @@ export default function VolunteerPage() {
                 <div className="sticky top-8">
                   <div className="mb-8">
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">
-                      Ready to <span className="text-emerald-600">Begin</span>?
+                      Ready to <span className="text-amber-600">Begin</span>?
                     </h2>
                     <p className="text-gray-700 text-lg">
                       Start your volunteer journey with us. The application process is simple, 
@@ -408,30 +416,34 @@ export default function VolunteerPage() {
                         step: '1',
                         title: 'Complete Application',
                         description: 'Tell us about your interests and availability',
-                        duration: '10-15 minutes'
+                        duration: '10-15 minutes',
+                        icon: FaHandsHelping
                       },
                       {
                         step: '2',
                         title: 'Virtual Orientation',
                         description: 'Learn about our mission, safety, and roles',
-                        duration: '1 hour'
+                        duration: '1 hour',
+                        icon: FaPeopleGroup
                       },
                       {
                         step: '3',
                         title: 'Role Placement',
                         description: 'Match with a role that fits your skills',
-                        duration: '2-3 days'
+                        duration: '2-3 days',
+                        icon: FaChartLine
                       },
                       {
                         step: '4',
                         title: 'On-site Training',
                         description: 'Hands-on training with experienced staff',
-                        duration: '2-4 hours'
+                        duration: '2-4 hours',
+                        icon: FaGraduationCap
                       }
                     ].map((step, index) => (
-                      <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-200 hover:border-emerald-200 transition-colors">
-                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-emerald-100 to-emerald-50 rounded-xl flex items-center justify-center">
-                          <span className="text-emerald-700 font-bold text-lg">{step.step}</span>
+                      <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-200 hover:border-amber-200 transition-colors">
+                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-amber-100 to-amber-50 rounded-xl flex items-center justify-center">
+                          <step.icon className="text-amber-600" />
                         </div>
                         <div>
                           <h4 className="font-bold text-gray-900">{step.title}</h4>
@@ -445,10 +457,10 @@ export default function VolunteerPage() {
                     ))}
                   </div>
                   
-                  <div className="mt-8 p-6 bg-gradient-to-br from-amber-50 to-white rounded-2xl border border-amber-100">
+                  <div className="mt-8 p-6 bg-gradient-to-br from-orange-50 to-white rounded-2xl border border-orange-100">
                     <div className="flex items-start gap-4">
-                      <div className="p-3 bg-amber-100 rounded-xl">
-                        <FaMapMarkerAlt className="text-amber-600" />
+                      <div className="p-3 bg-orange-100 rounded-xl">
+                        <FaMapMarkerAlt className="text-orange-600" />
                       </div>
                       <div>
                         <h4 className="font-bold text-gray-900 mb-2">Visit Our Center</h4>
@@ -457,7 +469,7 @@ export default function VolunteerPage() {
                         </p>
                         <a 
                           href="#contact" 
-                          className="inline-flex items-center gap-2 text-amber-700 font-medium hover:text-amber-800"
+                          className="inline-flex items-center gap-2 text-orange-700 font-medium hover:text-orange-800"
                         >
                           Schedule a Tour
                           <FaArrowRight className="text-sm" />
@@ -470,14 +482,14 @@ export default function VolunteerPage() {
               
               <div>
                 <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
-                  <div className="bg-gradient-to-r from-emerald-500 to-emerald-600 p-8 text-white">
+                  <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-8 text-white">
                     <div className="flex items-center gap-4 mb-2">
                       <div className="p-3 bg-white/20 rounded-xl">
                         <FaHandsHelping className="text-2xl" />
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold">Volunteer Application</h3>
-                        <p className="text-emerald-100">Start your journey today</p>
+                        <p className="text-amber-100">Start your journey today</p>
                       </div>
                     </div>
                   </div>
@@ -489,11 +501,17 @@ export default function VolunteerPage() {
                 {/* Quick Info */}
                 <div className="mt-8 grid grid-cols-2 gap-4">
                   <div className="bg-white p-6 rounded-xl border border-gray-200">
-                    <div className="text-emerald-600 font-bold text-2xl mb-2">24-48h</div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <FaClock className="text-amber-500" />
+                      <div className="text-amber-600 font-bold text-2xl">24-48h</div>
+                    </div>
                     <div className="text-sm text-gray-600">Response Time</div>
                   </div>
                   <div className="bg-white p-6 rounded-xl border border-gray-200">
-                    <div className="text-amber-600 font-bold text-2xl mb-2">95%</div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <FaCheckCircle className="text-orange-500" />
+                      <div className="text-orange-600 font-bold text-2xl">95%</div>
+                    </div>
                     <div className="text-sm text-gray-600">Acceptance Rate</div>
                   </div>
                 </div>

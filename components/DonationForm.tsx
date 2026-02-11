@@ -1,18 +1,17 @@
-//petscare\components\DonationForm.tsx
 'use client';
 
 type DonationType = 'one-time' | 'monthly' | 'yearly';
 
 interface DonationFormProps {
   donationType: DonationType;
-   defaultAmount?: number;
+  defaultAmount?: number;
 }
 
 export default function DonationForm({ donationType }: DonationFormProps) {
   return (
     <form className="space-y-4">
       <div>
-        <h3 className="text-xl font-bold mb-1">
+        <h3 className="text-xl font-bold mb-1 text-black">
           {donationType === 'one-time' && 'One-Time Donation'}
           {donationType === 'monthly' && 'Monthly Donation'}
           {donationType === 'yearly' && 'Yearly Donation'}
@@ -25,38 +24,38 @@ export default function DonationForm({ donationType }: DonationFormProps) {
 
       {/* Amount */}
       <div>
-        <label className="block text-sm font-medium mb-1">
+        <label className="block text-sm font-medium mb-1 text-black">
           Donation Amount (₹)
         </label>
         <input
           type="number"
           min={100}
           step={100}
-          className="w-full border rounded-md px-3 py-2"
+          className="w-full border rounded-md px-3 py-2 text-black placeholder-gray-400"
           placeholder="Enter amount"
         />
       </div>
 
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium mb-1">
+        <label className="block text-sm font-medium mb-1 text-black">
           Full Name
         </label>
         <input
           type="text"
-          className="w-full border rounded-md px-3 py-2"
+          className="w-full border rounded-md px-3 py-2 text-black placeholder-gray-400"
           placeholder="Your name"
         />
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-medium mb-1">
+        <label className="block text-sm font-medium mb-1 text-black">
           Email Address
         </label>
         <input
           type="email"
-          className="w-full border rounded-md px-3 py-2"
+          className="w-full border rounded-md px-3 py-2 text-black placeholder-gray-400"
           placeholder="you@example.com"
         />
       </div>
