@@ -8,7 +8,7 @@ import {
   FaHeart, FaShieldAlt, FaGift, FaUsers, FaAward, 
   FaArrowRight, FaHandHoldingHeart, FaChartPie, 
   FaCertificate, FaBuilding, FaCheckCircle, FaStar,
-  FaRupeeSign, FaPercentage, FaLock, FaReceipt,FaPlayCircle,FaChartLine,FaPaw,FaRocket,FaHandsHelping
+  FaRupeeSign, FaPercentage, FaLock, FaReceipt, FaPlayCircle, FaChartLine, FaPaw, FaRocket, FaHandsHelping
 } from 'react-icons/fa';
 
 export default function DonatePage() {
@@ -30,36 +30,36 @@ export default function DonatePage() {
       title: 'One-Time Gift',
       icon: <FaHeart />,
       description: 'Make a single donation',
-      color: 'bg-amber-100',
-      textColor: 'text-amber-600',
-      borderColor: 'border-amber-200'
+      color: 'bg-[#b87d5e]/10',
+      textColor: 'text-[#b87d5e]',
+      borderColor: 'border-[#b87d5e]/20'
     },
     {
       type: 'monthly',
       title: 'Monthly Support',
       icon: <FaShieldAlt />,
       description: 'Sustained impact',
-      color: 'bg-orange-100',
-      textColor: 'text-orange-600',
-      borderColor: 'border-orange-200'
+      color: 'bg-[#2c4a3e]/10',
+      textColor: 'text-[#2c4a3e]',
+      borderColor: 'border-[#2c4a3e]/20'
     },
     {
       type: 'yearly',
       title: 'Annual Sponsor',
       icon: <FaAward />,
       description: 'Major commitment',
-      color: 'bg-amber-100',
-      textColor: 'text-amber-600',
-      borderColor: 'border-amber-200'
+      color: 'bg-[#b87d5e]/10',
+      textColor: 'text-[#b87d5e]',
+      borderColor: 'border-[#b87d5e]/20'
     },
   ];
 
   const whereMoneyGoes = [
-    { category: 'Medical Care', percentage: 40, color: 'bg-gradient-to-r from-amber-500 to-orange-500' },
-    { category: 'Food & Nutrition', percentage: 30, color: 'bg-gradient-to-r from-orange-400 to-amber-400' },
-    { category: 'Shelter Operations', percentage: 15, color: 'bg-gradient-to-r from-amber-400 to-yellow-400' },
-    { category: 'Rescue Missions', percentage: 10, color: 'bg-gradient-to-r from-orange-500 to-red-400' },
-    { category: 'Community Programs', percentage: 5, color: 'bg-gradient-to-r from-amber-600 to-orange-600' },
+    { category: 'Medical Care', percentage: 40, color: 'bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f]' },
+    { category: 'Food & Nutrition', percentage: 30, color: 'bg-gradient-to-r from-[#2c4a3e] to-[#1e352b]' },
+    { category: 'Shelter Operations', percentage: 15, color: 'bg-gradient-to-r from-[#b87d5e] to-[#b87d5e]/70' },
+    { category: 'Rescue Missions', percentage: 10, color: 'bg-gradient-to-r from-[#2c4a3e] to-[#2c4a3e]/70' },
+    { category: 'Community Programs', percentage: 5, color: 'bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f]' },
   ];
 
   const impactMetrics = [
@@ -75,26 +75,26 @@ export default function DonatePage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-amber-50/10 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-white via-[#f5f7f0]/10 to-white">
     {/* Hero Section - Redesigned */}
-<div className="relative overflow-hidden bg-gradient-to-br from-amber-600 via-orange-500 to-amber-700">
+<div className="relative overflow-hidden bg-gradient-to-br from-[#2c4a3e] via-[#b87d5e] to-[#1e352b]">
   {/* Decorative elements */}
-  <div className="absolute top-0 left-0 w-64 h-64 bg-amber-400/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
-  <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-300/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
+  <div className="absolute top-0 left-0 w-64 h-64 bg-[#b87d5e]/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+  <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#2c4a3e]/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
   
   <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
     <div className="max-w-5xl mx-auto">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         {/* Left Content */}
         <div className="text-white space-y-8">
-          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/30 to-orange-500/30 backdrop-blur-lg px-6 py-3 rounded-2xl border border-amber-300/20 shadow-lg">
-            <FaHandHoldingHeart className="text-amber-200 text-xl animate-pulse" />
+          <div className="inline-flex items-center gap-3 bg-gradient-to-r from-[#b87d5e]/30 to-[#2c4a3e]/30 backdrop-blur-lg px-6 py-3 rounded-2xl border border-white/20 shadow-lg">
+            <FaHandHoldingHeart className="text-white/80 text-xl animate-pulse" />
             <span className="font-bold tracking-wide">Transform Lives Today</span>
-            <FaArrowRight className="text-amber-200 ml-2" />
+            <FaArrowRight className="text-white/80 ml-2" />
           </div>
           
           <h1 className="text-5xl md:text-6xl font-bold leading-tight">
-            Your <span className="text-amber-200">Kindness</span> Fuels Their <span className="text-amber-200">Future</span>
+            Your <span className="text-[#b87d5e]">Kindness</span> Fuels Their <span className="text-[#b87d5e]">Future</span>
           </h1>
           
           <p className="text-xl text-white/90 leading-relaxed">
@@ -104,7 +104,7 @@ export default function DonatePage() {
           
           {/* CTA Buttons */}
           <div className="flex flex-wrap gap-4 pt-4">
-            <button className="group bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 hover:-translate-y-1">
+            <button className="group bg-[#b87d5e] hover:bg-[#9e6a4f] text-white font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 flex items-center gap-3 hover:-translate-y-1">
               <FaHeart className="group-hover:scale-110 transition-transform" />
               <span>Donate Now</span>
               <FaArrowRight className="group-hover:translate-x-2 transition-transform" />
@@ -122,37 +122,37 @@ export default function DonatePage() {
           <div className="grid grid-cols-2 gap-6">
             <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6 transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl">
               <div className="flex items-center justify-between mb-4">
-                <FaPaw className="text-amber-300 text-2xl" />
-                <FaChartLine className="text-amber-200/50" />
+                <FaPaw className="text-[#b87d5e] text-2xl" />
+                <FaChartLine className="text-white/50" />
               </div>
               <div className="text-4xl font-bold text-white mb-2">2,500+</div>
-              <div className="text-amber-100/80 font-medium">Animals Rescued</div>
-              <div className="h-1 bg-gradient-to-r from-amber-400 to-transparent rounded-full mt-3"></div>
+              <div className="text-white/80 font-medium">Animals Rescued</div>
+              <div className="h-1 bg-gradient-to-r from-[#b87d5e] to-transparent rounded-full mt-3"></div>
             </div>
             
             <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6 transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl">
               <div className="flex items-center justify-between mb-4">
-                <FaRupeeSign className="text-amber-300 text-2xl" />
-                <FaRocket className="text-amber-200/50" />
+                <FaRupeeSign className="text-[#b87d5e] text-2xl" />
+                <FaRocket className="text-white/50" />
               </div>
               <div className="text-4xl font-bold text-white mb-2">₹25L+</div>
-              <div className="text-amber-100/80 font-medium">Raised This Year</div>
-              <div className="h-1 bg-gradient-to-r from-amber-400 to-transparent rounded-full mt-3"></div>
+              <div className="text-white/80 font-medium">Raised This Year</div>
+              <div className="h-1 bg-gradient-to-r from-[#b87d5e] to-transparent rounded-full mt-3"></div>
             </div>
             
             <div className="bg-gradient-to-br from-white/15 to-white/5 backdrop-blur-xl border border-white/20 rounded-2xl p-6 transform hover:-translate-y-2 transition-all duration-300 hover:shadow-2xl col-span-2">
               <div className="flex items-center justify-between mb-4">
-                <FaHandsHelping className="text-amber-300 text-2xl" />
-                <FaStar className="text-amber-200/50" />
+                <FaHandsHelping className="text-[#b87d5e] text-2xl" />
+                <FaStar className="text-white/50" />
               </div>
               <div className="flex items-end gap-6">
                 <div>
                   <div className="text-4xl font-bold text-white mb-2">95%</div>
-                  <div className="text-amber-100/80 font-medium">Direct Impact Rate</div>
+                  <div className="text-white/80 font-medium">Direct Impact Rate</div>
                 </div>
                 <div className="flex-1">
                   <div className="h-3 bg-white/10 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-green-400 to-amber-400 rounded-full" style={{width: '95%'}}></div>
+                    <div className="h-full bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] rounded-full" style={{width: '95%'}}></div>
                   </div>
                   <div className="flex justify-between text-xs text-white/60 mt-2">
                     <span>Administration</span>
@@ -164,14 +164,14 @@ export default function DonatePage() {
           </div>
           
           {/* Trust Badge */}
-          <div className="bg-gradient-to-r from-amber-900/30 to-orange-900/30 backdrop-blur-lg border border-amber-300/30 rounded-2xl p-5">
+          <div className="bg-gradient-to-r from-[#2c4a3e]/30 to-[#b87d5e]/30 backdrop-blur-lg border border-white/20 rounded-2xl p-5">
             <div className="flex items-center gap-4">
-              <div className="bg-amber-500/20 p-3 rounded-xl">
-                <FaShieldAlt className="text-amber-300 text-2xl" />
+              <div className="bg-[#b87d5e]/20 p-3 rounded-xl">
+                <FaShieldAlt className="text-[#b87d5e] text-2xl" />
               </div>
               <div>
                 <div className="font-bold text-white">Trust & Transparency</div>
-                <div className="text-sm text-amber-100/70">Verified nonprofit • Monthly impact reports</div>
+                <div className="text-sm text-white/70">Verified nonprofit • Monthly impact reports</div>
               </div>
             </div>
           </div>
@@ -195,8 +195,8 @@ export default function DonatePage() {
             {/* Donation Type Selection */}
             <div className="bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-lg transition-all duration-300">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
-                  <FaHeart className="text-amber-600 text-xl" />
+                <div className="w-12 h-12 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg flex items-center justify-center">
+                  <FaHeart className="text-[#b87d5e] text-xl" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">Choose Your Support</h2>
@@ -213,7 +213,7 @@ export default function DonatePage() {
                     className={`p-6 rounded-xl border text-left transition-all duration-300 hover:-translate-y-1 ${
                       selectedOption === type.type 
                         ? `${type.borderColor} border-2 bg-white shadow-lg` 
-                        : 'border-gray-200 bg-gradient-to-b from-amber-50/50 to-white hover:bg-white'
+                        : 'border-gray-200 bg-gradient-to-b from-[#f5f7f0]/50 to-white hover:bg-white'
                     }`}
                   >
                     <div className={`w-12 h-12 ${type.color} rounded-lg flex items-center justify-center mb-4`}>
@@ -237,19 +237,19 @@ export default function DonatePage() {
                       onClick={() => option.amount > 0 ? setSelectedAmount(option.amount) : setSelectedAmount(0)}
                       className={`p-5 rounded-xl border text-center transition-all duration-300 hover:-translate-y-1 ${
                         selectedAmount === option.amount
-                          ? 'border-amber-500 bg-gradient-to-b from-amber-50 to-white shadow-md'
-                          : 'border-gray-200 bg-gradient-to-b from-white to-amber-50/30 hover:bg-white'
+                          ? 'border-[#b87d5e] bg-gradient-to-b from-[#b87d5e]/5 to-white shadow-md'
+                          : 'border-gray-200 bg-gradient-to-b from-white to-[#f5f7f0]/30 hover:bg-white'
                       } ${option.amount === 0 ? 'col-span-2 md:col-span-1' : ''}`}
                     >
                       <div className={`text-2xl font-bold mb-2 ${
-                        selectedAmount === option.amount ? 'text-amber-600' : 'text-gray-900'
+                        selectedAmount === option.amount ? 'text-[#b87d5e]' : 'text-gray-900'
                       }`}>
                         {option.amount === 0 ? 'Custom' : `₹${option.amount.toLocaleString('en-IN')}`}
                       </div>
                       <div className="text-sm text-gray-600">{option.description}</div>
                       {option.popular && (
                         <div className="mt-3">
-                          <span className="bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs px-3 py-1 rounded-full">
+                          <span className="bg-[#b87d5e] text-white text-xs px-3 py-1 rounded-full">
                             Most Popular
                           </span>
                         </div>
@@ -260,7 +260,7 @@ export default function DonatePage() {
               </div>
 
               {/* Donation Form */}
-              <div className="bg-gradient-to-b from-amber-50/50 to-white rounded-xl p-6 border border-amber-100">
+              <div className="bg-gradient-to-b from-[#b87d5e]/5 to-white rounded-xl p-6 border border-[#b87d5e]/20">
                 <DonationForm 
                   donationType={selectedOption} 
                   defaultAmount={selectedAmount}
@@ -271,8 +271,8 @@ export default function DonatePage() {
             {/* Financial Transparency */}
             <div className="bg-white rounded-2xl border border-gray-100 p-8 hover:shadow-lg transition-all duration-300">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
-                  <FaChartPie className="text-amber-600 text-xl" />
+                <div className="w-12 h-12 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg flex items-center justify-center">
+                  <FaChartPie className="text-[#b87d5e] text-xl" />
                 </div>
                 <div>
                   <h2 className="text-2xl font-bold text-gray-900">Financial Transparency</h2>
@@ -285,9 +285,9 @@ export default function DonatePage() {
                   <div key={index} className="space-y-3">
                     <div className="flex items-center justify-between">
                       <div className="font-medium text-gray-900">{item.category}</div>
-                      <div className="text-lg font-bold text-amber-600">{item.percentage}%</div>
+                      <div className="text-lg font-bold text-[#b87d5e]">{item.percentage}%</div>
                     </div>
-                    <div className="w-full bg-amber-100 rounded-full h-2 overflow-hidden">
+                    <div className="w-full bg-[#b87d5e]/10 rounded-full h-2 overflow-hidden">
                       <div
                         className={`h-2 rounded-full transition-all duration-700 ${item.color}`}
                         style={{ width: `${item.percentage}%` }}
@@ -297,17 +297,17 @@ export default function DonatePage() {
                 ))}
               </div>
 
-              <div className="mt-10 p-6 bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl border border-amber-200">
+              <div className="mt-10 p-6 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 rounded-xl border border-[#b87d5e]/20">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <FaCertificate className="text-amber-600 text-xl" />
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <FaCertificate className="text-[#b87d5e] text-xl" />
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900 mb-3">Our Transparency Promise</h4>
                     <p className="text-gray-700 mb-4">
                       Administrative costs capped at 5%, ensuring 95% goes directly to animal welfare.
                     </p>
-                    <button className="inline-flex items-center gap-2 text-amber-600 font-medium hover:text-amber-700 text-sm hover:gap-3 transition-all duration-300">
+                    <button className="inline-flex items-center gap-2 text-[#b87d5e] font-medium hover:text-[#9e6a4f] text-sm hover:gap-3 transition-all duration-300">
                       View Annual Report
                       <FaArrowRight className="text-xs" />
                     </button>
@@ -326,7 +326,7 @@ export default function DonatePage() {
               </div>
 
               {/* Your Impact */}
-              <div className="bg-gradient-to-br from-amber-600 to-orange-500 text-white rounded-xl p-6 mt-6">
+              <div className="bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] text-white rounded-xl p-6 mt-6">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 bg-white/20 rounded-lg flex items-center justify-center">
                     <FaStar />
@@ -356,8 +356,8 @@ export default function DonatePage() {
               {/* Tax Benefits */}
               <div className="bg-white rounded-xl border border-gray-100 p-6 mt-6 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
-                    <FaGift className="text-amber-600" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg flex items-center justify-center">
+                    <FaGift className="text-[#b87d5e]" />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Tax Benefits</h3>
@@ -367,20 +367,20 @@ export default function DonatePage() {
                 
                 <div className="space-y-3 mb-6">
                   <div className="flex items-center gap-3">
-                    <FaCheckCircle className="text-amber-500" />
+                    <FaCheckCircle className="text-[#b87d5e]" />
                     <span className="text-gray-700 text-sm">50% tax deduction under 80G</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <FaCheckCircle className="text-amber-500" />
+                    <FaCheckCircle className="text-[#2c4a3e]" />
                     <span className="text-gray-700 text-sm">Valid for individuals & companies</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <FaCheckCircle className="text-amber-500" />
+                    <FaCheckCircle className="text-[#b87d5e]" />
                     <span className="text-gray-700 text-sm">CSR compliance certificates</span>
                   </div>
                 </div>
                 
-                <button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-300">
+                <button className="w-full bg-[#b87d5e] hover:bg-[#9e6a4f] text-white font-semibold py-3 rounded-lg transition-all duration-300">
                   Download 80G Certificate
                 </button>
               </div>
@@ -388,8 +388,8 @@ export default function DonatePage() {
               {/* Corporate Partnerships */}
               <div className="bg-white rounded-xl border border-gray-100 p-6 mt-6 hover:shadow-lg transition-all duration-300">
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
-                    <FaBuilding className="text-amber-600" />
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg flex items-center justify-center">
+                    <FaBuilding className="text-[#b87d5e]" />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Corporate Partnerships</h3>
@@ -402,7 +402,7 @@ export default function DonatePage() {
                   and cause marketing campaigns.
                 </p>
                 
-                <button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold py-3 rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-300">
+                <button className="w-full bg-[#b87d5e] hover:bg-[#9e6a4f] text-white font-semibold py-3 rounded-lg transition-all duration-300">
                   Explore Partnership
                 </button>
               </div>
@@ -414,8 +414,8 @@ export default function DonatePage() {
                 <div className="space-y-4">
                   {securityFeatures.map((feature, index) => (
                     <div key={index} className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-b from-amber-50 to-white rounded-lg flex items-center justify-center flex-shrink-0 border border-amber-100">
-                        <div className="text-amber-600">
+                      <div className="w-10 h-10 bg-gradient-to-b from-[#b87d5e]/5 to-white rounded-lg flex items-center justify-center flex-shrink-0 border border-[#b87d5e]/20">
+                        <div className="text-[#b87d5e]">
                           {feature.icon}
                         </div>
                       </div>
@@ -429,56 +429,56 @@ export default function DonatePage() {
               </div>
 
               {/* Other Ways to Support */}
-              <div className="bg-gradient-to-br from-amber-50 to-white rounded-xl border border-amber-100 p-6 mt-6">
+              <div className="bg-gradient-to-br from-[#b87d5e]/5 to-white rounded-xl border border-[#b87d5e]/20 p-6 mt-6">
                 <h3 className="font-bold text-gray-900 mb-6">Other Ways to Support</h3>
                 
                 <div className="space-y-4">
                   <a 
                     href="/volunteer" 
-                    className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white hover:border-amber-300 hover:shadow-sm transition-all duration-300"
+                    className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white hover:border-[#b87d5e] hover:shadow-sm transition-all duration-300"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
-                        <FaUsers className="text-amber-600" />
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg flex items-center justify-center">
+                        <FaUsers className="text-[#b87d5e]" />
                       </div>
                       <div>
                         <div className="font-medium text-gray-900">Volunteer</div>
                         <div className="text-sm text-gray-600">Donate your time</div>
                       </div>
                     </div>
-                    <FaArrowRight className="text-gray-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all duration-300 text-sm" />
+                    <FaArrowRight className="text-gray-400 group-hover:text-[#b87d5e] group-hover:translate-x-1 transition-all duration-300 text-sm" />
                   </a>
                   
                   <a 
                     href="/foster" 
-                    className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white hover:border-orange-300 hover:shadow-sm transition-all duration-300"
+                    className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white hover:border-[#2c4a3e] hover:shadow-sm transition-all duration-300"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-orange-100 to-amber-100 rounded-lg flex items-center justify-center">
-                        <FaHeart className="text-orange-600" />
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#2c4a3e]/10 to-[#b87d5e]/10 rounded-lg flex items-center justify-center">
+                        <FaHeart className="text-[#2c4a3e]" />
                       </div>
                       <div>
                         <div className="font-medium text-gray-900">Foster Care</div>
                         <div className="text-sm text-gray-600">Provide temporary home</div>
                       </div>
                     </div>
-                    <FaArrowRight className="text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-300 text-sm" />
+                    <FaArrowRight className="text-gray-400 group-hover:text-[#2c4a3e] group-hover:translate-x-1 transition-all duration-300 text-sm" />
                   </a>
                   
                   <a 
                     href="/wishlist" 
-                    className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white hover:border-amber-300 hover:shadow-sm transition-all duration-300"
+                    className="group flex items-center justify-between p-4 rounded-lg border border-gray-200 bg-white hover:border-[#b87d5e] hover:shadow-sm transition-all duration-300"
                   >
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-br from-amber-100 to-orange-100 rounded-lg flex items-center justify-center">
-                        <FaGift className="text-amber-600" />
+                      <div className="w-10 h-10 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg flex items-center justify-center">
+                        <FaGift className="text-[#b87d5e]" />
                       </div>
                       <div>
                         <div className="font-medium text-gray-900">Wishlist</div>
                         <div className="text-sm text-gray-600">Donate supplies</div>
                       </div>
                     </div>
-                    <FaArrowRight className="text-gray-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all duration-300 text-sm" />
+                    <FaArrowRight className="text-gray-400 group-hover:text-[#b87d5e] group-hover:translate-x-1 transition-all duration-300 text-sm" />
                   </a>
                 </div>
               </div>
@@ -487,7 +487,7 @@ export default function DonatePage() {
         </div>
 
         {/* Trust Section */}
-        <div className="mt-16 bg-gradient-to-br from-amber-50 to-orange-50/30 rounded-xl p-10 border border-amber-100">
+        <div className="mt-16 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 rounded-xl p-10 border border-[#b87d5e]/20">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-900 mb-3">Secure & Trusted Giving</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -498,7 +498,7 @@ export default function DonatePage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
             {securityFeatures.map((feature, index) => (
               <div key={index} className="text-center group">
-                <div className="w-14 h-14 bg-gradient-to-br from-amber-500 to-orange-500 rounded-lg flex items-center justify-center text-white mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
+                <div className="w-14 h-14 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-lg flex items-center justify-center text-white mx-auto mb-4 group-hover:scale-105 transition-transform duration-300">
                   {feature.icon}
                 </div>
                 <h3 className="font-bold text-gray-900 mb-2">{feature.title}</h3>

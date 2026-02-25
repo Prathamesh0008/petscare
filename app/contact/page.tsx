@@ -53,7 +53,7 @@ export default function ContactPage() {
       description: "Meet in person",
       icon: FaMapMarkerAlt,
       details: SHELTER_INFO.address,
-      color: "amber",
+      color: "brown", // Changed from "amber"
       action: `https://maps.google.com/?q=${encodeURIComponent(SHELTER_INFO.address)}`,
       cta: "Get Directions"
     },
@@ -62,7 +62,7 @@ export default function ContactPage() {
       description: "Quick conversation",
       icon: FaPhone,
       details: SHELTER_INFO.phone,
-      color: "orange",
+      color: "green", // Changed from "orange"
       action: `tel:${SHELTER_INFO.phone}`,
       cta: "Call Now"
     },
@@ -71,7 +71,7 @@ export default function ContactPage() {
       description: "Detailed communication",
       icon: FaEnvelope,
       details: SHELTER_INFO.email,
-      color: "amber",
+      color: "brown", // Changed from "amber"
       action: `mailto:${SHELTER_INFO.email}`,
       cta: "Send Email"
     },
@@ -80,7 +80,7 @@ export default function ContactPage() {
       description: "Instant messaging",
       icon: FaWhatsapp,
       details: "+91 98765 43210",
-      color: "orange",
+      color: "green", // Changed from "orange"
       action: "https://wa.me/919876543210",
       cta: "Message"
     }
@@ -96,25 +96,25 @@ export default function ContactPage() {
   ];
 
   const transportationOptions = [
-    { icon: FaCar, label: 'Parking', value: 'Free on-site', color: 'amber' },
-    { icon: FaTrain, label: 'Nearest Metro', value: 'Vashi Station', distance: '10 min walk', color: 'orange' },
-    { icon: FaBus, label: 'Bus Stop', value: 'Sector 17', distance: '3 min walk', color: 'amber' },
-    { icon: FaParking, label: 'Auto Stand', value: 'Gate 1', distance: '2 min walk', color: 'orange' }
+    { icon: FaCar, label: 'Parking', value: 'Free on-site', color: 'brown', distance: '' }, // Changed from 'amber'
+    { icon: FaTrain, label: 'Nearest Metro', value: 'Vashi Station', distance: '10 min walk', color: 'green' }, // Changed from 'orange'
+    { icon: FaBus, label: 'Bus Stop', value: 'Sector 17', distance: '3 min walk', color: 'brown' }, // Changed from 'amber'
+    { icon: FaParking, label: 'Auto Stand', value: 'Gate 1', distance: '2 min walk', color: 'green' } // Changed from 'orange'
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-amber-50/10 to-white">
+    <div className="min-h-screen bg-gradient-to-b from-white via-[#f5f7f0]/10 to-white">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-amber-600 to-orange-500">
+      <div className="bg-gradient-to-br from-[#2c4a3e] to-[#b87d5e]">
         <div className="container mx-auto px-4 py-16">
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="inline-flex items-center gap-2 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <FaHeart className="text-amber-100" />
+              <FaHeart className="text-white/80" />
               <span className="font-medium">We're Here to Help</span>
             </div>
             
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Get in <span className="text-amber-100">Touch</span>
+              Get in <span className="text-[#b87d5e]">Touch</span>
             </h1>
             
             <p className="text-lg text-white/90 mb-8 max-w-2xl mx-auto">
@@ -124,7 +124,7 @@ export default function ContactPage() {
             <div className="flex flex-wrap justify-center gap-4">
               <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl">
                 <div className="flex items-center gap-3">
-                  <FaClock className="text-amber-200" />
+                  <FaClock className="text-[#b87d5e]" />
                   <div className="text-left">
                     <div className="font-medium text-sm">Visiting Hours</div>
                     <div className="text-white/80 text-xs">{SHELTER_INFO.workingHours}</div>
@@ -134,7 +134,7 @@ export default function ContactPage() {
               
               <div className="bg-white/10 backdrop-blur-sm px-4 py-3 rounded-xl">
                 <div className="flex items-center gap-3">
-                  <FaMapMarkerAlt className="text-amber-200" />
+                  <FaMapMarkerAlt className="text-[#b87d5e]" />
                   <div className="text-left">
                     <div className="font-medium text-sm">Location</div>
                     <div className="text-white/80 text-xs">Vashi, Navi Mumbai</div>
@@ -156,8 +156,8 @@ export default function ContactPage() {
             >
               <div className="p-6">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className={`w-12 h-12 ${channel.color === 'amber' ? 'bg-amber-100' : 'bg-orange-100'} rounded-lg flex items-center justify-center`}>
-                    <channel.icon className={`text-lg ${channel.color === 'amber' ? 'text-amber-600' : 'text-orange-600'}`} />
+                  <div className={`w-12 h-12 ${channel.color === 'brown' ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'} rounded-lg flex items-center justify-center`}>
+                    <channel.icon className={`text-lg ${channel.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'}`} />
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">{channel.title}</h3>
@@ -171,10 +171,10 @@ export default function ContactPage() {
                   href={channel.action}
                   target={channel.action.includes('http') ? '_blank' : '_self'}
                   className={`inline-flex items-center justify-center w-full gap-2 px-4 py-3 rounded-lg font-medium ${
-                    channel.color === 'amber' 
-                      ? 'bg-amber-500 hover:bg-amber-600 text-white' 
-                      : 'bg-orange-500 hover:bg-orange-600 text-white'
-                  } transition-colors text-sm`}
+                    channel.color === 'brown' 
+                      ? 'bg-[#b87d5e] hover:bg-[#9e6a4f]' 
+                      : 'bg-[#2c4a3e] hover:bg-[#1e352b]'
+                  } text-white transition-colors text-sm`}
                 >
                   {channel.cta}
                   <FaPaperPlane className="text-xs" />
@@ -194,7 +194,7 @@ export default function ContactPage() {
               {isSubmitted ? (
                 <div className="p-12 text-center">
                   <div className="relative inline-flex mb-8">
-                    <div className="w-20 h-20 bg-gradient-to-br from-amber-500 to-orange-500 rounded-full flex items-center justify-center">
+                    <div className="w-20 h-20 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-full flex items-center justify-center">
                       <FaCheckCircle className="text-white text-3xl" />
                     </div>
                   </div>
@@ -207,7 +207,7 @@ export default function ContactPage() {
                   <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <button
                       onClick={() => setIsSubmitted(false)}
-                      className="px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-colors"
+                      className="px-6 py-3 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white font-medium rounded-lg hover:from-[#9e6a4f] hover:to-[#1e352b] transition-colors"
                     >
                       Send Another Message
                     </button>
@@ -221,14 +221,14 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <>
-                  <div className="bg-gradient-to-r from-amber-500 to-orange-500 p-8 text-white">
+                  <div className="bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] p-8 text-white">
                     <div className="flex items-center gap-4">
                       <div className="p-3 bg-white/20 rounded-lg">
                         <FaPaperPlane className="text-xl" />
                       </div>
                       <div>
                         <h2 className="text-2xl font-bold">Send Your Message</h2>
-                        <p className="text-amber-100">We'll respond within 24 hours</p>
+                        <p className="text-white/80">We'll respond within 24 hours</p>
                       </div>
                     </div>
                   </div>
@@ -244,7 +244,7 @@ export default function ContactPage() {
                             value={formData.name}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-amber-500 focus:ring-1 focus:ring-amber-200 transition-all"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#b87d5e] focus:ring-1 focus:ring-[#b87d5e]/20 transition-all"
                             placeholder="Enter your name"
                           />
                         </div>
@@ -257,7 +257,7 @@ export default function ContactPage() {
                             value={formData.email}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-amber-500 focus:ring-1 focus:ring-amber-200 transition-all"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#b87d5e] focus:ring-1 focus:ring-[#b87d5e]/20 transition-all"
                             placeholder="your@email.com"
                           />
                         </div>
@@ -271,7 +271,7 @@ export default function ContactPage() {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-amber-500 focus:ring-1 focus:ring-amber-200 transition-all"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#b87d5e] focus:ring-1 focus:ring-[#b87d5e]/20 transition-all"
                             placeholder="+91 00000 00000"
                           />
                         </div>
@@ -283,7 +283,7 @@ export default function ContactPage() {
                             value={formData.inquiryType}
                             onChange={handleChange}
                             required
-                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-amber-500 focus:ring-1 focus:ring-amber-200 transition-all bg-white"
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:border-[#b87d5e] focus:ring-1 focus:ring-[#b87d5e]/20 transition-all bg-white"
                           >
                             <option value="" disabled>Select inquiry type</option>
                             {inquiryTypes.map((type) => (
@@ -303,7 +303,7 @@ export default function ContactPage() {
                           onChange={handleChange}
                           required
                           rows={5}
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-400 focus:border-amber-500 focus:ring-1 focus:ring-amber-200 focus:outline-none transition-all resize-none"
+                          className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 placeholder-gray-400 focus:border-[#b87d5e] focus:ring-1 focus:ring-[#b87d5e]/20 focus:outline-none transition-all resize-none"
                           placeholder="Tell us how we can assist you..."
                         />
                       </div>
@@ -311,7 +311,7 @@ export default function ContactPage() {
                       <button
                         type="submit"
                         disabled={isSubmitting}
-                        className="w-full py-4 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold rounded-lg hover:from-amber-600 hover:to-orange-600 transition-colors disabled:opacity-70 flex items-center justify-center gap-3"
+                        className="w-full py-4 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white font-bold rounded-lg hover:from-[#9e6a4f] hover:to-[#1e352b] transition-colors disabled:opacity-70 flex items-center justify-center gap-3"
                       >
                         {isSubmitting ? (
                           <>
@@ -332,7 +332,7 @@ export default function ContactPage() {
             </div>
 
             {/* Emergency Banner */}
-            <div className="bg-gradient-to-r from-orange-500 to-amber-500 rounded-xl p-8 text-white">
+            <div className="bg-gradient-to-r from-[#2c4a3e] to-[#b87d5e] rounded-xl p-8 text-white">
               <div className="flex flex-col md:flex-row items-center justify-between gap-6">
                 <div className="flex items-center gap-4">
                   <div className="p-3 bg-white/20 rounded-lg">
@@ -340,12 +340,12 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-xl font-bold mb-1">Emergency Animal Rescue</h3>
-                    <p className="text-orange-100 text-sm">24/7 helpline for injured or distressed animals</p>
+                    <p className="text-white/80 text-sm">24/7 helpline for injured or distressed animals</p>
                   </div>
                 </div>
                 <a
                   href={`tel:${SHELTER_INFO.emergencyPhone}`}
-                  className="px-8 py-3 bg-white text-orange-600 font-bold rounded-lg hover:bg-orange-50 transition-colors whitespace-nowrap"
+                  className="px-8 py-3 bg-white text-[#2c4a3e] font-bold rounded-lg hover:bg-gray-100 transition-colors whitespace-nowrap"
                 >
                   {SHELTER_INFO.emergencyPhone}
                 </a>
@@ -358,19 +358,19 @@ export default function ContactPage() {
             {/* Location Details */}
             <div className="bg-white rounded-xl border border-gray-100 p-6 hover:shadow-lg transition-all duration-300">
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                  <FaMapMarkerAlt className="text-amber-600" />
+                <div className="w-10 h-10 bg-[#b87d5e]/10 rounded-lg flex items-center justify-center">
+                  <FaMapMarkerAlt className="text-[#b87d5e]" />
                 </div>
                 <h3 className="text-lg font-bold text-gray-900">Visit Our Shelter</h3>
               </div>
               
               <div className="space-y-4 mb-6">
-                <div className="p-4 bg-amber-50 rounded-lg border border-amber-100">
+                <div className="p-4 bg-[#b87d5e]/5 rounded-lg border border-[#b87d5e]/20">
                   <div className="font-medium text-gray-800 mb-2">Address</div>
                   <p className="text-gray-600 text-sm">{SHELTER_INFO.address}</p>
                 </div>
                 
-                <div className="p-4 bg-orange-50 rounded-lg border border-orange-100">
+                <div className="p-4 bg-[#2c4a3e]/5 rounded-lg border border-[#2c4a3e]/20">
                   <div className="font-medium text-gray-800 mb-2">Hours</div>
                   <div className="flex items-center gap-2 text-gray-600 text-sm">
                     <FaClock />
@@ -386,7 +386,7 @@ export default function ContactPage() {
                 href={`https://maps.google.com/?q=${encodeURIComponent(SHELTER_INFO.address)}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white font-medium rounded-lg hover:from-amber-600 hover:to-orange-600 transition-colors"
+                className="inline-flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white font-medium rounded-lg hover:from-[#9e6a4f] hover:to-[#1e352b] transition-colors"
               >
                 <FaMapMarkerAlt />
                 Open in Google Maps
@@ -400,13 +400,13 @@ export default function ContactPage() {
               <div className="grid grid-cols-2 gap-4">
                 {transportationOptions.map((option, index) => (
                   <div key={index} className={`p-4 rounded-lg border ${
-                    option.color === 'amber' 
-                      ? 'bg-amber-50 border-amber-100' 
-                      : 'bg-orange-50 border-orange-100'
+                    option.color === 'brown' 
+                      ? 'bg-[#b87d5e]/5 border-[#b87d5e]/20' 
+                      : 'bg-[#2c4a3e]/5 border-[#2c4a3e]/20'
                   }`}>
                     <div className="flex items-center gap-3 mb-2">
-                      <div className={`p-2 rounded-lg ${option.color === 'amber' ? 'bg-amber-100' : 'bg-orange-100'}`}>
-                        <option.icon className={option.color === 'amber' ? 'text-amber-600' : 'text-orange-600'} />
+                      <div className={`p-2 rounded-lg ${option.color === 'brown' ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'}`}>
+                        <option.icon className={option.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'} />
                       </div>
                       <div>
                         <div className="text-sm font-medium text-gray-800">{option.label}</div>
@@ -422,47 +422,47 @@ export default function ContactPage() {
             </div>
 
             {/* Quick Links */}
-            <div className="bg-gradient-to-br from-amber-50 to-white rounded-xl border border-amber-100 p-6">
+            <div className="bg-gradient-to-br from-[#b87d5e]/5 to-white rounded-xl border border-[#b87d5e]/20 p-6">
               <h3 className="text-lg font-bold text-gray-900 mb-6">Quick Links</h3>
               
               <div className="space-y-3">
                 <a 
                   href="/adopt" 
-                  className="group flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-amber-300 hover:shadow-sm transition-all duration-300"
+                  className="group flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#b87d5e] hover:shadow-sm transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                      <FaHeart className="text-amber-600" />
+                    <div className="w-10 h-10 bg-[#b87d5e]/10 rounded-lg flex items-center justify-center">
+                      <FaHeart className="text-[#b87d5e]" />
                     </div>
                     <span className="font-medium text-gray-800">Adoption Process</span>
                   </div>
-                  <FaArrowRight className="text-gray-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all duration-300" />
+                  <FaArrowRight className="text-gray-400 group-hover:text-[#b87d5e] group-hover:translate-x-1 transition-all duration-300" />
                 </a>
                 
                 <a 
                   href="/volunteer" 
-                  className="group flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-orange-300 hover:shadow-sm transition-all duration-300"
+                  className="group flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#2c4a3e] hover:shadow-sm transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                      <FaUsers className="text-orange-600" />
+                    <div className="w-10 h-10 bg-[#2c4a3e]/10 rounded-lg flex items-center justify-center">
+                      <FaUsers className="text-[#2c4a3e]" />
                     </div>
                     <span className="font-medium text-gray-800">Volunteer Program</span>
                   </div>
-                  <FaArrowRight className="text-gray-400 group-hover:text-orange-500 group-hover:translate-x-1 transition-all duration-300" />
+                  <FaArrowRight className="text-gray-400 group-hover:text-[#2c4a3e] group-hover:translate-x-1 transition-all duration-300" />
                 </a>
                 
                 <a 
                   href="/donate" 
-                  className="group flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-amber-300 hover:shadow-sm transition-all duration-300"
+                  className="group flex items-center justify-between p-4 bg-white rounded-lg border border-gray-200 hover:border-[#b87d5e] hover:shadow-sm transition-all duration-300"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-amber-100 rounded-lg flex items-center justify-center">
-                      <FaDonate className="text-amber-600" />
+                    <div className="w-10 h-10 bg-[#b87d5e]/10 rounded-lg flex items-center justify-center">
+                      <FaDonate className="text-[#b87d5e]" />
                     </div>
                     <span className="font-medium text-gray-800">Support Our Work</span>
                   </div>
-                  <FaArrowRight className="text-gray-400 group-hover:text-amber-500 group-hover:translate-x-1 transition-all duration-300" />
+                  <FaArrowRight className="text-gray-400 group-hover:text-[#b87d5e] group-hover:translate-x-1 transition-all duration-300" />
                 </a>
               </div>
             </div>
@@ -471,7 +471,7 @@ export default function ContactPage() {
       </div>
 
       {/* Response Time Promise */}
-      <div className="bg-gradient-to-b from-white to-amber-50/20 py-12">
+      <div className="bg-gradient-to-b from-white to-[#f5f7f0] py-12">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-10">
@@ -481,15 +481,15 @@ export default function ContactPage() {
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-3xl mx-auto">
               <div className="text-center">
-                <div className="text-3xl font-bold text-amber-600 mb-2">24h</div>
+                <div className="text-3xl font-bold text-[#b87d5e] mb-2">24h</div>
                 <div className="text-gray-700 font-medium">Response Time</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-orange-600 mb-2">95%</div>
+                <div className="text-3xl font-bold text-[#2c4a3e] mb-2">95%</div>
                 <div className="text-gray-700 font-medium">Satisfaction Rate</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl font-bold text-amber-600 mb-2">7/7</div>
+                <div className="text-3xl font-bold text-[#b87d5e] mb-2">7/7</div>
                 <div className="text-gray-700 font-medium">Days Support</div>
               </div>
             </div>

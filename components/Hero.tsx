@@ -1,4 +1,4 @@
-// petscare/components/Hero.tsx - Updated with button below text
+// petscare/components/Hero.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -33,8 +33,8 @@ export default function Hero() {
     <section className="relative py-16 lg:py-24 overflow-hidden">
       {/* Background */}
       <div className="absolute inset-0 z-0">
-        {/* Gradient Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-amber-50 via-white to-orange-50" />
+        {/* Gradient Background - Light sage to cream */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#f5f7f0] via-[#f0f2e8] to-[#eaede2]" />
         
         {/* Image Slideshow */}
         <AnimatePresence mode="wait">
@@ -51,7 +51,7 @@ export default function Hero() {
               backgroundPosition: 'center',
             }}
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-900/30 via-amber-800/20 to-orange-900/20" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#f5f7f0]/70 via-[#f5f7f0]/50 to-[#f5f7f0]/70" />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -72,26 +72,26 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
             >
-              <div className="w-14 h-14 bg-white rounded-full flex items-center justify-center shadow-md">
-                <FaPaw className="text-2xl text-amber-600" />
+              <div className="w-14 h-14 bg-[#2c4a3e] rounded-full flex items-center justify-center shadow-md">
+                <FaPaw className="text-2xl text-white" />
               </div>
-              <span className="text-2xl font-bold text-gray-800">PawHaven</span>
+              <span className="text-2xl font-bold text-[#2c4a3e]">PawHaven</span>
             </motion.div>
 
             {/* Main Heading */}
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6"
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#2c4a3e] mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
               A Safe Haven for{' '}
-              <span className="text-amber-600">Every Soul</span>
+              <span className="text-[#b87d5e]">Every Soul</span>
             </motion.h1>
 
             {/* Description */}
             <motion.p
-              className="text-lg text-gray-600 mb-8 leading-relaxed"
+              className="text-lg text-[#2c4a3e]/80 mb-8 leading-relaxed"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
@@ -108,7 +108,7 @@ export default function Hero() {
               transition={{ delay: 0.5 }}
             >
               <Link href="/animals">
-                <button className="px-8 py-3.5 bg-amber-600 text-white rounded-lg font-semibold hover:bg-amber-700 transition-colors">
+                <button className="px-8 py-3.5 bg-[#2c4a3e] text-white rounded-lg font-semibold hover:bg-[#1e352b] transition-colors">
                   <span className="flex items-center gap-2">
                     Meet Our Animals
                     <FaArrowRight className="text-sm" />
@@ -117,9 +117,9 @@ export default function Hero() {
               </Link>
 
               <Link href="/donate">
-                <button className="px-8 py-3.5 bg-white border border-amber-300 text-amber-700 rounded-lg font-semibold hover:bg-amber-50 transition-colors">
+                <button className="px-8 py-3.5 bg-transparent border border-[#2c4a3e] text-[#2c4a3e] rounded-lg font-semibold hover:bg-[#2c4a3e]/5 transition-colors">
                   <span className="flex items-center gap-2">
-                    <FaHeart className="text-amber-600" />
+                    <FaHeart className="text-[#b87d5e]" />
                     Support Our Work
                   </span>
                 </button>
@@ -136,15 +136,15 @@ export default function Hero() {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className="bg-white/90 rounded-lg p-4 shadow-sm"
+                  className="bg-white/90 rounded-lg p-4 shadow-sm border border-[#2c4a3e]/10"
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="text-amber-600">
+                    <div className="text-[#b87d5e]">
                       {stat.icon}
                     </div>
-                    <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
+                    <div className="text-2xl font-bold text-[#2c4a3e]">{stat.value}</div>
                   </div>
-                  <div className="text-sm text-gray-600">{stat.label}</div>
+                  <div className="text-sm text-[#2c4a3e]/70">{stat.label}</div>
                 </div>
               ))}
             </motion.div>
@@ -159,7 +159,7 @@ export default function Hero() {
           >
             <div className="relative">
               {/* Main Image Container */}
-              <div className="rounded-2xl overflow-hidden shadow-xl">
+              <div className="rounded-2xl overflow-hidden shadow-xl border border-[#2c4a3e]/20">
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={currentImage}
@@ -174,7 +174,7 @@ export default function Hero() {
                       backgroundPosition: 'center',
                     }}
                   >
-                    <div className="absolute inset-0 bg-gradient-to-t from-amber-900/10 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#2c4a3e]/10 via-transparent to-transparent" />
                   </motion.div>
                 </AnimatePresence>
 
@@ -184,7 +184,7 @@ export default function Hero() {
                     <button
                       key={idx}
                       onClick={() => setCurrentImage(idx)}
-                      className={`w-2 h-2 rounded-full transition-all ${idx === currentImage ? 'bg-white' : 'bg-white/50 hover:bg-white/80'}`}
+                      className={`w-2 h-2 rounded-full transition-all ${idx === currentImage ? 'bg-[#2c4a3e]' : 'bg-[#2c4a3e]/30 hover:bg-[#2c4a3e]/50'}`}
                     />
                   ))}
                 </div>
@@ -192,18 +192,18 @@ export default function Hero() {
 
               {/* Stats Card */}
               <motion.div
-                className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-lg max-w-xs"
+                className="absolute -bottom-6 -right-6 bg-white rounded-xl p-6 shadow-lg max-w-xs border border-[#b87d5e]/20"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8 }}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
-                    <FaHeart className="text-amber-600" />
+                  <div className="w-10 h-10 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
+                    <FaHeart className="text-[#b87d5e]" />
                   </div>
-                  <div className="font-semibold text-gray-900">120+ Happy Families</div>
+                  <div className="font-semibold text-[#2c4a3e]">120+ Happy Families</div>
                 </div>
-                <p className="text-sm text-gray-600">
+                <p className="text-sm text-[#2c4a3e]/70">
                   Join our community of happy pet owners
                 </p>
               </motion.div>
@@ -211,7 +211,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Bottom CTA - Button moved below the text */}
+        {/* Bottom CTA */}
         <motion.div
           className="mt-16 text-center"
           initial={{ opacity: 0 }}
@@ -219,11 +219,11 @@ export default function Hero() {
           transition={{ delay: 1 }}
         >
           <div className="mb-4">
-            <span className="text-sm font-medium text-gray-600">READY TO MAKE A DIFFERENCE?</span>
+            <span className="text-sm font-medium text-[#2c4a3e]/60">READY TO MAKE A DIFFERENCE?</span>
           </div>
           
           <Link href="/volunteer">
-            <button className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-amber-300 text-amber-700 rounded-lg font-semibold hover:bg-amber-50 transition-colors">
+            <button className="inline-flex items-center gap-2 px-6 py-3 bg-[#b87d5e] text-white rounded-lg font-semibold hover:bg-[#9e6a4f] transition-colors">
               <FaHandsHelping />
               Become a Volunteer
               <FaArrowRight />
