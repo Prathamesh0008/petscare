@@ -1,59 +1,133 @@
 // app/live-cams/page.tsx
 'use client';
 
-import LiveStats from '@/components/LiveStats';
 import { useState } from 'react';
+import { FaVideo, FaPaw, FaDog, FaCat, FaExpand, FaVolumeUp, FaVolumeMute } from 'react-icons/fa';
 
 export default function LiveCamsPage() {
-  const [activeCam, setActiveCam] = useState('playroom');
+  const [muted, setMuted] = useState(true);
+  const [selectedCam, setSelectedCam] = useState('dog-park');
 
   const cameras = [
-    { id: 'playroom', name: 'Play Room', description: 'Main play area' },
-    { id: 'kennel', name: 'Kennel Area', description: 'Resting kennels' },
-    { id: 'outdoor', name: 'Outdoor Yard', description: 'Sunny play yard' },
-    { id: 'kittens', name: 'Kitten Corner', description: 'Kitten nursery' },
+    { id: 'dog-park', name: 'Dog Park', icon: <FaDog />, viewers: 234, animal: 'dogs' },
+    { id: 'cat-room', name: 'Cat Lounge', icon: <FaCat />, viewers: 189, animal: 'cats' },
+    { id: 'puppy-room', name: 'Puppy Playpen', icon: <FaPaw />, viewers: 456, animal: 'puppies' },
+    { id: 'kitten-room', name: 'Kitten Corner', icon: <FaCat />, viewers: 312, animal: 'kittens' },
   ];
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold mb-2">Live Animal Cams</h1>
-      <p className="text-gray-600 mb-8">Watch our animals in real-time from anywhere in the world.</p>
-      
-      <div className="mb-8">
-        <LiveStats />
-      </div>
-      
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        <div className="lg:col-span-3">
-          <div className="bg-black rounded-lg overflow-hidden">
-            <div className="aspect-video bg-gray-900 flex items-center justify-center">
-              <div className="text-center">
-                <div className="text-white text-4xl mb-4">📹</div>
-                <div className="text-white">Live Stream: {cameras.find(c => c.id === activeCam)?.name}</div>
-                <div className="text-gray-400 mt-2">Streaming live from our shelter</div>
+    <div className="min-h-screen bg-gradient-to-b from-[#f5f7f0] to-white pt-20">
+      <div className="container mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] text-sm font-medium mb-4">
+            <FaVideo />
+            Live 24/7 Streaming
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#2c4a3e] mb-4">
+            Watch Our Animals <span className="text-[#b87d5e]">Live</span>
+          </h1>
+          <p className="text-gray-600">
+            Get to know our animals through live cameras before you visit
+          </p>
+        </div>
+
+        {/* Main Cam View */}
+        <div className="max-w-5xl mx-auto">
+          <div className="bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
+            {/* Cam Controls */}
+            <div className="bg-gray-800 px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 bg-red-500 rounded-full animate-pulse" />
+                <span className="text-white text-sm font-medium">LIVE</span>
+                <span className="text-gray-400 text-sm ml-2">
+                  {cameras.find(c => c.id === selectedCam)?.name}
+                </span>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => setMuted(!muted)}
+                  className="p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white"
+                >
+                  {muted ? <FaVolumeMute /> : <FaVolumeUp />}
+                </button>
+                <button className="p-2 hover:bg-gray-700 rounded-lg transition-colors text-gray-400 hover:text-white">
+                  <FaExpand />
+                </button>
+              </div>
+            </div>
+
+            {/* Video Placeholder - Replace with actual video stream */}
+            <div className="aspect-video bg-gray-800 relative">
+              <img
+                src={`https://images.unsplash.com/photo-${
+                  selectedCam === 'dog-park' ? '1548199973-03cce0bbc87b' :
+                  selectedCam === 'cat-room' ? '1574158622682-e40e69881006' :
+                  selectedCam === 'puppy-room' ? '1543466835-00a7907e9de1' :
+                  '1511044098243-b547b9ab2f0b'
+                }?w=1200&auto=format&fit=crop&q=80`}
+                alt="Live cam feed"
+                className="w-full h-full object-cover opacity-80"
+              />
+              
+              {/* Overlay Text */}
+              <div className="absolute bottom-4 left-4 right-4 flex justify-between items-center">
+                <div className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">
+                  👁️ {cameras.find(c => c.id === selectedCam)?.viewers} watching
+                </div>
+                <div className="bg-black/50 backdrop-blur-sm px-3 py-1 rounded-full text-white text-sm">
+                  {new Date().toLocaleTimeString()}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        
-        <div>
-          <h3 className="text-lg font-bold mb-4">Camera Feeds</h3>
-          <div className="space-y-4">
+
+          {/* Camera Selection */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-6">
             {cameras.map(cam => (
               <button
                 key={cam.id}
-                onClick={() => setActiveCam(cam.id)}
-                className={`w-full p-4 rounded-lg text-left ${activeCam === cam.id ? 'bg-blue-600 text-white' : 'bg-gray-100'}`}
+                onClick={() => setSelectedCam(cam.id)}
+                className={`p-4 rounded-xl border-2 transition-all ${
+                  selectedCam === cam.id
+                    ? 'border-[#b87d5e] bg-[#b87d5e]/5'
+                    : 'border-gray-200 hover:border-[#b87d5e] bg-white'
+                }`}
               >
-                <div className="font-bold">{cam.name}</div>
-                <div className="text-sm opacity-80">{cam.description}</div>
+                <div className={`text-2xl mb-2 ${
+                  selectedCam === cam.id ? 'text-[#b87d5e]' : 'text-gray-600'
+                }`}>
+                  {cam.icon}
+                </div>
+                <div className={`font-medium text-sm ${
+                  selectedCam === cam.id ? 'text-[#b87d5e]' : 'text-gray-700'
+                }`}>
+                  {cam.name}
+                </div>
+                <div className="text-xs text-gray-500 mt-1">
+                  👁️ {cam.viewers} watching
+                </div>
               </button>
             ))}
           </div>
-          
-          <div className="mt-8 p-4 bg-yellow-50 rounded-lg">
-            <h4 className="font-bold mb-2">📢 Adoption Events</h4>
-            <p className="text-sm">Virtual adoption interviews every Friday at 2 PM EST</p>
+
+          {/* Schedule */}
+          <div className="mt-8 bg-white rounded-xl p-6 border border-gray-100">
+            <h3 className="font-semibold text-[#2c4a3e] mb-4">Feeding Schedule</h3>
+            <div className="grid sm:grid-cols-3 gap-4">
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="text-xs text-gray-500">Morning</div>
+                <div className="font-medium text-[#2c4a3e]">8:00 AM - 9:00 AM</div>
+              </div>
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="text-xs text-gray-500">Afternoon</div>
+                <div className="font-medium text-[#2c4a3e]">12:00 PM - 1:00 PM</div>
+              </div>
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <div className="text-xs text-gray-500">Evening</div>
+                <div className="font-medium text-[#2c4a3e]">5:00 PM - 6:00 PM</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

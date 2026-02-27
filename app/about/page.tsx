@@ -15,7 +15,7 @@ const teamMembers = [
     image: 'PS',
     bio: '15 years of veterinary experience. Founded PawHaven to create a sanctuary for stray animals.',
     specialty: ['Veterinary Care', 'Shelter Management'],
-    color: 'brown' // Changed from 'amber'
+    color: 'brown'
   },
   {
     name: 'Rohan Mehta',
@@ -23,7 +23,7 @@ const teamMembers = [
     image: 'RM',
     bio: 'Oversees daily operations and coordinates volunteer activities.',
     specialty: ['Operations', 'Logistics'],
-    color: 'green' // Changed from 'orange'
+    color: 'green'
   },
   {
     name: 'Anjali Desai',
@@ -31,7 +31,7 @@ const teamMembers = [
     image: 'AD',
     bio: 'Specializes in matching animals with compatible forever families.',
     specialty: ['Adoption Counseling', 'Family Matching'],
-    color: 'brown' // Changed from 'amber'
+    color: 'brown'
   },
   {
     name: 'Karan Patel',
@@ -39,7 +39,7 @@ const teamMembers = [
     image: 'KP',
     bio: 'Manages community outreach and volunteer training programs.',
     specialty: ['Community Engagement', 'Training'],
-    color: 'green' // Changed from 'orange'
+    color: 'green'
   },
 ];
 
@@ -49,14 +49,14 @@ const milestones = [
     event: 'PawHaven Founded', 
     description: 'Started with 5 animals in a small Vashi facility',
     icon: '🏠',
-    color: 'from-[#b87d5e]/10 to-[#b87d5e]/5 border-[#b87d5e]/20' // Changed from amber
+    color: 'from-[#b87d5e]/10 to-[#b87d5e]/5 border-[#b87d5e]/20'
   },
   { 
     year: '2019', 
     event: 'First 100 Adoptions', 
     description: 'Achieved 100 successful adoptions milestone',
     icon: '🎯',
-    color: 'from-[#2c4a3e]/10 to-[#2c4a3e]/5 border-[#2c4a3e]/20' // Changed from orange
+    color: 'from-[#2c4a3e]/10 to-[#2c4a3e]/5 border-[#2c4a3e]/20'
   },
   { 
     year: '2020', 
@@ -93,13 +93,13 @@ const values = [
     title: 'Compassion First',
     description: 'Every animal receives unconditional love, dignity, and respect in our care.',
     icon: FaHeart,
-    color: 'bg-gradient-to-br from-[#b87d5e]/5 to-white border-[#b87d5e]/20' // Changed from amber
+    color: 'bg-gradient-to-br from-[#b87d5e]/5 to-white border-[#b87d5e]/20'
   },
   {
     title: 'Commitment',
     description: 'Unwavering dedication to our mission and the animals we serve.',
     icon: FaBullseye,
-    color: 'bg-gradient-to-br from-[#2c4a3e]/5 to-white border-[#2c4a3e]/20' // Changed from orange
+    color: 'bg-gradient-to-br from-[#2c4a3e]/5 to-white border-[#2c4a3e]/20'
   },
   {
     title: 'Community',
@@ -116,8 +116,8 @@ const values = [
 ];
 
 const impactNumbers = [
-  { number: '500+', label: 'Animals Adopted', icon: FaHeart, color: 'text-[#b87d5e]' }, // Changed from amber
-  { number: '2000+', label: 'Animals Rescued', icon: FaPaw, color: 'text-[#2c4a3e]' }, // Changed from orange
+  { number: '500+', label: 'Animals Adopted', icon: FaHeart, color: 'text-[#b87d5e]' },
+  { number: '2000+', label: 'Animals Rescued', icon: FaPaw, color: 'text-[#2c4a3e]' },
   { number: '100+', label: 'Active Volunteers', icon: FaUsers, color: 'text-[#b87d5e]' },
   { number: '24/7', label: 'Rescue Service', icon: FaRibbon, color: 'text-[#2c4a3e]' },
 ];
@@ -127,78 +127,83 @@ export default function AboutPage() {
     <div className="min-h-screen bg-gradient-to-b from-white via-[#f5f7f0]/10 to-white">
       {/* Hero Section */}
       <div className="relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5" /> {/* Changed from amber/orange */}
-        <div className="container relative mx-auto px-4 py-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5" />
+        <div className="container relative mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
           <div className="max-w-4xl mx-auto text-center">
-            <div className="inline-flex items-center gap-3 px-6 py-2 bg-[#b87d5e]/10 rounded-full mb-8">
-              <FaPaw className="text-[#b87d5e]" />
-              <span className="text-[#b87d5e] font-medium">Since 2018</span>
+            <div className="inline-flex items-center gap-2 px-4 sm:px-6 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full mb-4 sm:mb-6 md:mb-8">
+              <FaPaw className="text-[#b87d5e] text-xs sm:text-sm" />
+              <span className="text-[#b87d5e] font-medium text-xs sm:text-sm">Since 2018</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-              Creating <span className="text-[#b87d5e]">Haven</span> for Every <span className="text-[#2c4a3e]">Paw</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight px-4">
+              Creating <span className="text-[#b87d5e]">Heaven</span> for Every <span className="text-[#2c4a3e]">Paw</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-10 leading-relaxed max-w-3xl mx-auto">
-              PawHaven Vashi is Navi Mumbai's premier animal sanctuary, dedicated to rescuing, 
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto px-4">
+              PawHeaven Vashi is Navi Mumbai's premier animal sanctuary, dedicated to rescuing, 
               rehabilitating, and rehoming animals with compassion and professional care.
             </p>
           </div>
         </div>
       </div>
 
-      {/* Mission Statement - Elegant Card */}
-      <div className="container mx-auto px-4 -mt-10 mb-20">
-        <div className="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+      {/* Mission Statement */}
+      <div className="container mx-auto px-4 sm:px-6 -mt-8 sm:-mt-10 mb-12 sm:mb-16 md:mb-20">
+        <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-0">
-            <div className="p-12 lg:p-16">
-              <div className="flex items-center gap-4 mb-8">
-                <div className="p-3 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-xl">
-                  <FaHeart className="text-white text-2xl" />
+            {/* Left Content */}
+            <div className="p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16">
+              <div className="flex items-center gap-3 sm:gap-4 mb-5 sm:mb-6 md:mb-8">
+                <div className="p-2 sm:p-3 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-lg sm:rounded-xl">
+                  <FaHeart className="text-white text-base sm:text-lg md:text-xl lg:text-2xl" />
                 </div>
                 <div>
-                  <h2 className="text-3xl font-bold text-gray-900">Our Mission</h2>
-                  <p className="text-gray-600">Redefining animal welfare in Navi Mumbai</p>
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-gray-900">Our Mission</h2>
+                  <p className="text-xs sm:text-sm text-gray-600">Redefining animal welfare in Navi Mumbai</p>
                 </div>
               </div>
-              <div className="space-y-6">
-                <p className="text-gray-700 text-lg leading-relaxed">
+              
+              <div className="space-y-4 sm:space-y-5 md:space-y-6">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
                   Founded by Dr. Priya Sharma in 2018, PawHaven began as a small initiative 
                   with 5 rescued animals. Today, we operate a state-of-the-art 5,000 sq.ft. 
                   facility in Vashi, providing comprehensive care and rehabilitation.
                 </p>
-                <div className="flex items-center gap-8 pt-4">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-[#b87d5e]/10 rounded-lg">
-                      <FaMapMarkerAlt className="text-[#b87d5e]" />
+                
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 md:gap-8 pt-2 sm:pt-4">
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="p-1.5 sm:p-2 bg-[#b87d5e]/10 rounded-lg">
+                      <FaMapMarkerAlt className="text-[#b87d5e] text-xs sm:text-sm md:text-base" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">Location</div>
-                      <div className="text-gray-600">Vashi, Navi Mumbai</div>
+                      <div className="font-semibold text-gray-900 text-xs sm:text-sm">Location</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">Vashi, Navi Mumbai</div>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 bg-[#2c4a3e]/10 rounded-lg">
-                      <FaCalendarAlt className="text-[#2c4a3e]" />
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="p-1.5 sm:p-2 bg-[#2c4a3e]/10 rounded-lg">
+                      <FaCalendarAlt className="text-[#2c4a3e] text-xs sm:text-sm md:text-base" />
                     </div>
                     <div>
-                      <div className="font-semibold text-gray-900">Operating Since</div>
-                      <div className="text-gray-600">2018</div>
+                      <div className="font-semibold text-gray-900 text-xs sm:text-sm">Operating Since</div>
+                      <div className="text-gray-600 text-xs sm:text-sm">2018</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 p-12 lg:p-16 flex items-center justify-center border-l border-gray-100">
+            
+            {/* Right Quote */}
+            <div className="bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 p-6 sm:p-8 md:p-10 lg:p-12 xl:p-16 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-gray-100">
               <div className="text-center max-w-md">
-                <div className="text-7xl mb-8 opacity-20">🐾</div>
+                <div className="text-5xl sm:text-6xl md:text-7xl mb-4 sm:mb-6 md:mb-8 opacity-20">🐾</div>
                 <div className="relative">
-                  <FaQuoteLeft className="absolute -top-2 -left-6 text-[#b87d5e]/30 text-2xl" />
-                  <p className="text-2xl text-gray-800 italic leading-relaxed">
+                  <FaQuoteLeft className="absolute -top-1 sm:-top-2 -left-4 sm:-left-6 text-[#b87d5e]/30 text-base sm:text-lg md:text-xl lg:text-2xl" />
+                  <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-800 italic leading-relaxed px-4 sm:px-6">
                     Every rescue is a story of hope, every adoption a new beginning.
                   </p>
                 </div>
-                <div className="mt-8 pt-6 border-t border-gray-200">
-                  <div className="font-bold text-gray-900">Dr. Priya Sharma</div>
-                  <div className="text-gray-600">Founder & Head Veterinarian</div>
+                <div className="mt-6 sm:mt-8 pt-4 sm:pt-6 border-t border-gray-200">
+                  <div className="font-bold text-gray-900 text-sm sm:text-base">Dr. Priya Sharma</div>
+                  <div className="text-gray-600 text-xs sm:text-sm">Founder & Head Veterinarian</div>
                 </div>
               </div>
             </div>
@@ -207,40 +212,37 @@ export default function AboutPage() {
       </div>
 
       {/* Statistics Section */}
-      <div className="container mx-auto px-4 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-3">Our Impact in Numbers</h2>
-          <p className="text-gray-600">Measurable change for animals in need</p>
-        </div>
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-14 md:py-16">
+       
         <Statistics />
       </div>
 
-      {/* Values Section - Clean Grid */}
-      <div className="bg-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-1.5 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-medium mb-4">
+      {/* Values Section */}
+      <div className="bg-white py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+            <div className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
               Our Values
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Guiding Principles</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Guiding Principles</h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
               The core beliefs that shape every decision and action at PawHaven
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+          <div className="grid sm:grid-cols-2 gap-4 sm:gap-5 md:gap-6 max-w-5xl mx-auto">
             {values.map((value, index) => (
               <div 
                 key={index}
-                className={`p-8 rounded-2xl border ${value.color} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
+                className={`p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl border ${value.color} hover:shadow-lg transition-all duration-300 hover:-translate-y-1`}
               >
-                <div className="flex items-start gap-5">
-                  <div className={`p-4 rounded-xl ${value.color.includes('b87d5e') ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'}`}>
-                    <value.icon className={`text-2xl ${value.color.includes('b87d5e') ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'}`} />
+                <div className="flex items-start gap-3 sm:gap-4 md:gap-5">
+                  <div className={`p-2 sm:p-3 md:p-4 rounded-lg sm:rounded-xl ${value.color.includes('b87d5e') ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'} flex-shrink-0`}>
+                    <value.icon className={`text-base sm:text-lg md:text-xl lg:text-2xl ${value.color.includes('b87d5e') ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'}`} />
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-gray-900 mb-3">{value.title}</h3>
-                    <p className="text-gray-600 leading-relaxed">{value.description}</p>
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-2 sm:mb-3">{value.title}</h3>
+                    <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{value.description}</p>
                   </div>
                 </div>
               </div>
@@ -249,40 +251,44 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Timeline - Clean Vertical Layout */}
-      <div className="bg-gradient-to-b from-white to-[#f5f7f0] py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-1.5 bg-[#2c4a3e]/10 rounded-full text-[#2c4a3e] font-medium mb-4">
+      {/* Timeline */}
+      <div className="bg-gradient-to-b from-white to-[#f5f7f0] py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+            <div className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-[#2c4a3e]/10 rounded-full text-[#2c4a3e] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
               Our Journey
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Milestones & Growth</h2>
-            <p className="text-gray-600">Key moments in our evolving story</p>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Milestones & Growth</h2>
+            <p className="text-sm sm:text-base text-gray-600">Key moments in our evolving story</p>
           </div>
           
           <div className="relative max-w-4xl mx-auto">
-            {/* Timeline line */}
+            {/* Timeline line - hidden on mobile/tablet */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#b87d5e] to-[#2c4a3e] hidden lg:block" />
             
-            <div className="space-y-12">
+            <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12">
               {milestones.map((milestone, index) => (
                 <div 
                   key={index}
                   className={`relative ${index % 2 === 0 ? 'lg:pr-1/2 lg:pl-12' : 'lg:pl-1/2 lg:pr-12'}`}
                 >
-                  <div className={`p-8 rounded-2xl bg-white border ${milestone.color} shadow-sm hover:shadow-md transition-shadow duration-300`}>
-                    <div className="flex items-start gap-6">
-                      <div className={`p-4 rounded-xl ${milestone.color.includes('b87d5e') ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'}`}>
-                        <span className="text-2xl">{milestone.icon}</span>
+                  <div className={`p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white border ${milestone.color} shadow-sm hover:shadow-md transition-shadow duration-300`}>
+                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 md:gap-6">
+                      <div className={`p-3 sm:p-4 rounded-xl ${milestone.color.includes('b87d5e') ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'} flex-shrink-0`}>
+                        <span className="text-xl sm:text-2xl">{milestone.icon}</span>
                       </div>
                       <div className="flex-1">
-                        <div className="flex items-center gap-4 mb-2">
-                          <span className={`px-3 py-1 rounded-full ${milestone.color.includes('b87d5e') ? 'bg-[#b87d5e]/10 text-[#b87d5e]' : 'bg-[#2c4a3e]/10 text-[#2c4a3e]'} font-medium`}>
+                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
+                          <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium self-start ${
+                            milestone.color.includes('b87d5e') 
+                              ? 'bg-[#b87d5e]/10 text-[#b87d5e]' 
+                              : 'bg-[#2c4a3e]/10 text-[#2c4a3e]'
+                          }`}>
                             {milestone.year}
                           </span>
-                          <h3 className="text-xl font-bold text-gray-900">{milestone.event}</h3>
+                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900">{milestone.event}</h3>
                         </div>
-                        <p className="text-gray-600">{milestone.description}</p>
+                        <p className="text-xs sm:text-sm text-gray-600">{milestone.description}</p>
                       </div>
                     </div>
                   </div>
@@ -293,47 +299,55 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Team Section - Professional Cards */}
-      <div className="bg-white py-20">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <div className="inline-block px-4 py-1.5 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-medium mb-4">
+      {/* Team Section */}
+      <div className="bg-white py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+            <div className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
               Our Team
             </div>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Leadership & Expertise</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Leadership & Expertise</h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
               Passionate professionals dedicated to animal welfare excellence
             </p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 max-w-6xl mx-auto">
             {teamMembers.map((member, index) => (
               <div 
                 key={index}
-                className="group bg-white rounded-xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
+                className="group bg-white rounded-lg sm:rounded-xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300"
               >
-                <div className={`h-40 ${member.color === 'brown' ? 'bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f]' : 'bg-gradient-to-br from-[#2c4a3e] to-[#1e352b]'} relative`}>
-                  <div className="absolute -bottom-12 left-6">
-                    <div className="w-24 h-24 rounded-2xl border-4 border-white bg-white shadow-lg flex items-center justify-center">
-                      <span className={`text-2xl font-bold ${member.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'}`}>
+                <div className={`h-28 sm:h-32 md:h-36 lg:h-40 ${
+                  member.color === 'brown' 
+                    ? 'bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f]' 
+                    : 'bg-gradient-to-br from-[#2c4a3e] to-[#1e352b]'
+                } relative`}>
+                  <div className="absolute -bottom-8 sm:-bottom-9 md:-bottom-10 lg:-bottom-12 left-4 sm:left-5 md:left-6">
+                    <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-lg sm:rounded-xl md:rounded-2xl border-4 border-white bg-white shadow-lg flex items-center justify-center">
+                      <span className={`text-base sm:text-lg md:text-xl lg:text-2xl font-bold ${
+                        member.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'
+                      }`}>
                         {member.image}
                       </span>
                     </div>
                   </div>
                 </div>
                 
-                <div className="pt-16 px-6 pb-8">
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
-                  <p className={`text-sm font-medium ${member.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'} mb-4`}>
+                <div className="pt-10 sm:pt-12 md:pt-14 lg:pt-16 px-4 sm:px-5 md:px-6 pb-5 sm:pb-6 md:pb-8">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1">{member.name}</h3>
+                  <p className={`text-xs sm:text-sm font-medium mb-3 sm:mb-4 ${
+                    member.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'
+                  }`}>
                     {member.role}
                   </p>
-                  <p className="text-gray-600 text-sm mb-6 leading-relaxed">{member.bio}</p>
+                  <p className="text-gray-600 text-xs sm:text-sm mb-4 sm:mb-5 md:mb-6 leading-relaxed">{member.bio}</p>
                   
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-1.5 sm:gap-2">
                     {member.specialty.map((item, idx) => (
                       <span 
                         key={idx}
-                        className="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-full border border-gray-200"
+                        className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gray-50 text-gray-700 text-[10px] sm:text-xs font-medium rounded-full border border-gray-200"
                       >
                         {item}
                       </span>
@@ -346,20 +360,21 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* CTA Section - Clean Layout */}
-      <div className="bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+      {/* CTA Section */}
+      <div className="bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 py-12 sm:py-16 md:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center max-w-6xl mx-auto">
+            {/* Left Content */}
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-5 md:mb-6 px-4 lg:px-0">
                 Join Our <span className="text-[#b87d5e]">Mission</span>
               </h2>
-              <p className="text-gray-600 text-lg mb-8 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed px-4 lg:px-0">
                 Your support helps us provide medical care, shelter, and love to animals 
                 in need. Together, we can create more happy endings.
               </p>
               
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4 px-4 lg:px-0">
                 {[
                   { icon: FaDog, title: 'Adopt', desc: 'Give a forever home to a rescued animal', color: 'brown', href: '/adopt' },
                   { icon: FaUsers, title: 'Volunteer', desc: 'Share your time and skills with our animals', color: 'green', href: '/volunteer' },
@@ -368,39 +383,46 @@ export default function AboutPage() {
                   <a 
                     key={index}
                     href={action.href}
-                    className="group flex items-center justify-between p-6 bg-white rounded-xl border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                    className="group flex items-center justify-between p-4 sm:p-5 md:p-6 bg-white rounded-lg sm:rounded-xl border border-gray-100 hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                   >
-                    <div className="flex items-center gap-4">
-                      <div className={`p-3 rounded-lg ${action.color === 'brown' ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'}`}>
-                        <action.icon className={`text-xl ${action.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'}`} />
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className={`p-2 sm:p-3 rounded-lg ${
+                        action.color === 'brown' ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'
+                      }`}>
+                        <action.icon className={`text-sm sm:text-base md:text-lg ${
+                          action.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'
+                        }`} />
                       </div>
                       <div>
-                        <h3 className="font-bold text-gray-900 text-lg">{action.title}</h3>
-                        <p className="text-gray-600 text-sm">{action.desc}</p>
+                        <h3 className="font-bold text-gray-900 text-sm sm:text-base md:text-lg">{action.title}</h3>
+                        <p className="text-gray-600 text-xs sm:text-sm">{action.desc}</p>
                       </div>
                     </div>
-                    <FaArrowRight className={`text-lg ${action.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'} opacity-0 group-hover:opacity-100 transition-all duration-300`} />
+                    <FaArrowRight className={`text-sm sm:text-base md:text-lg ${
+                      action.color === 'brown' ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'
+                    } opacity-0 group-hover:opacity-100 transition-all duration-300`} />
                   </a>
                 ))}
               </div>
             </div>
             
-            <div className="bg-white rounded-2xl p-12 shadow-lg border border-gray-100">
+            {/* Right Card */}
+            <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 lg:p-12 shadow-lg border border-gray-100 mx-4 lg:mx-0">
               <div className="text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-2xl mb-6">
-                  <FaPaw className="text-white text-2xl" />
+                <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-lg sm:rounded-xl md:rounded-2xl mb-4 sm:mb-5 md:mb-6">
+                  <FaPaw className="text-white text-base sm:text-lg md:text-xl lg:text-2xl" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">Make a Difference</h3>
-                <p className="text-gray-600 mb-8">
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-900 mb-3 sm:mb-4">Make a Difference</h3>
+                <p className="text-xs sm:text-sm text-gray-600 mb-5 sm:mb-6 md:mb-8">
                   Every contribution, whether through adoption, volunteering, or donations, 
                   helps us save more lives and create lasting impact.
                 </p>
                 <a 
                   href="/contact"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:gap-3"
+                  className="inline-flex items-center gap-2 px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white font-semibold rounded-lg sm:rounded-xl hover:shadow-lg transition-all duration-300 hover:gap-3 text-xs sm:text-sm"
                 >
                   Get Involved Today
-                  <FaArrowRight />
+                  <FaArrowRight className="text-xs sm:text-sm" />
                 </a>
               </div>
             </div>
@@ -409,25 +431,25 @@ export default function AboutPage() {
       </div>
 
       {/* Closing Quote */}
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-gradient-to-br from-[#2c4a3e] to-[#1e352b] rounded-2xl p-16 text-center relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full -translate-y-32 translate-x-32" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full translate-y-32 -translate-x-32" />
+          <div className="bg-gradient-to-br from-[#2c4a3e] to-[#1e352b] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 text-center relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full -translate-y-24 sm:-translate-y-28 md:-translate-y-32 translate-x-24 sm:translate-x-28 md:translate-x-32" />
+            <div className="absolute bottom-0 left-0 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full translate-y-24 sm:translate-y-28 md:translate-y-32 -translate-x-24 sm:-translate-x-28 md:-translate-x-32" />
             
             <div className="relative">
-              <div className="text-6xl text-[#b87d5e]/20 mb-8">"</div>
-              <p className="text-2xl text-white mb-10 leading-relaxed italic">
+              <div className="text-4xl sm:text-5xl md:text-6xl text-[#b87d5e]/20 mb-4 sm:mb-6 md:mb-8">"</div>
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-white mb-6 sm:mb-8 md:mb-10 leading-relaxed italic px-4">
                 In rescuing animals, we save more than lives—we restore dignity, 
                 nurture hope, and build a more compassionate community.
               </p>
-              <div className="flex items-center justify-center gap-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-full flex items-center justify-center">
-                  <FaPaw className="text-white text-lg" />
+              <div className="flex items-center justify-center gap-3 sm:gap-4">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-full flex items-center justify-center flex-shrink-0">
+                  <FaPaw className="text-white text-xs sm:text-sm md:text-base lg:text-lg" />
                 </div>
                 <div className="text-left">
-                  <div className="text-white font-bold">Dr. Priya Sharma</div>
-                  <div className="text-gray-300">Founder, PawHaven Vashi</div>
+                  <div className="text-white font-bold text-xs sm:text-sm md:text-base">Dr. Priya Sharma</div>
+                  <div className="text-gray-300 text-[10px] sm:text-xs">Founder, PawHaven Vashi</div>
                 </div>
               </div>
             </div>

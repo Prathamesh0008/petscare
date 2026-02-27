@@ -11,6 +11,7 @@ import {
 } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useState } from "react";
 
 const adoptionSteps = [
   {
@@ -131,6 +132,7 @@ const successStories = [
 ];
 
 export default function AdoptPage() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f5f7f0] via-[#f0f2e8] to-[#eaede2]">
       {/* Hero Section */}
@@ -190,7 +192,7 @@ export default function AdoptPage() {
       </div>
 
       {/* Adoption Process */}
-      <div className="container mx-auto px-4 py-20">
+   <div className="container mx-auto px-4 py-28">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -362,54 +364,160 @@ export default function AdoptPage() {
               </div>
             </motion.div>
 
-            {/* FAQ Section */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="bg-white/90 backdrop-blur-sm rounded-2xl border border-[#2c4a3e]/10 p-8"
-            >
-              <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 bg-[#b87d5e]/10 rounded-xl flex items-center justify-center">
-                  <FaQuestionCircle className="text-2xl text-[#b87d5e]" />
+            {/* FAQ Section with Accordion */}
+<motion.div
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  className="bg-white/90 backdrop-blur-sm rounded-2xl border border-[#2c4a3e]/10 p-8"
+>
+  <div className="flex items-center gap-4 mb-8">
+    <div className="w-12 h-12 bg-[#b87d5e]/10 rounded-xl flex items-center justify-center">
+      <FaQuestionCircle className="text-2xl text-[#b87d5e]" />
+    </div>
+    <div>
+      <h2 className="text-2xl font-bold text-[#2c4a3e]">Common Questions</h2>
+      <p className="text-[#2c4a3e]/60">Everything you need to know about adoption</p>
+    </div>
+  </div>
+  
+  <div className="space-y-4">
+  {faqs.map((faq, index) => {
+  const isOpen = openIndex === index;
+      
+      return (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: index * 0.1 }}
+          className="group"
+        >
+          <div
+           onClick={() =>
+  setOpenIndex(isOpen ? null : index)
+}
+            className="relative border border-[#2c4a3e]/10 rounded-xl hover:border-[#b87d5e]/30 hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+          >
+            {/* Question Header */}
+            <div className="p-6">
+              <div className="flex items-start justify-between gap-4">
+                <div className="flex-grow">
+                  <h3 className="font-semibold text-[#2c4a3e] text-lg group-hover:text-[#b87d5e] transition-colors">
+                    {faq.question}
+                  </h3>
                 </div>
-                <div>
-                  <h2 className="text-2xl font-bold text-[#2c4a3e]">Common Questions</h2>
-                  <p className="text-[#2c4a3e]/60">Everything you need to know about adoption</p>
-                </div>
+                <motion.div
+                  animate={{ rotate: isOpen ? 90 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="flex-shrink-0 w-8 h-8 bg-[#b87d5e]/10 rounded-lg flex items-center justify-center group-hover:bg-[#b87d5e]/20 transition-colors"
+                >
+                  <FaArrowRight className="text-[#b87d5e] text-sm" />
+                </motion.div>
               </div>
-              
-              <div className="space-y-4">
-                {faqs.map((faq, index) => (
-                  <div
-                    key={index}
-                    className="group border border-[#2c4a3e]/10 rounded-xl p-6 hover:border-[#b87d5e]/30 hover:shadow-lg transition-all duration-300 cursor-pointer"
-                  >
-                    <div className="flex items-start gap-4">
-                      <div className="flex-grow">
-                        <h3 className="font-semibold text-[#2c4a3e] text-lg mb-2 group-hover:text-[#b87d5e] transition-colors">
-                          {faq.question}
-                        </h3>
-                        <p className="text-[#2c4a3e]/70 text-sm leading-relaxed">{faq.answer}</p>
-                      </div>
-                      <FaArrowRight className="text-[#b87d5e] opacity-0 group-hover:opacity-100 transition-all duration-300 flex-shrink-0 mt-2" />
-                    </div>
+            </div>
+            
+            {/* Answer with Animation */}
+            <motion.div
+              initial={false}
+              animate={{ 
+                height: isOpen ? "auto" : 0,
+                opacity: isOpen ? 1 : 0,
+                marginBottom: isOpen ? 16 : 0
+              }}
+              transition={{ 
+                duration: 0.3,
+                ease: "easeInOut"
+              }}
+              className="overflow-hidden"
+            >
+              <div className="px-6 pb-6">
+                <div className="border-t border-[#2c4a3e]/10 pt-4">
+                  <p className="text-[#2c4a3e]/70 text-sm leading-relaxed">
+                    {faq.answer}
+                  </p>
+                  
+                  {/* Optional: Add helpful tags based on question content */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {faq.question.includes('fee') && (
+                      <span className="px-3 py-1 bg-[#b87d5e]/10 text-[#b87d5e] text-xs rounded-full">
+                        💰 Fee Details
+                      </span>
+                    )}
+                    {faq.question.includes('time') && (
+                      <span className="px-3 py-1 bg-[#2c4a3e]/10 text-[#2c4a3e] text-xs rounded-full">
+                        ⏱️ Timeline
+                      </span>
+                    )}
+                    {faq.question.includes('apartment') && (
+                      <span className="px-3 py-1 bg-[#b87d5e]/10 text-[#b87d5e] text-xs rounded-full">
+                        🏢 Apartment Friendly
+                      </span>
+                    )}
+                    {faq.question.includes('support') && (
+                      <span className="px-3 py-1 bg-[#2c4a3e]/10 text-[#2c4a3e] text-xs rounded-full">
+                        🤝 Post-Adoption
+                      </span>
+                    )}
+                    {faq.question.includes('work') && (
+                      <span className="px-3 py-1 bg-[#b87d5e]/10 text-[#b87d5e] text-xs rounded-full">
+                        🔄 Trial Period
+                      </span>
+                    )}
                   </div>
-                ))}
+                </div>
               </div>
             </motion.div>
+            
+            {/* Decorative background effect when open */}
+            {isOpen && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="absolute inset-0 bg-gradient-to-r from-[#b87d5e]/5 to-[#2c4a3e]/5 pointer-events-none"
+              />
+            )}
+          </div>
+        </motion.div>
+      );
+    })}
+  </div>
+  
+  {/* Additional Help Card */}
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ delay: 0.6 }}
+    className="mt-6 p-4 bg-gradient-to-r from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-xl"
+  >
+    <div className="flex items-center gap-3">
+      <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+        <FaHandHoldingHeart className="text-[#b87d5e]" />
+      </div>
+      <div className="flex-1">
+        <p className="text-sm font-medium text-[#2c4a3e]">Still have questions?</p>
+        <p className="text-xs text-[#2c4a3e]/60">Our adoption counselors are here to help</p>
+      </div>
+      <Link
+  href="/contact"
+  className="px-4 py-2 bg-[#b87d5e] hover:bg-[#9e6a4f] text-white text-sm rounded-lg transition-colors inline-block text-center"
+>
+  Contact Us
+</Link>
+    </div>
+  </motion.div>
+</motion.div>
           </div>
 
           {/* Right Column - Form & Info */}
           <div className="space-y-8">
             {/* Adoption Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="sticky top-8"
-              id="adoption-form"
-            >
+        <motion.div
+  initial={{ opacity: 0, x: 20 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  id="adoption-form"
+>
               <div className="bg-white/90 backdrop-blur-sm rounded-2xl border border-[#2c4a3e]/10 overflow-hidden">
                 <div className="bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] p-8 text-white text-center">
                   <div className="inline-flex items-center justify-center w-16 h-16 bg-[#b87d5e]/20 rounded-full mb-4">

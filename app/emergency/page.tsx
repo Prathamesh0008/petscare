@@ -1,144 +1,118 @@
+// app/emergency/page.tsx
 'use client';
 
-import EmergencySOS from '@/components/EmergencySOS';
-import EmergencyBanner from '@/components/EmergencyBanner';
+import { FaShieldAlt, FaPhone, FaMapMarkerAlt, FaClock, FaAmbulance, FaHeartbeat, FaFire } from 'react-icons/fa';
 
 export default function EmergencyPage() {
-  const emergencyContacts = [
-    { name: '24/7 Emergency Vet', number: '022-2789-4567', description: 'For critical medical emergencies' },
-    { name: 'Animal Control', number: '100', description: 'Police emergency line' },
-    { name: 'Fire & Rescue', number: '101', description: 'For trapped or injured animals' },
-    { name: 'Ambulance', number: '102', description: 'Medical emergencies' },
-    { name: 'Animal Poison Control', number: '1800-425-4732', description: '24/7 poison helpline' },
-  ];
-
-  const emergencyProcedures = [
-    {
-      title: 'Found Injured Animal',
-      steps: [
-        'Approach carefully - injured animals may bite',
-        'Call our emergency number immediately',
-        'Do not attempt to move unless in immediate danger',
-        'Keep warm with blanket if possible',
-        'Wait for professional help',
-      ],
-    },
-    {
-      title: 'Animal Attack',
-      steps: [
-        'Separate animals immediately if safe to do so',
-        'Check for injuries',
-        'Clean wounds with soap and water',
-        'Seek medical attention for bites',
-        'Report incident to animal control',
-      ],
-    },
-    {
-      title: 'Lost Pet',
-      steps: [
-        'Check local area immediately',
-        'Contact nearby shelters and vet clinics',
-        'Post on social media and local groups',
-        'Put up flyers in the neighborhood',
-        'Check our lost & found page',
-      ],
-    },
-  ];
-
   return (
-    <div className="container mx-auto px-4 py-8">
-      <EmergencyBanner />
-      
-      <h1 className="text-3xl font-bold mb-2">Emergency Resources</h1>
-      <p className="text-gray-600 mb-8">Immediate help for animals in distress</p>
+    <div className="min-h-screen bg-gradient-to-b from-[#f5f7f0] to-white pt-20">
+      <div className="container mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-rose-100 text-rose-600 rounded-full text-sm font-medium mb-4">
+            <FaShieldAlt />
+            24/7 Emergency Support
+          </div>
+          <h1 className="text-3xl sm:text-4xl font-bold text-[#2c4a3e] mb-4">
+            Emergency <span className="text-rose-500">Assistance</span>
+          </h1>
+          <p className="text-gray-600">
+            Immediate help for your pet in critical situations
+          </p>
+        </div>
 
-      <div className="mb-8">
-        <EmergencySOS />
-      </div>
+        {/* Emergency Contact Card */}
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-rose-50 rounded-2xl p-8 border-2 border-rose-200 mb-8 text-center">
+            <div className="w-20 h-20 bg-rose-500 rounded-full flex items-center justify-center mx-auto mb-4 animate-pulse">
+              <FaPhone className="text-3xl text-white" />
+            </div>
+            <h2 className="text-2xl font-bold text-rose-600 mb-2">Emergency Hotline</h2>
+            <a 
+              href="tel:+18005551234" 
+              className="text-4xl sm:text-5xl font-bold text-[#2c4a3e] hover:text-rose-500 transition-colors block mb-4"
+            >
+              1-800-555-1234
+            </a>
+            <p className="text-gray-600">Available 24/7 for urgent situations</p>
+          </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Emergency Contacts */}
-        <div className="lg:col-span-2">
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h2 className="text-2xl font-bold mb-6">Emergency Contacts</h2>
-            <div className="space-y-4">
-              {emergencyContacts.map((contact, idx) => (
-                <div key={idx} className="border-l-4 border-red-500 pl-4 py-3">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <h3 className="font-bold text-lg">{contact.name}</h3>
-                      <p className="text-gray-600 text-sm">{contact.description}</p>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xl font-bold text-red-600">{contact.number}</div>
-                      <button className="text-sm text-blue-600 hover:underline mt-1">
-                        Call Now
-                      </button>
-                    </div>
+          {/* Emergency Services Grid */}
+          <div className="grid sm:grid-cols-3 gap-6 mb-8">
+            {[
+              {
+                icon: <FaAmbulance className="text-2xl" />,
+                title: 'Veterinary Emergency',
+                contact: '(555) 123-4567',
+                address: '123 Pet Care Ave',
+                hours: '24/7',
+                color: 'rose'
+              },
+              {
+                icon: <FaFire className="text-2xl" />,
+                title: 'Animal Poison Control',
+                contact: '(888) 426-4435',
+                address: '24/7 Hotline',
+                hours: '24/7',
+                color: 'amber'
+              },
+              {
+                icon: <FaHeartbeat className="text-2xl" />,
+                title: 'Pet Ambulance',
+                contact: '(555) 987-6543',
+                address: 'Emergency Transport',
+                hours: '24/7',
+                color: 'emerald'
+              }
+            ].map((service, index) => (
+              <div key={index} className={`bg-white rounded-xl p-6 shadow-lg border-l-4 border-${service.color}-500`}>
+                <div className={`w-12 h-12 bg-${service.color}-100 rounded-lg flex items-center justify-center text-${service.color}-600 mb-4`}>
+                  {service.icon}
+                </div>
+                <h3 className="font-semibold text-gray-900 mb-2">{service.title}</h3>
+                <a href={`tel:${service.contact}`} className="text-rose-500 font-medium block mb-2">
+                  {service.contact}
+                </a>
+                <p className="text-xs text-gray-500 mb-1">{service.address}</p>
+                <p className="text-xs text-gray-500">{service.hours}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* First Aid Guide */}
+          <div className="bg-white rounded-2xl p-6 shadow-lg border border-gray-100">
+            <h3 className="text-lg font-semibold text-[#2c4a3e] mb-4">Emergency First Aid Tips</h3>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                'Keep your pet calm and warm',
+                'Do not give food or water unless instructed',
+                'Apply gentle pressure to bleeding wounds',
+                'Keep emergency numbers handy',
+                'Know the nearest 24/7 vet clinic',
+                'Have your pet\'s medical records ready'
+              ].map((tip, index) => (
+                <div key={index} className="flex items-start gap-2">
+                  <div className="w-5 h-5 bg-rose-100 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <span className="text-rose-500 text-xs">✓</span>
                   </div>
+                  <span className="text-sm text-gray-600">{tip}</span>
                 </div>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Quick Links */}
-        <div>
-          <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-            <h3 className="text-lg font-bold mb-4">Quick Actions</h3>
-            <div className="space-y-3">
-              <a
-                href="/emergency/lost-pet"
-                className="block bg-red-600 text-white p-4 rounded-lg text-center hover:bg-red-700"
-              >
-                Report Lost Pet
-              </a>
-              <a
-                href="/emergency/found-pet"
-                className="block bg-blue-600 text-white p-4 rounded-lg text-center hover:bg-blue-700"
-              >
-                Report Found Pet
-              </a>
-              <a
-                href="/emergency/stray-report"
-                className="block bg-green-600 text-white p-4 rounded-lg text-center hover:bg-green-700"
-              >
-                Report Stray Animal
-              </a>
+          {/* Map Section */}
+          <div className="mt-8 bg-gray-900 rounded-2xl overflow-hidden">
+            <div className="p-4 bg-gray-800">
+              <h4 className="text-white font-medium flex items-center gap-2">
+                <FaMapMarkerAlt className="text-rose-500" />
+                Nearest 24/7 Emergency Vet
+              </h4>
+            </div>
+            <div className="aspect-video bg-gray-700 flex items-center justify-center">
+              <p className="text-gray-400">Map would be integrated here</p>
             </div>
           </div>
-
-          <div className="bg-white rounded-lg shadow-lg p-6">
-            <h3 className="text-lg font-bold mb-4">Download Emergency Guide</h3>
-            <p className="text-gray-600 text-sm mb-4">
-              Save this guide for offline access
-            </p>
-            <button className="w-full bg-gray-800 text-white py-3 rounded-lg hover:bg-gray-900">
-              Download PDF Guide
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Emergency Procedures */}
-      <div className="mt-8">
-        <h2 className="text-2xl font-bold mb-6">Emergency Procedures</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {emergencyProcedures.map((procedure, idx) => (
-            <div key={idx} className="bg-white rounded-lg shadow-lg p-6">
-              <h3 className="text-xl font-bold mb-4">{procedure.title}</h3>
-              <ol className="space-y-2">
-                {procedure.steps.map((step, stepIdx) => (
-                  <li key={stepIdx} className="flex items-start">
-                    <span className="bg-red-100 text-red-800 rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 flex-shrink-0">
-                      {stepIdx + 1}
-                    </span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          ))}
         </div>
       </div>
     </div>

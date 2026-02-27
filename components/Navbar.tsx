@@ -45,7 +45,7 @@ export default function Navbar({ isIntroComplete = true }: NavbarProps) {
               <div className="w-full h-full relative">
                 <Image
                   src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=400&auto=format&fit=crop&q=60"
-                  alt="PawHaven Logo"
+                  alt="Pawheaven Logo"
                   width={40}
                   height={40}
                   className="object-cover"
@@ -55,7 +55,7 @@ export default function Navbar({ isIntroComplete = true }: NavbarProps) {
             <div className={`transition-all duration-500 ${
               isIntroComplete ? 'opacity-100' : 'opacity-0'
             }`}>
-              <span className="text-2xl font-bold text-[#2c4a3e] block">PawHaven</span>
+              <span className="text-2xl font-bold text-[#2c4a3e] block">PawHeaven</span>
               <span className="text-sm text-[#b87d5e] block">Vashi Shelter</span>
             </div>
           </Link>

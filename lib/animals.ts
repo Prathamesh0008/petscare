@@ -79,11 +79,11 @@ export const animals: Animal[] = [
     gender: 'female',
     description: 'A beautiful cat with striking blue eyes and a calm demeanor',
     story: 'Mittens was surrendered by her previous owners who could no longer care for her. She is well-behaved and litter-trained.',
-    imageUrls: [
-      getAnimalImage(3),
-      'https://images.unsplash.com/photo-1514888286974-6d03bde4ba4?w=800&auto=format&fit=crop&q=60',
-      'https://images.unsplash.com/photo-1514888286974-6d03bde4ba4?w=800&auto=format&fit=crop&q=60',
-    ],
+  imageUrls: [
+  getAnimalImage(3),
+  'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800&auto=format&fit=crop&q=60',
+  'https://images.unsplash.com/photo-1514888286974-6d03bde4ba4?w=800&auto=format&fit=crop&q=60',
+],
     isUrgent: true,
     isAdopted: false,
     healthStatus: 'good',

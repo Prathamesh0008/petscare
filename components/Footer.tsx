@@ -90,7 +90,7 @@ export default function Footer() {
                     </div>
                     <button
                       type="submit"
-                      className="px-8 py-4 bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] text-white font-semibold rounded-xl hover:from-[#9e6a4f] hover:to-[#8a5a42] transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg"
+                      className="px-8 cursor-pointer py-4 bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] text-white font-semibold rounded-xl hover:from-[#9e6a4f] hover:to-[#8a5a42] transition-all duration-300 flex items-center justify-center gap-2 group shadow-lg"
                     >
                       <span>Subscribe</span>
                       <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -128,7 +128,7 @@ export default function Footer() {
                 <FaPaw className="text-2xl text-[#b87d5e]" />
               </div>
               <h3 className="text-2xl font-bold">
-                Paw<span className="text-[#b87d5e]">Haven</span>
+                Paw<span className="text-[#b87d5e]">Heaven</span>
               </h3>
             </div>
             

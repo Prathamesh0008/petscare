@@ -2,8 +2,9 @@
 'use client';
 
 import { useState } from 'react';
-import { FaExclamationTriangle, FaTimes, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
+import { FaExclamationTriangle, FaTimes, FaPhoneAlt, FaWhatsapp, FaAmbulance, FaHeartbeat, FaShieldAlt } from 'react-icons/fa';
 import Link from 'next/link';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function EmergencyBanner() {
   const [isVisible, setIsVisible] = useState(true);
@@ -11,139 +12,111 @@ export default function EmergencyBanner() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 right-4 z-50 animate-bounce-slow">
-      <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-2xl shadow-2xl p-6 max-w-sm">
-        <div className="flex justify-between items-start mb-4">
-          <div className="flex items-center gap-3">
-            <FaExclamationTriangle className="text-2xl" />
-            <h3 className="text-xl font-bold">Emergency Rescue</h3>
-          </div>
-          <button
-            onClick={() => setIsVisible(false)}
-            className="text-white/80 hover:text-white text-lg"
-            aria-label="Close banner"
-          >
-            <FaTimes />
-          </button>
-        </div>
-        
-        <p className="mb-6">
-          Found an injured or distressed animal? Contact us immediately for emergency rescue.
-        </p>
-        
-        <div className="space-y-3">
-          <a
-            href="tel:+919876543210"
-            className="flex items-center justify-between bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors"
-          >
-            <div className="flex items-center gap-3">
-              <FaPhoneAlt />
-              <span>Emergency Phone</span>
-            </div>
-            <span className="font-bold">+91 98765 43210</span>
-          </a>
+    <AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 20, scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+        className="fixed bottom-3 sm:bottom-4 md:bottom-5 right-3 sm:right-4 md:right-5 left-3 sm:left-auto z-50 max-w-full sm:max-w-sm md:max-w-md lg:max-w-sm"
+      >
+        <div className="relative">
+          {/* Animated pulse effect */}
+          <div className="absolute -inset-1 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] rounded-2xl opacity-20 blur-lg animate-pulse"></div>
           
-          <a
-            href="https://wa.me/919876543210"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center justify-between bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors"
-          >
-            <div className="flex items-center gap-3">
-              <FaWhatsapp />
-              <span>WhatsApp</span>
+          <div className="relative bg-white border-2 border-[#b87d5e]/30 rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
+            {/* Top accent bar */}
+            <div className="h-2 bg-gradient-to-r from-[#b87d5e] via-[#2c4a3e] to-[#b87d5e]"></div>
+            
+            <div className="p-4 sm:p-5 md:p-6">
+              {/* Header */}
+              <div className="flex justify-between items-start mb-3 sm:mb-4">
+                <div className="flex items-center gap-2 sm:gap-3">
+                  <div className="relative">
+                    <div className="absolute inset-0 bg-[#b87d5e] rounded-full blur-md opacity-50 animate-ping"></div>
+                    <div className="relative w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-full flex items-center justify-center">
+                      <FaAmbulance className="text-white text-sm sm:text-base md:text-lg" />
+                    </div>
+                  </div>
+                  <div>
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900">Emergency Rescue</h3>
+                    <p className="text-xs sm:text-sm text-gray-600">24/7 Animal Emergency Response</p>
+                  </div>
+                </div>
+                <button
+                  onClick={() => setIsVisible(false)}
+                  className="text-gray-400 hover:text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg p-1.5 transition-colors"
+                  aria-label="Close banner"
+                >
+                  <FaTimes className="text-xs sm:text-sm" />
+                </button>
+              </div>
+              
+              {/* Emergency Alert */}
+              <div className="bg-gradient-to-r from-[#b87d5e]/5 to-[#2c4a3e]/5 rounded-lg p-3 sm:p-4 mb-4 sm:mb-5 border border-[#b87d5e]/20">
+                <div className="flex items-start gap-2 sm:gap-3">
+                  <FaHeartbeat className="text-[#b87d5e] text-base sm:text-lg flex-shrink-0 mt-0.5" />
+                  <p className="text-xs sm:text-sm text-gray-700 leading-relaxed">
+                    Found an injured or distressed animal? Our emergency team is ready 24/7 for immediate rescue and medical attention.
+                  </p>
+                </div>
+              </div>
+              
+              {/* Contact Buttons */}
+              <div className="space-y-2 sm:space-y-3">
+                <a
+                  href="tel:+919876543210"
+                  className="group flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2 xs:gap-3 bg-gradient-to-r from-[#b87d5e]/10 to-[#2c4a3e]/10 hover:from-[#b87d5e]/20 hover:to-[#2c4a3e]/20 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-[#b87d5e]/20 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-full flex items-center justify-center">
+                      <FaPhoneAlt className="text-white text-[10px] sm:text-xs" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-gray-700">Emergency Hotline</span>
+                  </div>
+                  <span className="text-sm sm:text-base font-bold text-[#b87d5e] group-hover:text-[#2c4a3e] transition-colors pl-8 xs:pl-0">
+                    +91 98765 43210
+                  </span>
+                </a>
+                
+                <a
+                  href="https://wa.me/919876543210"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col xs:flex-row xs:items-center xs:justify-between gap-2 xs:gap-3 bg-gradient-to-r from-[#2c4a3e]/10 to-[#b87d5e]/10 hover:from-[#2c4a3e]/20 hover:to-[#b87d5e]/20 p-3 sm:p-4 rounded-lg sm:rounded-xl border border-[#2c4a3e]/20 transition-all duration-300 hover:scale-[1.02]"
+                >
+                  <div className="flex items-center gap-2 sm:gap-3">
+                    <div className="w-6 h-6 sm:w-7 sm:h-7 bg-gradient-to-br from-[#2c4a3e] to-[#b87d5e] rounded-full flex items-center justify-center">
+                      <FaWhatsapp className="text-white text-[10px] sm:text-xs" />
+                    </div>
+                    <span className="text-xs sm:text-sm font-medium text-gray-700">WhatsApp Support</span>
+                  </div>
+                  <span className="text-sm sm:text-base font-bold text-[#2c4a3e] group-hover:text-[#b87d5e] transition-colors pl-8 xs:pl-0">
+                    Send Message
+                  </span>
+                </a>
+              </div>
+              
+              {/* Trust Badge */}
+              <div className="mt-4 sm:mt-5 pt-4 sm:pt-5 border-t border-gray-200">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <FaShieldAlt className="text-[#b87d5e] text-xs sm:text-sm" />
+                    <span className="text-[10px] sm:text-xs text-gray-500">Verified Emergency Response</span>
+                  </div>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center gap-1 text-[#b87d5e] hover:text-[#2c4a3e] font-medium text-xs sm:text-sm transition-colors group"
+                  >
+                    <span>All Contacts</span>
+                    <span className="text-sm group-hover:translate-x-1 transition-transform">→</span>
+                  </Link>
+                </div>
+              </div>
             </div>
-            <span className="font-bold">Message Now</span>
-          </a>
+          </div>
         </div>
-        
-        <div className="mt-6 pt-6 border-t border-white/20">
-          <Link
-            href="/contact"
-            className="block w-full bg-white text-red-600 font-bold py-3 px-6 rounded-xl text-center hover:bg-gray-100 transition-colors"
-          >
-            View All Contacts
-          </Link>
-        </div>
-      </div>
-    </div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
-
-
-
-
-
-
-
-// //components\EmergencyBanner.tsx
-// 'use client';
-
-// import { useState } from 'react';
-// import { FaExclamationTriangle, FaTimes, FaPhoneAlt, FaWhatsapp } from 'react-icons/fa';
-// import Link from 'next/link';
-
-// export default function EmergencyBanner() {
-//   const [isVisible, setIsVisible] = useState(true);
-
-//   if (!isVisible) return null;
-
-//   return (
-//     <div className="fixed bottom-4 right-4 z-50 animate-bounce-slow">
-//       <div className="bg-gradient-to-r from-red-500 to-red-600 text-white rounded-2xl shadow-2xl p-6 max-w-sm">
-//         <div className="flex justify-between items-start mb-4">
-//           <div className="flex items-center gap-3">
-//             <FaExclamationTriangle className="text-2xl" />
-//             <h3 className="text-xl font-bold">Emergency Rescue</h3>
-//           </div>
-//           <button
-//             onClick={() => setIsVisible(false)}
-//             className="text-white/80 hover:text-white text-lg"
-//             aria-label="Close banner"
-//           >
-//             <FaTimes />
-//           </button>
-//         </div>
-        
-//         <p className="mb-6">
-//           Found an injured or distressed animal? Contact us immediately for emergency rescue.
-//         </p>
-        
-//         <div className="space-y-3">
-//           <a
-//             href="tel:+919876543210"
-//             className="flex items-center justify-between bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors"
-//           >
-//             <div className="flex items-center gap-3">
-//               <FaPhoneAlt />
-//               <span>Emergency Phone</span>
-//             </div>
-//             <span className="font-bold">+91 98765 43210</span>
-//           </a>
-          
-//           <a
-//             href="https://wa.me/919876543210"
-//             target="_blank"
-//             rel="noopener noreferrer"
-//             className="flex items-center justify-between bg-white/20 hover:bg-white/30 p-4 rounded-xl transition-colors"
-//           >
-//             <div className="flex items-center gap-3">
-//               <FaWhatsapp />
-//               <span>WhatsApp</span>
-//             </div>
-//             <span className="font-bold">Message Now</span>
-//           </a>
-//         </div>
-        
-//         <div className="mt-6 pt-6 border-t border-white/20">
-//           <Link
-//             href="/contact"
-//             className="block w-full bg-white text-red-600 font-bold py-3 px-6 rounded-xl text-center hover:bg-gray-100 transition-colors"
-//           >
-//             View All Contacts
-//           </Link>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }

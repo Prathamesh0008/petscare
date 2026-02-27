@@ -44,10 +44,27 @@ import {
 export default function HomePage() {
   const [isIntroComplete, setIsIntroComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-
+const [openIndex, setOpenIndex] = useState<number | null>(null);  
   const urgentAnimals = getUrgentAnimals();
   const availableAnimals = getAvailableAnimals().slice(0, 6);
+const [formData, setFormData] = useState({
+  firstName: "",
+  lastName: "",
+  email: "",
+  message: "",
+  subject: "",
+  terms: false,
+});
 
+const [errors, setErrors] = useState({});
+const handleChange = (e: any) => {
+  const { name, value, type, checked } = e.target;
+
+  setFormData((prev) => ({
+    ...prev,
+    [name]: type === "checkbox" ? checked : value,
+  }));
+};
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
     return () => clearTimeout(timer);
@@ -126,15 +143,31 @@ export default function HomePage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center px-4">
         <div className="text-center">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-amber-500 mx-auto mb-4"></div>
-          <p className="text-gray-600">Loading PawHaven...</p>
+          <div className="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-t-2 border-b-2 border-amber-500 mx-auto mb-4"></div>
+          <p className="text-gray-600 text-sm sm:text-base">Loading PawHeaven...</p>
         </div>
       </div>
     );
   }
+const handleSubmit = (e: any) => {
+  e.preventDefault();
 
+  if (
+    !formData.firstName ||
+    !formData.lastName ||
+    !formData.email ||
+    !formData.message ||
+    !formData.subject ||
+    !formData.terms
+  ) {
+    alert("Please fill all fields and accept terms.");
+    return;
+  }
+
+  alert("Message sent successfully!");
+};
   return (
     <>
       <WebsiteIntro onIntroComplete={handleIntroComplete} />
@@ -142,10 +175,10 @@ export default function HomePage() {
       <div className={`transition-all duration-500 ${isIntroComplete ? 'opacity-100' : 'opacity-0'}`}>
         <Hero />
         
-  {/* Quick Actions Bar */}
+        {/* Quick Actions Bar - Enhanced Desktop Size */}
 <div className="bg-[#2c4a3e]">
-  <div className="container mx-auto px-4">
-    <div className="flex flex-wrap justify-center gap-4 py-6">
+  <div className="container mx-auto px-4 py-6 sm:py-8 lg:py-10">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
       {[
         { icon: <FaPaw />, label: 'Find a Pet', link: '/matchmaker' },
         { icon: <FaCalendarAlt />, label: 'Book Visit', link: '/visit/book' },
@@ -156,902 +189,952 @@ export default function HomePage() {
         <Link
           key={index}
           href={action.link}
-          className="group relative px-6 py-3 rounded-lg font-medium flex items-center gap-3 transition-all duration-300 text-sm bg-white text-[#2c4a3e] hover:bg-[#f5f7f0] shadow-sm hover:shadow-md"
+          className="group relative 
+                     py-4 sm:py-5 lg:py-7 
+                     rounded-xl 
+                     font-semibold 
+                     flex flex-col items-center justify-center gap-2 
+                     transition-all duration-300 
+                     bg-white text-[#2c4a3e] 
+                     hover:bg-[#f5f7f0] 
+                     shadow-md hover:shadow-xl"
         >
-          <span className="relative z-10">{action.icon}</span>
-          <span className="relative z-10">{action.label}</span>
-          <FaArrowRight className="relative z-10 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300" />
+          {/* Icon */}
+          <span className="text-xl sm:text-2xl lg:text-3xl group-hover:scale-110 transition-transform duration-300">
+            {action.icon}
+          </span>
+
+          {/* Label */}
+          <span className="text-sm sm:text-base lg:text-lg">
+            {action.label}
+          </span>
+
+          {/* Arrow */}
+          <FaArrowRight className="absolute bottom-3 right-3 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 hidden lg:block" />
         </Link>
       ))}
     </div>
   </div>
 </div>
 
-        <div className="container mx-auto px-4 py-16">
+        <div className="container mx-auto px-4 py-8 sm:py-12 md:py-16">
           {/* Live Stats */}
-          <div className="mb-20">
+          <div className="mb-12 sm:mb-16 md:mb-20">
             <LiveStats />
           </div>
 
-       {/* How It Works Section */}
-<div className="mb-24">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.6 }}
-    className="text-center mb-16"
-  >
-    <span className="inline-block px-4 py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-sm mb-4">
-      Simple Process
-    </span>
-    <h2 className="text-4xl md:text-5xl font-bold text-[#2c4a3e] mb-4">
-      How It Works
-    </h2>
-    <p className="text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto">
-      Your journey to finding a loving companion in three simple steps
-    </p>
-  </motion.div>
-  
-  <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-    {/* Step 1 */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.1 }}
-      className="relative group"
-    >
-      <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
-        {/* Decorative Background */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        {/* Step Number */}
-        <div className="relative">
-          <div className="w-20 h-20 bg-[#b87d5e]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <span className="text-3xl font-bold text-[#b87d5e]">1</span>
+          {/* How It Works Section */}
+          <div className="mb-16 sm:mb-20 md:mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-8 sm:mb-12 md:mb-16"
+            >
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+                Simple Process
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-4">
+                How It Works
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
+                Your journey to finding a loving companion in three simple steps
+              </p>
+            </motion.div>
+            
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-5xl mx-auto">
+              {/* Step 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="relative group"
+              >
+                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
+                  <div className="relative">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#b87d5e]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl sm:text-3xl font-bold text-[#b87d5e]">1</span>
+                    </div>
+                    
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#2c4a3e] mb-2 sm:mb-3">
+                      Find Your Pet
+                    </h3>
+                    <p className="text-sm sm:text-base text-[#2c4a3e]/70 leading-relaxed">
+                      Browse through our available animals and find your perfect match.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Step 2 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="relative group"
+              >
+                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
+                  <div className="relative">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#b87d5e]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl sm:text-3xl font-bold text-[#b87d5e]">2</span>
+                    </div>
+                    
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#2c4a3e] mb-2 sm:mb-3">
+                      Have A Meeting
+                    </h3>
+                    <p className="text-sm sm:text-base text-[#2c4a3e]/70 leading-relaxed">
+                      Schedule a visit to meet your potential new family member in person.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Step 3 */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="relative group sm:col-span-2 lg:col-span-1"
+              >
+                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
+                  <div className="relative">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#b87d5e]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <span className="text-2xl sm:text-3xl font-bold text-[#b87d5e]">3</span>
+                    </div>
+                    
+                    <h3 className="text-xl sm:text-2xl font-bold text-[#2c4a3e] mb-2 sm:mb-3">
+                      Take Them Home
+                    </h3>
+                    <p className="text-sm sm:text-base text-[#2c4a3e]/70 leading-relaxed">
+                      Complete the adoption process and welcome your new friend home.
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Bottom CTA - Working link */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
+              className="text-center mt-8 sm:mt-10 md:mt-12"
+            >
+              <Link href="/animals">
+                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#2c4a3e] text-white rounded-lg font-semibold hover:bg-[#1e352b] transition-colors group text-sm sm:text-base cursor-pointer">
+                  <span>Start Your Journey</span>
+                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+            </motion.div>
           </div>
-          
-          {/* Content */}
-          <h3 className="text-2xl font-bold text-[#2c4a3e] mb-3">
-            Find Your Pet
-          </h3>
-          <p className="text-[#2c4a3e]/70 leading-relaxed">
-            Browse through our available animals and find your perfect match. 
-            Each profile includes photos, personality traits, and medical history.
-          </p>
-          
-          {/* Decorative Icon */}
-          <div className="absolute top-0 right-0 text-6xl text-[#b87d5e]/5 font-bold">
-            01
-          </div>
-        </div>
-      </div>
-      
-      {/* Connector Line (hidden on mobile) */}
-      <div className="hidden md:block absolute top-1/3 -right-4 w-8 h-0.5 bg-[#b87d5e]/30" />
-    </motion.div>
-    
-    {/* Step 2 */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="relative group"
-    >
-      <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        <div className="relative">
-          <div className="w-20 h-20 bg-[#b87d5e]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <span className="text-3xl font-bold text-[#b87d5e]">2</span>
-          </div>
-          
-          <h3 className="text-2xl font-bold text-[#2c4a3e] mb-3">
-            Have A Meeting
-          </h3>
-          <p className="text-[#2c4a3e]/70 leading-relaxed">
-            Schedule a visit to meet your potential new family member in person. 
-            Get to know their personality and see if you're a perfect match.
-          </p>
-          
-          <div className="absolute top-0 right-0 text-6xl text-[#b87d5e]/5 font-bold">
-            02
-          </div>
-        </div>
-      </div>
-      
-      <div className="hidden md:block absolute top-1/3 -right-4 w-8 h-0.5 bg-[#b87d5e]/30" />
-    </motion.div>
-    
-    {/* Step 3 */}
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.3 }}
-      className="relative group"
-    >
-      <div className="bg-white rounded-2xl p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-transparent rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        
-        <div className="relative">
-          <div className="w-20 h-20 bg-[#b87d5e]/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-            <span className="text-3xl font-bold text-[#b87d5e]">3</span>
-          </div>
-          
-          <h3 className="text-2xl font-bold text-[#2c4a3e] mb-3">
-            Take Them Home
-          </h3>
-          <p className="text-[#2c4a3e]/70 leading-relaxed">
-            Complete the adoption process and welcome your new friend home. 
-            We provide ongoing support to ensure a smooth transition.
-          </p>
-          
-          <div className="absolute top-0 right-0 text-6xl text-[#b87d5e]/5 font-bold">
-            03
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  </div>
-  
-  {/* Bottom CTA */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: 0.4 }}
-    className="text-center mt-12"
-  >
-    <Link href="/animals">
-      <button className="inline-flex items-center gap-2 px-8 py-4 bg-[#2c4a3e] text-white rounded-lg font-semibold hover:bg-[#1e352b] transition-colors group">
-        <span>Start Your Journey</span>
-        <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-      </button>
-    </Link>
-  </motion.div>
-</div>
+
           {/* Email Subscription Section */}
-          <div className="mb-24">
+          <div className="mb-12 sm:mb-16 md:mb-24">
             <EmailSubscription />
           </div>
 
-         {/* Featured Pets Section */}
-<div className="mb-24">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="text-center mb-16"
-  >
-    <span className="inline-block px-4 py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-sm mb-4">
-      Meet Our Friends
-    </span>
-    <h2 className="text-4xl md:text-5xl font-bold text-[#2c4a3e] mb-4">
-      Featured Pets
-    </h2>
-    <p className="text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto">
-      Each of our rescues has a unique personality waiting to shine in a loving home
-    </p>
-  </motion.div>
-  
-  {/* Top Row - Two Cards */}
-  <div className="grid md:grid-cols-2 gap-8 mb-8">
-    {/* Card 1 - Ninja Warrior */}
+          {/* Featured Pets Section */}
+          <div className="mb-16 sm:mb-20 md:mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 sm:mb-12 md:mb-16"
+            >
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+                Meet Our Friends
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-4">
+                Featured Pets
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
+                Each of our rescues has a unique personality waiting to shine in a loving home
+              </p>
+            </motion.div>
+            
+            {/* Top Row - Cards with working links */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-4 sm:mb-6 md:mb-8">
+              {/* Card 1 - Ninja Warrior */}
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="group relative"
+              >
+                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=80" 
+                    alt="Dog - Ninja Warrior"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2c4a3e] via-[#2c4a3e]/50 to-transparent opacity-80" />
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 transform group-hover:translate-y-[-5px] md:group-hover:translate-y-[-10px] transition-transform duration-300">
+                    <div className="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
+                      <span className="bg-[#b87d5e] text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm font-semibold">
+                        Featured
+                      </span>
+                      <span className="bg-white/20 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm">
+                        Male • 2 years
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 flex flex-wrap items-center gap-2">
+                      Ninja Warrior
+                      <span className="text-xs sm:text-sm bg-white/20 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">Dog</span>
+                    </h3>
+                    
+                    <p className="text-white/90 text-xs sm:text-sm md:text-base mb-2 sm:mb-3 md:mb-4 line-clamp-2 hidden sm:block">
+                      This fun and energetic dog is always ready for an adventure.
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
+                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Energetic</span>
+                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Playful</span>
+                    </div>
+                    
+                    <Link href="/animals/ninja-warrior">
+                      <button className="px-4 cursor-pointer sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-semibold bg-white text-[#2c4a3e] hover:bg-[#b87d5e] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
+                        Meet Ninja
+                        <FaArrowRight className="text-xs" />
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Card 2 - Madam Mimi */}
+              <motion.div
+                initial={{ opacity: 0, x: 30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5 }}
+                className="group relative"
+              >
+                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-xl">
+                  <img 
+                    src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&auto=format&fit=crop&q=80" 
+                    alt="CAT - Madam Mimi"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#2c4a3e] via-[#2c4a3e]/50 to-transparent opacity-80" />
+                  
+                  <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 transform group-hover:translate-y-[-5px] md:group-hover:translate-y-[-10px] transition-transform duration-300">
+                    <div className="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
+                      <span className="bg-[#b87d5e] text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm font-semibold">
+                        Featured
+                      </span>
+                      <span className="bg-white/20 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm">
+                        Female • 1.5 years
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-white text-xl sm:text-2xl md:text-3xl font-bold mb-1 sm:mb-2 flex flex-wrap items-center gap-2">
+                      Madam Mimi
+                      <span className="text-xs sm:text-sm bg-white/20 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full">Cat</span>
+                    </h3>
+                    
+                    <p className="text-white/90 text-xs sm:text-sm md:text-base mb-2 sm:mb-3 md:mb-4 line-clamp-2 hidden sm:block">
+                      This elegant and curious cat loves to explore every corner.
+                    </p>
+                    
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
+                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Elegant</span>
+                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Curious</span>
+                    </div>
+                    
+                    <Link href="/animals/madam-mimi">
+                      <button className="px-4 cursor-pointer sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-semibold bg-white text-[#2c4a3e] hover:bg-[#b87d5e] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
+                        Meet Mimi
+                        <FaArrowRight className="text-xs" />
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+            
+            {/* Bottom Row - Featured Large Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="group relative mb-6 sm:mb-8"
+            >
+              <div className="relative h-[350px] sm:h-[450px] md:h-[500px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-xl">
+                <img 
+                  src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&auto=format&fit=crop&q=80" 
+                  alt="DOG - T-Rex"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+                
+                <div className="absolute inset-0 bg-gradient-to-t from-[#2c4a3e] via-[#2c4a3e]/60 to-transparent" />
+                
+                <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-10 transform group-hover:translate-y-[-5px] md:group-hover:translate-y-[-10px] transition-transform duration-300">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
+                    <span className="bg-[#b87d5e] text-white px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-2 rounded-full text-xs sm:text-sm font-semibold">
+                      ❤️ Urgent: Needs Home
+                    </span>
+                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-2 rounded-full text-xs sm:text-sm">
+                      Male • 2 years
+                    </span>
+                  </div>
+                  
+                  <h3 className="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-1 sm:mb-2 md:mb-3 flex flex-wrap items-center gap-2 sm:gap-3">
+                    T-Rex
+                    <span className="text-xs sm:text-sm md:text-base bg-white/20 px-2 sm:px-3 md:px-4 py-0.5 sm:py-1 md:py-1.5 rounded-full">Dog</span>
+                  </h3>
+                  
+                  <p className="text-white/90 text-sm sm:text-base md:text-lg mb-3 sm:mb-4 md:mb-6 max-w-2xl hidden sm:block">
+                    He may be a shy pup, but with time and kindness, T-Rex will slowly come out of his shell.
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-1 sm:gap-2 md:gap-3 mb-3 sm:mb-4 md:mb-6">
+                    <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full text-xs border border-white/20">
+                      Shy but loving
+                    </span>
+                    <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full text-xs border border-white/20">
+                      Loyal companion
+                    </span>
+                  </div>
+                  
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4">
+                    <Link href="/animals/t-rex">
+                      <button className="bg-[#b87d5e] cursor-pointer text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold hover:bg-[#9e6a4f] transition-all duration-300 inline-flex items-center gap-2 shadow-xl text-sm sm:text-base">
+                        <FaHeart className="text-sm sm:text-base" />
+                        <span className="hidden xs:inline">Meet T-Rex</span>
+                        <FaArrowRight className="text-sm sm:text-base" />
+                      </button>
+                    </Link>
+                    
+                    <Link href="/animals" className="text-white/80 hover:text-white transition-colors underline underline-offset-4 text-xs sm:text-sm">
+                      View all animals
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            
+            {/* View All Link - Working */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="text-center"
+            >
+              <Link href="/animals">
+                <button className="inline-flex cursor-pointer items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg sm:rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 group text-sm sm:text-base">
+                  <span>Browse All Pets</span>
+                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+            </motion.div>
+          </div>
+
+         {/* FAQ Section with Staggered Animation */}
+{/* FAQ Section with Staggered Animation */}
+<div className="mt-16 sm:mt-20 md:mt-24">
+  <div className="space-y-4 sm:space-y-5 md:space-y-6 max-w-4xl mx-auto px-4">
+  {faqs.map((faq, index) => {
+    const isOpen = openIndex === index;
+
+    return (
+      <motion.div
+        key={index}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+      >
+        <button
+          onClick={() =>
+            setOpenIndex(isOpen ? null : index)
+          }
+          className="w-full px-4 sm:px-5 md:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200 group"
+        >
+          <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#2c4a3e] text-left">
+            {faq.question}
+          </h3>
+
+          <motion.div
+            animate={{ rotate: isOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center"
+          >
+            <svg
+              className="w-4 h-4 text-[#b87d5e]"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </motion.div>
+        </button>
+
+        <motion.div
+          initial={false}
+          animate={{
+            height: isOpen ? "auto" : 0,
+            opacity: isOpen ? 1 : 0,
+          }}
+          transition={{ duration: 0.3 }}
+          className="overflow-hidden"
+        >
+          <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6">
+            <p className="text-sm sm:text-base text-gray-600">
+              {faq.answer}
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+    );
+  })}
+</div>
+</div>
+
+
+
+        {/* Contact Form Section - Clean & Modern */}
+<div className="mt-16 sm:mt-20 md:mt-24 mb-16 sm:mb-20 md:mb-24">
+  {/* Header */}
+  <div className="text-center mb-10 sm:mb-12">
     <motion.div
-      initial={{ opacity: 0, x: -30 }}
-      whileInView={{ opacity: 1, x: 0 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
-      className="group relative"
     >
-      <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-xl">
-        {/* Image */}
-        <img 
-          src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=80" 
-          alt="Dog - Ninja Warrior"
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-        />
-        
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2c4a3e] via-[#2c4a3e]/50 to-transparent opacity-80" />
-        
-        {/* Content */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 transform group-hover:translate-y-[-10px] transition-transform duration-300">
-          {/* Badge */}
-          <div className="flex items-center gap-2 mb-3">
-            <span className="bg-[#b87d5e] text-white px-4 py-1.5 rounded-full text-sm font-semibold">
-              Featured
-            </span>
-            <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-sm">
-              Male • 2 years
-            </span>
-          </div>
-          
-          <h3 className="text-white text-3xl font-bold mb-2 flex items-center gap-2">
-            Ninja Warrior
-            <span className="text-sm bg-white/20 px-3 py-1 rounded-full">Dog</span>
-          </h3>
-          
-          <p className="text-white/90 mb-4 line-clamp-2">
-            This fun and energetic dog is always ready for an adventure, from chasing toys to running around the house with endless curiosity.
-          </p>
-          
-          {/* Personality Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Energetic</span>
-            <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Playful</span>
-            <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Adventurous</span>
-          </div>
-          
-          {/* View Details Button */}
-          <Link href="/animals/ninja-warrior">
-            <button className=" px-6 py-3 rounded-lg font-semibold bg-white text-[#2c4a3e] hover:bg-[#b87d5e] hover:text-white transition-all duration-300 inline-flex items-center gap-2">
-              Meet Ninja
-              <FaArrowRight className="text-sm" />
-            </button>
-          </Link>
-        </div>
-      </div>
-    </motion.div>
-    
-    {/* Card 2 - Madam Mimi */}
-    <motion.div
-      initial={{ opacity: 0, x: 30 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      className="group relative"
-    >
-      <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-xl">
-        <img 
-          src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&auto=format&fit=crop&q=80" 
-          alt="CAT - Madam Mimi"
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-        />
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-[#2c4a3e] via-[#2c4a3e]/50 to-transparent opacity-80" />
-        
-        <div className="absolute bottom-0 left-0 right-0 p-8 transform group-hover:translate-y-[-10px] transition-transform duration-300">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="bg-[#b87d5e] text-white px-4 py-1.5 rounded-full text-sm font-semibold">
-              Featured
-            </span>
-            <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-1.5 rounded-full text-sm">
-              Female • 1.5 years
-            </span>
-          </div>
-          
-          <h3 className="text-white text-3xl font-bold mb-2 flex items-center gap-2">
-            Madam Mimi
-            <span className="text-sm bg-white/20 px-3 py-1 rounded-full">Cat</span>
-          </h3>
-          
-          <p className="text-white/90 mb-4 line-clamp-2">
-            This elegant and curious cat loves to explore every corner of her environment and will charm you with her playful antics.
-          </p>
-          
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Elegant</span>
-            <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Curious</span>
-            <span className="bg-white/10 backdrop-blur-sm text-white px-3 py-1 rounded-full text-sm">Playful</span>
-          </div>
-          
-          <Link href="/animals/madam-mimi">
-            <button className="bg-white text-[#2c4a3e] px-6 py-3 rounded-lg font-semibold hover:bg-[#b87d5e] hover:text-white transition-all duration-300 inline-flex items-center gap-2">
-              Meet Mimi
-              <FaArrowRight className="text-sm" />
-            </button>
-          </Link>
-        </div>
-      </div>
+      <span className="inline-block px-3 py-1 bg-[#b87d5e]/10 text-[#b87d5e] rounded-full text-xs font-medium mb-4">
+        Contact Us
+      </span>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2c4a3e] mb-3">
+        Get In Touch
+      </h2>
+      <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
+        Have questions about adoption, volunteering, or donations? We're here to help!
+      </p>
     </motion.div>
   </div>
-  
-  {/* Bottom Row - Featured Large Card */}
+
+  {/* Form Container */}
   <motion.div
     initial={{ opacity: 0, y: 30 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.5, delay: 0.2 }}
-    className="group relative mb-8"
+    transition={{ duration: 0.6, delay: 0.2 }}
+    className="max-w-3xl mx-auto px-4"
   >
-    <div className="relative h-[500px] rounded-3xl overflow-hidden shadow-xl">
-      <img 
-        src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&auto=format&fit=crop&q=80" 
-        alt="DOG - T-Rex"
-        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-      />
+    <form onSubmit={handleSubmit} className="space-y-5">
       
-      <div className="absolute inset-0 bg-gradient-to-t from-[#2c4a3e] via-[#2c4a3e]/60 to-transparent" />
-      
-      <div className="absolute bottom-0 left-0 right-0 p-10 transform group-hover:translate-y-[-10px] transition-transform duration-300">
-        <div className="flex items-center gap-3 mb-4">
-          <span className="bg-[#b87d5e] text-white px-5 py-2 rounded-full text-sm font-semibold">
-            ❤️ Urgent: Needs Home
-          </span>
-          <span className="bg-white/20 backdrop-blur-sm text-white px-5 py-2 rounded-full text-sm">
-            Male • 2 years
-          </span>
+      {/* Name Row - Clean Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="space-y-1.5">
+          <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
+            First Name
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            placeholder="John"
+            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
+                     focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                     transition-all duration-200 text-gray-700 placeholder-gray-400"
+          />
         </div>
-        
-        <h3 className="text-white text-4xl md:text-5xl font-bold mb-3 flex items-center gap-3">
-          T-Rex
-          <span className="text-base bg-white/20 px-4 py-1.5 rounded-full">Dog</span>
-        </h3>
-        
-        <p className="text-white/90 text-lg mb-6 max-w-2xl">
-          He may be a shy pup, but with time and kindness, T-Rex will slowly come out of his shell 
-          and reward you with a lifetime of loyalty and love.
-        </p>
-        
-        <div className="flex flex-wrap gap-3 mb-6">
-          <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm border border-white/20">
-            Shy but loving
-          </span>
-          <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm border border-white/20">
-            Loyal companion
-          </span>
-          <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm border border-white/20">
-            Needs patience
-          </span>
-          <span className="bg-white/10 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm border border-white/20">
-            Good with kids
-          </span>
-        </div>
-        
-        <div className="flex items-center gap-4">
-          <Link href="/animals/t-rex">
-            <button className="bg-[#b87d5e] text-white px-8 py-4 rounded-xl font-semibold hover:bg-[#9e6a4f] transition-all duration-300 inline-flex items-center gap-2 shadow-xl">
-              <FaHeart />
-              Meet T-Rex
-              <FaArrowRight />
-            </button>
-          </Link>
-          
-          <Link href="/animals" className="text-white/80 hover:text-white transition-colors underline underline-offset-4">
-            View all animals
-          </Link>
+
+        <div className="space-y-1.5">
+          <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
+            Last Name
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            placeholder="Doe"
+            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
+                     focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                     transition-all duration-200 text-gray-700 placeholder-gray-400"
+          />
         </div>
       </div>
+
+      {/* Email Field */}
+      <div className="space-y-1.5">
+        <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
+          Email Address
+        </label>
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="john.doe@example.com"
+          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
+                   focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                   transition-all duration-200 text-gray-700 placeholder-gray-400"
+        />
+      </div>
+
+      {/* Subject Field */}
+      <div className="space-y-1.5">
+        <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
+          Subject
+        </label>
+        <select
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
+                   focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                   transition-all duration-200 text-gray-700 appearance-none
+                   bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23666%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[center_right_1rem] bg-[length:16px]"
+        >
+          <option value="" disabled>Select a subject</option>
+          <option value="adoption">🐾 Adoption Inquiry</option>
+          <option value="volunteer">🤝 Volunteer Opportunities</option>
+          <option value="donation">🎁 Donation Support</option>
+          <option value="general">📝 General Question</option>
+        </select>
+      </div>
+
+      {/* Message Field */}
+      <div className="space-y-1.5">
+        <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
+          Your Message
+        </label>
+        <textarea
+          name="message"
+          value={formData.message}
+          onChange={handleChange}
+          rows={5}
+          placeholder="Tell us how we can help you..."
+          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
+                   focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                   transition-all duration-200 text-gray-700 placeholder-gray-400 resize-none"
+        />
+        <div className="text-right">
+          <span className="text-xs text-gray-400">
+            {formData.message.length}/500 characters
+          </span>
+        </div>
+      </div>
+
+      {/* Terms Checkbox */}
+      <div className="flex items-start gap-3 pt-2">
+        <div className="relative flex items-center h-5">
+          <input
+            type="checkbox"
+            name="terms"
+            checked={formData.terms}
+            onChange={handleChange}
+            className="w-4 h-4 border-2 border-gray-300 rounded 
+                     checked:bg-[#b87d5e] checked:border-[#b87d5e] 
+                     focus:ring-2 focus:ring-[#b87d5e]/20 focus:outline-none
+                     transition-all duration-200 cursor-pointer"
+          />
+        </div>
+        <label className="text-sm text-gray-600 leading-relaxed">
+          I agree to the{' '}
+          <button type="button" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium underline underline-offset-2 transition-colors">
+            terms and conditions
+          </button>
+          {' '}and{' '}
+          <button type="button" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium underline underline-offset-2 transition-colors">
+            privacy policy
+          </button>.
+        </label>
+      </div>
+
+      {/* Submit Button */}
+      <div className="pt-4">
+        <button
+          type="submit"
+          className="group relative w-full sm:w-auto px-8 py-3.5 bg-[#2c4a3e] text-white 
+                   font-semibold rounded-lg overflow-hidden transition-all duration-300
+                   hover:bg-[#1e352b] hover:shadow-lg hover:shadow-[#2c4a3e]/20
+                   focus:outline-none focus:ring-2 focus:ring-[#b87d5e] focus:ring-offset-2
+                   active:transform active:scale-[0.98]"
+        >
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            Send Message
+            <svg 
+              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </form>
+
+    {/* Alternative Contact Info */}
+    <div className="mt-8 pt-6 border-t border-gray-100">
+      <p className="text-xs text-center text-gray-500">
+        Prefer to talk? Call us at{' '}
+        <a href="tel:+1234567890" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium">
+          (123) 456-7890
+        </a>
+        {' '}or email{' '}
+        <a href="mailto:info@pawheaven.com" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium">
+          info@pawheaven.com
+        </a>
+      </p>
     </div>
   </motion.div>
-  
-  {/* View All Link */}
-  <motion.div
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.3 }}
-    className="text-center"
-  >
-    <Link href="/animals">
-      <button className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 group">
-        <span>Browse All Pets</span>
-        <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-      </button>
-    </Link>
-  </motion.div>
 </div>
-
-          {/* FAQ Section */}
-          <div className="mb-24">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#2c4a3e] mb-4">Frequent Ask Questions</h2>
-              <p className="text-lg text-[#2c4a3e] max-w-3xl mx-auto">We've gathered information to help make your experience as smooth as possible. If you don't find what you're looking for, don't hesitate to reach out to us directly.</p>
-            </div>
-            
-            <div className="space-y-6 max-w-4xl mx-auto">
-              {faqs.map((faq, index) => (
-                <div key={index} className="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
-                  <h3 className="text-xl font-bold text-gray-900 mb-3">{faq.question}</h3>
-                  <p className="text-gray-600">{faq.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Contact Form Section */}
-          <div className="mb-24">
-            <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold text-[#2c4a3e] mb-4">Get In Touch</h2>
-              <p className="text-lg text-[#2c4a3e] max-w-3xl mx-auto">If you have any further questions or would like to start your adoption process, please reach out to us with the form below:</p>
-            </div>
-            
-            <form className="space-y-6 max-w-3xl mx-auto">
-              <div className="grid md:grid-cols-2 gap-6">
-                <input 
-                  type="text" 
-                  placeholder="First Name" 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-                />
-                <input 
-                  type="text" 
-                  placeholder="Last Name" 
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-                />
-              </div>
-              
-              <input 
-                type="email" 
-                placeholder="John Smith@gmail.com" 
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-              />
-              
-              <textarea 
-                placeholder="I'm reaching out because..." 
-                rows={4}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500"
-              ></textarea>
-              
-              <div className="flex items-center gap-4">
-                <span className="text-gray-700">Subject</span>
-                <select className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500">
-                  <option>Adoption</option>
-                  <option>Volunteer</option>
-                  <option>Donation</option>
-                  <option>General Inquiry</option>
-                </select>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                <input type="checkbox" id="terms" className="w-5 h-5 text-amber-600" />
-                <label htmlFor="terms" className="text-gray-700">I agree with the terms and conditions.</label>
-              </div>
-              
-              <button className="w-full py-4 bg-amber-600 text-black font-semibold rounded-lg bg-white text-[#2c4a3e] hover:bg-[#b87d5e] hover:text-white transition-colors">
-                Send Message
-              </button>
-            </form>
-          </div>
-
           {/* Donation Progress */}
-          <div className="mb-20">
+          <div className="mb-12 sm:mb-16 md:mb-20">
             <DonationProgress />
           </div>
 
-        {/* Features Section */}
-<div className="mb-20">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="text-center mb-16"
-  >
-    <span className="inline-block px-4 py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-sm mb-4">
-      Innovative Technology
-    </span>
-    <h2 className="text-4xl md:text-5xl font-bold text-[#2c4a3e] mb-4">
-      Modern Adoption <span className="text-[#b87d5e]">Tools</span>
-    </h2>
-    <p className="text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto">
-      Leverage cutting-edge technology to find and connect with your perfect pet companion.
-    </p>
-  </motion.div>
-  
-  <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-    {features.map((feature, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-      >
-        <Link
-          href={feature.link}
-          className="group relative block h-full"
-        >
-          {/* Card Container */}
-          <div className="relative h-full bg-white rounded-3xl p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-2xl transition-all duration-500 overflow-hidden">
+          {/* Features Section */}
+          <div className="mb-12 sm:mb-16 md:mb-20">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center mb-8 sm:mb-12 md:mb-16"
+            >
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+                Innovative Technology
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-4">
+                Modern Adoption <span className="text-[#b87d5e]">Tools</span>
+              </h2>
+              <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
+                Leverage cutting-edge technology to find and connect with your perfect pet companion.
+              </p>
+            </motion.div>
             
-            {/* Background Gradient on Hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            {/* Decorative Corner */}
-            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-bl-[100px] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            
-            {/* Icon Container */}
-            <div className="relative mb-6">
-              <div className="absolute inset-0 bg-[#b87d5e] rounded-2xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
-              <div className="relative w-16 h-16 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-2xl flex items-center justify-center text-white text-2xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                {feature.icon}
-              </div>
-            </div>
-            
-            {/* Content */}
-            <h3 className="text-xl font-bold text-[#2c4a3e] mb-3 group-hover:text-[#b87d5e] transition-colors duration-300">
-              {feature.title}
-            </h3>
-            
-            <p className="text-[#2c4a3e]/70 text-sm leading-relaxed mb-6">
-              {feature.description}
-            </p>
-            
-            {/* Explore Link */}
-            <div className="inline-flex items-center gap-2 text-[#b87d5e] font-semibold text-sm group/link">
-              <span>Explore feature</span>
-              <div className="w-6 h-6 rounded-full bg-[#b87d5e]/10 flex items-center justify-center group-hover/link:bg-[#b87d5e] group-hover/link:translate-x-1 transition-all duration-300">
-                <FaArrowRight className="text-xs text-[#b87d5e] group-hover/link:text-white transition-colors duration-300" />
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+              {features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Link
+                    href={feature.link}
+                    className="group relative block h-full"
+                  >
+                    <div className="relative h-full bg-white rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-2xl transition-all duration-500">
+                      
+                      <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      
+                      <div className="relative mb-4 sm:mb-5 md:mb-6">
+                        <div className="absolute inset-0 bg-[#b87d5e] rounded-xl sm:rounded-2xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
+                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                          {feature.icon}
+                        </div>
+                      </div>
+                      
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#2c4a3e] mb-2 sm:mb-3 group-hover:text-[#b87d5e] transition-colors duration-300">
+                        {feature.title}
+                      </h3>
+                      
+                      <p className="text-xs sm:text-sm text-[#2c4a3e]/70 leading-relaxed mb-4 sm:mb-5 md:mb-6">
+                        {feature.description}
+                      </p>
+                      
+                      <div className="inline-flex items-center gap-1 sm:gap-2 text-[#b87d5e] font-semibold text-xs sm:text-sm group/link">
+                        <span>Explore feature</span>
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#b87d5e]/10 flex items-center justify-center group-hover/link:bg-[#b87d5e] group-hover/link:translate-x-1 transition-all duration-300">
+                          <FaArrowRight className="text-[10px] sm:text-xs text-[#b87d5e] group-hover/link:text-white transition-colors duration-300" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Feature Number (Decorative) */}
-            <div className="absolute bottom-4 right-4 text-5xl font-bold text-[#2c4a3e]/5 select-none">
-              {String(index + 1).padStart(2, '0')}
-            </div>
+            {/* Bottom CTA */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.5 }}
+              className="text-center mt-8 sm:mt-10 md:mt-12"
+            >
+              <Link href="/features">
+                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg sm:rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 group text-sm sm:text-base">
+                  <span>View All Features</span>
+                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+            </motion.div>
           </div>
-        </Link>
-      </motion.div>
-    ))}
-  </div>
 
-  {/* Bottom CTA */}
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.5 }}
-    className="text-center mt-12"
-  >
-    <Link href="/features">
-      <button className="inline-flex items-center gap-2 px-8 py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 group">
-        <span>View All Features</span>
-        <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-      </button>
-    </Link>
-  </motion.div>
-</div>
           {/* Statistics */}
-          <div className="mb-20">
+          <div className="mb-12 sm:mb-16 md:mb-20">
             <Statistics />
           </div>
 
-        {/* Success Stories */}
-<div className="mb-24">
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-12"
-  >
-    <div>
-      <div className="inline-flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
-          <FaStar className="text-lg text-[#b87d5e]" />
-        </div>
-        <span className="text-[#b87d5e] font-semibold uppercase tracking-wider text-sm">
-          Happy Endings
-        </span>
-      </div>
-      <h2 className="text-4xl md:text-5xl font-bold text-[#2c4a3e] mb-3">
-        Success <span className="text-[#b87d5e]">Stories</span>
-      </h2>
-      <p className="text-lg text-[#2c4a3e]/70 max-w-2xl">
-        Heartwarming tales of animals who found their forever homes and the families who love them.
-      </p>
-    </div>
-    
-    <Link href="/success-stories">
-      <button className="group inline-flex items-center gap-3 px-6 py-3 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300">
-        <span>View All Stories</span>
-        <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-      </button>
-    </Link>
-  </motion.div>
-  
-  <div className="grid md:grid-cols-3 gap-8">
-    {successStories.map((story, index) => (
-      <motion.div
-        key={index}
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
-      >
-        <Link href={story.link} className="group block h-full">
-          <div className="relative h-full bg-white rounded-3xl overflow-hidden shadow-lg border border-[#2c4a3e]/10 hover:shadow-2xl transition-all duration-500">
-            
-            {/* Image/Icon Section */}
-            <div className="relative h-48 overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#2c4a3e] to-[#1e352b] opacity-90" />
-              
-              {/* Decorative Pattern */}
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-[#b87d5e] rounded-full blur-2xl" />
-                <div className="absolute bottom-0 left-0 w-40 h-40 bg-white rounded-full blur-3xl" />
-              </div>
-              
-              {/* Icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-[#b87d5e] rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
-                  <div className="relative w-24 h-24 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-6xl text-white border-2 border-white/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                    {story.icon}
+          {/* Success Stories */}
+          <div className="mb-16 sm:mb-20 md:mb-24">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-10 md:mb-12"
+            >
+              <div>
+                <div className="inline-flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
+                    <FaStar className="text-sm sm:text-base md:text-lg text-[#b87d5e]" />
                   </div>
+                  <span className="text-[#b87d5e] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+                    Happy Endings
+                  </span>
                 </div>
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-3">
+                  Success <span className="text-[#b87d5e]">Stories</span>
+                </h2>
+                <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl">
+                  Heartwarming tales of animals who found their forever homes.
+                </p>
               </div>
-
-              {/* Date Badge */}
-              <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1 text-xs text-white border border-white/30">
-                {new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
-              </div>
-            </div>
+              
+              <Link href="/success-stories" className="hidden sm:block">
+                <button className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg sm:rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 text-xs sm:text-sm">
+                  <span>View All Stories</span>
+                  <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                </button>
+              </Link>
+            </motion.div>
             
-            {/* Content Section */}
-            <div className="p-8">
-              <h3 className="text-xl font-bold text-[#2c4a3e] mb-3 group-hover:text-[#b87d5e] transition-colors duration-300">
-                {story.title}
-              </h3>
-              
-              <p className="text-[#2c4a3e]/70 text-sm leading-relaxed mb-6">
-                {story.description}
-              </p>
-              
-              {/* Tags/Metadata */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                <span className="px-3 py-1 bg-[#b87d5e]/10 text-[#b87d5e] text-xs rounded-full">
-                  Adopted
-                </span>
-                <span className="px-3 py-1 bg-[#2c4a3e]/10 text-[#2c4a3e] text-xs rounded-full">
-                  Happy Ending
-                </span>
-              </div>
-              
-              {/* Read Story Link */}
-              <div className="inline-flex items-center gap-2 text-[#b87d5e] font-semibold text-sm group/link">
-                <span>Read their story</span>
-                <div className="w-6 h-6 rounded-full bg-[#b87d5e]/10 flex items-center justify-center group-hover/link:bg-[#b87d5e] group-hover/link:translate-x-1 transition-all duration-300">
-                  <FaArrowRight className="text-xs text-[#b87d5e] group-hover/link:text-white transition-colors duration-300" />
-                </div>
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
+              {successStories.map((story, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                >
+                  <Link href={story.link} className="group block h-full">
+                    <div className="relative h-full bg-white rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg border border-[#2c4a3e]/10 hover:shadow-2xl transition-all duration-500">
+                      
+                      <div className="relative h-36 sm:h-40 md:h-48 overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-br from-[#2c4a3e] to-[#1e352b] opacity-90" />
+                        
+                        <div className="absolute inset-0 opacity-10">
+                          <div className="absolute top-0 right-0 w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 bg-[#b87d5e] rounded-full blur-2xl" />
+                          <div className="absolute bottom-0 left-0 w-32 sm:w-36 md:w-40 h-32 sm:h-36 md:h-40 bg-white rounded-full blur-3xl" />
+                        </div>
+                        
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <div className="relative">
+                            <div className="absolute inset-0 bg-[#b87d5e] rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
+                            <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white border-2 border-white/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                              {story.icon}
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 bg-white/20 backdrop-blur-sm rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs text-white border border-white/30">
+                          {new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
+                        </div>
+                      </div>
+                      
+                      <div className="p-4 sm:p-5 md:p-6 lg:p-8">
+                        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-[#2c4a3e] mb-2 sm:mb-3 group-hover:text-[#b87d5e] transition-colors duration-300">
+                          {story.title}
+                        </h3>
+                        
+                        <p className="text-xs sm:text-sm text-[#2c4a3e]/70 leading-relaxed mb-3 sm:mb-4 md:mb-5 lg:mb-6">
+                          {story.description}
+                        </p>
+                        
+                        <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4 md:mb-5">
+                          <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-[#b87d5e]/10 text-[#b87d5e] text-[10px] sm:text-xs rounded-full">
+                            Adopted
+                          </span>
+                          <span className="px-2 sm:px-3 py-0.5 sm:py-1 bg-[#2c4a3e]/10 text-[#2c4a3e] text-[10px] sm:text-xs rounded-full">
+                            Happy Ending
+                          </span>
+                        </div>
+                        
+                        <div className="inline-flex items-center gap-1 sm:gap-2 text-[#b87d5e] font-semibold text-xs sm:text-sm group/link">
+                          <span>Read their story</span>
+                          <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#b87d5e]/10 flex items-center justify-center group-hover/link:bg-[#b87d5e] group-hover/link:translate-x-1 transition-all duration-300">
+                            <FaArrowRight className="text-[10px] sm:text-xs text-[#b87d5e] group-hover/link:text-white transition-colors duration-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
             </div>
 
-            {/* Decorative Corner */}
-            <div className="absolute bottom-0 right-0 w-24 h-24 bg-gradient-to-tl from-[#b87d5e]/10 to-transparent rounded-tl-[100px]" />
+            {/* Mobile View All Link */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="text-center mt-6 sm:hidden"
+            >
+              <Link href="/success-stories">
+                <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 text-sm">
+                  <span>View All Stories</span>
+                  <FaArrowRight />
+                </button>
+              </Link>
+            </motion.div>
           </div>
-        </Link>
-      </motion.div>
-    ))}
-  </div>
-
-  {/* Featured Success Story */}
-  <motion.div
-    initial={{ opacity: 0, y: 30 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ delay: 0.4 }}
-    className="mt-12"
-  >
-    <div className="bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] rounded-3xl p-1">
-      <div className="bg-white rounded-3xl p-8 md:p-10">
-        <div className="flex flex-col md:flex-row items-center gap-8">
-          {/* Icon */}
-          <div className="relative flex-shrink-0">
-            <div className="absolute inset-0 bg-[#b87d5e] rounded-2xl blur-xl opacity-30" />
-            <div className="relative w-20 h-20 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-2xl flex items-center justify-center text-white text-4xl">
-              <FaHeart />
-            </div>
-          </div>
-
-          {/* Content */}
-          <div className="flex-1 text-center md:text-left">
-            <span className="text-sm font-semibold text-[#b87d5e] mb-2 block">Featured Story</span>
-            <h3 className="text-2xl md:text-3xl font-bold text-[#2c4a3e] mb-3">
-              Bella's Journey Home
-            </h3>
-            <p className="text-[#2c4a3e]/70 mb-4">
-              After three months of recovery and love, Bella found her perfect family. Read her inspiring journey from the streets to a loving home.
-            </p>
-            <Link href="/success-stories/featured">
-              <button className="inline-flex items-center gap-2 text-[#b87d5e] font-semibold hover:text-[#9e6a4f] transition-colors">
-                Read Full Story
-                <FaArrowRight />
-              </button>
-            </Link>
-          </div>
-
-          {/* Stats */}
-          <div className="flex gap-6 flex-shrink-0">
-            <div className="text-center">
-              <div className="text-2xl font-bold text-[#2c4a3e]">2.5k</div>
-              <div className="text-xs text-[#2c4a3e]/60">Likes</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-[#2c4a3e]">150</div>
-              <div className="text-xs text-[#2c4a3e]/60">Shares</div>
-            </div>
-            <div className="text-center">
-              <div className="text-2xl font-bold text-[#2c4a3e]">45</div>
-              <div className="text-xs text-[#2c4a3e]/60">Comments</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </motion.div>
-</div>
 
           {/* Testimonials */}
-          <div className="mb-20">
+          <div className="mb-12 sm:mb-16 md:mb-20">
             <Testimonials />
           </div>
 
-         {/* Final CTA */}
-<div className="relative py-20 overflow-hidden">
-  {/* Background with Gradient and Pattern */}
-  <div className="absolute inset-0 bg-gradient-to-br from-[#2c4a3e] to-[#1e352b]">
-    <div className="absolute inset-0 opacity-10">
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#b87d5e] rounded-full blur-3xl" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-white rounded-full blur-3xl" />
-    </div>
-    
-    {/* Paw Print Pattern */}
-    <div className="absolute inset-0 opacity-5" style={{
-      backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M20 20c-2.5 0-5-2-5-5s2.5-5 5-5 5 2 5 5-2.5 5-5 5zm0 30c-2.5 0-5-2-5-5s2.5-5 5-5 5 2 5 5-2.5 5-5 5zm20-30c-2.5 0-5-2-5-5s2.5-5 5-5 5 2 5 5-2.5 5-5 5zm0 30c-2.5 0-5-2-5-5s2.5-5 5-5 5 2 5 5-2.5 5-5 5z" fill="%23b87d5e" fill-opacity="0.3"/%3E%3C/svg%3E")',
-      backgroundRepeat: 'repeat',
-    }} />
-  </div>
-
-  <div className="relative container mx-auto px-4">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="max-w-4xl mx-auto"
-    >
-      {/* Main Content Card */}
-      <div className="bg-white/95 backdrop-blur-sm rounded-3xl p-12 md:p-16 shadow-2xl border border-white/20">
-        <div className="text-center">
-          {/* Heart Icon */}
-          <motion.div
-            initial={{ scale: 0 }}
-            whileInView={{ scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
-            className="relative inline-block mb-8"
-          >
-            <div className="absolute inset-0 bg-[#b87d5e] rounded-full blur-xl opacity-30 animate-pulse" />
-            <div className="relative w-20 h-20 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-2xl flex items-center justify-center shadow-lg transform rotate-3">
-              <FaHeart className="text-4xl text-white" />
-            </div>
-          </motion.div>
-
-          {/* Heading */}
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-4"
-          >
-            Ready to Make an{' '}
-            <span className="text-[#b87d5e] relative inline-block">
-              Impact?
-              <svg className="absolute -bottom-2 left-0 w-full" height="8" viewBox="0 0 100 8" preserveAspectRatio="none">
-                <path d="M0,5 Q25,0 50,5 T100,5" stroke="#b87d5e" strokeWidth="2" fill="none" strokeOpacity="0.3" />
-              </svg>
-            </span>
-          </motion.h2>
-
-          {/* Description */}
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
-            className="text-lg text-[#2c4a3e]/70 mb-10 max-w-2xl mx-auto leading-relaxed"
-          >
-            Join our community of animal lovers. Your support transforms lives, 
-            creates happy endings, and gives rescued animals a second chance at life.
-          </motion.p>
-
-          {/* CTA Buttons */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-10"
-          >
-            {/* Adopt Button */}
-            <Link href="/adopt" className="w-full sm:w-auto">
-              <button className="group w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] text-white font-semibold rounded-xl hover:from-[#1e352b] hover:to-[#0f1f18] transition-all duration-300 flex items-center justify-center gap-3 shadow-lg hover:shadow-xl">
-                <FaHeart className="group-hover:scale-110 transition-transform" />
-                <span>Adopt a Pet</span>
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-              </button>
-            </Link>
-
-            {/* Or Divider - Hidden on mobile */}
-            <div className="hidden sm:flex items-center gap-3">
-              <div className="w-12 h-px bg-[#2c4a3e]/20" />
-              <span className="text-sm font-medium text-[#2c4a3e]/40">or</span>
-              <div className="w-12 h-px bg-[#2c4a3e]/20" />
-            </div>
-
-            {/* Mobile Or Divider */}
-            <div className="flex sm:hidden items-center gap-3 w-full">
-              <div className="flex-1 h-px bg-[#2c4a3e]/20" />
-              <span className="text-sm font-medium text-[#2c4a3e]/40">or</span>
-              <div className="flex-1 h-px bg-[#2c4a3e]/20" />
-            </div>
-
-            {/* Volunteer & Donate Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <Link href="/volunteer" className="flex-1 sm:flex-initial">
-                <button className="w-full px-6 py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-xl hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
-                  <FaUsers className="group-hover:scale-110 transition-transform" />
-                  <span>Volunteer</span>
-                </button>
-              </Link>
-              
-              <Link href="/donate" className="flex-1 sm:flex-initial">
-                <button className="w-full px-6 py-4 bg-transparent border-2 border-[#b87d5e] text-[#b87d5e] font-semibold rounded-xl hover:bg-[#b87d5e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group">
-                  <FaGift className="group-hover:scale-110 transition-transform" />
-                  <span>Donate</span>
-                </button>
-              </Link>
-            </div>
-          </motion.div>
-
-          {/* Trust Indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
-            className="pt-8 border-t border-[#2c4a3e]/10"
-          >
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-sm">
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
-                  <FaCheck className="text-[#b87d5e] text-xs" />
-                </div>
-                <span className="text-[#2c4a3e]/70">Trusted by 5,000+ community members</span>
-              </div>
-              
-              <div className="hidden sm:block w-px h-4 bg-[#2c4a3e]/20" />
-              
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 bg-[#2c4a3e]/10 rounded-full flex items-center justify-center">
-                  <FaHeart className="text-[#2c4a3e] text-xs" />
-                </div>
-                <span className="text-[#2c4a3e]/70">100% non-profit organization</span>
+          {/* Final CTA */}
+          <div className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-[#2c4a3e] to-[#1e352b]">
+              <div className="absolute inset-0 opacity-10">
+                <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-[#b87d5e] rounded-full blur-3xl" />
+                <div className="absolute bottom-0 left-0 w-56 sm:w-72 md:w-80 h-56 sm:h-72 md:h-80 bg-white rounded-full blur-3xl" />
               </div>
             </div>
 
-            {/* Additional Trust Badge */}
-            <div className="mt-6 inline-flex items-center gap-3 bg-[#f5f7f0] rounded-full px-6 py-3">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] border-2 border-white flex items-center justify-center text-white text-xs font-bold"
-                  >
-                    {String.fromCharCode(64 + i)}
+            <div className="relative container mx-auto px-4">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="max-w-4xl mx-auto"
+              >
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-2xl border border-white/20">
+                  <div className="text-center">
+                    <motion.div
+                      initial={{ scale: 0 }}
+                      whileInView={{ scale: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+                      className="relative inline-block mb-4 sm:mb-6 md:mb-8"
+                    >
+                      <div className="absolute inset-0 bg-[#b87d5e] rounded-full blur-xl opacity-30 animate-pulse" />
+                      <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg transform rotate-3">
+                        <FaHeart className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white" />
+                      </div>
+                    </motion.div>
+
+                    <motion.h2
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.2 }}
+                      className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-3 md:mb-4"
+                    >
+                      Ready to Make an{' '}
+                      <span className="text-[#b87d5e] relative inline-block">
+                        Impact?
+                      </span>
+                    </motion.h2>
+
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.3 }}
+                      className="text-xs sm:text-sm md:text-base lg:text-lg text-[#2c4a3e]/70 mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
+                    >
+                      Your support transforms lives and gives rescued animals a second chance at life.
+                    </motion.p>
+
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.4 }}
+                      className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
+                    >
+                      <Link href="/adopt" className="w-full sm:w-auto">
+                        <button className="group w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] text-white font-semibold rounded-lg sm:rounded-xl hover:from-[#1e352b] hover:to-[#0f1f18] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base">
+                          <FaHeart className="group-hover:scale-110 transition-transform" />
+                          <span>Adopt a Pet</span>
+                          <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                        </button>
+                      </Link>
+
+                      <div className="hidden sm:flex items-center gap-2">
+                        <div className="w-8 md:w-12 h-px bg-[#2c4a3e]/20" />
+                        <span className="text-xs font-medium text-[#2c4a3e]/40">or</span>
+                        <div className="w-8 md:w-12 h-px bg-[#2c4a3e]/20" />
+                      </div>
+
+                      <div className="flex flex-col xs:flex-row gap-2 w-full sm:w-auto">
+                        <Link href="/volunteer" className="flex-1 xs:flex-initial">
+                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                            <FaUsers className="group-hover:scale-110 transition-transform" />
+                            <span>Volunteer</span>
+                          </button>
+                        </Link>
+                        
+                        <Link href="/donate" className="flex-1 xs:flex-initial">
+                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#b87d5e] text-[#b87d5e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#b87d5e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                            <FaGift className="group-hover:scale-110 transition-transform" />
+                            <span>Donate</span>
+                          </button>
+                        </Link>
+                      </div>
+                    </motion.div>
+
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: 0.5 }}
+                      className="pt-6 sm:pt-7 md:pt-8 border-t border-[#2c4a3e]/10"
+                    >
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm">
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
+                            <FaCheck className="text-[#b87d5e] text-[10px] sm:text-xs" />
+                          </div>
+                          <span className="text-[#2c4a3e]/70">Trusted by 5,000+ members</span>
+                        </div>
+                        
+                        <div className="hidden sm:block w-px h-4 bg-[#2c4a3e]/20" />
+                        
+                        <div className="flex items-center gap-2">
+                          <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-[#2c4a3e]/10 rounded-full flex items-center justify-center">
+                            <FaHeart className="text-[#2c4a3e] text-[10px] sm:text-xs" />
+                          </div>
+                          <span className="text-[#2c4a3e]/70">100% non-profit</span>
+                        </div>
+                      </div>
+                    </motion.div>
                   </div>
-                ))}
-              </div>
-              <span className="text-sm text-[#2c4a3e] font-medium">
-                Join 200+ active volunteers
-              </span>
+                </div>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute -top-4 -left-4 w-24 h-24 bg-[#b87d5e]/10 rounded-full blur-2xl" />
-      <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#2c4a3e]/10 rounded-full blur-2xl" />
-    </motion.div>
-  </div>
-</div>
-        </div>
-
 
         {/* Emergency Banner */}
         <EmergencyBanner />
@@ -1059,15 +1142,3 @@ export default function HomePage() {
     </>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-

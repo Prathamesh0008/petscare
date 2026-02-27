@@ -20,7 +20,7 @@ const volunteerOpportunities = [
     description: 'Provide nurturing care, feeding, and monitoring of rescued animals',
     commitment: '6-8 hours/week',
     skills: ['Animal Handling', 'Patience', 'Observation'],
-    color: 'brown' // Changed from 'amber'
+    color: 'brown'
   },
   {
     name: 'Adoption Ambassador',
@@ -29,7 +29,7 @@ const volunteerOpportunities = [
     description: 'Help families find their perfect match and guide through adoption process',
     commitment: '4-6 hours/week',
     skills: ['Communication', 'Empathy', 'Matching'],
-    color: 'green' // Changed from 'orange'
+    color: 'green'
   },
   {
     name: 'Medical Support Team',
@@ -38,7 +38,7 @@ const volunteerOpportunities = [
     description: 'Assist with medical care, medication, and recovery monitoring',
     commitment: '8-10 hours/week',
     skills: ['Medical Knowledge', 'Detail-oriented', 'Calmness'],
-    color: 'brown' // Changed from 'amber'
+    color: 'brown'
   },
   {
     name: 'Event & Outreach',
@@ -47,7 +47,7 @@ const volunteerOpportunities = [
     description: 'Organize adoption events, fundraisers, and community awareness programs',
     commitment: 'Flexible hours',
     skills: ['Organization', 'Networking', 'Creativity'],
-    color: 'green' // Changed from 'orange'
+    color: 'green'
   },
   {
     name: 'Training Companion',
@@ -56,7 +56,7 @@ const volunteerOpportunities = [
     description: 'Work with animals on basic training, socialization, and confidence building',
     commitment: '6-8 hours/week',
     skills: ['Training Techniques', 'Patience', 'Consistency'],
-    color: 'brown' // Changed from 'amber'
+    color: 'brown'
   },
   {
     name: 'Content Creator',
@@ -65,7 +65,7 @@ const volunteerOpportunities = [
     description: 'Capture stories, photos, and videos to help animals find homes faster',
     commitment: 'Flexible hours',
     skills: ['Photography', 'Storytelling', 'Social Media'],
-    color: 'green' // Changed from 'orange'
+    color: 'green'
   },
 ];
 
@@ -123,72 +123,74 @@ export default function VolunteerPage() {
       {/* Hero Section */}
       <div className="relative overflow-hidden bg-gradient-to-br from-[#2c4a3e]/20 via-[#b87d5e]/30 to-[#2c4a3e]/20">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
-        <div className="container relative mx-auto px-4 py-24 md:py-32">
+        <div className="container relative mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32">
           <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col lg:flex-row items-center gap-12">
-              <div className="lg:w-1/2">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full mb-6">
-                  <FaHeart className="text-[#b87d5e]" />
-                  <span className="text-[#b87d5e] font-medium">Join Our Movement</span>
+            <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-12">
+              {/* Left Content */}
+              <div className="lg:w-1/2 text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-white/80 backdrop-blur-sm rounded-full mb-4 sm:mb-6">
+                  <FaHeart className="text-[#b87d5e] text-xs sm:text-sm" />
+                  <span className="text-[#b87d5e] font-medium text-xs sm:text-sm">Join Our Movement</span>
                 </div>
-                <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
-                  Share Your <span className="text-[#b87d5e]">Heart</span>,<br />
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4 sm:mb-6 leading-tight">
+                  Share Your <span className="text-[#b87d5e]">Heart</span>,<br className="hidden sm:block" />
                   Change Their <span className="text-[#2c4a3e]">World</span>
                 </h1>
-                <p className="text-xl text-gray-700 mb-8 leading-relaxed">
+                <p className="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 leading-relaxed max-w-2xl lg:max-w-none mx-auto lg:mx-0">
                   Your time and compassion can create miracles for animals in need. 
                   Join our volunteer family and become part of stories that transform lives.
                 </p>
-                <div className="flex flex-wrap gap-4">
+                <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
                   <a 
                     href="#opportunities"
-                    className="px-8 py-4 bg-[#b87d5e] text-white font-semibold rounded-xl hover:bg-[#9e6a4f] transition-all duration-300 hover:-translate-y-0.5"
+                    className="px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-[#b87d5e] text-white font-semibold rounded-lg sm:rounded-xl text-sm sm:text-base hover:bg-[#9e6a4f] transition-all duration-300 hover:-translate-y-0.5"
                   >
                     Explore Roles
                   </a>
                   <a 
                     href="#apply"
-                    className="px-8 py-4 bg-white border-2 border-[#b87d5e] text-[#b87d5e] font-semibold rounded-xl hover:bg-[#b87d5e]/5 transition-all duration-300"
+                    className="px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-4 bg-white border-2 border-[#b87d5e] text-[#b87d5e] font-semibold rounded-lg sm:rounded-xl text-sm sm:text-base hover:bg-[#b87d5e]/5 transition-all duration-300"
                   >
                     Apply Now
                   </a>
                 </div>
               </div>
               
-              <div className="lg:w-1/2">
+              {/* Right Stats Card */}
+              <div className="lg:w-1/2 w-full max-w-lg lg:max-w-none mx-auto mt-8 lg:mt-0">
                 <div className="relative">
-                  <div className="absolute -inset-4 bg-gradient-to-r from-[#b87d5e]/30 to-[#2c4a3e]/30 rounded-3xl blur-xl"></div>
-                  <div className="relative bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-2xl">
-                    <div className="flex items-center gap-4 mb-6">
-                      <div className="p-3 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-xl">
-                        <FaUsers className="text-white text-2xl" />
+                  <div className="absolute -inset-3 sm:-inset-4 bg-gradient-to-r from-[#b87d5e]/30 to-[#2c4a3e]/30 rounded-2xl sm:rounded-3xl blur-xl"></div>
+                  <div className="relative bg-white/90 backdrop-blur-sm rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-2xl">
+                    <div className="flex items-center gap-3 sm:gap-4 mb-4 sm:mb-6">
+                      <div className="p-2 sm:p-3 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-lg sm:rounded-xl">
+                        <FaUsers className="text-white text-lg sm:text-xl md:text-2xl" />
                       </div>
                       <div>
-                        <h3 className="font-bold text-xl text-gray-900">Volunteer Community</h3>
-                        <p className="text-gray-600">250+ active members</p>
+                        <h3 className="font-bold text-base sm:text-lg md:text-xl text-gray-900">Volunteer Community</h3>
+                        <p className="text-xs sm:text-sm text-gray-600">250+ active members</p>
                       </div>
                     </div>
                     
-                    <div className="space-y-6">
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="bg-gradient-to-br from-[#b87d5e]/5 to-white p-4 rounded-xl border border-[#b87d5e]/20">
-                          <div className="flex items-center gap-2">
-                            <FaClock className="text-[#b87d5e]" />
-                            <div className="text-2xl font-bold text-[#b87d5e]">5,000+</div>
+                    <div className="space-y-4 sm:space-y-6">
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                        <div className="bg-gradient-to-br from-[#b87d5e]/5 to-white p-3 sm:p-4 rounded-lg sm:rounded-xl border border-[#b87d5e]/20">
+                          <div className="flex items-center gap-1 sm:gap-2">
+                            <FaClock className="text-[#b87d5e] text-xs sm:text-sm" />
+                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#b87d5e]">5,000+</div>
                           </div>
-                          <div className="text-sm text-gray-600">Hours Contributed</div>
+                          <div className="text-[10px] sm:text-xs text-gray-600">Hours Contributed</div>
                         </div>
-                        <div className="bg-gradient-to-br from-[#2c4a3e]/5 to-white p-4 rounded-xl border border-[#2c4a3e]/20">
-                          <div className="flex items-center gap-2">
-                            <FaHeart className="text-[#2c4a3e]" />
-                            <div className="text-2xl font-bold text-[#2c4a3e]">1,200+</div>
+                        <div className="bg-gradient-to-br from-[#2c4a3e]/5 to-white p-3 sm:p-4 rounded-lg sm:rounded-xl border border-[#2c4a3e]/20">
+                          <div className="flex items-center gap-1 sm:gap-2">
+                            <FaHeart className="text-[#2c4a3e] text-xs sm:text-sm" />
+                            <div className="text-lg sm:text-xl md:text-2xl font-bold text-[#2c4a3e]">1,200+</div>
                           </div>
-                          <div className="text-sm text-gray-600">Animals Helped</div>
+                          <div className="text-[10px] sm:text-xs text-gray-600">Animals Helped</div>
                         </div>
                       </div>
                       
-                      <div className="pt-6 border-t border-gray-100">
-                        <div className="flex items-center gap-3 text-sm">
+                      <div className="pt-4 sm:pt-6 border-t border-gray-100">
+                        <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-sm">
                           <FaCalendarAlt className="text-gray-400" />
                           <span className="text-gray-600">Next orientation: <strong className="text-gray-900">This Saturday</strong></span>
                         </div>
@@ -203,37 +205,37 @@ export default function VolunteerPage() {
       </div>
 
       {/* Impact Stories */}
-      <div className="container mx-auto px-4 py-20">
+      <div className="container mx-auto px-4 sm:px-6 py-16 sm:py-20">
         <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+          <div className="text-center mb-12 sm:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
               Stories That <span className="text-[#b87d5e]">Inspire</span>
             </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
               Hear from volunteers who have found purpose and joy in their journey with us
             </p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8">
             {impactStories.map((story, index) => (
               <div 
                 key={index}
-                className="group relative bg-white rounded-2xl border border-gray-200 p-8 hover:border-[#b87d5e] hover:shadow-xl transition-all duration-300"
+                className="group relative bg-white rounded-xl sm:rounded-2xl border border-gray-200 p-5 sm:p-6 md:p-8 hover:border-[#b87d5e] hover:shadow-xl transition-all duration-300"
               >
-                <div className="absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <FaQuoteRight className="text-white text-xl" />
+                <div className="absolute -top-3 sm:-top-4 -right-3 sm:-right-4 w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <FaQuoteRight className="text-white text-base sm:text-lg md:text-xl" />
                 </div>
                 
-                <div className="mb-6">
-                  <div className="w-16 h-16 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-2xl flex items-center justify-center text-white font-bold text-xl mb-4">
+                <div className="mb-4 sm:mb-6">
+                  <div className="w-12 sm:w-14 md:w-16 h-12 sm:h-14 md:h-16 bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-white font-bold text-base sm:text-lg md:text-xl mb-3 sm:mb-4">
                     {story.avatar}
                   </div>
-                  <p className="text-gray-700 italic text-lg leading-relaxed">"{story.quote}"</p>
+                  <p className="text-gray-700 italic text-sm sm:text-base leading-relaxed">"{story.quote}"</p>
                 </div>
                 
-                <div className="pt-6 border-t border-gray-100">
-                  <div className="font-bold text-gray-900">{story.author}</div>
-                  <div className="text-sm text-gray-600">{story.role}</div>
+                <div className="pt-4 sm:pt-6 border-t border-gray-100">
+                  <div className="font-bold text-gray-900 text-sm sm:text-base">{story.author}</div>
+                  <div className="text-xs sm:text-sm text-gray-600">{story.role}</div>
                 </div>
               </div>
             ))}
@@ -242,69 +244,69 @@ export default function VolunteerPage() {
       </div>
 
       {/* Opportunities Section */}
-      <div id="opportunities" className="bg-gradient-to-b from-white to-[#f5f7f0] py-20">
-        <div className="container mx-auto px-4">
+      <div id="opportunities" className="bg-gradient-to-b from-white to-[#f5f7f0] py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#b87d5e]/10 rounded-full mb-4">
-                <FaHandsHelping className="text-[#b87d5e]" />
-                <span className="text-[#b87d5e] font-medium">Multiple Roles Available</span>
+            <div className="text-center mb-12 sm:mb-16">
+              <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full mb-3 sm:mb-4">
+                <FaHandsHelping className="text-[#b87d5e] text-xs sm:text-sm" />
+                <span className="text-[#b87d5e] font-medium text-xs sm:text-sm">Multiple Roles Available</span>
               </div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4">
                 Find Your <span className="text-[#b87d5e]">Perfect Role</span>
               </h2>
-              <p className="text-gray-600 max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto px-4">
                 Choose a volunteer path that aligns with your skills, interests, and schedule
               </p>
             </div>
             
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 md:gap-6">
               {volunteerOpportunities.map((role, index) => (
                 <div 
                   key={index}
-                  className="group bg-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-2xl hover:border-[#b87d5e] transition-all duration-300 hover:-translate-y-1"
+                  className="group bg-white rounded-xl sm:rounded-2xl border border-gray-200 overflow-hidden hover:shadow-2xl hover:border-[#b87d5e] transition-all duration-300 hover:-translate-y-1"
                 >
-                  <div className={`p-6 ${
+                  <div className={`p-4 sm:p-5 md:p-6 ${
                     role.color === 'brown' ? 'bg-gradient-to-br from-[#b87d5e] to-[#9e6a4f]' :
                     'bg-gradient-to-br from-[#2c4a3e] to-[#1e352b]'
                   }`}>
                     <div className="flex items-center justify-between">
-                      <div className="text-3xl text-white">
+                      <div className="text-xl sm:text-2xl md:text-3xl text-white">
                         {role.icon}
                       </div>
-                      <span className="text-white/90 text-sm font-medium px-3 py-1 bg-white/20 rounded-full">
+                      <span className="text-white/90 text-[10px] sm:text-xs font-medium px-2 sm:px-3 py-1 bg-white/20 rounded-full">
                         {role.commitment}
                       </span>
                     </div>
                   </div>
                   
-                  <div className="p-6">
+                  <div className="p-4 sm:p-5 md:p-6">
                     <div className="mb-2">
-                      <h3 className="text-xl font-bold text-gray-900 mb-1">{role.name}</h3>
-                      <p className="text-sm text-[#b87d5e] font-medium">{role.role}</p>
+                      <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900 mb-1">{role.name}</h3>
+                      <p className="text-xs sm:text-sm text-[#b87d5e] font-medium">{role.role}</p>
                     </div>
                     
-                    <p className="text-gray-700 mb-6 leading-relaxed">{role.description}</p>
+                    <p className="text-xs sm:text-sm text-gray-700 mb-4 sm:mb-6 leading-relaxed">{role.description}</p>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-3 sm:space-y-4">
                       <div>
-                        <div className="text-sm font-medium text-gray-500 mb-2">Ideal Skills</div>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="text-[10px] sm:text-xs font-medium text-gray-500 mb-1 sm:mb-2">Ideal Skills</div>
+                        <div className="flex flex-wrap gap-1.5 sm:gap-2">
                           {role.skills.map((skill, idx) => (
                             <span 
                               key={idx}
-                              className="px-3 py-1 bg-gray-50 text-gray-700 text-xs font-medium rounded-full border border-gray-200 flex items-center gap-1"
+                              className="px-2 sm:px-3 py-0.5 sm:py-1 bg-gray-50 text-gray-700 text-[10px] sm:text-xs font-medium rounded-full border border-gray-200 flex items-center gap-0.5 sm:gap-1"
                             >
-                              <FaStar className="text-[#b87d5e] text-xs" />
+                              <FaStar className="text-[#b87d5e] text-[8px] sm:text-[10px]" />
                               {skill}
                             </span>
                           ))}
                         </div>
                       </div>
                       
-                      <button className="w-full py-3 rounded-xl font-medium bg-gray-50 text-gray-700 hover:bg-[#b87d5e] hover:text-white hover:border-[#b87d5e] border border-gray-200 transition-colors duration-200 flex items-center justify-center gap-2">
+                      <button className="w-full py-2 sm:py-2.5 md:py-3 rounded-lg sm:rounded-xl font-medium bg-gray-50 text-gray-700 hover:bg-[#b87d5e] hover:text-white hover:border-[#b87d5e] border border-gray-200 transition-colors duration-200 flex items-center justify-center gap-2 text-xs sm:text-sm">
                         <span>Learn More</span>
-                        <FaArrowRight className="text-sm" />
+                        <FaArrowRight className="text-[10px] sm:text-xs" />
                       </button>
                     </div>
                   </div>
@@ -316,62 +318,64 @@ export default function VolunteerPage() {
       </div>
 
       {/* Program Highlights */}
-      <div className="bg-white py-20">
-        <div className="container mx-auto px-4">
+      <div className="bg-white py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
+              {/* Left Content */}
               <div>
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#2c4a3e]/10 rounded-full mb-6">
-                  <FaAward className="text-[#2c4a3e]" />
-                  <span className="text-[#2c4a3e] font-medium">Why Choose Us</span>
+                <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-1.5 sm:py-2 bg-[#2c4a3e]/10 rounded-full mb-4 sm:mb-6">
+                  <FaAward className="text-[#2c4a3e] text-xs sm:text-sm" />
+                  <span className="text-[#2c4a3e] font-medium text-xs sm:text-sm">Why Choose Us</span>
                 </div>
-                <h2 className="text-4xl font-bold text-gray-900 mb-6">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-6 px-4 lg:px-0">
                   More Than Just <span className="text-[#b87d5e]">Volunteering</span>
                 </h2>
-                <p className="text-gray-700 text-lg mb-8 leading-relaxed">
+                <p className="text-sm sm:text-base md:text-lg text-gray-700 mb-6 sm:mb-8 leading-relaxed px-4 lg:px-0">
                   We're committed to creating meaningful experiences that benefit both our 
                   volunteers and the animals they serve. Our program is designed for growth, 
                   learning, and genuine impact.
                 </p>
                 
-                <div className="space-y-6">
+                <div className="space-y-4 sm:space-y-6">
                   {programHighlights.map((highlight, index) => (
-                    <div key={index} className="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors">
-                      <div className="p-3 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-xl">
-                        <highlight.icon className="text-[#b87d5e] text-xl" />
+                    <div key={index} className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-xl hover:bg-gray-50 transition-colors">
+                      <div className="p-2 sm:p-3 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg sm:rounded-xl flex-shrink-0">
+                        <highlight.icon className="text-[#b87d5e] text-base sm:text-lg md:text-xl" />
                       </div>
-                      <div>
-                        <div className="flex items-center gap-2 mb-1">
-                          <h3 className="font-bold text-gray-900">{highlight.title}</h3>
-                          <span className="text-xs font-medium px-2 py-1 bg-[#b87d5e]/10 text-[#b87d5e] rounded-full">
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-1 sm:gap-2 mb-1">
+                          <h3 className="font-bold text-gray-900 text-sm sm:text-base">{highlight.title}</h3>
+                          <span className="text-[8px] sm:text-xs font-medium px-1.5 sm:px-2 py-0.5 bg-[#b87d5e]/10 text-[#b87d5e] rounded-full">
                             {highlight.highlight}
                           </span>
                         </div>
-                        <p className="text-gray-600">{highlight.description}</p>
+                        <p className="text-xs sm:text-sm text-gray-600">{highlight.description}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
               
-              <div>
-                <div className="bg-gradient-to-br from-[#2c4a3e] to-[#1e352b] rounded-2xl p-10 relative overflow-hidden">
-                  <div className="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full -translate-y-24 translate-x-24"></div>
-                  <div className="absolute bottom-0 left-0 w-48 h-48 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full translate-y-24 -translate-x-24"></div>
+              {/* Right Safety Card */}
+              <div className="mt-6 lg:mt-0">
+                <div className="bg-gradient-to-br from-[#2c4a3e] to-[#1e352b] rounded-xl sm:rounded-2xl p-6 sm:p-8 md:p-10 relative overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full -translate-y-16 sm:-translate-y-20 md:-translate-y-24 translate-x-16 sm:translate-x-20 md:translate-x-24"></div>
+                  <div className="absolute bottom-0 left-0 w-32 sm:w-40 md:w-48 h-32 sm:h-40 md:h-48 bg-gradient-to-br from-[#b87d5e]/10 to-transparent rounded-full translate-y-16 sm:translate-y-20 md:translate-y-24 -translate-x-16 sm:-translate-x-20 md:-translate-x-24"></div>
                   
                   <div className="relative">
-                    <div className="text-center mb-8">
-                      <div className="inline-flex items-center justify-center w-20 h-20 bg-[#b87d5e] rounded-2xl mb-6 mx-auto">
-                        <FaShieldAlt className="text-white text-3xl" />
+                    <div className="text-center mb-6 sm:mb-8">
+                      <div className="inline-flex items-center justify-center w-14 sm:w-16 md:w-20 h-14 sm:h-16 md:h-20 bg-[#b87d5e] rounded-lg sm:rounded-xl md:rounded-2xl mb-4 sm:mb-6">
+                        <FaShieldAlt className="text-white text-xl sm:text-2xl md:text-3xl" />
                       </div>
-                      <h3 className="text-2xl font-bold text-white mb-4">Your Safety First</h3>
-                      <p className="text-gray-300 mb-8">
+                      <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-2 sm:mb-4">Your Safety First</h3>
+                      <p className="text-gray-300 text-xs sm:text-sm md:text-base mb-4 sm:mb-6 md:mb-8">
                         Comprehensive training, proper equipment, and expert supervision ensure 
                         a safe and rewarding experience for all volunteers.
                       </p>
                     </div>
                     
-                    <div className="space-y-4">
+                    <div className="space-y-2 sm:space-y-3 md:space-y-4">
                       {[
                         'Complete safety orientation for all roles',
                         'Protective gear and equipment provided',
@@ -379,9 +383,9 @@ export default function VolunteerPage() {
                         'Emergency protocols and training',
                         'Health and wellness support'
                       ].map((item, idx) => (
-                        <div key={idx} className="flex items-center gap-3 text-white">
-                          <FaCheckCircle className="text-[#b87d5e]" />
-                          <span>{item}</span>
+                        <div key={idx} className="flex items-center gap-2 sm:gap-3 text-white">
+                          <FaCheckCircle className="text-[#b87d5e] text-xs sm:text-sm md:text-base flex-shrink-0" />
+                          <span className="text-xs sm:text-sm md:text-base">{item}</span>
                         </div>
                       ))}
                     </div>
@@ -394,23 +398,24 @@ export default function VolunteerPage() {
       </div>
 
       {/* Application Section */}
-      <div id="apply" className="bg-gradient-to-br from-[#f5f7f0] via-[#f0f2e8] to-[#eaede2] py-20">
-        <div className="container mx-auto px-4">
+      <div id="apply" className="bg-gradient-to-br from-[#f5f7f0] via-[#f0f2e8] to-[#eaede2] py-16 sm:py-20">
+        <div className="container mx-auto px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12">
+            <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12">
+              {/* Left Steps */}
               <div>
-                <div className="sticky top-8">
-                  <div className="mb-8">
-                    <h2 className="text-4xl font-bold text-gray-900 mb-4">
+                <div className="lg:sticky lg:top-8">
+                  <div className="mb-6 sm:mb-8">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-3 sm:mb-4 px-4 lg:px-0">
                       Ready to <span className="text-[#b87d5e]">Begin</span>?
                     </h2>
-                    <p className="text-gray-700 text-lg">
+                    <p className="text-sm sm:text-base text-gray-700 px-4 lg:px-0">
                       Start your volunteer journey with us. The application process is simple, 
                       and our team is here to support you every step of the way.
                     </p>
                   </div>
                   
-                  <div className="space-y-6">
+                  <div className="space-y-3 sm:space-y-4">
                     {[
                       {
                         step: '1',
@@ -441,15 +446,15 @@ export default function VolunteerPage() {
                         icon: FaGraduationCap
                       }
                     ].map((step, index) => (
-                      <div key={index} className="flex items-start gap-4 p-4 rounded-xl bg-white border border-gray-200 hover:border-[#b87d5e] transition-colors">
-                        <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-xl flex items-center justify-center">
-                          <step.icon className="text-[#b87d5e]" />
+                      <div key={index} className="flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-lg sm:rounded-xl bg-white border border-gray-200 hover:border-[#b87d5e] transition-colors">
+                        <div className="flex-shrink-0 w-10 h-10 sm:w-11 sm:h-11 md:w-12 md:h-12 bg-gradient-to-br from-[#b87d5e]/10 to-[#2c4a3e]/10 rounded-lg sm:rounded-xl flex items-center justify-center">
+                          <step.icon className="text-[#b87d5e] text-sm sm:text-base" />
                         </div>
-                        <div>
-                          <h4 className="font-bold text-gray-900">{step.title}</h4>
-                          <p className="text-gray-600 text-sm mb-1">{step.description}</p>
-                          <div className="flex items-center gap-2 text-xs text-gray-500">
-                            <FaClock className="text-gray-400" />
+                        <div className="flex-1 min-w-0">
+                          <h4 className="font-bold text-gray-900 text-sm sm:text-base">{step.title}</h4>
+                          <p className="text-gray-600 text-xs sm:text-sm mb-1">{step.description}</p>
+                          <div className="flex items-center gap-1 sm:gap-2 text-[10px] sm:text-xs text-gray-500">
+                            <FaClock className="text-gray-400 text-[8px] sm:text-[10px]" />
                             <span>{step.duration}</span>
                           </div>
                         </div>
@@ -457,22 +462,22 @@ export default function VolunteerPage() {
                     ))}
                   </div>
                   
-                  <div className="mt-8 p-6 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 rounded-2xl border border-[#b87d5e]/20">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-[#b87d5e]/10 rounded-xl">
-                        <FaMapMarkerAlt className="text-[#b87d5e]" />
+                  <div className="mt-6 sm:mt-8 p-4 sm:p-5 md:p-6 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 rounded-xl sm:rounded-2xl border border-[#b87d5e]/20">
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className="p-2 sm:p-3 bg-[#b87d5e]/10 rounded-lg sm:rounded-xl flex-shrink-0">
+                        <FaMapMarkerAlt className="text-[#b87d5e] text-sm sm:text-base" />
                       </div>
                       <div>
-                        <h4 className="font-bold text-gray-900 mb-2">Visit Our Center</h4>
-                        <p className="text-gray-600 text-sm mb-3">
+                        <h4 className="font-bold text-gray-900 text-sm sm:text-base mb-1 sm:mb-2">Visit Our Center</h4>
+                        <p className="text-gray-600 text-xs sm:text-sm mb-2 sm:mb-3">
                           Come see our facility and meet our team before applying
                         </p>
                         <a 
                           href="#contact" 
-                          className="inline-flex items-center gap-2 text-[#b87d5e] font-medium hover:text-[#9e6a4f]"
+                          className="inline-flex items-center gap-1 sm:gap-2 text-[#b87d5e] font-medium hover:text-[#9e6a4f] text-xs sm:text-sm"
                         >
                           Schedule a Tour
-                          <FaArrowRight className="text-sm" />
+                          <FaArrowRight className="text-[10px] sm:text-xs" />
                         </a>
                       </div>
                     </div>
@@ -480,39 +485,40 @@ export default function VolunteerPage() {
                 </div>
               </div>
               
+              {/* Right Form */}
               <div>
-                <div className="bg-white rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
-                  <div className="bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] p-8 text-white">
-                    <div className="flex items-center gap-4 mb-2">
-                      <div className="p-3 bg-white/20 rounded-xl">
-                        <FaHandsHelping className="text-2xl" />
+                <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl border border-gray-200 overflow-hidden">
+                  <div className="bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] p-5 sm:p-6 md:p-8 text-white">
+                    <div className="flex items-center gap-3 sm:gap-4">
+                      <div className="p-2 sm:p-3 bg-white/20 rounded-lg sm:rounded-xl flex-shrink-0">
+                        <FaHandsHelping className="text-lg sm:text-xl md:text-2xl" />
                       </div>
-                      <div>
-                        <h3 className="text-2xl font-bold">Volunteer Application</h3>
-                        <p className="text-white/80">Start your journey today</p>
+                      <div className="min-w-0">
+                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold">Volunteer Application</h3>
+                        <p className="text-white/80 text-xs sm:text-sm">Start your journey today</p>
                       </div>
                     </div>
                   </div>
-                  <div className="p-8">
+                  <div className="p-4 sm:p-5 md:p-6 lg:p-8">
                     <VolunteerForm />
                   </div>
                 </div>
                 
                 {/* Quick Info */}
-                <div className="mt-8 grid grid-cols-2 gap-4">
-                  <div className="bg-white p-6 rounded-xl border border-gray-200">
-                    <div className="flex items-center gap-2 mb-2">
-                      <FaClock className="text-[#b87d5e]" />
-                      <div className="text-[#b87d5e] font-bold text-2xl">24-48h</div>
+                <div className="mt-6 sm:mt-8 grid grid-cols-2 gap-3 sm:gap-4">
+                  <div className="bg-white p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border border-gray-200">
+                    <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+                      <FaClock className="text-[#b87d5e] text-xs sm:text-sm" />
+                      <div className="text-[#b87d5e] font-bold text-base sm:text-lg md:text-2xl">24-48h</div>
                     </div>
-                    <div className="text-sm text-gray-600">Response Time</div>
+                    <div className="text-[10px] sm:text-xs text-gray-600">Response Time</div>
                   </div>
-                  <div className="bg-white p-6 rounded-xl border border-gray-200">
-                    <div className="flex items-center gap-2 mb-2">
-                      <FaCheckCircle className="text-[#2c4a3e]" />
-                      <div className="text-[#2c4a3e] font-bold text-2xl">95%</div>
+                  <div className="bg-white p-4 sm:p-5 md:p-6 rounded-lg sm:rounded-xl border border-gray-200">
+                    <div className="flex items-center gap-1 sm:gap-2 mb-1 sm:mb-2">
+                      <FaCheckCircle className="text-[#2c4a3e] text-xs sm:text-sm" />
+                      <div className="text-[#2c4a3e] font-bold text-base sm:text-lg md:text-2xl">95%</div>
                     </div>
-                    <div className="text-sm text-gray-600">Acceptance Rate</div>
+                    <div className="text-[10px] sm:text-xs text-gray-600">Acceptance Rate</div>
                   </div>
                 </div>
               </div>
