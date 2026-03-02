@@ -77,12 +77,12 @@ export default function DonatePage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-white via-[#f5f7f0]/10 to-white">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#2c4a3e] via-[#b87d5e] to-[#1e352b]">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#2c4a3e] via-[#b87d5e] to-[#1e352b] ">
         {/* Decorative elements */}
         <div className="absolute top-0 left-0 w-48 sm:w-64 h-48 sm:h-64 bg-[#b87d5e]/10 rounded-full -translate-x-1/2 -translate-y-1/2"></div>
         <div className="absolute bottom-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-[#2c4a3e]/5 rounded-full translate-x-1/3 translate-y-1/3"></div>
         
-        <div className="container mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-24 relative z-10">
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-14 lg:py-16 relative z-10">
           <div className="max-w-6xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-12 items-center">
               {/* Left Content */}

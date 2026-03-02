@@ -38,7 +38,9 @@ import {
   FaQuestionCircle,
   FaEnvelope,
   FaPhone,
-  FaMapMarkerAlt
+  FaMapMarkerAlt,
+  FaChevronDown ,
+  
 } from 'react-icons/fa';
 
 export default function HomePage() {
@@ -47,6 +49,7 @@ export default function HomePage() {
 const [openIndex, setOpenIndex] = useState<number | null>(null);  
   const urgentAnimals = getUrgentAnimals();
   const availableAnimals = getAvailableAnimals().slice(0, 6);
+  const [isSubjectOpen, setIsSubjectOpen] = useState(false);
 const [formData, setFormData] = useState({
   firstName: "",
   lastName: "",
@@ -93,12 +96,13 @@ const handleChange = (e: any) => {
       link: '/ar-viewer',
       icon: <FaMobileAlt />
     },
-    {
-      title: 'Live Animal Cams',
-      description: 'Watch our animals in real-time 24/7',
-      link: '/live-cams',
-      icon: <FaCamera />
-    },
+     {
+    title: 'Live Daycare Updates',
+    description: 'Receive live updates and photos while your pet enjoys daycare',
+    link: '/daycare',
+    icon: <FaCamera />
+  },
+  
   ];
 
   const successStories = [
@@ -140,6 +144,12 @@ const handleChange = (e: any) => {
       answer: 'We provide comprehensive care guides and our team is always available to answer questions.'
     }
   ];
+const subjectOptions = [
+  { value: "adoption", label: "Adoption Inquiry", icon: <FaPaw /> },
+  { value: "daycare", label: "Daycare Booking", icon: <FaHome /> },
+  { value: "emergency", label: "Emergency Assistance", icon: <FaShieldAlt /> },
+  { value: "general", label: "General Question", icon: <FaQuestionCircle /> },
+];
 
   if (isLoading) {
     return (
@@ -175,16 +185,15 @@ const handleSubmit = (e: any) => {
       <div className={`transition-all duration-500 ${isIntroComplete ? 'opacity-100' : 'opacity-0'}`}>
         <Hero />
         
-        {/* Quick Actions Bar - Enhanced Desktop Size */}
-<div className="bg-[#2c4a3e]">
+
+<div className="bg-gradient-to-r from-[#2c4a3e] to-[#1e352b]">
   <div className="container mx-auto px-4 py-6 sm:py-8 lg:py-10">
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
       {[
-        { icon: <FaPaw />, label: 'Find a Pet', link: '/matchmaker' },
-        { icon: <FaCalendarAlt />, label: 'Book Visit', link: '/visit/book' },
-        { icon: <FaVideo />, label: 'Live Cams', link: '/live-cams' },
-        { icon: <FaUsers />, label: 'Community', link: '/community' },
-        { icon: <FaShieldAlt />, label: 'Emergency', link: '/emergency' },
+        { icon: <FaPaw />, label: 'Adopt a Pet', link: '/animals' },
+        { icon: <FaHome />, label: 'Pet Daycare', link: '/daycare' },
+        { icon: <FaCalendarAlt />, label: 'Book Daycare', link: '/daycare#booking' },
+        { icon: <FaShieldAlt />, label: 'Emergency Care', link: '/emergency' },
       ].map((action, index) => (
         <Link
           key={index}
@@ -195,25 +204,144 @@ const handleSubmit = (e: any) => {
                      font-semibold 
                      flex flex-col items-center justify-center gap-2 
                      transition-all duration-300 
-                     bg-white text-[#2c4a3e] 
-                     hover:bg-[#f5f7f0] 
-                     shadow-md hover:shadow-xl"
+                     bg-white/95 backdrop-blur-sm text-[#2c4a3e] 
+                     hover:bg-white 
+                     shadow-lg hover:shadow-xl"
         >
-          {/* Icon */}
-          <span className="text-xl sm:text-2xl lg:text-3xl group-hover:scale-110 transition-transform duration-300">
+          <span className="text-xl sm:text-2xl lg:text-3xl group-hover:scale-110 transition-transform duration-300 text-[#b87d5e]">
             {action.icon}
           </span>
-
-          {/* Label */}
-          <span className="text-sm sm:text-base lg:text-lg">
+          <span className="text-sm sm:text-base lg:text-lg font-medium">
             {action.label}
           </span>
-
-          {/* Arrow */}
-          <FaArrowRight className="absolute bottom-3 right-3 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 hidden lg:block" />
+          <FaArrowRight className="absolute bottom-3 right-3 text-xs opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all duration-300 text-[#b87d5e]" />
         </Link>
       ))}
     </div>
+  </div>
+</div>
+
+{/* Final CTA - Updated with better colors */}
+<div className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
+  <div className="absolute inset-0 bg-gradient-to-br from-[#2c4a3e]/90 to-[#1e352b]/90">
+    <div className="absolute inset-0 opacity-10">
+      <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-[#b87d5e] rounded-full blur-3xl" />
+      <div className="absolute bottom-0 left-0 w-56 sm:w-72 md:w-80 h-56 sm:h-72 md:h-80 bg-white rounded-full blur-3xl" />
+    </div>
+  </div>
+
+  <div className="relative container mx-auto px-4">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="max-w-4xl mx-auto"
+    >
+      <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-2xl border border-white/20">
+        <div className="text-center">
+          <motion.div
+            initial={{ scale: 0 }}
+            whileInView={{ scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
+            className="relative inline-block mb-4 sm:mb-6 md:mb-8"
+          >
+            <div className="absolute inset-0 bg-[#b87d5e] rounded-full blur-xl opacity-30 animate-pulse" />
+            <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#b87d5e] to-[#2c4a3e] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg transform rotate-3">
+              <FaHeart className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white" />
+            </div>
+          </motion.div>
+
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-3 md:mb-4"
+          >
+            Ready to Make an{' '}
+            <span className="text-[#b87d5e] relative inline-block">
+              Impact?
+            </span>
+          </motion.h2>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+            className="text-xs sm:text-sm md:text-base lg:text-lg text-[#2c4a3e]/70 mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto leading-relaxed px-4"
+          >
+            Your support transforms lives and gives rescued animals a second chance at life.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.4 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
+          >
+            <Link href="/adopt" className="w-full sm:w-auto">
+              <button className="group cursor-pointer w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white font-semibold rounded-lg sm:rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base">
+                <FaHeart className="group-hover:scale-110 transition-transform" />
+                <span>Adopt a Pet</span>
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
+
+            <div className="hidden sm:flex items-center gap-2">
+              <div className="w-8 md:w-12 h-px bg-[#2c4a3e]/20" />
+              <span className="text-xs font-medium text-[#2c4a3e]/40">or</span>
+              <div className="w-8 md:w-12 h-px bg-[#2c4a3e]/20" />
+            </div>
+
+            <div className="flex flex-col xs:flex-row gap-2 w-full sm:w-auto">
+              <Link href="/volunteer" className="flex-1 xs:flex-initial">
+                <button className="w-full cursor-pointer px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-white border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                  <FaUsers className="group-hover:scale-110 transition-transform" />
+                  <span>Volunteer</span>
+                </button>
+              </Link>
+              
+              <Link href="/donate" className="flex-1 xs:flex-initial">
+                <button className="w-full cursor-pointer px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-white border-2 border-[#b87d5e] text-[#b87d5e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#b87d5e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                  <FaGift className="group-hover:scale-110 transition-transform" />
+                  <span>Donate</span>
+                </button>
+              </Link>
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.5 }}
+            className="pt-6 sm:pt-7 md:pt-8 border-t border-[#2c4a3e]/10"
+          >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-xs sm:text-sm">
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
+                  <FaCheck className="text-[#b87d5e] text-[10px] sm:text-xs" />
+                </div>
+                <span className="text-[#2c4a3e]/70">Trusted by 5,000+ members</span>
+              </div>
+              
+              <div className="hidden sm:block w-px h-4 bg-[#2c4a3e]/20" />
+              
+              <div className="flex items-center gap-2">
+                <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 bg-[#2c4a3e]/10 rounded-full flex items-center justify-center">
+                  <FaHeart className="text-[#2c4a3e] text-[10px] sm:text-xs" />
+                </div>
+                <span className="text-[#2c4a3e]/70">100% non-profit</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </motion.div>
   </div>
 </div>
 
@@ -223,7 +351,7 @@ const handleSubmit = (e: any) => {
             <LiveStats />
           </div>
 
-          {/* How It Works Section */}
+          {/* How It Works Section - Updated */}
           <div className="mb-16 sm:mb-20 md:mb-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -232,14 +360,14 @@ const handleSubmit = (e: any) => {
               transition={{ duration: 0.6 }}
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e] rounded-full text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
                 Simple Process
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
                 How It Works
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
-                Your journey to finding a loving companion in three simple steps
+              <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto px-4">
+                Choose between adoption or professional daycare in just a few simple steps
               </p>
             </motion.div>
             
@@ -252,7 +380,7 @@ const handleSubmit = (e: any) => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="relative group"
               >
-                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
+                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300 hover:border-[#b87d5e]/30">
                   <div className="relative">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#b87d5e]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl sm:text-3xl font-bold text-[#b87d5e]">1</span>
@@ -276,7 +404,7 @@ const handleSubmit = (e: any) => {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative group"
               >
-                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
+                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300 hover:border-[#b87d5e]/30">
                   <div className="relative">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#b87d5e]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl sm:text-3xl font-bold text-[#b87d5e]">2</span>
@@ -300,7 +428,7 @@ const handleSubmit = (e: any) => {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="relative group sm:col-span-2 lg:col-span-1"
               >
-                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300">
+                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-xl transition-all duration-300 hover:border-[#b87d5e]/30">
                   <div className="relative">
                     <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#b87d5e]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl sm:text-3xl font-bold text-[#b87d5e]">3</span>
@@ -326,7 +454,7 @@ const handleSubmit = (e: any) => {
               className="text-center mt-8 sm:mt-10 md:mt-12"
             >
               <Link href="/animals">
-                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#2c4a3e] text-white rounded-lg font-semibold hover:bg-[#1e352b] transition-colors group text-sm sm:text-base cursor-pointer">
+                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 group text-sm sm:text-base cursor-pointer">
                   <span>Start Your Journey</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -347,14 +475,14 @@ const handleSubmit = (e: any) => {
               viewport={{ once: true }}
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e] rounded-full text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
                 Meet Our Friends
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2 sm:mb-4">
                 Featured Pets
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
-                Each of our rescues has a unique personality waiting to shine in a loving home
+              <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto px-4">
+                Meet loving pets available for adoption or learn how we care for them in our daycare facility.
               </p>
             </motion.div>
             
@@ -401,7 +529,7 @@ const handleSubmit = (e: any) => {
                       <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Playful</span>
                     </div>
                     
-                    <Link href="/animals/ninja-warrior">
+                    <Link href="/animals/7">
                       <button className="px-4 cursor-pointer sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-semibold bg-white text-[#2c4a3e] hover:bg-[#b87d5e] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
                         Meet Ninja
                         <FaArrowRight className="text-xs" />
@@ -452,7 +580,7 @@ const handleSubmit = (e: any) => {
                       <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Curious</span>
                     </div>
                     
-                    <Link href="/animals/madam-mimi">
+                    <Link href="/animals/8">
                       <button className="px-4 cursor-pointer sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-semibold bg-white text-[#2c4a3e] hover:bg-[#b87d5e] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
                         Meet Mimi
                         <FaArrowRight className="text-xs" />
@@ -509,7 +637,7 @@ const handleSubmit = (e: any) => {
                   </div>
                   
                   <div className="flex flex-wrap items-center gap-3 sm:gap-4">
-                    <Link href="/animals/t-rex">
+                    <Link href="/animals/9">
                       <button className="bg-[#b87d5e] cursor-pointer text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold hover:bg-[#9e6a4f] transition-all duration-300 inline-flex items-center gap-2 shadow-xl text-sm sm:text-base">
                         <FaHeart className="text-sm sm:text-base" />
                         <span className="hidden xs:inline">Meet T-Rex</span>
@@ -534,7 +662,7 @@ const handleSubmit = (e: any) => {
               className="text-center"
             >
               <Link href="/animals">
-                <button className="inline-flex cursor-pointer items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg sm:rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 group text-sm sm:text-base">
+                <button className="inline-flex cursor-pointer items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#2c4a3e] text-white rounded-lg sm:rounded-xl font-semibold hover:bg-gradient-to-r hover:from-[#b87d5e] hover:to-[#2c4a3e] hover:text-white hover:border-transparent transition-all duration-300 group text-sm sm:text-base">
                   <span>Browse All Pets</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -543,7 +671,6 @@ const handleSubmit = (e: any) => {
           </div>
 
          {/* FAQ Section with Staggered Animation */}
-{/* FAQ Section with Staggered Animation */}
 <div className="mt-16 sm:mt-20 md:mt-24">
   <div className="space-y-4 sm:space-y-5 md:space-y-6 max-w-4xl mx-auto px-4">
   {faqs.map((faq, index) => {
@@ -562,7 +689,7 @@ const handleSubmit = (e: any) => {
           onClick={() =>
             setOpenIndex(isOpen ? null : index)
           }
-          className="w-full px-4 sm:px-5 md:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200 group"
+          className="w-full cursor-pointer px-4 sm:px-5 md:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200 group"
         >
           <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#2c4a3e] text-left">
             {faq.question}
@@ -605,9 +732,7 @@ const handleSubmit = (e: any) => {
 </div>
 </div>
 
-
-
-        {/* Contact Form Section - Clean & Modern */}
+        {/* Contact Form Section - Updated with better styling */}
 <div className="mt-16 sm:mt-20 md:mt-24 mb-16 sm:mb-20 md:mb-24">
   {/* Header */}
   <div className="text-center mb-10 sm:mb-12">
@@ -617,14 +742,14 @@ const handleSubmit = (e: any) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5 }}
     >
-      <span className="inline-block px-3 py-1 bg-[#b87d5e]/10 text-[#b87d5e] rounded-full text-xs font-medium mb-4">
-        Contact Us
-      </span>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2c4a3e] mb-3">
+      <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e] rounded-full text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
         Get In Touch
+      </span>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#b87d5e] mb-3">
+        We'd Love to <span className="text-[#b87d5e]">Hear From You</span>
       </h2>
-      <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">
-        Have questions about adoption, volunteering, or donations? We're here to help!
+      <p className="text-sm sm:text-base text-white max-w-2xl mx-auto px-4">
+        Have questions about adoption, daycare, or want to get involved? Reach out to our friendly team.
       </p>
     </motion.div>
   </div>
@@ -637,170 +762,228 @@ const handleSubmit = (e: any) => {
     transition={{ duration: 0.6, delay: 0.2 }}
     className="max-w-3xl mx-auto px-4"
   >
-    <form onSubmit={handleSubmit} className="space-y-5">
+    <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+      {/* Decorative Header */}
+      <div className="h-2 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e]" />
       
-      {/* Name Row - Clean Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-        <div className="space-y-1.5">
-          <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
-            First Name
-          </label>
-          <input
-            type="text"
-            name="firstName"
-            value={formData.firstName}
-            onChange={handleChange}
-            placeholder="John"
-            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
-                     focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
-                     transition-all duration-200 text-gray-700 placeholder-gray-400"
-          />
-        </div>
+      <div className="p-6 sm:p-8 md:p-10">
+        <form onSubmit={handleSubmit} className="space-y-5">
+          
+          {/* Name Row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-gray-700 flex items-center gap-1">
+                <FaPaw className="text-[#b87d5e] text-xs" />
+                First Name
+              </label>
+              <input
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleChange}
+                placeholder="John"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
+                         focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                         focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400"
+              />
+            </div>
 
-        <div className="space-y-1.5">
-          <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
-            Last Name
-          </label>
-          <input
-            type="text"
-            name="lastName"
-            value={formData.lastName}
-            onChange={handleChange}
-            placeholder="Doe"
-            className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
-                     focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
-                     transition-all duration-200 text-gray-700 placeholder-gray-400"
-          />
-        </div>
-      </div>
+            <div className="space-y-1.5">
+              <label className="text-xs font-medium text-gray-700 flex items-center gap-1">
+                <FaPaw className="text-[#2c4a3e] text-xs" />
+                Last Name
+              </label>
+              <input
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleChange}
+                placeholder="Doe"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
+                         focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                         focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400"
+              />
+            </div>
+          </div>
 
-      {/* Email Field */}
-      <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
-          Email Address
-        </label>
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="john.doe@example.com"
-          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
-                   focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
-                   transition-all duration-200 text-gray-700 placeholder-gray-400"
-        />
-      </div>
+          {/* Email Field */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-gray-700 flex items-center gap-1">
+              <FaEnvelope className="text-[#b87d5e] text-xs" />
+              Email Address
+            </label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="john.doe@example.com"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
+                       focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                       focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400"
+            />
+          </div>
 
-      {/* Subject Field */}
-      <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
-          Subject
-        </label>
-        <select
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
-                   focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
-                   transition-all duration-200 text-gray-700 appearance-none
-                   bg-[url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23666%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')] bg-no-repeat bg-[center_right_1rem] bg-[length:16px]"
-        >
-          <option value="" disabled>Select a subject</option>
-          <option value="adoption">🐾 Adoption Inquiry</option>
-          <option value="volunteer">🤝 Volunteer Opportunities</option>
-          <option value="donation">🎁 Donation Support</option>
-          <option value="general">📝 General Question</option>
-        </select>
-      </div>
+          {/* Subject Dropdown */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-gray-700 flex items-center gap-1">
+              <FaQuestionCircle className="text-[#2c4a3e] text-xs" />
+              Subject
+            </label>
+            <div className="relative">
+              <button
+                type="button"
+                onClick={() => setIsSubjectOpen(!isSubjectOpen)}
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
+                         flex items-center justify-between 
+                         focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20
+                         transition-all duration-200 text-left"
+              >
+                {formData.subject ? (
+                  <div className="flex items-center gap-2 text-gray-700">
+                    {subjectOptions.find(opt => opt.value === formData.subject)?.icon}
+                    <span>{subjectOptions.find(opt => opt.value === formData.subject)?.label}</span>
+                  </div>
+                ) : (
+                  <span className="text-gray-400">Select a subject</span>
+                )}
 
-      {/* Message Field */}
-      <div className="space-y-1.5">
-        <label className="text-xs font-medium text-gray-700 uppercase tracking-wider ml-1">
-          Your Message
-        </label>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={5}
-          placeholder="Tell us how we can help you..."
-          className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg 
-                   focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
-                   transition-all duration-200 text-gray-700 placeholder-gray-400 resize-none"
-        />
-        <div className="text-right">
-          <span className="text-xs text-gray-400">
-            {formData.message.length}/500 characters
-          </span>
-        </div>
-      </div>
+                <FaChevronDown
+                  className={`transition-transform duration-300 ${
+                    isSubjectOpen ? "rotate-180 text-[#b87d5e]" : "text-gray-400"
+                  }`}
+                />
+              </button>
 
-      {/* Terms Checkbox */}
-      <div className="flex items-start gap-3 pt-2">
-        <div className="relative flex items-center h-5">
-          <input
-            type="checkbox"
-            name="terms"
-            checked={formData.terms}
-            onChange={handleChange}
-            className="w-4 h-4 border-2 border-gray-300 rounded 
-                     checked:bg-[#b87d5e] checked:border-[#b87d5e] 
-                     focus:ring-2 focus:ring-[#b87d5e]/20 focus:outline-none
-                     transition-all duration-200 cursor-pointer"
-          />
-        </div>
-        <label className="text-sm text-gray-600 leading-relaxed">
-          I agree to the{' '}
-          <button type="button" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium underline underline-offset-2 transition-colors">
-            terms and conditions
-          </button>
-          {' '}and{' '}
-          <button type="button" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium underline underline-offset-2 transition-colors">
-            privacy policy
-          </button>.
-        </label>
-      </div>
+              {isSubjectOpen && (
+                <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+                  {subjectOptions.map((option) => (
+                    <button
+                      key={option.value}
+                      type="button"
+                      onClick={() => {
+                        setFormData({ ...formData, subject: option.value });
+                        setIsSubjectOpen(false);
+                      }}
+                      className="w-full px-4 py-3 flex items-center gap-3 text-left 
+                               hover:bg-gradient-to-r hover:from-[#b87d5e]/5 hover:to-[#2c4a3e]/5 
+                               transition-colors duration-200"
+                    >
+                      <span className="text-[#b87d5e]">{option.icon}</span>
+                      <span className="text-gray-700">{option.label}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
 
-      {/* Submit Button */}
-      <div className="pt-4">
-        <button
-          type="submit"
-          className="group relative w-full sm:w-auto px-8 py-3.5 bg-[#2c4a3e] text-white 
-                   font-semibold rounded-lg overflow-hidden transition-all duration-300
-                   hover:bg-[#1e352b] hover:shadow-lg hover:shadow-[#2c4a3e]/20
-                   focus:outline-none focus:ring-2 focus:ring-[#b87d5e] focus:ring-offset-2
-                   active:transform active:scale-[0.98]"
-        >
-          <span className="relative z-10 flex items-center justify-center gap-2">
-            Send Message
-            <svg 
-              className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
+          {/* Message Field */}
+          <div className="space-y-1.5">
+            <label className="text-xs font-medium text-gray-700 flex items-center gap-1">
+              <FaHeart className="text-[#b87d5e] text-xs" />
+              Your Message
+            </label>
+            <textarea
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              rows={5}
+              placeholder="Tell us how we can help you..."
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
+                       focus:outline-none focus:border-[#b87d5e] focus:ring-2 focus:ring-[#b87d5e]/20 
+                       focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400 resize-none"
+            />
+            <div className="text-right">
+              <span className={`text-xs ${formData.message.length > 400 ? 'text-[#b87d5e]' : 'text-gray-400'}`}>
+                {formData.message.length}/500 characters
+              </span>
+            </div>
+          </div>
+
+          {/* Terms Checkbox */}
+          <div className="flex items-start gap-3 pt-2">
+            <div className="relative flex items-center h-5">
+              <input
+                type="checkbox"
+                name="terms"
+                checked={formData.terms}
+                onChange={handleChange}
+                className="w-4 h-4 border-2 border-gray-300 rounded 
+                         checked:bg-[#b87d5e] checked:border-[#b87d5e] 
+                         focus:ring-2 focus:ring-[#b87d5e]/20 focus:outline-none
+                         transition-all duration-200 cursor-pointer"
+              />
+            </div>
+            <label className="text-sm text-gray-600 leading-relaxed">
+              I agree to the{' '}
+              <button type="button" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium underline underline-offset-2 transition-colors">
+                terms and conditions
+              </button>
+              {' '}and{' '}
+              <button type="button" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium underline underline-offset-2 transition-colors">
+                privacy policy
+              </button>.
+            </label>
+          </div>
+
+          {/* Submit Button */}
+          <div className="pt-4">
+            <button
+              type="submit"
+              className="group relative w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#b87d5e] to-[#2c4a3e] text-white 
+                       font-semibold rounded-lg overflow-hidden transition-all duration-300
+                       hover:shadow-lg hover:shadow-[#b87d5e]/20 hover:scale-[1.02]
+                       focus:outline-none focus:ring-2 focus:ring-[#b87d5e] focus:ring-offset-2
+                       active:transform active:scale-[0.98]"
             >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </span>
-        </button>
-      </div>
-    </form>
+              <span className="relative z-10 flex items-center justify-center gap-2">
+                <FaHeart className="group-hover:scale-110 transition-transform" />
+                Send Message
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </button>
+          </div>
+        </form>
 
-    {/* Alternative Contact Info */}
-    <div className="mt-8 pt-6 border-t border-gray-100">
-      <p className="text-xs text-center text-gray-500">
-        Prefer to talk? Call us at{' '}
-        <a href="tel:+1234567890" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium">
-          (123) 456-7890
-        </a>
-        {' '}or email{' '}
-        <a href="mailto:info@pawheaven.com" className="text-[#b87d5e] hover:text-[#9e6a4f] font-medium">
-          info@pawheaven.com
-        </a>
-      </p>
+        {/* Alternative Contact Info */}
+        <div className="mt-8 pt-6 border-t border-gray-100">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
+                <FaPhone className="text-[#b87d5e] text-xs" />
+              </div>
+              <a href="tel:+1234567890" className="text-sm text-gray-600 hover:text-[#b87d5e] transition-colors">
+                +91 98765 43210
+              </a>
+            </div>
+            
+            <div className="hidden sm:block w-px h-4 bg-gray-200" />
+            
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#2c4a3e]/10 rounded-full flex items-center justify-center">
+                <FaEnvelope className="text-[#2c4a3e] text-xs" />
+              </div>
+              <a href="mailto:info@pawheaven.com" className="text-sm text-gray-600 hover:text-[#2c4a3e] transition-colors">
+                info@pawheaven.com
+              </a>
+            </div>
+            
+            <div className="hidden sm:block w-px h-4 bg-gray-200" />
+            
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
+                <FaMapMarkerAlt className="text-[#b87d5e] text-xs" />
+              </div>
+              <span className="text-sm text-gray-600">Vashi, Navi Mumbai</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </motion.div>
 </div>
+
           {/* Donation Progress */}
           <div className="mb-12 sm:mb-16 md:mb-20">
             <DonationProgress />
@@ -814,14 +997,14 @@ const handleSubmit = (e: any) => {
               viewport={{ once: true }}
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e]/10 rounded-full text-[#b87d5e] font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#b87d5e] rounded-full text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
                 Innovative Technology
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-4">
-                Modern Adoption <span className="text-[#b87d5e]">Tools</span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#b87d5e] mb-2 sm:mb-4">
+                Modern Pet Care <span className="text-[#b87d5e]">Tools</span>
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
-                Leverage cutting-edge technology to find and connect with your perfect pet companion.
+              <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl mx-auto px-4">
+                Leverage modern tools to adopt, book daycare, and stay connected with your pet’s care.
               </p>
             </motion.div>
             
@@ -878,7 +1061,7 @@ const handleSubmit = (e: any) => {
               className="text-center mt-8 sm:mt-10 md:mt-12"
             >
               <Link href="/features">
-                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg sm:rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 group text-sm sm:text-base">
+                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#2c4a3e] text-white rounded-lg sm:rounded-xl font-semibold hover:bg-gradient-to-r hover:from-[#b87d5e] hover:to-[#2c4a3e] hover:text-white hover:border-transparent transition-all duration-300 group text-sm sm:text-base">
                   <span>View All Features</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -908,16 +1091,16 @@ const handleSubmit = (e: any) => {
                     Happy Endings
                   </span>
                 </div>
-                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-3">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#b87d5e] mb-2 sm:mb-3">
                   Success <span className="text-[#b87d5e]">Stories</span>
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl">
+                <p className="text-sm sm:text-base md:text-lg text-white max-w-2xl">
                   Heartwarming tales of animals who found their forever homes.
                 </p>
               </div>
               
               <Link href="/success-stories" className="hidden sm:block">
-                <button className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg sm:rounded-xl font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 text-xs sm:text-sm">
+                <button className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg sm:rounded-xl font-semibold hover:bg-gradient-to-r hover:from-[#b87d5e] hover:to-[#2c4a3e] hover:text-white hover:border-transparent transition-all duration-300 text-xs sm:text-sm">
                   <span>View All Stories</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -976,12 +1159,12 @@ const handleSubmit = (e: any) => {
                           </span>
                         </div>
                         
-                        <div className="inline-flex items-center gap-1 sm:gap-2 text-[#b87d5e] font-semibold text-xs sm:text-sm group/link">
+                        {/* <div className="inline-flex items-center gap-1 sm:gap-2 text-[#b87d5e] font-semibold text-xs sm:text-sm group/link">
                           <span>Read their story</span>
                           <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#b87d5e]/10 flex items-center justify-center group-hover/link:bg-[#b87d5e] group-hover/link:translate-x-1 transition-all duration-300">
                             <FaArrowRight className="text-[10px] sm:text-xs text-[#b87d5e] group-hover/link:text-white transition-colors duration-300" />
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   </Link>
@@ -998,7 +1181,7 @@ const handleSubmit = (e: any) => {
               className="text-center mt-6 sm:hidden"
             >
               <Link href="/success-stories">
-                <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg font-semibold hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 text-sm">
+                <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] rounded-lg font-semibold hover:bg-gradient-to-r hover:from-[#b87d5e] hover:to-[#2c4a3e] hover:text-white hover:border-transparent transition-all duration-300 text-sm">
                   <span>View All Stories</span>
                   <FaArrowRight />
                 </button>
@@ -1089,14 +1272,14 @@ const handleSubmit = (e: any) => {
 
                       <div className="flex flex-col xs:flex-row gap-2 w-full sm:w-auto">
                         <Link href="/volunteer" className="flex-1 xs:flex-initial">
-                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-lg sm:rounded-xl hover:bg-gradient-to-r hover:from-[#b87d5e] hover:to-[#2c4a3e] hover:text-white hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
                             <FaUsers className="group-hover:scale-110 transition-transform" />
                             <span>Volunteer</span>
                           </button>
                         </Link>
                         
                         <Link href="/donate" className="flex-1 xs:flex-initial">
-                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#b87d5e] text-[#b87d5e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#b87d5e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#b87d5e] text-[#b87d5e] font-semibold rounded-lg sm:rounded-xl hover:bg-gradient-to-r hover:from-[#b87d5e] hover:to-[#2c4a3e] hover:text-white hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
                             <FaGift className="group-hover:scale-110 transition-transform" />
                             <span>Donate</span>
                           </button>

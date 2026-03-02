@@ -28,7 +28,7 @@ export default function AnimalsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f5f7f0] via-[#f0f2e8] to-[#eaede2]">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] text-white py-12 md:py-16">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] text-white py-8 md:py-10">
         {/* Decorative Paw Prints - Hidden on mobile */}
         <div className="absolute inset-0 opacity-5 hidden sm:block">
           <div className="absolute top-10 left-10 text-8xl">🐾</div>
@@ -68,13 +68,29 @@ export default function AnimalsPage() {
               className="max-w-xl mx-auto mb-8 sm:mb-12 px-4"
             >
               <div className="relative">
-                <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#2c4a3e]/40 text-sm sm:text-base" />
+                <FaSearch className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#2c4a3e]/60 text-sm sm:text-base" />
                 <input
                   type="text"
                   placeholder="Search by name, breed, or traits..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-10 sm:pl-12 pr-4 py-3 sm:py-4 rounded-xl text-[#2c4a3e] placeholder-[#2c4a3e]/40 text-sm sm:text-base focus:outline-none focus:ring-2 focus:ring-[#b87d5e] shadow-lg"
+                 className="
+  w-full
+  pl-10 sm:pl-12 pr-4
+  py-3 sm:py-4
+  rounded-xl
+  bg-white
+  text-[#2c4a3e]
+  placeholder-[#2c4a3e]/50
+  text-sm sm:text-base
+  border-2 border-white/40
+  focus:border-[#b87d5e]
+  focus:ring-2
+  focus:ring-[#b87d5e]/40
+  focus:outline-none
+  shadow-xl
+  transition-all
+"
                 />
               </div>
             </motion.div>
@@ -130,7 +146,7 @@ export default function AnimalsPage() {
                   onClick={() => setSelectedType('all')}
                   className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium whitespace-nowrap transition-all duration-300 ${
                     selectedType === 'all'
-                      ? 'bg-[#2c4a3e] text-white shadow-md'
+                      ? 'bg-[#2c4a3e] text-white shadow-md cursor-pointer'
                       : 'bg-[#2c4a3e]/5 text-[#2c4a3e] hover:bg-[#2c4a3e]/10'
                   }`}
                 >
@@ -140,17 +156,17 @@ export default function AnimalsPage() {
                   onClick={() => setSelectedType('dog')}
                   className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2 whitespace-nowrap transition-all duration-300 ${
                     selectedType === 'dog'
-                      ? 'bg-[#b87d5e] text-white shadow-md'
-                      : 'bg-[#2c4a3e]/5 text-[#2c4a3e] hover:bg-[#2c4a3e]/10'
+                      ? 'bg-[#b87d5e] text-white shadow-md cursor-pointer'
+                      : 'bg-[#2c4a3e]/5 text-[#2c4a3e] hover:bg-[#2c4a3e]/10 cursor-pointer'
                   }`}
                 >
                   <FaDog className="text-xs sm:text-sm" /> Dogs
                 </button>
                 <button
                   onClick={() => setSelectedType('cat')}
-                  className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2 whitespace-nowrap transition-all duration-300 ${
+                  className={`px-3 sm:px-5 py-2 sm:py-2.5 cursor-pointer rounded-lg text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2 whitespace-nowrap transition-all duration-300 ${
                     selectedType === 'cat'
-                      ? 'bg-[#b87d5e] text-white shadow-md'
+                      ? 'bg-[#b87d5e] text-white shadow-md cursor-pointer'
                       : 'bg-[#2c4a3e]/5 text-[#2c4a3e] hover:bg-[#2c4a3e]/10'
                   }`}
                 >
@@ -163,8 +179,8 @@ export default function AnimalsPage() {
                 onClick={() => setShowUrgentOnly(!showUrgentOnly)}
                 className={`px-3 sm:px-5 py-2 sm:py-2.5 rounded-lg text-xs sm:text-sm font-medium flex items-center gap-1 sm:gap-2 justify-center transition-all duration-300 ${
                   showUrgentOnly
-                    ? 'bg-[#b87d5e] text-white shadow-md'
-                    : 'bg-[#2c4a3e]/5 text-[#2c4a3e] hover:bg-[#2c4a3e]/10'
+                    ? 'bg-[#b87d5e] text-white shadow-md cursor-pointer'
+                    : 'bg-[#2c4a3e]/5 text-[#2c4a3e] hover:bg-[#2c4a3e]/10 cursor-pointer'
                 }`}
               >
                 <FaExclamationTriangle className="text-xs sm:text-sm" /> 

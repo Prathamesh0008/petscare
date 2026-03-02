@@ -1,3 +1,4 @@
+//petscare\components\Hero.tsx
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -22,11 +23,11 @@ export default function Hero() {
   }, []);
 
   const stats = [
-    { icon: <FaPaw />, value: '150+', label: 'Rescued Animals' },
-    { icon: <FaHeart />, value: '120+', label: 'Happy Adoptions' },
-    { icon: <FaUsers />, value: '50+', label: 'Active Volunteers' },
-    { icon: <FaHome />, value: '200+', label: 'Families Created' }
-  ];
+  { icon: <FaPaw />, value: '150+', label: 'Animals Rescued' },
+  { icon: <FaHeart />, value: '120+', label: 'Successful Adoptions' },
+  { icon: <FaHome />, value: '80+', label: 'Daycare Pets Served' },
+  { icon: <FaUsers />, value: '50+', label: 'Active Volunteers' }
+];
 
   return (
     <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 overflow-hidden">
@@ -82,8 +83,8 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
             >
-              A Safe Haven for{' '}
-              <span className="text-[#b87d5e]">Every Soul</span>
+              A Safe Heaven for{' '}
+              <span className="text-[#b87d5e]">You Can Trust</span>
             </motion.h1>
 
             {/* Description */}
@@ -93,35 +94,34 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
             >
-              We rescue, rehabilitate, and find loving homes for stray animals in Navi Mumbai. 
-              Join our mission to create a world where every animal is valued and protected.
+             Whether you're looking to adopt a loving companion or need safe and professional daycare for your pet, PawHeaven provides trusted care, comfort, and compassion — all under one roof.
             </motion.p>
 
             {/* CTA Buttons */}
-            <motion.div
-              className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-            >
-              <Link href="/animals" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 bg-[#2c4a3e] text-white rounded-lg font-semibold hover:bg-[#1e352b] transition-colors text-sm sm:text-base">
-                  <span className="flex items-center justify-center gap-2 cursor-pointer">
-                    Meet Our Animals
-                    <FaArrowRight className="text-xs sm:text-sm" />
-                  </span>
-                </button>
-              </Link>
+          <motion.div
+  className="flex flex-wrap gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
+  initial={{ opacity: 0, y: 20 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.5 }}
+>
+  <Link href="/animals" className="w-full sm:w-auto">
+    <button className="w-full sm:w-auto cursor-pointer px-6 py-3 bg-[#2c4a3e] text-white rounded-lg font-semibold hover:bg-[#1e352b] transition-colors">
+      <span className="flex items-center justify-center gap-2">
+        Adopt a Pet
+        <FaArrowRight />
+      </span>
+    </button>
+  </Link>
 
-              <Link href="/donate" className="w-full sm:w-auto">
-                <button className="w-full sm:w-auto px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 bg-transparent border border-[#2c4a3e] text-[#2c4a3e] rounded-lg font-semibold hover:bg-[#2c4a3e]/5 transition-colors text-sm sm:text-base">
-                  <span className="flex items-center justify-center gap-2 cursor-pointer">
-                    <FaHeart className="text-[#b87d5e] text-sm sm:text-base" />
-                    Support Our Work
-                  </span>
-                </button>
-              </Link>
-            </motion.div>
+  <Link href="/daycare" className="w-full sm:w-auto">
+    <button className="w-full cursor-pointer sm:w-auto px-6 py-3 bg-[#b87d5e] text-white rounded-lg font-semibold hover:bg-[#9e6a4f] transition-colors">
+      <span className="flex items-center justify-center gap-2">
+        Pet Daycare
+        <FaHome />
+      </span>
+    </button>
+  </Link>
+</motion.div>
 
             {/* Quick Stats */}
             <motion.div
@@ -200,10 +200,10 @@ export default function Hero() {
                   <div className="w-6 h-6 sm:w-8 sm:h-8 md:w-9 md:h-9 lg:w-10 lg:h-10 bg-[#b87d5e]/10 rounded-full flex items-center justify-center">
                     <FaHeart className="text-[#b87d5e] text-xs sm:text-sm md:text-base" />
                   </div>
-                  <div className="font-semibold text-[#2c4a3e] text-xs sm:text-sm md:text-base">120+ Happy Families</div>
+                  <div className="font-semibold text-[#2c4a3e] text-xs sm:text-sm md:text-base">Adoption & Daycare Trusted</div>
                 </div>
                 <p className="text-[10px] sm:text-xs md:text-sm text-[#2c4a3e]/70">
-                  Join our community of happy pet owners
+                  Loved by pet families across Navi Mumbai
                 </p>
               </motion.div>
             </div>

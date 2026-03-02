@@ -54,7 +54,7 @@ export default function WebsiteIntro({ onIntroComplete }: WebsiteIntroProps) {
               transition={{ delay: 0.8, duration: 0.8 }}
               className="text-5xl md:text-6xl font-bold mb-4 text-[#2c4a3e]"
             >
-              PawHaven
+              PawHeaven
             </motion.h1>
             
             <motion.p

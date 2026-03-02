@@ -11,6 +11,7 @@ import {
   FaDog, FaCat, FaHeartbeat, FaUsers as FaPeopleGroup,
   FaStar, FaChartLine
 } from 'react-icons/fa';
+import Link from 'next/link'
 
 const volunteerOpportunities = [
   {
@@ -119,11 +120,11 @@ const programHighlights = [
 
 export default function VolunteerPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-[#f5f7f0]/20 to-[#eaede2]/10">
+    <div className="min-h-screen bg-gradient-to-b from-white via-[#f5f7f0]/20 to-[#eaede2]/10 ">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#2c4a3e]/20 via-[#b87d5e]/30 to-[#2c4a3e]/20">
+      <div className="relative overflow-hidden bg-gradient-to-br from-[#2c4a3e]/20 via-[#b87d5e]/30 to-[#2c4a3e]/20 ">
         <div className="absolute inset-0 bg-[url('/pattern.svg')] opacity-5"></div>
-        <div className="container relative mx-auto px-4 sm:px-6 py-16 sm:py-20 md:py-24 lg:py-32">
+        <div className="container relative mx-auto px-4 sm:px-6 py-8 sm:py-10 md:py-12 lg:py-18">
           <div className="max-w-6xl mx-auto">
             <div className="flex flex-col lg:flex-row items-center gap-8 sm:gap-10 lg:gap-12">
               {/* Left Content */}
@@ -304,10 +305,13 @@ export default function VolunteerPage() {
                         </div>
                       </div>
                       
-                      <button className="w-full py-2 sm:py-2.5 md:py-3 rounded-lg sm:rounded-xl font-medium bg-gray-50 text-gray-700 hover:bg-[#b87d5e] hover:text-white hover:border-[#b87d5e] border border-gray-200 transition-colors duration-200 flex items-center justify-center gap-2 text-xs sm:text-sm">
-                        <span>Learn More</span>
-                        <FaArrowRight className="text-[10px] sm:text-xs" />
-                      </button>
+                  <Link
+  href="/contact"
+  className="w-full py-2 sm:py-2.5 md:py-3 rounded-lg sm:rounded-xl font-medium bg-gray-50 text-gray-700 hover:bg-[#b87d5e] hover:text-white hover:border-[#b87d5e] border border-gray-200 transition-colors duration-200 flex items-center justify-center gap-2 text-xs sm:text-sm"
+>
+  <span>Learn More</span>
+  <FaArrowRight className="text-[10px] sm:text-xs" />
+</Link>
                     </div>
                   </div>
                 </div>

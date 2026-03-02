@@ -320,7 +320,7 @@ const inquiryTypes = [
     bg-white border border-gray-200 
     rounded-lg shadow-lg 
     max-h-60 overflow-y-auto 
-    scrollbar-thin scrollbar-thumb-[#b87d5e]/40
+    scrollbar-thin scrollbar-thumb-[#b87d5e]/40 text-black
   ">
       {inquiryTypes.map((type) => {
         const Icon = type.icon;

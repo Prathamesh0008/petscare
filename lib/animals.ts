@@ -1,8 +1,9 @@
-//petscare\lib\animals.ts
+// petscare/lib/animals.ts
 import { Animal } from '@/types';
 import { getAnimalImage } from './utils';
 
 export const animals: Animal[] = [
+  // Existing animals
   {
     id: '1',
     name: 'Max',
@@ -79,11 +80,11 @@ export const animals: Animal[] = [
     gender: 'female',
     description: 'A beautiful cat with striking blue eyes and a calm demeanor',
     story: 'Mittens was surrendered by her previous owners who could no longer care for her. She is well-behaved and litter-trained.',
-  imageUrls: [
-  getAnimalImage(3),
-  'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800&auto=format&fit=crop&q=60',
-  'https://images.unsplash.com/photo-1514888286974-6d03bde4ba4?w=800&auto=format&fit=crop&q=60',
-],
+    imageUrls: [
+      getAnimalImage(3),
+      'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800&auto=format&fit=crop&q=60',
+      'https://images.unsplash.com/photo-1514888286974-6d03bde4ba4?w=800&auto=format&fit=crop&q=60',
+    ],
     isUrgent: true,
     isAdopted: false,
     healthStatus: 'good',
@@ -137,6 +138,75 @@ export const animals: Animal[] = [
     arrivalDate: '2024-02-15',
     personality: ['Affectionate', 'Playful', 'Curious', 'Independent'],
     adoptionFee: 2200,
+  },
+  
+  // New featured pets from home page
+  {
+    id: '7',
+    name: 'Ninja Warrior',
+    type: 'dog',
+    breed: 'Mixed Breed',
+    age: '2 years',
+    gender: 'male',
+    description: 'This fun and energetic dog is always ready for an adventure.',
+    story: 'Ninja Warrior was found as a stray with incredible energy and spirit. Despite his rough start, he maintains an amazing zest for life and loves to play. He would thrive in an active home where he can channel his energy into fun activities.',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1552053831-71594a27632d?w=800&auto=format&fit=crop&q=60',
+      'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&auto=format&fit=crop&q=60',
+    ],
+    isUrgent: false,
+    isAdopted: false,
+    healthStatus: 'excellent',
+    vaccinationStatus: 'fully',
+    arrivalDate: '2024-02-10',
+    personality: ['Energetic', 'Playful', 'Adventurous', 'Friendly'],
+    adoptionFee: 1800,
+  },
+  {
+    id: '8',
+    name: 'Madam Mimi',
+    type: 'cat',
+    breed: 'Domestic Shorthair',
+    age: '1.5 years',
+    gender: 'female',
+    description: 'This elegant and curious cat loves to explore every corner.',
+    story: 'Madam Mimi was rescued from a busy market area where she was surviving on scraps. Despite her difficult past, she maintains an air of elegance and curiosity. She loves to explore and will investigate every nook and cranny of her new home.',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1513360371669-4adf3dd7dff8?w=800&auto=format&fit=crop&q=60',
+      'https://images.unsplash.com/photo-1543852786-1cf6624b9987?w=800&auto=format&fit=crop&q=60',
+    ],
+    isUrgent: false,
+    isAdopted: false,
+    healthStatus: 'excellent',
+    vaccinationStatus: 'fully',
+    arrivalDate: '2024-01-25',
+    personality: ['Elegant', 'Curious', 'Independent', 'Playful'],
+    adoptionFee: 1600,
+  },
+  {
+    id: '9',
+    name: 'T-Rex',
+    type: 'dog',
+    breed: 'Mixed Breed',
+    age: '2 years',
+    gender: 'male',
+    description: 'He may be a shy pup, but with time and kindness, T-Rex will slowly come out of his shell.',
+    story: 'T-Rex was found abandoned and scared. Despite his intimidating name, he is actually a gentle soul who needs patience and understanding. He takes time to trust, but once he does, he becomes a loyal companion for life.',
+    imageUrls: [
+      'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&auto=format&fit=crop&q=80',
+      'https://images.unsplash.com/photo-1558280391-5d61d1c1ee30?w=800&auto=format&fit=crop&q=60',
+      'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&auto=format&fit=crop&q=60',
+    ],
+    isUrgent: true,
+    isAdopted: false,
+    healthStatus: 'good',
+    vaccinationStatus: 'partially',
+    specialNeeds: 'Needs patient owner who can help build trust',
+    arrivalDate: '2024-03-05',
+    personality: ['Shy', 'Loyal', 'Gentle', 'Loving'],
+    adoptionFee: 1200,
   },
 ];
 

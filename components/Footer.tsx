@@ -133,7 +133,7 @@ export default function Footer() {
             </div>
             
             <p className="text-white/60 mb-6 leading-relaxed">
-              A safe haven for stray dogs and cats in Navi Mumbai since 2019. 
+              A safe heaven for stray dogs and cats in Navi Mumbai since 2019. 
               We rescue, rehabilitate, and find forever homes for animals in need.
             </p>
             

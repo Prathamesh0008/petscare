@@ -26,7 +26,6 @@ export default function EmergencyBanner() {
           
           <div className="relative bg-white border-2 border-[#b87d5e]/30 rounded-xl sm:rounded-2xl shadow-xl overflow-hidden">
             {/* Top accent bar */}
-            <div className="h-2 bg-gradient-to-r from-[#b87d5e] via-[#2c4a3e] to-[#b87d5e]"></div>
             
             <div className="p-4 sm:p-5 md:p-6">
               {/* Header */}

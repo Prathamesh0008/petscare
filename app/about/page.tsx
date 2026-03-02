@@ -5,7 +5,11 @@ import Statistics from '@/components/Statistics';
 import { 
   FaHeart, FaUsers, FaBullseye, FaHandsHelping, 
   FaShieldAlt, FaPaw, FaRibbon, FaMapMarkerAlt, 
-  FaCalendarAlt, FaDog, FaArrowRight, FaQuoteLeft
+  FaCalendarAlt, FaDog, FaArrowRight, FaQuoteLeft, FaHome,
+FaChartLine,
+FaClinicMedical,
+FaTrophy,
+FaBookOpen
 } from 'react-icons/fa';
 
 const teamMembers = [
@@ -46,80 +50,80 @@ const teamMembers = [
 const milestones = [
   { 
     year: '2018', 
-    event: 'PawHaven Founded', 
-    description: 'Started with 5 animals in a small Vashi facility',
-    icon: '🏠',
+    event: 'PawHeaven Founded', 
+    description: 'Started with ethical adoption services in Vashi',
+    icon: FaHome,
     color: 'from-[#b87d5e]/10 to-[#b87d5e]/5 border-[#b87d5e]/20'
   },
   { 
     year: '2019', 
     event: 'First 100 Adoptions', 
-    description: 'Achieved 100 successful adoptions milestone',
-    icon: '🎯',
+    description: 'Successfully matched 100 pets with loving families',
+    icon: FaHeart,
     color: 'from-[#2c4a3e]/10 to-[#2c4a3e]/5 border-[#2c4a3e]/20'
   },
   { 
     year: '2020', 
-    event: 'New Facility', 
-    description: 'Expanded to current 5,000 sq.ft. location',
-    icon: '📈',
+    event: 'Daycare Launched', 
+    description: 'Introduced structured pet daycare programs',
+    icon: FaPaw,
     color: 'from-[#b87d5e]/10 to-[#b87d5e]/5 border-[#b87d5e]/20'
   },
   { 
     year: '2021', 
-    event: 'Medical Wing', 
-    description: 'Established full-service veterinary clinic',
-    icon: '🏥',
+    event: 'Veterinary Supervision Added', 
+    description: 'In-house vet consultations for adoption & daycare pets',
+    icon: FaClinicMedical,
     color: 'from-[#2c4a3e]/10 to-[#2c4a3e]/5 border-[#2c4a3e]/20'
   },
   { 
     year: '2022', 
-    event: '500+ Adoptions', 
+    event: '500+ Happy Families', 
     description: 'Surpassed 500 successful adoptions',
-    icon: '🏆',
+    icon: FaTrophy,
     color: 'from-[#b87d5e]/10 to-[#b87d5e]/5 border-[#b87d5e]/20'
   },
   { 
     year: '2023', 
-    event: 'Community Programs', 
-    description: 'Launched educational outreach initiatives',
-    icon: '👨‍👩‍👧‍👦',
+    event: 'Expanded Daycare Facility', 
+    description: 'Added dedicated play zones & training areas',
+    icon: FaChartLine,
     color: 'from-[#2c4a3e]/10 to-[#2c4a3e]/5 border-[#2c4a3e]/20'
   },
 ];
 
 const values = [
   {
-    title: 'Compassion First',
-    description: 'Every animal receives unconditional love, dignity, and respect in our care.',
+    title: 'Responsible Adoption',
+    description: 'We carefully match pets with families to ensure lifelong companionship and compatibility.',
     icon: FaHeart,
     color: 'bg-gradient-to-br from-[#b87d5e]/5 to-white border-[#b87d5e]/20'
   },
   {
-    title: 'Commitment',
-    description: 'Unwavering dedication to our mission and the animals we serve.',
-    icon: FaBullseye,
+    title: 'Safe Daycare',
+    description: 'Structured play, supervised interaction, and a secure environment for every pet.',
+    icon: FaShieldAlt,
     color: 'bg-gradient-to-br from-[#2c4a3e]/5 to-white border-[#2c4a3e]/20'
   },
   {
-    title: 'Community',
-    description: 'Collaborating with Navi Mumbai to build a humane ecosystem.',
-    icon: FaHandsHelping,
+    title: 'Community Care',
+    description: 'Supporting Navi Mumbai pet families through guidance, education, and ongoing support.',
+    icon: FaUsers,
     color: 'bg-gradient-to-br from-[#b87d5e]/5 to-white border-[#b87d5e]/20'
   },
   {
-    title: 'Excellence in Care',
-    description: 'Providing medical and emotional care at the highest standards.',
-    icon: FaShieldAlt,
+    title: 'Professional Standards',
+    description: 'Veterinary supervision, trained staff, and structured routines ensure excellence in care.',
+    icon: FaClinicMedical,
     color: 'bg-gradient-to-br from-[#2c4a3e]/5 to-white border-[#2c4a3e]/20'
   }
 ];
 
 const impactNumbers = [
-  { number: '500+', label: 'Animals Adopted', icon: FaHeart, color: 'text-[#b87d5e]' },
-  { number: '2000+', label: 'Animals Rescued', icon: FaPaw, color: 'text-[#2c4a3e]' },
-  { number: '100+', label: 'Active Volunteers', icon: FaUsers, color: 'text-[#b87d5e]' },
-  { number: '24/7', label: 'Rescue Service', icon: FaRibbon, color: 'text-[#2c4a3e]' },
+  { number: '500+', label: 'Successful Adoptions', icon: FaHeart, color: 'text-[#b87d5e]' },
+  { number: '1000+', label: 'Daycare Sessions', icon: FaPaw, color: 'text-[#2c4a3e]' },
+  { number: '100+', label: 'Trusted Families', icon: FaUsers, color: 'text-[#b87d5e]' },
+  { number: '7 Days', label: 'Daycare Availability', icon: FaCalendarAlt, color: 'text-[#2c4a3e]' },
 ];
 
 export default function AboutPage() {
@@ -138,8 +142,9 @@ export default function AboutPage() {
               Creating <span className="text-[#b87d5e]">Heaven</span> for Every <span className="text-[#2c4a3e]">Paw</span>
             </h1>
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-10 leading-relaxed max-w-3xl mx-auto px-4">
-              PawHeaven Vashi is Navi Mumbai's premier animal sanctuary, dedicated to rescuing, 
-              rehabilitating, and rehoming animals with compassion and professional care.
+             PawHeaven Vashi is Navi Mumbai’s trusted pet adoption and daycare center, 
+providing loving homes for animals and safe, professional daycare services 
+for pets in our community.
             </p>
           </div>
         </div>
@@ -163,9 +168,12 @@ export default function AboutPage() {
               
               <div className="space-y-4 sm:space-y-5 md:space-y-6">
                 <p className="text-sm sm:text-base md:text-lg text-gray-700 leading-relaxed">
-                  Founded by Dr. Priya Sharma in 2018, PawHaven began as a small initiative 
-                  with 5 rescued animals. Today, we operate a state-of-the-art 5,000 sq.ft. 
-                  facility in Vashi, providing comprehensive care and rehabilitation.
+                  Founded in 2018, PawHeaven was created with a simple vision — 
+to connect loving families with adoptable pets and provide 
+safe, structured daycare services for busy pet parents. 
+
+Today, we operate a modern 5,000 sq.ft. facility in Vashi offering 
+ethical adoption, supervised daycare, and professional veterinary oversight.
                 </p>
                 
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 md:gap-8 pt-2 sm:pt-4">
@@ -251,53 +259,93 @@ export default function AboutPage() {
         </div>
       </div>
 
-      {/* Timeline */}
-      <div className="bg-gradient-to-b from-white to-[#f5f7f0] py-12 sm:py-16 md:py-20">
-        <div className="container mx-auto px-4 sm:px-6">
-          <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
-            <div className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-[#2c4a3e]/10 rounded-full text-[#2c4a3e] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
-              Our Journey
-            </div>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Milestones & Growth</h2>
-            <p className="text-sm sm:text-base text-gray-600">Key moments in our evolving story</p>
-          </div>
+ {/* Timeline */}
+<div className="bg-gradient-to-b from-white to-[#f5f7f0] py-12 sm:py-16 md:py-20">
+  <div className="container mx-auto px-4 sm:px-6">
+    <div className="text-center mb-8 sm:mb-10 md:mb-12 lg:mb-16">
+      <div className="inline-block px-3 sm:px-4 py-1 sm:py-1.5 bg-[#2c4a3e]/10 rounded-full text-[#2c4a3e] font-medium text-xs sm:text-sm mb-3 sm:mb-4">
+        Our Journey
+      </div>
+      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-2 sm:mb-4">Milestones & Growth</h2>
+      <p className="text-sm sm:text-base text-gray-600">Key moments in our evolving story</p>
+    </div>
+    
+    <div className="relative max-w-5xl mx-auto">
+      {/* Vertical Line */}
+      <div className="hidden lg:block absolute left-1/2 top-0 -translate-x-1/2 w-0.5 h-full bg-gradient-to-b from-[#b87d5e] to-[#2c4a3e]" />
+
+      <div className="relative space-y-12 lg:space-y-16">
+        {milestones.map((milestone, index) => {
+          const isEven = index % 2 === 0;
+          const IconComponent = milestone.icon;
           
-          <div className="relative max-w-4xl mx-auto">
-            {/* Timeline line - hidden on mobile/tablet */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#b87d5e] to-[#2c4a3e] hidden lg:block" />
-            
-            <div className="space-y-6 sm:space-y-8 md:space-y-10 lg:space-y-12">
-              {milestones.map((milestone, index) => (
-                <div 
-                  key={index}
-                  className={`relative ${index % 2 === 0 ? 'lg:pr-1/2 lg:pl-12' : 'lg:pl-1/2 lg:pr-12'}`}
-                >
-                  <div className={`p-5 sm:p-6 md:p-8 rounded-xl sm:rounded-2xl bg-white border ${milestone.color} shadow-sm hover:shadow-md transition-shadow duration-300`}>
-                    <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5 md:gap-6">
-                      <div className={`p-3 sm:p-4 rounded-xl ${milestone.color.includes('b87d5e') ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'} flex-shrink-0`}>
-                        <span className="text-xl sm:text-2xl">{milestone.icon}</span>
+          return (
+            <div key={index} className="relative grid lg:grid-cols-2 gap-4 lg:gap-8">
+              {/* Timeline Dot */}
+              <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 w-4 h-4">
+                <div className={`w-4 h-4 rounded-full border-2 border-white shadow-md ${
+                  milestone.color.includes('b87d5e') ? 'bg-[#b87d5e]' : 'bg-[#2c4a3e]'
+                }`} />
+              </div>
+
+              {/* Content Column */}
+              <div className={`${!isEven ? 'lg:col-start-2' : ''}`}>
+                <div className={`bg-white p-5 sm:p-6 rounded-xl sm:rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 ${
+                  isEven ? 'lg:mr-8' : 'lg:ml-8'
+                }`}>
+                  <div className="flex items-start gap-4">
+                    {/* Icon - Now rendering React Icon component */}
+                    <div className={`flex-shrink-0 w-10 h-10 sm:w-12 sm:h-12 rounded-lg sm:rounded-xl flex items-center justify-center ${
+                      milestone.color.includes('b87d5e') ? 'bg-[#b87d5e]/10' : 'bg-[#2c4a3e]/10'
+                    }`}>
+                      <IconComponent className={`text-xl sm:text-2xl ${
+                        milestone.color.includes('b87d5e') ? 'text-[#b87d5e]' : 'text-[#2c4a3e]'
+                      }`} />
+                    </div>
+                    
+                    {/* Content */}
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-1 sm:mb-2">
+                        <span className={`text-xs sm:text-sm font-semibold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full ${
+                          milestone.color.includes('b87d5e') 
+                            ? 'bg-[#b87d5e]/10 text-[#b87d5e]' 
+                            : 'bg-[#2c4a3e]/10 text-[#2c4a3e]'
+                        }`}>
+                          {milestone.year}
+                        </span>
+                        <h3 className="text-sm sm:text-base md:text-lg font-bold text-gray-900">
+                          {milestone.event}
+                        </h3>
                       </div>
-                      <div className="flex-1">
-                        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-2">
-                          <span className={`px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs sm:text-sm font-medium self-start ${
-                            milestone.color.includes('b87d5e') 
-                              ? 'bg-[#b87d5e]/10 text-[#b87d5e]' 
-                              : 'bg-[#2c4a3e]/10 text-[#2c4a3e]'
-                          }`}>
-                            {milestone.year}
-                          </span>
-                          <h3 className="text-base sm:text-lg md:text-xl font-bold text-gray-900">{milestone.event}</h3>
-                        </div>
-                        <p className="text-xs sm:text-sm text-gray-600">{milestone.description}</p>
-                      </div>
+                      <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+                        {milestone.description}
+                      </p>
                     </div>
                   </div>
                 </div>
-              ))}
+              </div>
+
+              {/* Empty column for spacing */}
+              <div className="hidden lg:block" />
             </div>
-          </div>
-        </div>
+          );
+        })}
       </div>
+
+      {/* Mobile timeline indicators */}
+      <div className="lg:hidden mt-8 flex justify-center gap-2">
+        {milestones.map((_, idx) => (
+          <div 
+            key={idx}
+            className={`w-2 h-2 rounded-full ${
+              idx % 2 === 0 ? 'bg-[#b87d5e]' : 'bg-[#2c4a3e]'
+            } opacity-50`}
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
 
       {/* Team Section */}
       <div className="bg-white py-12 sm:py-16 md:py-20">
@@ -367,11 +415,12 @@ export default function AboutPage() {
             {/* Left Content */}
             <div>
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-900 mb-4 sm:mb-5 md:mb-6 px-4 lg:px-0">
-                Join Our <span className="text-[#b87d5e]">Mission</span>
+                Be Part of the <span className="text-[#b87d5e]">PawHeaven Family</span>
               </h2>
               <p className="text-sm sm:text-base md:text-lg text-gray-600 mb-6 sm:mb-8 leading-relaxed px-4 lg:px-0">
-                Your support helps us provide medical care, shelter, and love to animals 
-                in need. Together, we can create more happy endings.
+                Whether you’re looking to adopt a loving companion 
+or need a safe and structured daycare for your pet, 
+we’re here to support you every step of the way.
               </p>
               
               <div className="space-y-3 sm:space-y-4 px-4 lg:px-0">

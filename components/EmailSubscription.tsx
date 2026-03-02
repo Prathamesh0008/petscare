@@ -68,7 +68,7 @@ export default function EmailSubscription() {
               transition={{ delay: 0.2 }}
               className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-3 md:mb-4"
             >
-              Stay Updated with <span className="text-[#b87d5e]">PawHaven</span>
+              Stay Updated with <span className="text-[#b87d5e]">PawHeaven</span>
             </motion.h2>
             
             <motion.p 

@@ -8,10 +8,11 @@ import Link from 'next/link';
 const testimonials = [
   {
     id: '1',
-    adopterName: 'Priya Sharma',
-    animalName: 'Max',
-    animalType: 'Dog',
-    quote: 'Adopting Max was the best decision we ever made. He has brought so much joy to our family. The shelter staff were incredibly supportive throughout the adoption process.',
+    type: 'Adoption',
+    name: 'Priya Sharma',
+    petName: 'Max',
+    petType: 'Dog',
+    quote: 'Adopting Max was the best decision we ever made. The team guided us perfectly, and he has filled our home with happiness.',
     rating: 5,
     location: 'Vashi, Navi Mumbai',
     date: 'Adopted 3 months ago',
@@ -19,24 +20,26 @@ const testimonials = [
   },
   {
     id: '2',
-    adopterName: 'Rahul Mehta',
-    animalName: 'Luna',
-    animalType: 'Cat',
-    quote: 'Luna fit into our home perfectly. She is calm, affectionate, and has made our house feel complete. The adoption process was smooth and well-guided.',
+    type: 'Daycare',
+    name: 'Rahul Mehta',
+    petName: 'Luna',
+    petType: 'Cat',
+    quote: 'The daycare service is amazing. I can go to work stress-free knowing Luna is safe, monitored, and cared for all day.',
     rating: 5,
     location: 'Kharghar, Navi Mumbai',
-    date: 'Adopted 2 months ago',
+    date: 'Daycare client for 6 months',
     image: 'https://images.unsplash.com/photo-1574158622682-e40e69881006?w=100&h=100&auto=format&fit=crop&q=80'
   },
   {
     id: '3',
-    adopterName: 'Anjali Patel',
-    animalName: 'Rocky',
-    animalType: 'Dog',
-    quote: 'Rocky was a perfect match for our active family. His energy and love have transformed our home. Thank you PawHaven for this beautiful addition to our family.',
+    type: 'Daycare',
+    name: 'Anjali Patel',
+    petName: 'Rocky',
+    petType: 'Dog',
+    quote: 'Rocky absolutely loves the daycare! The staff is professional, caring, and always keeps us updated.',
     rating: 5,
     location: 'Seawoods, Navi Mumbai',
-    date: 'Adopted 5 months ago',
+    date: 'Daycare client for 1 year',
     image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=100&h=100&auto=format&fit=crop&q=80'
   }
 ];
@@ -76,11 +79,11 @@ export default function Testimonials() {
           </div>
           
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#2c4a3e] mb-2 sm:mb-3 md:mb-4">
-            What Our <span className="text-[#b87d5e]">Adopters</span> Say
+            What Our <span className="text-[#b87d5e]">Pet Parents</span> Say
           </h2>
           
           <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
-            Hear from families who found their perfect companions through PawHaven and the joy they've brought to their homes.
+           Real experiences from families who adopted with us or trust our professional daycare services.
           </p>
         </motion.div>
 
@@ -95,7 +98,10 @@ export default function Testimonials() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group relative"
             >
-              <div className="relative bg-white rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 shadow-lg border border-[#2c4a3e]/10 hover:shadow-2xl transition-all duration-500 overflow-hidden">
+             <div className="relative bg-white rounded-xl sm:rounded-2xl md:rounded-3xl 
+                p-6 shadow-lg border border-[#2c4a3e]/10 
+                hover:shadow-2xl transition-all duration-500 
+                overflow-hidden h-full flex flex-col">
                 
                 {/* Gradient Overlay on Hover */}
                 <div className="absolute inset-0 bg-gradient-to-br from-[#b87d5e]/5 to-[#2c4a3e]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -112,13 +118,13 @@ export default function Testimonials() {
                       <div className="absolute inset-0 bg-[#b87d5e] rounded-full blur-md opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
                       <img 
                         src={testimonial.image} 
-                        alt={testimonial.adopterName}
+                     alt={testimonial.name}
                         className="relative w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 rounded-full object-cover border-2 border-white shadow-lg"
                       />
                     </div>
                     <div>
                       <h4 className="text-sm sm:text-base md:text-lg font-bold text-[#2c4a3e] group-hover:text-[#b87d5e] transition-colors duration-300">
-                        {testimonial.adopterName}
+                      {testimonial.name}
                       </h4>
                       <div className="flex items-center gap-0.5 sm:gap-1 mt-0.5 sm:mt-1">
                         {[...Array(testimonial.rating)].map((_, i) => (
@@ -130,7 +136,8 @@ export default function Testimonials() {
                 </div>
 
                 {/* Quote */}
-                <p className="text-xs sm:text-sm md:text-base text-[#2c4a3e]/80 italic leading-relaxed mb-4 sm:mb-5 md:mb-6 relative z-10 line-clamp-4">
+                <p className="text-sm text-[#2c4a3e]/80 italic leading-relaxed 
+              mb-6 relative z-10 flex-grow line-clamp-4">
                   "{testimonial.quote}"
                 </p>
 
@@ -138,7 +145,7 @@ export default function Testimonials() {
                 <div className="inline-flex items-center gap-1.5 sm:gap-2 bg-[#b87d5e]/10 px-2 sm:px-3 md:px-4 py-1 sm:py-1.5 md:py-2 rounded-full mb-3 sm:mb-4">
                   <FaPaw className="text-[#b87d5e] text-[10px] sm:text-xs" />
                   <span className="text-[10px] sm:text-xs md:text-sm font-medium text-[#b87d5e]">
-                    Adopted {testimonial.animalName} • {testimonial.animalType}
+               {testimonial.type} • {testimonial.petName} • {testimonial.petType}
                   </span>
                 </div>
 
@@ -182,7 +189,7 @@ export default function Testimonials() {
                   </div>
                   <div>
                     <div className="text-xl sm:text-2xl md:text-3xl font-bold text-[#2c4a3e]">120+</div>
-                    <div className="text-xs sm:text-sm text-[#2c4a3e]/70">Happy Adoptions</div>
+                    <div className="text-xs sm:text-sm text-[#2c4a3e]/70">Successful Adoptions</div>
                   </div>
                 </div>
 
@@ -221,16 +228,16 @@ export default function Testimonials() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col xs:flex-row gap-3 sm:gap-4 justify-center px-4">
+         <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
             <Link href="/success-stories" className="w-full xs:w-auto">
-              <button className="group w-full xs:w-auto px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-3.5 lg:py-4 bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] text-white font-semibold rounded-lg sm:rounded-xl hover:from-[#9e6a4f] hover:to-[#8a5a42] transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 shadow-lg hover:shadow-xl text-xs sm:text-sm md:text-base">
+              <button className="group cursor-pointer w-full xs:w-auto px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-3.5 lg:py-4 bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] text-white font-semibold rounded-lg sm:rounded-xl hover:from-[#9e6a4f] hover:to-[#8a5a42] transition-all duration-300 flex items-center justify-center gap-2 sm:gap-3 shadow-lg hover:shadow-xl text-xs sm:text-sm md:text-base">
                 <span>Read More Stories</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform text-xs sm:text-sm" />
               </button>
             </Link>
             
             <Link href="/adopt" className="w-full xs:w-auto">
-              <button className="group w-full xs:w-auto px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-3.5 lg:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base">
+              <button className="group cursor-pointer w-full xs:w-auto px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-3.5 lg:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm md:text-base">
                 <FaHeart className="text-sm sm:text-base" />
                 <span>Start Your Adoption Journey</span>
               </button>

@@ -272,7 +272,7 @@ export default async function AnimalDetailPage({
                         { text: 'Complete Vaccination', icon: FaSyringe },
                         { text: 'Health Check-up', icon: FaStethoscope },
                         { text: 'Basic Training', icon: FaPaw },
-                        { text: '1 Month Pet Insurance', icon: FaShieldAlt },
+                        
                         { text: 'Adoption Kit', icon: FaHome }
                       ].map((service, index) => (
                         <div key={index} className="flex items-center gap-2 sm:gap-3 p-1.5 sm:p-2 hover:bg-[#2c4a3e]/5 rounded-lg transition-colors">
@@ -320,7 +320,7 @@ export default async function AnimalDetailPage({
                   {/* Success Badge */}
                   <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs text-[#2c4a3e]/50">
                     <FaCheckCircle className="text-[#b87d5e] text-xs sm:text-sm" />
-                    <span>Verified by PawHaven</span>
+                    <span>Verified by PawHeaven</span>
                   </div>
                 </div>
               </div>

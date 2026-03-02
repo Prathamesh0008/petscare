@@ -136,7 +136,7 @@ export default function AdoptPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#f5f7f0] via-[#f0f2e8] to-[#eaede2]">
       {/* Hero Section */}
-      <div className="relative overflow-hidden bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] py-20">
+      <div className="relative overflow-hidden bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] py-8 md:py-10">
         {/* Decorative Elements */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-10 text-8xl">🐾</div>
@@ -150,31 +150,31 @@ export default function AdoptPage() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <div className="inline-flex items-center gap-3 px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8 border border-white/20">
+            <div className="inline-flex items-centergap-2 px-4 sm:px-6 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8 border border-white/20">
               <FaPaw className="text-[#b87d5e]" />
               <span className="text-white font-medium">Find Your Forever Friend</span>
             </div>
             
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 leading-tight">
               Ready to <span className="text-[#b87d5e]">Adopt?</span>
             </h1>
             
-            <p className="text-xl text-white/80 mb-10 leading-relaxed max-w-3xl mx-auto">
+           <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 sm:mb-8 leading-relaxed max-w-3xl mx-auto">
               Every adoption creates space to rescue another. Find your perfect match 
               among our 200+ animals waiting for their forever homes in Navi Mumbai.
             </p>
             
             {/* Quick Stats */}
             <div className="flex flex-wrap justify-center gap-4 mb-10">
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-4 rounded-xl">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-4 sm:px-6 py-3 sm:py-4 rounded-xl">
                 <div className="text-3xl font-bold text-[#b87d5e]">250+</div>
                 <div className="text-white/80">Adoptions This Year</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-4 rounded-xl">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-4 sm:px-6 py-3 sm:py-4 rounded-xl">
                 <div className="text-3xl font-bold text-[#b87d5e]">98%</div>
                 <div className="text-white/80">Success Rate</div>
               </div>
-              <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-6 py-4 rounded-xl">
+              <div className="bg-white/10 backdrop-blur-sm border border-white/20 px-4 sm:px-6 py-3 sm:py-4 rounded-xl">
                 <div className="text-3xl font-bold text-[#b87d5e]">30-day</div>
                 <div className="text-white/80">Trial Period</div>
               </div>
@@ -182,7 +182,7 @@ export default function AdoptPage() {
             
             <Link 
               href="#adoption-form" 
-              className="inline-flex items-center gap-3 bg-[#b87d5e] hover:bg-[#9e6a4f] text-white px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 shadow-lg hover:shadow-xl group"
+              className="inline-flex items-center gap-2 sm:gap-3 bg-[#b87d5e] hover:bg-[#9e6a4f] text-white px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg"
             >
               Start Your Application
               <FaArrowRight className="group-hover:translate-x-1 transition-transform" />

@@ -10,50 +10,50 @@ import { useInView } from 'react-intersection-observer';
 const stats = [
   {
     icon: <FaPaw />,
-    value: 150,
+    value: 180,
     suffix: '+',
-    label: 'Animals Rescued',
-    description: 'From the streets of Navi Mumbai',
+    label: 'Pets Adopted',
+    description: 'Loving homes created in Navi Mumbai',
     color: 'from-[#b87d5e] to-[#9e6a4f]'
   },
   {
     icon: <FaHome />,
-    value: 120,
-    suffix: '+',
-    label: 'Forever Homes',
-    description: 'Happy families created',
-    color: 'from-[#2c4a3e] to-[#1e352b]'
-  },
-  {
-    icon: <FaHeartbeat />,
-    value: 45,
-    suffix: '',
-    label: 'Medical Treatments',
-    description: 'Lives saved through care',
-    color: 'from-[#b87d5e] to-[#9e6a4f]'
-  },
-  {
-    icon: <FaUsers />,
-    value: 50,
-    suffix: '+',
-    label: 'Active Volunteers',
-    description: 'Dedicated community members',
+    value: 95,
+    suffix: '%',
+    label: 'Adoption Success Rate',
+    description: 'Successful long-term placements',
     color: 'from-[#2c4a3e] to-[#1e352b]'
   },
   {
     icon: <FaCalendarAlt />,
-    value: 5,
-    suffix: '',
-    label: 'Years of Service',
-    description: 'Serving since 2019',
+    value: 3200,
+    suffix: '+',
+    label: 'Daycare Visits',
+    description: 'Happy stays at PawHeaven',
+    color: 'from-[#b87d5e] to-[#9e6a4f]'
+  },
+  {
+    icon: <FaHeartbeat />,
+    value: 24,
+    suffix: '/7',
+    label: 'Care Monitoring',
+    description: 'Round-the-clock supervision',
+    color: 'from-[#2c4a3e] to-[#1e352b]'
+  },
+  {
+    icon: <FaUsers />,
+    value: 1200,
+    suffix: '+',
+    label: 'Happy Pet Parents',
+    description: 'Families who trust our care',
     color: 'from-[#b87d5e] to-[#9e6a4f]'
   },
   {
     icon: <FaStar />,
     value: 4.9,
     suffix: '',
-    label: 'Satisfaction',
-    description: 'Community rating',
+    label: 'Customer Rating',
+    description: 'Average satisfaction score',
     color: 'from-[#2c4a3e] to-[#1e352b]'
   },
 ];
@@ -97,7 +97,7 @@ export default function Statistics() {
           </h2>
           
           <p className="text-sm sm:text-base md:text-lg text-[#2c4a3e]/70 max-w-2xl mx-auto px-4">
-            Our collective impact on animal welfare in Navi Mumbai, made possible by your support.
+           Delivering trusted adoption and professional daycare services across Navi Mumbai.
           </p>
         </motion.div>
         
@@ -168,77 +168,32 @@ export default function Statistics() {
         </div>
         
         {/* Fundraising Highlight */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-          className="relative mb-8 sm:mb-10 lg:mb-12"
-        >
-          <div className="bg-gradient-to-r from-[#2c4a3e] to-[#1e352b] rounded-xl sm:rounded-2xl md:rounded-3xl p-0.5">
-            <div className="bg-white rounded-xl sm:rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 lg:p-8 max-w-4xl mx-auto">
-              <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-5 w-full">
-                
-                {/* Left Section */}
-               <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4 w-full lg:w-auto">
-                  <div className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 lg:w-20 lg:h-20 bg-[#b87d5e]/10 rounded-xl flex items-center justify-center flex-shrink-0">
-                    <FaHeart className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-[#b87d5e]" />
-                  </div>
-                  <div className="text-center sm:text-left">
-                    <div className="text-xs sm:text-sm text-[#2c4a3e]/60 mb-1">2024 Fundraising</div>
-                    <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-[#2c4a3e] mb-1">
-                      ₹250,000+
-                    </div>
-                    <p className="text-xs sm:text-sm text-[#2c4a3e]/70">
-                      Raised for animal welfare this year
-                    </p>
-                  </div>
-                </div>
-
-                {/* Progress Bar Section */}
-            <div className="w-full lg:max-w-[260px]">
-                  <div className="flex justify-between text-xs sm:text-sm mb-2">
-                    <span className="text-[#2c4a3e]">Goal: ₹500k</span>
-                    <span className="text-[#b87d5e] font-semibold">50%</span>
-                  </div>
-                  <div className="w-full h-2 sm:h-2.5 md:h-3 bg-[#2c4a3e]/10 rounded-full overflow-hidden">
-                    <motion.div
-                      initial={{ width: 0 }}
-                      whileInView={{ width: '50%' }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1, delay: 0.6 }}
-                      className="h-full bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] rounded-full"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+       
         
         {/* CTA Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
-        >
-          <Link href="/donate" className="w-full sm:w-auto">
-            <button className="group w-full cursor-pointer sm:w-auto px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-4 bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] text-white font-semibold rounded-lg sm:rounded-xl hover:from-[#9e6a4f] hover:to-[#8a5a42] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base">
-              <FaHeart className="group-hover:scale-110 transition-transform" />
-              <span>Make a Donation</span>
-              <FaArrowRight className="group-hover:translate-x-1 transition-transform text-xs sm:text-sm" />
-            </button>
-          </Link>
-          
-          <Link href="/volunteer" className="w-full sm:w-auto">
-            <button className="group w-full cursor-pointer sm:w-auto px-4 sm:px-5 md:px-6 lg:px-8 py-2.5 sm:py-3 md:py-4 bg-transparent border-2 border-[#2c4a3e] text-[#2c4a3e] font-semibold rounded-lg sm:rounded-xl hover:bg-[#2c4a3e] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base">
-              <FaUsers className="text-base" />
-              <span>Join Our Team</span>
-            </button>
-          </Link>
-        </motion.div>
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ delay: 0.5 }}
+  className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center"
+>
+  <Link href="/animals" className="w-full sm:w-auto">
+    <button className="group cursor-pointer w-full sm:w-auto px-6 py-3 bg-[#2c4a3e] text-white font-semibold rounded-xl hover:bg-[#1e352b] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+      <FaPaw />
+      <span>Adopt a Pet</span>
+      <FaArrowRight />
+    </button>
+  </Link>
+
+  <Link href="/daycare" className="w-full sm:w-auto">
+    <button className="group cursor-pointer w-full sm:w-auto px-6 py-3 bg-[#b87d5e] text-white font-semibold rounded-xl hover:bg-[#9e6a4f] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+      <FaHome />
+      <span>Book Daycare</span>
+      <FaArrowRight />
+    </button>
+  </Link>
+</motion.div>
 
         {/* Trust Badge */}
         <motion.div
@@ -250,7 +205,7 @@ export default function Statistics() {
         >
           <div className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-[#2c4a3e]/50">
             <FaStar className="text-[#b87d5e] text-xs sm:text-sm" />
-            <span>Trusted by 5,000+ community members</span>
+            <span>Trusted by 5,000+ pet parents across Navi Mumbai</span>
             <FaStar className="text-[#b87d5e] text-xs sm:text-sm" />
           </div>
         </motion.div>

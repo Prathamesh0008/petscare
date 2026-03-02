@@ -168,7 +168,7 @@ export default function DonationProgress() {
         flex items-center justify-center gap-2
         shadow-lg
         text-xs sm:text-sm md:text-base
-        min-w-[160px] sm:min-w-[200px]
+        min-w-[160px] sm:min-w-[200px] cursor-pointer
       "
     >
       <FaHeart className="text-sm" />
@@ -190,7 +190,7 @@ export default function DonationProgress() {
         transition-all duration-300
         flex items-center justify-center gap-2
         text-xs sm:text-sm md:text-base
-        min-w-[160px] sm:min-w-[200px]
+        min-w-[160px] sm:min-w-[200px] cursor-pointer
       "
     >
       <FaCalendarAlt className="text-sm" />

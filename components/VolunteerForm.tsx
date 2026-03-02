@@ -1,17 +1,18 @@
 'use client';
 
-import { useState } from 'react';
+
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { volunteerFormSchema, VolunteerFormValues } from '@/lib/validation';
 import { VOLUNTEER_ROLES } from '@/lib/constants';
 import { FaCheck, FaCalendar, FaClock, FaStar } from 'react-icons/fa';
+import { useState, useRef } from 'react';
 type AvailabilityOption = VolunteerFormValues['availability'][number];
 
 
 export default function VolunteerForm() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-
+const formRef = useRef<HTMLDivElement>(null);
   const {
     register,
     handleSubmit,
@@ -27,12 +28,19 @@ export default function VolunteerForm() {
     },
   });
 
-  const onSubmit = async (data: VolunteerFormValues) => {
-    // In a real app, this would send data to your backend
-    console.log('Volunteer form submitted:', data);
-    await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate API call
-    setIsSubmitted(true);
-  };
+ const onSubmit = async (data: VolunteerFormValues) => {
+  console.log('Volunteer form submitted:', data);
+
+  await new Promise(resolve => setTimeout(resolve, 1500));
+
+  setIsSubmitted(true);
+
+  // Scroll to TOP of page
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+};
 
   const toggleAvailability = (value: VolunteerFormValues['availability'][0]) => {
     const current = watch('availability');
@@ -72,18 +80,21 @@ export default function VolunteerForm() {
         <p className="text-gray-600 mb-8 max-w-md mx-auto">
           Thank you for your interest in volunteering. We will contact you within 3-5 business days for an orientation session.
         </p>
-        <button
-          onClick={() => setIsSubmitted(false)}
-          className="btn-primary"
-        >
-          Apply Again
-        </button>
+     <button
+  onClick={() => {
+    setIsSubmitted(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }}
+  className="px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] text-white hover:shadow-lg transition-all duration-300"
+>
+  Apply Again
+</button>
       </div>
     );
   }
 
-  return (
-    <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
+return (
+  <div ref={formRef} className="bg-white rounded-2xl shadow-lg p-6 md:p-8">
       <h2 className="text-3xl font-bold text-gray-800 mb-2">Volunteer Application</h2>
       <p className="text-gray-600 mb-8">
         Join our team of dedicated volunteers and make a difference in animals' lives
@@ -96,7 +107,7 @@ export default function VolunteerForm() {
             <input
               type="text"
               {...register('fullName')}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full px-4 text-black py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               placeholder="Enter your full name"
             />
             {errors.fullName && (
@@ -109,7 +120,7 @@ export default function VolunteerForm() {
             <input
               type="email"
               {...register('email')}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               placeholder="your@email.com"
             />
             {errors.email && (
@@ -124,7 +135,7 @@ export default function VolunteerForm() {
             <input
               type="tel"
               {...register('phone')}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               placeholder="9876543210"
             />
             {errors.phone && (
@@ -137,7 +148,7 @@ export default function VolunteerForm() {
             <input
               type="number"
               {...register('age', { valueAsNumber: true })}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               placeholder="25"
               min="18"
               max="70"
@@ -153,7 +164,7 @@ export default function VolunteerForm() {
           <input
             type="text"
             {...register('occupation')}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             placeholder="Your profession"
           />
           {errors.occupation && (
@@ -171,9 +182,9 @@ export default function VolunteerForm() {
                 key={option.value}
                 type="button"
                 onClick={() => toggleAvailability(option.value)}
-                className={`p-4 rounded-xl border-2 flex flex-col items-center justify-center gap-2 transition-all ${
+                className={`p-4 rounded-xl border-2 flex flex-col items-center justify-center gap-2 transition-all text-black ${
                   watch('availability').includes(option.value)
-                    ? 'border-amber-500 bg-amber-50 text-amber-700'
+                    ? 'border-amber-500 bg-amber-50 text-amber-700 '
                     : 'border-gray-200 hover:border-amber-300'
                 }`}
               >
@@ -213,7 +224,7 @@ export default function VolunteerForm() {
           <textarea
             {...register('experience')}
             rows={4}
-            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+            className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
             placeholder="Tell us about any previous volunteer or animal care experience..."
           />
           {errors.experience && (
@@ -227,7 +238,7 @@ export default function VolunteerForm() {
             <input
               type="text"
               {...register('emergencyContact')}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               placeholder="Name and phone number"
             />
             {errors.emergencyContact && (
@@ -240,19 +251,19 @@ export default function VolunteerForm() {
             <input
               type="text"
               {...register('medicalConditions')}
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
+              className="w-full text-black px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-amber-500 focus:border-transparent"
               placeholder="Any allergies or medical conditions we should know about"
             />
           </div>
         </div>
         
         <button
-          type="submit"
-          disabled={isSubmitting}
-          className="w-full btn-primary py-4 text-lg"
-        >
-          {isSubmitting ? 'Submitting...' : 'Submit Application'}
-        </button>
+  type="submit"
+  disabled={isSubmitting}
+  className="w-full py-4 text-lg font-semibold rounded-xl bg-gradient-to-r from-[#b87d5e] to-[#9e6a4f] text-white hover:shadow-lg transition-all duration-300 disabled:opacity-70"
+>
+  {isSubmitting ? 'Submitting...' : 'Submit Application'}
+</button>
         
         <p className="text-center text-sm text-gray-600">
           Volunteers must be at least 18 years old. All volunteers will undergo a brief orientation and training.
