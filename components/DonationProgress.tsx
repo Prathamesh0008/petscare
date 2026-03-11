@@ -21,7 +21,7 @@ export default function DonationProgress() {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#f8f6f2]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           
@@ -33,13 +33,13 @@ export default function DonationProgress() {
             transition={{ duration: 0.5 }}
             className="text-center mb-8 sm:mb-10"
           >
-            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1]/10 text-[#1b93d1] rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+            <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
               Make a Difference
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#223d7c] mb-2">
               Support Our Mission
             </h2>
-            <p className="text-sm sm:text-base text-[#223d7c]/60 max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-[#223d7c]/70 max-w-2xl mx-auto">
               Your contributions directly impact the lives of animals in need
             </p>
           </motion.div>
@@ -50,76 +50,76 @@ export default function DonationProgress() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 overflow-hidden"
+            className="bg-white rounded-lg border border-[#223d7c]/10 overflow-hidden"
           >
-            {/* Gradient Header Bar */}
-            <div className="h-2 bg-gradient-to-r from-[#1b93d1] to-[#223d7c]" />
+            {/* Simple Header Bar */}
+            <div className="h-1 bg-[#1b93d1]" />
             
             <div className="p-6 sm:p-8 md:p-10">
               
               {/* Header with Goal and Urgency */}
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-[#1b93d1]/10 to-[#223d7c]/10 rounded-xl flex items-center justify-center">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b93d1]/5 rounded-lg flex items-center justify-center">
                     <FaGift className="text-lg sm:text-xl text-[#1b93d1]" />
                   </div>
                   <div>
                     <h3 className="text-lg sm:text-xl font-bold text-[#223d7c]">Monthly Goal</h3>
-                    <p className="text-sm text-[#223d7c]/60">{formatAmount(goalAmount)} target</p>
+                    <p className="text-sm text-[#223d7c]/70">{formatAmount(goalAmount)} target</p>
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-2 bg-orange-50 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full">
-                  <FaFire className="text-orange-500 text-sm" />
-                  <span className="text-orange-600 font-medium text-sm">{daysLeft} days left</span>
+                <div className="flex items-center gap-2 bg-[#223d7c]/5 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full border border-[#223d7c]/10">
+                  <FaFire className="text-[#1b93d1] text-sm" />
+                  <span className="text-[#223d7c] font-medium text-sm">{daysLeft} days left</span>
                 </div>
               </div>
 
               {/* Progress Stats Grid */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
-                <div className="bg-gray-50 rounded-xl p-3 sm:p-4">
-                  <div className="text-xs text-gray-500 mb-1">Raised</div>
+                <div className="bg-[#f8f6f2] rounded-lg p-3 sm:p-4 border border-[#223d7c]/5">
+                  <div className="text-xs text-[#223d7c]/60 mb-1">Raised</div>
                   <div className="text-lg sm:text-xl font-bold text-[#223d7c]">{formatAmount(currentAmount)}</div>
-                  <div className="text-xs text-green-600 mt-1">+12% this week</div>
+                  <div className="text-xs text-[#1b93d1] mt-1">+12% this week</div>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-3 sm:p-4">
-                  <div className="text-xs text-gray-500 mb-1">Donors</div>
+                <div className="bg-[#f8f6f2] rounded-lg p-3 sm:p-4 border border-[#223d7c]/5">
+                  <div className="text-xs text-[#223d7c]/60 mb-1">Donors</div>
                   <div className="text-lg sm:text-xl font-bold text-[#223d7c]">{donorsCount}</div>
                   <div className="text-xs text-[#1b93d1] mt-1">+8 today</div>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-3 sm:p-4">
-                  <div className="text-xs text-gray-500 mb-1">Progress</div>
+                <div className="bg-[#f8f6f2] rounded-lg p-3 sm:p-4 border border-[#223d7c]/5">
+                  <div className="text-xs text-[#223d7c]/60 mb-1">Progress</div>
                   <div className="text-lg sm:text-xl font-bold text-[#1b93d1]">{Math.round(percentage)}%</div>
-                  <div className="text-xs text-gray-500 mt-1">of goal</div>
+                  <div className="text-xs text-[#223d7c]/60 mt-1">of goal</div>
                 </div>
                 
-                <div className="bg-gray-50 rounded-xl p-3 sm:p-4">
-                  <div className="text-xs text-gray-500 mb-1">Needed</div>
+                <div className="bg-[#f8f6f2] rounded-lg p-3 sm:p-4 border border-[#223d7c]/5">
+                  <div className="text-xs text-[#223d7c]/60 mb-1">Needed</div>
                   <div className="text-lg sm:text-xl font-bold text-[#223d7c]">{formatAmount(goalAmount - currentAmount)}</div>
-                  <div className="text-xs text-gray-500 mt-1">to reach goal</div>
+                  <div className="text-xs text-[#223d7c]/60 mt-1">to reach goal</div>
                 </div>
               </div>
 
               {/* Progress Bar */}
               <div className="mb-6 sm:mb-8">
                 <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium text-gray-600">Monthly Progress</span>
+                  <span className="text-sm font-medium text-[#223d7c]/70">Monthly Progress</span>
                   <span className="text-sm font-medium text-[#1b93d1]">{Math.round(percentage)}% Complete</span>
                 </div>
                 
-                <div className="relative h-3 sm:h-4 bg-gray-100 rounded-full overflow-hidden">
+                <div className="relative h-3 sm:h-4 bg-[#f0f2e8] rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     whileInView={{ width: `${percentage}%` }}
                     viewport={{ once: true }}
                     transition={{ duration: 1, delay: 0.3 }}
-                    className="absolute top-0 left-0 h-full bg-gradient-to-r from-[#1b93d1] to-[#223d7c] rounded-full"
+                    className="absolute top-0 left-0 h-full bg-[#1b93d1] rounded-full"
                   />
                 </div>
                 
-                <div className="flex justify-between mt-2 text-xs text-gray-400">
+                <div className="flex justify-between mt-2 text-xs text-[#223d7c]/40">
                   <span>0</span>
                   <span>25%</span>
                   <span>50%</span>
@@ -129,28 +129,28 @@ export default function DonationProgress() {
               </div>
 
               {/* Impact Preview */}
-              <div className="bg-gradient-to-br from-gray-50 to-white rounded-xl p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-100">
+              <div className="bg-[#f8f6f2] rounded-lg p-4 sm:p-6 mb-6 sm:mb-8 border border-[#223d7c]/5">
                 <div className="flex items-center gap-2 mb-3 sm:mb-4">
                   <FaChartLine className="text-[#1b93d1] text-sm" />
-                  <span className="text-sm font-medium text-gray-600">Your Impact This Month</span>
+                  <span className="text-sm font-medium text-[#223d7c]/70">Your Impact This Month</span>
                 </div>
                 
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
                   <div>
                     <div className="text-lg sm:text-xl font-bold text-[#223d7c]">50+</div>
-                    <div className="text-xs text-gray-500">Daily Meals</div>
+                    <div className="text-xs text-[#223d7c]/60">Daily Meals</div>
                   </div>
                   <div>
                     <div className="text-lg sm:text-xl font-bold text-[#223d7c]">15</div>
-                    <div className="text-xs text-gray-500">Medical Checks</div>
+                    <div className="text-xs text-[#223d7c]/60">Medical Checks</div>
                   </div>
                   <div>
                     <div className="text-lg sm:text-xl font-bold text-[#223d7c]">8</div>
-                    <div className="text-xs text-gray-500">New Beds</div>
+                    <div className="text-xs text-[#223d7c]/60">New Beds</div>
                   </div>
                   <div>
                     <div className="text-lg sm:text-xl font-bold text-[#223d7c]">120+</div>
-                    <div className="text-xs text-gray-500">Vaccinations</div>
+                    <div className="text-xs text-[#223d7c]/60">Vaccinations</div>
                   </div>
                 </div>
               </div>
@@ -161,7 +161,7 @@ export default function DonationProgress() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-6 py-3.5 sm:py-4 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base group"
+                    className="w-full cursor-pointer px-6 py-3.5 sm:py-4 bg-[#1b93d1] text-white font-medium rounded-lg hover:bg-[#157bb0] transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base group"
                   >
                     <FaHeart className="group-hover:scale-110 transition-transform" />
                     Donate Now
@@ -173,7 +173,7 @@ export default function DonationProgress() {
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="w-full px-6 py-3.5 sm:py-4 bg-white border-2 border-[#223d7c] text-[#223d7c] font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
+                    className="w-full cursor-pointer px-6 py-3.5 sm:py-4 bg-white border border-[#223d7c]/20 text-[#223d7c] font-medium rounded-lg hover:bg-[#223d7c]/5 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                   >
                     <FaCalendarAlt />
                     Monthly Giving
@@ -182,22 +182,22 @@ export default function DonationProgress() {
               </div>
 
               {/* Recent Donors */}
-              <div className="mt-6 pt-6 border-t border-gray-100">
+              <div className="mt-6 pt-6 border-t border-[#223d7c]/10">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <div className="flex -space-x-2">
                       {[1, 2, 3, 4].map((i) => (
                         <div
                           key={i}
-                          className="w-8 h-8 rounded-full bg-gradient-to-br from-[#1b93d1] to-[#223d7c] border-2 border-white flex items-center justify-center text-white text-xs font-medium"
+                          className="w-8 h-8 rounded-full bg-[#1b93d1] border-2 border-white flex items-center justify-center text-white text-xs font-medium"
                         >
                           {String.fromCharCode(64 + i)}
                         </div>
                       ))}
                     </div>
                     <div>
-                      <div className="text-sm font-medium text-gray-900">+{donorsCount} supporters</div>
-                      <div className="text-xs text-gray-500">Joined this month</div>
+                      <div className="text-sm font-medium text-[#223d7c]">+{donorsCount} supporters</div>
+                      <div className="text-xs text-[#223d7c]/60">Joined this month</div>
                     </div>
                   </div>
                   
@@ -214,13 +214,13 @@ export default function DonationProgress() {
               {/* Trust Badge */}
               <div className="mt-4 flex items-center justify-center gap-2">
                 <div className="flex items-center gap-1">
-                  <FaUsers className="text-gray-400 text-xs" />
-                  <span className="text-xs text-gray-400">100% goes to animal care</span>
+                  <FaUsers className="text-[#223d7c]/40 text-xs" />
+                  <span className="text-xs text-[#223d7c]/50">100% goes to animal care</span>
                 </div>
-                <span className="text-gray-300">•</span>
+                <span className="text-[#223d7c]/20">•</span>
                 <div className="flex items-center gap-1">
-                  <FaHeart className="text-gray-400 text-xs" />
-                  <span className="text-xs text-gray-400">Tax deductible</span>
+                  <FaHeart className="text-[#223d7c]/40 text-xs" />
+                  <span className="text-xs text-[#223d7c]/50">Tax deductible</span>
                 </div>
               </div>
             </div>

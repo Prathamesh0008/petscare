@@ -19,13 +19,13 @@ export default function EmailSubscription() {
   };
 
   return (
-    <section className="py-12 sm:py-16 md:py-20">
+    <section className="py-12 sm:py-16 md:py-20 bg-[#f8f6f2]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="bg-white rounded-2xl sm:rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
+          <div className="bg-white rounded-lg border border-[#223d7c]/10 overflow-hidden">
             
             {/* Simple Header Bar */}
-            <div className="h-1.5 bg-gradient-to-r from-[#1b93d1] to-[#223d7c]" />
+            <div className="h-1 bg-[#1b93d1]" />
 
             <div className="p-6 sm:p-8 md:p-10 lg:p-12">
               <div className="text-center">
@@ -35,7 +35,7 @@ export default function EmailSubscription() {
                   initial={{ scale: 0.9, opacity: 0 }}
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-br from-[#1b93d1]/10 to-[#223d7c]/10 rounded-xl mb-4 sm:mb-5"
+                  className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 bg-[#1b93d1]/5 rounded-lg mb-4 sm:mb-5"
                 >
                   <FaEnvelope className="text-xl sm:text-2xl text-[#1b93d1]" />
                 </motion.div>
@@ -54,7 +54,7 @@ export default function EmailSubscription() {
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="text-sm sm:text-base text-[#223d7c]/60 mb-6 sm:mb-8 max-w-lg mx-auto"
+                  className="text-sm sm:text-base text-[#223d7c]/70 mb-6 sm:mb-8 max-w-lg mx-auto"
                 >
                   Get the latest updates on new arrivals, success stories, and events.
                 </motion.p>
@@ -74,14 +74,14 @@ export default function EmailSubscription() {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         placeholder="Enter your email"
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#1b93d1] focus:ring-2 focus:ring-[#1b93d1]/20 transition-all text-sm"
+                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg text-gray-700 placeholder-gray-400 focus:outline-none focus:border-[#1b93d1] focus:ring-1 focus:ring-[#1b93d1]/20 transition-all text-sm"
                         required
                       />
                     </div>
                     
                     <button
                       type="submit"
-                      className="px-6 py-3 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group text-sm whitespace-nowrap"
+                      className="px-6 py-3 bg-[#1b93d1] cursor-pointer text-white font-medium rounded-lg hover:bg-[#157bb0] transition-all duration-300 flex items-center justify-center gap-2 group text-sm whitespace-nowrap"
                     >
                       <FaPaperPlane className="text-xs group-hover:translate-x-0.5 transition-transform" />
                       Subscribe
@@ -98,8 +98,8 @@ export default function EmailSubscription() {
                       exit={{ opacity: 0, y: -10 }}
                       className="mt-4"
                     >
-                      <div className="inline-flex items-center gap-2 bg-green-50 text-green-600 px-4 py-2 rounded-lg text-sm">
-                        <FaHeart className="text-green-500 text-xs" />
+                      <div className="inline-flex items-center gap-2 bg-[#1b93d1]/5 text-[#1b93d1] px-4 py-2 rounded-lg text-sm border border-[#1b93d1]/10">
+                        <FaHeart className="text-[#1b93d1] text-xs" />
                         <span>Thanks for subscribing!</span>
                       </div>
                     </motion.div>
@@ -111,7 +111,7 @@ export default function EmailSubscription() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.4 }}
-                  className="text-xs text-gray-400 mt-4"
+                  className="text-xs text-[#223d7c]/50 mt-4"
                 >
                   No spam. Unsubscribe anytime.
                 </motion.p>

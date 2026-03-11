@@ -57,13 +57,13 @@ export default function Testimonials() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10 sm:mb-12 md:mb-16"
         >
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1]/10 text-[#1b93d1] rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
             Happy Families
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#223d7c] mb-2 sm:mb-3">
             What Our <span className="text-[#1b93d1]">Pet Parents</span> Say
           </h2>
-          <p className="text-sm sm:text-base text-[#223d7c]/60 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[#223d7c]/70 max-w-2xl mx-auto">
             Real experiences from families who adopted with us or trust our professional daycare services.
           </p>
         </motion.div>
@@ -79,10 +79,10 @@ export default function Testimonials() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="group h-full"
             >
-              <div className="relative bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-7 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 h-full flex flex-col">
+              <div className="relative bg-white rounded-lg p-5 sm:p-6 md:p-7 border border-[#223d7c]/10 hover:border-[#1b93d1]/30 transition-all duration-300 h-full flex flex-col">
                 
                 {/* Quote Icon */}
-                <div className="absolute top-4 right-4 text-3xl sm:text-4xl text-[#1b93d1]/10 group-hover:text-[#1b93d1]/20 transition-colors duration-300">
+                <div className="absolute top-4 right-4 text-3xl sm:text-4xl text-[#223d7c]/10">
                   <FaQuoteLeft />
                 </div>
 
@@ -92,39 +92,39 @@ export default function Testimonials() {
                     <img 
                       src={testimonial.image} 
                       alt={testimonial.name}
-                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-white shadow-md"
+                      className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border border-[#223d7c]/10"
                     />
                   </div>
                   <div>
-                    <h4 className="text-sm sm:text-base font-semibold text-[#223d7c] group-hover:text-[#1b93d1] transition-colors duration-300">
+                    <h4 className="text-sm sm:text-base font-semibold text-[#223d7c]">
                       {testimonial.name}
                     </h4>
                     <div className="flex items-center gap-0.5 mt-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <FaStar key={i} className="w-3 h-3 text-yellow-400" />
+                        <FaStar key={i} className="w-3 h-3 text-[#1b93d1]" />
                       ))}
                     </div>
                   </div>
                 </div>
 
                 {/* Quote */}
-                <p className="text-sm text-gray-600 italic leading-relaxed mb-4 flex-grow">
+                <p className="text-sm text-[#223d7c]/80 leading-relaxed mb-4 flex-grow">
                   "{testimonial.quote}"
                 </p>
 
                 {/* Tags */}
                 <div className="flex flex-wrap items-center gap-2 mb-3">
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#1b93d1]/10 rounded-full text-xs font-medium text-[#1b93d1]">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#1b93d1]/5 rounded-full text-xs font-medium text-[#1b93d1] border border-[#1b93d1]/10">
                     <FaPaw className="text-[10px]" />
                     {testimonial.type}
                   </span>
-                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#223d7c]/10 rounded-full text-xs font-medium text-[#223d7c]">
+                  <span className="inline-flex items-center gap-1 px-2 py-1 bg-[#223d7c]/5 rounded-full text-xs font-medium text-[#223d7c] border border-[#223d7c]/10">
                     {testimonial.petName} • {testimonial.petType}
                   </span>
                 </div>
 
                 {/* Location & Date */}
-                <div className="flex flex-wrap items-center gap-3 text-xs text-gray-400 border-t border-gray-100 pt-3">
+                <div className="flex flex-wrap items-center gap-3 text-xs text-[#223d7c]/50 border-t border-[#223d7c]/10 pt-3">
                   <div className="flex items-center gap-1">
                     <FaMapMarkerAlt className="text-[10px]" />
                     <span>{testimonial.location}</span>
@@ -136,7 +136,7 @@ export default function Testimonials() {
                 </div>
 
                 {/* Decorative Number */}
-                <div className="absolute bottom-2 right-2 text-2xl font-bold text-gray-100 select-none">
+                <div className="absolute bottom-2 right-2 text-2xl font-bold text-[#223d7c]/5 select-none">
                   {String(index + 1).padStart(2, '0')}
                 </div>
               </div>
@@ -152,23 +152,23 @@ export default function Testimonials() {
           transition={{ delay: 0.3 }}
         >
           {/* Stats Card */}
-          <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg border border-gray-100 mb-6 sm:mb-8">
+          <div className="bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#223d7c]/10 mb-6 sm:mb-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
               
               {/* Happy Adoptions */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b93d1]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b93d1]/5 rounded-lg flex items-center justify-center flex-shrink-0 border border-[#1b93d1]/10">
                   <FaUserCheck className="text-lg sm:text-xl text-[#1b93d1]" />
                 </div>
                 <div>
                   <div className="text-lg sm:text-xl font-bold text-[#223d7c]">120+</div>
-                  <div className="text-xs sm:text-sm text-gray-500">Successful Adoptions</div>
+                  <div className="text-xs sm:text-sm text-[#223d7c]/60">Successful Adoptions</div>
                 </div>
               </div>
 
               {/* Average Rating */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#223d7c]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#223d7c]/5 rounded-lg flex items-center justify-center flex-shrink-0 border border-[#223d7c]/10">
                   <div className="text-center">
                     <span className="text-sm sm:text-base font-bold text-[#223d7c]">4.9</span>
                   </div>
@@ -176,21 +176,21 @@ export default function Testimonials() {
                 <div>
                   <div className="flex items-center gap-1">
                     {[...Array(5)].map((_, i) => (
-                      <FaStar key={i} className="w-3 h-3 text-yellow-400" />
+                      <FaStar key={i} className="w-3 h-3 text-[#1b93d1]" />
                     ))}
                   </div>
-                  <div className="text-xs sm:text-sm text-gray-500 mt-0.5">Average Rating</div>
+                  <div className="text-xs sm:text-sm text-[#223d7c]/60 mt-0.5">Average Rating</div>
                 </div>
               </div>
 
               {/* Years of Service */}
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b93d1]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b93d1]/5 rounded-lg flex items-center justify-center flex-shrink-0 border border-[#1b93d1]/10">
                   <FaCalendarAlt className="text-lg sm:text-xl text-[#1b93d1]" />
                 </div>
                 <div>
                   <div className="text-lg sm:text-xl font-bold text-[#223d7c]">5+</div>
-                  <div className="text-xs sm:text-sm text-gray-500">Years of Service</div>
+                  <div className="text-xs sm:text-sm text-[#223d7c]/60">Years of Service</div>
                 </div>
               </div>
             </div>
@@ -202,7 +202,7 @@ export default function Testimonials() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-[#1b93d1] text-white font-medium rounded-lg hover:bg-[#157bb0] transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 <span>Read More Stories</span>
                 <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -213,7 +213,7 @@ export default function Testimonials() {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-white border-2 border-[#223d7c] text-[#223d7c] font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
+                className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-[#223d7c]/20 text-[#223d7c] font-medium rounded-lg hover:bg-[#223d7c]/5 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
               >
                 <FaHeart className="group-hover:scale-110 transition-transform" />
                 <span>Start Your Adoption Journey</span>
@@ -225,7 +225,6 @@ export default function Testimonials() {
     </section>
   );
 }
-
 
 
 

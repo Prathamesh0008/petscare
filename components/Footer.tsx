@@ -77,7 +77,7 @@ export default function Footer() {
                   </div>
                   <button
                     type="submit"
-                    className="px-6 py-3 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group text-sm"
+                    className="px-6 cursor-pointer py-3 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white font-medium rounded-lg hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 group text-sm"
                   >
                     <span>Subscribe</span>
                     <FaArrowRight className="group-hover:translate-x-1 transition-transform text-xs" />

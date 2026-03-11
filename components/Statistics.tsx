@@ -1,7 +1,7 @@
 // components/Statistics.tsx
 'use client';
 
-import { FaPaw, FaHome, FaHeartbeat, FaUsers, FaCalendarAlt, FaStar, FaHeart, FaArrowRight, FaHandHoldingHeart } from 'react-icons/fa';
+import { FaPaw, FaHome, FaHeartbeat, FaUsers, FaCalendarAlt, FaStar, FaArrowRight, FaHandHoldingHeart } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import CountUp from 'react-countup';
@@ -14,8 +14,8 @@ const stats = [
     suffix: '+',
     label: 'Pets Adopted',
     description: 'Loving homes created in Navi Mumbai',
-    color: 'from-[#1b93d1] to-[#223d7c]',
-    lightColor: 'bg-[#1b93d1]/10'
+    iconColor: 'text-[#1b93d1]',
+    bgColor: 'bg-[#1b93d1]/5'
   },
   {
     icon: <FaHome />,
@@ -23,8 +23,8 @@ const stats = [
     suffix: '%',
     label: 'Adoption Success Rate',
     description: 'Successful long-term placements',
-    color: 'from-[#223d7c] to-[#1a2f60]',
-    lightColor: 'bg-[#223d7c]/10'
+    iconColor: 'text-[#223d7c]',
+    bgColor: 'bg-[#223d7c]/5'
   },
   {
     icon: <FaCalendarAlt />,
@@ -32,8 +32,8 @@ const stats = [
     suffix: '+',
     label: 'Daycare Visits',
     description: 'Happy stays at PawHeaven',
-    color: 'from-[#1b93d1] to-[#223d7c]',
-    lightColor: 'bg-[#1b93d1]/10'
+    iconColor: 'text-[#1b93d1]',
+    bgColor: 'bg-[#1b93d1]/5'
   },
   {
     icon: <FaHeartbeat />,
@@ -41,8 +41,8 @@ const stats = [
     suffix: '/7',
     label: 'Care Monitoring',
     description: 'Round-the-clock supervision',
-    color: 'from-[#223d7c] to-[#1a2f60]',
-    lightColor: 'bg-[#223d7c]/10'
+    iconColor: 'text-[#223d7c]',
+    bgColor: 'bg-[#223d7c]/5'
   },
   {
     icon: <FaUsers />,
@@ -50,8 +50,8 @@ const stats = [
     suffix: '+',
     label: 'Happy Pet Parents',
     description: 'Families who trust our care',
-    color: 'from-[#1b93d1] to-[#223d7c]',
-    lightColor: 'bg-[#1b93d1]/10'
+    iconColor: 'text-[#1b93d1]',
+    bgColor: 'bg-[#1b93d1]/5'
   },
   {
     icon: <FaStar />,
@@ -59,8 +59,8 @@ const stats = [
     suffix: '',
     label: 'Customer Rating',
     description: 'Average satisfaction score',
-    color: 'from-[#223d7c] to-[#1a2f60]',
-    lightColor: 'bg-[#223d7c]/10'
+    iconColor: 'text-[#223d7c]',
+    bgColor: 'bg-[#223d7c]/5'
   },
 ];
 
@@ -82,13 +82,13 @@ export default function Statistics() {
           transition={{ duration: 0.5 }}
           className="text-center mb-10 sm:mb-12 lg:mb-16"
         >
-          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1]/10 text-[#1b93d1] rounded-full text-xs sm:text-sm font-medium mb-3 sm:mb-4">
+          <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
             Our Impact
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#223d7c] mb-2 sm:mb-3">
             By The <span className="text-[#1b93d1]">Numbers</span>
           </h2>
-          <p className="text-sm sm:text-base text-[#223d7c]/60 max-w-2xl mx-auto">
+          <p className="text-sm sm:text-base text-[#223d7c]/70 max-w-2xl mx-auto">
             Delivering trusted adoption and professional daycare services across Navi Mumbai.
           </p>
         </motion.div>
@@ -107,11 +107,11 @@ export default function Statistics() {
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="group"
             >
-              <div className="bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 hover:border-[#1b93d1]/20">
+              <div className="bg-white rounded-lg p-5 sm:p-6 md:p-8 border border-[#223d7c]/10 hover:border-[#1b93d1]/30 transition-all duration-300 relative">
                 
                 {/* Icon */}
-                <div className={`${stat.lightColor} w-12 h-12 sm:w-14 sm:h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                  <div className={`text-lg sm:text-xl text-[${stat.color.includes('1b93d1') ? '#1b93d1' : '#223d7c'}]`}>
+                <div className={`${stat.bgColor} w-12 h-12 sm:w-14 sm:h-14 rounded-lg flex items-center justify-center mb-4`}>
+                  <div className={`${stat.iconColor} text-lg sm:text-xl`}>
                     {stat.icon}
                   </div>
                 </div>
@@ -140,12 +140,12 @@ export default function Statistics() {
                 <h3 className="text-base sm:text-lg font-semibold text-[#223d7c] mb-1">
                   {stat.label}
                 </h3>
-                <p className="text-xs sm:text-sm text-gray-500">
+                <p className="text-xs sm:text-sm text-[#223d7c]/60">
                   {stat.description}
                 </p>
 
-                {/* Decorative Number */}
-                <div className="absolute bottom-3 right-3 text-3xl sm:text-4xl font-bold text-gray-100 select-none">
+                {/* Decorative Number - Matte */}
+                <div className="absolute bottom-3 right-3 text-3xl sm:text-4xl font-bold text-[#223d7c]/5 select-none">
                   {String(index + 1).padStart(2, '0')}
                 </div>
               </div>
@@ -165,7 +165,7 @@ export default function Statistics() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white font-semibold rounded-xl hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
+              className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-[#1b93d1] text-white font-medium rounded-lg hover:bg-[#157bb0] transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               <FaPaw className="group-hover:scale-110 transition-transform" />
               <span>Adopt a Pet</span>
@@ -177,7 +177,7 @@ export default function Statistics() {
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-white border-2 border-[#223d7c] text-[#223d7c] font-semibold rounded-xl hover:bg-gray-50 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
+              className="group cursor-pointer w-full sm:w-auto px-6 sm:px-8 py-3 sm:py-3.5 bg-white border border-[#223d7c]/20 text-[#223d7c] font-medium rounded-lg hover:bg-[#223d7c]/5 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               <FaHome className="group-hover:scale-110 transition-transform" />
               <span>Book Daycare</span>
@@ -186,7 +186,7 @@ export default function Statistics() {
           </Link>
         </motion.div>
 
-        {/* Trust Badge */}
+        {/* Trust Badge - Matte */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -194,17 +194,16 @@ export default function Statistics() {
           transition={{ delay: 0.6 }}
           className="text-center mt-6 sm:mt-8"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full shadow-sm border border-gray-100">
-            <FaStar className="text-yellow-400 text-xs sm:text-sm" />
-            <span className="text-xs sm:text-sm text-gray-600">Trusted by 5,000+ pet parents across Navi Mumbai</span>
-            <FaStar className="text-yellow-400 text-xs sm:text-sm" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white rounded-full border border-[#223d7c]/10">
+            <FaStar className="text-[#1b93d1] text-xs sm:text-sm" />
+            <span className="text-xs sm:text-sm text-[#223d7c]/70">Trusted by 5,000+ pet parents across Navi Mumbai</span>
+            <FaStar className="text-[#1b93d1] text-xs sm:text-sm" />
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
-
 
 
 

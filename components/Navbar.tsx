@@ -8,12 +8,12 @@ import {
   FaBars,
   FaTimes,
   FaHeart,
-  FaHandsHelping,
   FaHome,
   FaDog,
   FaInfoCircle,
   FaEnvelope,
-  FaUserFriends
+  FaUserFriends,
+  FaHandHoldingHeart
 } from 'react-icons/fa';
 
 export default function Navbar() {
@@ -44,50 +44,52 @@ export default function Navbar() {
     <nav
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? 'bg-[#B6D3DE] shadow-lg py-2'
-          : 'bg-[#B6D3DE] py-3'
+          ? 'bg-[#B6D3DE] shadow-md py-2'
+          : 'bg-[#B6D3DE] py-4'
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
 
-        {/* Logo */}
-        <Link href="/" className="flex flex-col">
-          <span className="text-2xl font-bold text-white">
+        {/* Logo - Matte finish */}
+        <Link href="/" className="flex flex-col group">
+          <span className="text-2xl font-bold text-[#223d7c]">
             PawHeaven
           </span>
-          <span className="text-xs text-white/80">
+          <span className="text-xs text-[#223d7c]/70">
             Vashi Shelter
           </span>
         </Link>
 
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-2">
+        {/* Desktop Nav - Matte finish */}
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className={`px-4 py-2 rounded-xl text-sm font-medium transition-all flex items-center gap-2 ${
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all flex items-center gap-2 ${
                 pathname === link.href
                   ? 'bg-[#223d7c] text-white'
-                  : 'text-white hover:bg-white/20'
+                  : 'text-[#223d7c] hover:bg-[#223d7c]/10'
               }`}
             >
-              <span className="text-white">{link.icon}</span>
+              <span className={pathname === link.href ? 'text-white' : 'text-[#223d7c]/70'}>
+                {link.icon}
+              </span>
               {link.name}
             </Link>
           ))}
 
-          {/* Buttons */}
+          {/* Buttons - Matte finish */}
           <Link
             href="/donate"
-            className="ml-4 bg-[#223d7c] hover:bg-[#1a2f60] text-white px-5 py-2 rounded-full text-sm font-semibold transition"
+            className="ml-4 bg-[#223d7c] hover:bg-[#1a2f60] text-white px-5 py-2 rounded-lg text-sm font-medium transition"
           >
             Donate
           </Link>
 
           <Link
             href="/volunteer"
-            className="bg-white text-[#1b93d1] hover:bg-gray-100 px-5 py-2 rounded-full text-sm font-semibold transition"
+            className="bg-white text-[#223d7c] hover:bg-[#223d7c]/5 px-5 py-2 rounded-lg text-sm font-medium border border-[#223d7c]/20 transition"
           >
             Volunteer
           </Link>
@@ -95,31 +97,44 @@ export default function Navbar() {
 
         {/* Mobile Button */}
         <button
-          className="md:hidden text-2xl text-white"
+          className="md:hidden text-2xl text-[#223d7c]"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? <FaTimes /> : <FaBars />}
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Matte finish */}
       {isOpen && (
-        <div className="md:hidden bg-[#1b93d1] shadow-md px-6 py-4 space-y-2">
+        <div className="md:hidden bg-white border-t border-[#223d7c]/10 shadow-lg px-6 py-4 space-y-2">
           {navLinks.map((link) => (
             <Link
               key={link.name}
               href={link.href}
-              className="block py-2 text-white hover:text-white/80"
+              className="block py-2 text-[#223d7c] hover:text-[#223d7c]/70"
             >
               {link.name}
             </Link>
           ))}
+          <div className="pt-2 space-y-2">
+            <Link
+              href="/donate"
+              className="block w-full text-center bg-[#223d7c] hover:bg-[#1a2f60] text-white px-5 py-2 rounded-lg text-sm font-medium transition"
+            >
+              Donate
+            </Link>
+            <Link
+              href="/volunteer"
+              className="block w-full text-center bg-white text-[#223d7c] hover:bg-[#223d7c]/5 px-5 py-2 rounded-lg text-sm font-medium border border-[#223d7c]/20 transition"
+            >
+              Volunteer
+            </Link>
+          </div>
         </div>
       )}
     </nav>
   );
 }
-
 // //petscare\components\Navbar.tsx
 // 'use client';
 

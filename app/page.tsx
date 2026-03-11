@@ -17,7 +17,6 @@ import { motion } from "framer-motion";
 import { 
   FaArrowRight, 
   FaHeart, 
-  FaHandsHelping, 
   FaHome, 
   FaPaw,
   FaCalendarAlt,
@@ -32,9 +31,8 @@ import {
   FaCat,
   FaPaw as FaPawSolid,
   FaStar,
-  FaCheckCircle,
-  FaGift,
   FaCheck,
+  FaGift,
   FaQuestionCircle,
   FaEnvelope,
   FaPhone,
@@ -57,16 +55,6 @@ export default function HomePage() {
     subject: "",
     terms: false,
   });
-
-  const [errors, setErrors] = useState({});
-  
-  const handleChange = (e: any) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1000);
@@ -178,8 +166,8 @@ export default function HomePage() {
       <div className={`transition-all duration-500 bg-[#f8f6f2] ${isIntroComplete ? 'opacity-100' : 'opacity-0'}`}>
         <Hero />
 
-        {/* Quick Actions - Updated with Navbar colors */}
-        <div className="bg-gradient-to-r from-[#223d7c] to-[#1a2f60]">
+        {/* Quick Actions - Matte finish */}
+        <div className="bg-[#223d7c]">
           <div className="container mx-auto px-4 py-6 sm:py-8 lg:py-10">
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-6 max-w-5xl mx-auto">
               {[
@@ -191,7 +179,7 @@ export default function HomePage() {
                 <Link
                   key={index}
                   href={action.link}
-                  className="group relative py-4 sm:py-5 lg:py-7 rounded-xl font-semibold flex flex-col items-center justify-center gap-2 transition-all duration-300 bg-white/95 backdrop-blur-sm text-[#223d7c] hover:bg-white shadow-lg hover:shadow-xl"
+                  className="group relative py-4 sm:py-5 lg:py-7 rounded-lg font-semibold flex flex-col items-center justify-center gap-2 transition-all duration-300 bg-white text-[#223d7c] hover:bg-[#f0f0f0] border border-[#223d7c]/10"
                 >
                   <span className="text-xl sm:text-2xl lg:text-3xl group-hover:scale-110 transition-transform duration-300 text-[#1b93d1]">
                     {action.icon}
@@ -212,7 +200,7 @@ export default function HomePage() {
             <LiveStats />
           </div>
 
-          {/* How It Works Section - Updated with Navbar colors */}
+          {/* How It Works Section - Matte finish */}
           <div className="mb-16 sm:mb-20 md:mb-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -221,13 +209,13 @@ export default function HomePage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] rounded-full text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
                 Simple Process
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#223d7c] mb-2 sm:mb-4">
                 How It Works
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/80 max-w-2xl mx-auto px-4">
+              <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/70 max-w-2xl mx-auto px-4">
                 Choose between adoption or professional daycare in just a few simple steps
               </p>
             </motion.div>
@@ -241,9 +229,9 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="relative group"
               >
-                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#223d7c]/10 hover:shadow-xl transition-all duration-300 hover:border-[#1b93d1]/30">
+                <div className="bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 border border-[#223d7c]/10 hover:border-[#1b93d1]/30 transition-all duration-300">
                   <div className="relative">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#1b93d1]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#1b93d1]/10 rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl sm:text-3xl font-bold text-[#1b93d1]">1</span>
                     </div>
                     
@@ -265,9 +253,9 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.2 }}
                 className="relative group"
               >
-                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#223d7c]/10 hover:shadow-xl transition-all duration-300 hover:border-[#1b93d1]/30">
+                <div className="bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 border border-[#223d7c]/10 hover:border-[#1b93d1]/30 transition-all duration-300">
                   <div className="relative">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#1b93d1]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#1b93d1]/10 rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl sm:text-3xl font-bold text-[#1b93d1]">2</span>
                     </div>
                     
@@ -289,9 +277,9 @@ export default function HomePage() {
                 transition={{ duration: 0.5, delay: 0.3 }}
                 className="relative group sm:col-span-2 lg:col-span-1"
               >
-                <div className="bg-white rounded-xl sm:rounded-2xl p-6 sm:p-8 shadow-lg border border-[#223d7c]/10 hover:shadow-xl transition-all duration-300 hover:border-[#1b93d1]/30">
+                <div className="bg-white rounded-lg sm:rounded-xl p-6 sm:p-8 border border-[#223d7c]/10 hover:border-[#1b93d1]/30 transition-all duration-300">
                   <div className="relative">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#1b93d1]/10 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 bg-[#1b93d1]/10 rounded-lg sm:rounded-xl flex items-center justify-center mb-4 sm:mb-6 group-hover:scale-110 transition-transform duration-300">
                       <span className="text-2xl sm:text-3xl font-bold text-[#1b93d1]">3</span>
                     </div>
                     
@@ -315,7 +303,7 @@ export default function HomePage() {
               className="text-center mt-8 sm:mt-10 md:mt-12"
             >
               <Link href="/animals">
-                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white rounded-lg font-semibold hover:shadow-lg transition-all duration-300 group text-sm sm:text-base cursor-pointer">
+                <button className="inline-flex cursor-pointer items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-[#1b93d1] text-white rounded-lg font-medium hover:bg-[#157bb0] transition-all duration-300 group text-sm sm:text-base">
                   <span>Start Your Journey</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -328,7 +316,7 @@ export default function HomePage() {
             <EmailSubscription />
           </div>
 
-          {/* Featured Pets Section - Updated with Navbar colors */}
+          {/* Featured Pets Section - Matte finish */}
           <div className="mb-16 sm:mb-20 md:mb-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -336,13 +324,13 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] rounded-full text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
                 Meet Our Friends
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#223d7c] mb-2 sm:mb-4">
                 Featured Pets
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/80 max-w-2xl mx-auto px-4">
+              <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/70 max-w-2xl mx-auto px-4">
                 Meet loving pets available for adoption or learn how we care for them in our daycare facility.
               </p>
             </motion.div>
@@ -357,21 +345,21 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
                 className="group relative"
               >
-                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-xl">
+                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden border border-[#223d7c]/10">
                   <img 
                     src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=800&auto=format&fit=crop&q=80" 
                     alt="Dog - Ninja Warrior"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#223d7c] via-[#223d7c]/50 to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#223d7c] via-[#223d7c]/70 to-transparent" />
                   
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 transform group-hover:translate-y-[-5px] md:group-hover:translate-y-[-10px] transition-transform duration-300">
                     <div className="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
-                      <span className="bg-[#1b93d1] text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm font-semibold">
+                      <span className="bg-[#1b93d1] text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm font-medium">
                         Featured
                       </span>
-                      <span className="bg-white/20 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm">
+                      <span className="bg-white/20 text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm">
                         Male • 2 years
                       </span>
                     </div>
@@ -386,12 +374,12 @@ export default function HomePage() {
                     </p>
                     
                     <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
-                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Energetic</span>
-                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Playful</span>
+                      <span className="bg-white/10 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Energetic</span>
+                      <span className="bg-white/10 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Playful</span>
                     </div>
                     
                     <Link href="/animals/7">
-                      <button className="px-4 cursor-pointer sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-semibold bg-white text-[#223d7c] hover:bg-[#1b93d1] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
+                      <button className="px-4 cursor-pointer sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-medium bg-white text-[#223d7c] hover:bg-[#1b93d1] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
                         Meet Ninja
                         <FaArrowRight className="text-xs" />
                       </button>
@@ -408,21 +396,21 @@ export default function HomePage() {
                 transition={{ duration: 0.5 }}
                 className="group relative"
               >
-                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-xl">
+                <div className="relative h-[300px] sm:h-[400px] md:h-[500px] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden border border-[#223d7c]/10">
                   <img 
                     src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=800&auto=format&fit=crop&q=80" 
                     alt="CAT - Madam Mimi"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
                   
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#223d7c] via-[#223d7c]/50 to-transparent opacity-80" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#223d7c] via-[#223d7c]/70 to-transparent" />
                   
                   <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-8 transform group-hover:translate-y-[-5px] md:group-hover:translate-y-[-10px] transition-transform duration-300">
                     <div className="flex flex-wrap items-center gap-2 mb-2 sm:mb-3">
-                      <span className="bg-[#1b93d1] text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm font-semibold">
+                      <span className="bg-[#1b93d1] text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm font-medium">
                         Featured
                       </span>
-                      <span className="bg-white/20 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm">
+                      <span className="bg-white/20 text-white px-2 sm:px-3 md:px-4 py-1 md:py-1.5 rounded-full text-xs sm:text-sm">
                         Female • 1.5 years
                       </span>
                     </div>
@@ -437,12 +425,12 @@ export default function HomePage() {
                     </p>
                     
                     <div className="flex flex-wrap gap-1 sm:gap-2 mb-2 sm:mb-3 md:mb-4">
-                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Elegant</span>
-                      <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Curious</span>
+                      <span className="bg-white/10 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Elegant</span>
+                      <span className="bg-white/10 text-white px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-xs">Curious</span>
                     </div>
                     
                     <Link href="/animals/8">
-                      <button className="px-4 cursor-pointer sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 rounded-lg font-semibold bg-white text-[#223d7c] hover:bg-[#1b93d1] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
+                      <button className="px-4 sm:px-5 md:px-6 py-2 cursor-pointer sm:py-2.5 md:py-3 rounded-lg font-medium bg-white text-[#223d7c] hover:bg-[#1b93d1] hover:text-white transition-all duration-300 inline-flex items-center gap-2 text-xs sm:text-sm">
                         Meet Mimi
                         <FaArrowRight className="text-xs" />
                       </button>
@@ -460,21 +448,21 @@ export default function HomePage() {
               transition={{ duration: 0.5, delay: 0.2 }}
               className="group relative mb-6 sm:mb-8"
             >
-              <div className="relative h-[350px] sm:h-[450px] md:h-[500px] rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-xl">
+              <div className="relative h-[350px] sm:h-[450px] md:h-[500px] rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden border border-[#223d7c]/10">
                 <img 
                   src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=1200&auto=format&fit=crop&q=80" 
                   alt="DOG - T-Rex"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 
-                <div className="absolute inset-0 bg-gradient-to-t from-[#223d7c] via-[#223d7c]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#223d7c] via-[#223d7c]/80 to-transparent" />
                 
                 <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 md:p-10 transform group-hover:translate-y-[-5px] md:group-hover:translate-y-[-10px] transition-transform duration-300">
                   <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-2 sm:mb-3 md:mb-4">
-                    <span className="bg-[#1b93d1] text-white px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-2 rounded-full text-xs sm:text-sm font-semibold">
+                    <span className="bg-[#1b93d1] text-white px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-2 rounded-full text-xs sm:text-sm font-medium">
                       ❤️ Urgent: Needs Home
                     </span>
-                    <span className="bg-white/20 backdrop-blur-sm text-white px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-2 rounded-full text-xs sm:text-sm">
+                    <span className="bg-white/20 text-white px-3 sm:px-4 md:px-5 py-1 sm:py-1.5 md:py-2 rounded-full text-xs sm:text-sm">
                       Male • 2 years
                     </span>
                   </div>
@@ -489,17 +477,17 @@ export default function HomePage() {
                   </p>
                   
                   <div className="flex flex-wrap gap-1 sm:gap-2 md:gap-3 mb-3 sm:mb-4 md:mb-6">
-                    <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full text-xs border border-white/20">
+                    <span className="bg-white/10 text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full text-xs border border-white/20">
                       Shy but loving
                     </span>
-                    <span className="bg-white/10 backdrop-blur-sm text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full text-xs border border-white/20">
+                    <span className="bg-white/10 text-white px-2 sm:px-3 md:px-4 py-1 md:py-2 rounded-full text-xs border border-white/20">
                       Loyal companion
                     </span>
                   </div>
                   
                   <div className="flex flex-wrap items-center gap-3 sm:gap-4">
                     <Link href="/animals/9">
-                      <button className="bg-[#1b93d1] cursor-pointer text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-semibold hover:bg-[#157bb0] transition-all duration-300 inline-flex items-center gap-2 shadow-xl text-sm sm:text-base">
+                      <button className="bg-[#1b93d1] cursor-pointer text-white px-4 sm:px-6 md:px-8 py-2 sm:py-3 md:py-4 rounded-lg md:rounded-xl font-medium hover:bg-[#157bb0] transition-all duration-300 inline-flex items-center gap-2 text-sm sm:text-base">
                         <FaHeart className="text-sm sm:text-base" />
                         <span className="hidden xs:inline">Meet T-Rex</span>
                         <FaArrowRight className="text-sm sm:text-base" />
@@ -523,7 +511,7 @@ export default function HomePage() {
               className="text-center"
             >
               <Link href="/animals">
-                <button className="inline-flex cursor-pointer items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg sm:rounded-xl font-semibold hover:bg-gradient-to-r hover:from-[#1b93d1] hover:to-[#223d7c] hover:text-white hover:border-transparent transition-all duration-300 group text-sm sm:text-base">
+                <button className="inline-flex cursor-pointer items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg sm:rounded-xl font-medium hover:bg-[#1b93d1] hover:text-white hover:border-[#1b93d1] transition-all duration-300 group text-sm sm:text-base">
                   <span>Browse All Pets</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -531,7 +519,7 @@ export default function HomePage() {
             </motion.div>
           </div>
 
-          {/* FAQ Section - Updated with Navbar colors */}
+          {/* FAQ Section - Matte finish */}
           <div className="mt-16 sm:mt-20 md:mt-24">
             <div className="space-y-4 sm:space-y-5 md:space-y-6 max-w-4xl mx-auto px-4">
               {faqs.map((faq, index) => {
@@ -543,11 +531,11 @@ export default function HomePage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="bg-white rounded-lg sm:rounded-xl shadow-sm border border-gray-100 overflow-hidden"
+                    className="bg-white rounded-lg sm:rounded-xl border border-gray-200 overflow-hidden cursor-pointer"
                   >
                     <button
                       onClick={() => setOpenIndex(isOpen ? null : index)}
-                      className="w-full cursor-pointer px-4 sm:px-5 md:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200 group"
+                      className="w-full px-4 cursor-pointer sm:px-5 md:px-6 py-4 sm:py-5 flex items-center justify-between gap-4 hover:bg-gray-50 transition-colors duration-200"
                     >
                       <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#223d7c] text-left">
                         {faq.question}
@@ -557,14 +545,7 @@ export default function HomePage() {
                         transition={{ duration: 0.3 }}
                         className="w-8 h-8 rounded-full bg-gray-100 flex items-center justify-center"
                       >
-                        <svg
-                          className="w-4 h-4 text-[#1b93d1]"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                        </svg>
+                        <FaChevronDown className="w-4 h-4 text-[#1b93d1]" />
                       </motion.div>
                     </button>
                     <motion.div
@@ -588,7 +569,7 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Contact Form Section - Updated with Navbar colors */}
+          {/* Contact Form Section - Matte finish */}
           <div className="mt-16 sm:mt-20 md:mt-24 mb-16 sm:mb-20 md:mb-24">
             {/* Header */}
             <div className="text-center mb-10 sm:mb-12">
@@ -598,13 +579,13 @@ export default function HomePage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5 }}
               >
-                <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] rounded-full text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
+                <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
                   Get In Touch
                 </span>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#223d7c] mb-3">
                   We'd Love to <span className="text-[#1b93d1]">Hear From You</span>
                 </h2>
-                <p className="text-sm sm:text-base text-[#223d7c]/80 max-w-2xl mx-auto px-4">
+                <p className="text-sm sm:text-base text-[#223d7c]/70 max-w-2xl mx-auto px-4">
                   Have questions about adoption, daycare, or want to get involved? Reach out to our friendly team.
                 </p>
               </motion.div>
@@ -618,9 +599,9 @@ export default function HomePage() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="max-w-3xl mx-auto px-4"
             >
-              <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
+              <div className="bg-white rounded-lg sm:rounded-xl border border-gray-200 overflow-hidden">
                 {/* Decorative Header */}
-                <div className="h-2 bg-gradient-to-r from-[#1b93d1] to-[#223d7c]" />
+                <div className="h-1 bg-[#1b93d1]" />
                 
                 <div className="p-6 sm:p-8 md:p-10">
                   <form onSubmit={handleSubmit} className="space-y-5">
@@ -636,10 +617,10 @@ export default function HomePage() {
                           type="text"
                           name="firstName"
                           value={formData.firstName}
-                          onChange={handleChange}
+                          onChange={(e) => setFormData({...formData, firstName: e.target.value})}
                           placeholder="John"
                           className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
-                                   focus:outline-none focus:border-[#1b93d1] focus:ring-2 focus:ring-[#1b93d1]/20 
+                                   focus:outline-none focus:border-[#1b93d1] focus:ring-1 focus:ring-[#1b93d1]/20 
                                    focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400"
                         />
                       </div>
@@ -653,10 +634,10 @@ export default function HomePage() {
                           type="text"
                           name="lastName"
                           value={formData.lastName}
-                          onChange={handleChange}
+                          onChange={(e) => setFormData({...formData, lastName: e.target.value})}
                           placeholder="Doe"
                           className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
-                                   focus:outline-none focus:border-[#1b93d1] focus:ring-2 focus:ring-[#1b93d1]/20 
+                                   focus:outline-none focus:border-[#1b93d1] focus:ring-1 focus:ring-[#1b93d1]/20 
                                    focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400"
                         />
                       </div>
@@ -672,10 +653,10 @@ export default function HomePage() {
                         type="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
+                        onChange={(e) => setFormData({...formData, email: e.target.value})}
                         placeholder="john.doe@example.com"
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
-                                 focus:outline-none focus:border-[#1b93d1] focus:ring-2 focus:ring-[#1b93d1]/20 
+                                 focus:outline-none focus:border-[#1b93d1] focus:ring-1 focus:ring-[#1b93d1]/20 
                                  focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400"
                       />
                     </div>
@@ -692,7 +673,7 @@ export default function HomePage() {
                           onClick={() => setIsSubjectOpen(!isSubjectOpen)}
                           className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
                                    flex items-center justify-between 
-                                   focus:outline-none focus:border-[#1b93d1] focus:ring-2 focus:ring-[#1b93d1]/20
+                                   focus:outline-none focus:border-[#1b93d1] focus:ring-1 focus:ring-[#1b93d1]/20
                                    transition-all duration-200 text-left"
                         >
                           {formData.subject ? (
@@ -721,8 +702,7 @@ export default function HomePage() {
                                   setIsSubjectOpen(false);
                                 }}
                                 className="w-full px-4 py-3 flex items-center gap-3 text-left 
-                                         hover:bg-gradient-to-r hover:from-[#1b93d1]/5 hover:to-[#223d7c]/5 
-                                         transition-colors duration-200"
+                                         hover:bg-gray-50 transition-colors duration-200"
                               >
                                 <span className="text-[#1b93d1]">{option.icon}</span>
                                 <span className="text-gray-700">{option.label}</span>
@@ -742,11 +722,11 @@ export default function HomePage() {
                       <textarea
                         name="message"
                         value={formData.message}
-                        onChange={handleChange}
+                        onChange={(e) => setFormData({...formData, message: e.target.value})}
                         rows={5}
                         placeholder="Tell us how we can help you..."
                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg 
-                                 focus:outline-none focus:border-[#1b93d1] focus:ring-2 focus:ring-[#1b93d1]/20 
+                                 focus:outline-none focus:border-[#1b93d1] focus:ring-1 focus:ring-[#1b93d1]/20 
                                  focus:bg-white transition-all duration-200 text-gray-700 placeholder-gray-400 resize-none"
                       />
                       <div className="text-right">
@@ -763,10 +743,10 @@ export default function HomePage() {
                           type="checkbox"
                           name="terms"
                           checked={formData.terms}
-                          onChange={handleChange}
+                          onChange={(e) => setFormData({...formData, terms: e.target.checked})}
                           className="w-4 h-4 border-2 border-gray-300 rounded 
                                    checked:bg-[#1b93d1] checked:border-[#1b93d1] 
-                                   focus:ring-2 focus:ring-[#1b93d1]/20 focus:outline-none
+                                   focus:ring-1 focus:ring-[#1b93d1]/20 focus:outline-none
                                    transition-all duration-200 cursor-pointer"
                         />
                       </div>
@@ -786,11 +766,10 @@ export default function HomePage() {
                     <div className="pt-4">
                       <button
                         type="submit"
-                        className="group relative w-full sm:w-auto px-8 py-3.5 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] text-white 
-                                 font-semibold rounded-lg overflow-hidden transition-all duration-300
-                                 hover:shadow-lg hover:shadow-[#1b93d1]/20 hover:scale-[1.02]
+                        className="group w-full sm:w-auto px-8 py-3.5 bg-[#1b93d1] text-white 
+                                 font-medium rounded-lg hover:bg-[#157bb0] transition-all duration-300
                                  focus:outline-none focus:ring-2 focus:ring-[#1b93d1] focus:ring-offset-2
-                                 active:transform active:scale-[0.98]"
+                                 active:transform active:scale-[0.98] cursor-pointer"
                       >
                         <span className="relative z-10 flex items-center justify-center gap-2">
                           <FaHeart className="group-hover:scale-110 transition-transform" />
@@ -802,7 +781,7 @@ export default function HomePage() {
                   </form>
 
                   {/* Alternative Contact Info */}
-                  <div className="mt-8 pt-6 border-t border-gray-100">
+                  <div className="mt-8 pt-6 border-t border-gray-200">
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
                       <div className="flex items-center gap-2">
                         <div className="w-8 h-8 bg-[#1b93d1]/10 rounded-full flex items-center justify-center">
@@ -844,7 +823,7 @@ export default function HomePage() {
             <DonationProgress />
           </div>
 
-          {/* Features Section - Updated with Navbar colors */}
+          {/* Features Section - Matte finish */}
           <div className="mb-12 sm:mb-16 md:mb-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -852,13 +831,13 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="text-center mb-8 sm:mb-12 md:mb-16"
             >
-              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] rounded-full text-white font-semibold text-xs sm:text-sm mb-3 sm:mb-4">
+              <span className="inline-block px-3 sm:px-4 py-1.5 sm:py-2 bg-[#1b93d1] text-white font-medium text-xs sm:text-sm mb-3 sm:mb-4">
                 Innovative Technology
               </span>
               <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#223d7c] mb-2 sm:mb-4">
                 Modern Pet Care <span className="text-[#1b93d1]">Tools</span>
               </h2>
-              <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/80 max-w-2xl mx-auto px-4">
+              <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/70 max-w-2xl mx-auto px-4">
                 Leverage modern tools to adopt, book daycare, and stay connected with your pet's care.
               </p>
             </motion.div>
@@ -876,13 +855,10 @@ export default function HomePage() {
                     href={feature.link}
                     className="group relative block h-full"
                   >
-                    <div className="relative h-full bg-white rounded-xl sm:rounded-2xl md:rounded-3xl p-5 sm:p-6 md:p-8 shadow-lg border border-[#223d7c]/10 hover:shadow-2xl transition-all duration-500">
-                      
-                      <div className="absolute inset-0 bg-gradient-to-br from-[#1b93d1]/5 to-[#223d7c]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative h-full bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-5 sm:p-6 md:p-8 border border-[#223d7c]/10 hover:border-[#1b93d1]/30 transition-all duration-300">
                       
                       <div className="relative mb-4 sm:mb-5 md:mb-6">
-                        <div className="absolute inset-0 bg-[#1b93d1] rounded-xl sm:rounded-2xl blur-lg opacity-20 group-hover:opacity-30 transition-opacity duration-500" />
-                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-gradient-to-br from-[#1b93d1] to-[#157bb0] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center text-white text-lg sm:text-xl md:text-2xl shadow-lg group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
+                        <div className="relative w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-[#1b93d1]/10 rounded-lg sm:rounded-xl md:rounded-xl flex items-center justify-center text-[#1b93d1] text-lg sm:text-xl md:text-2xl group-hover:scale-110 transition-transform duration-300">
                           {feature.icon}
                         </div>
                       </div>
@@ -895,7 +871,7 @@ export default function HomePage() {
                         {feature.description}
                       </p>
                       
-                      <div className="inline-flex items-center gap-1 sm:gap-2 text-[#1b93d1] font-semibold text-xs sm:text-sm group/link">
+                      <div className="inline-flex items-center gap-1 sm:gap-2 text-[#1b93d1] font-medium text-xs sm:text-sm group/link">
                         <span>Explore feature</span>
                         <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#1b93d1]/10 flex items-center justify-center group-hover/link:bg-[#1b93d1] group-hover/link:translate-x-1 transition-all duration-300">
                           <FaArrowRight className="text-[10px] sm:text-xs text-[#1b93d1] group-hover/link:text-white transition-colors duration-300" />
@@ -916,7 +892,7 @@ export default function HomePage() {
               className="text-center mt-8 sm:mt-10 md:mt-12"
             >
               <Link href="/features">
-                <button className="inline-flex items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg sm:rounded-xl font-semibold hover:bg-gradient-to-r hover:from-[#1b93d1] hover:to-[#223d7c] hover:text-white hover:border-transparent transition-all duration-300 group text-sm sm:text-base">
+                <button className="inline-flex cursor-pointer items-center gap-2 px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg sm:rounded-xl font-medium hover:bg-[#1b93d1] hover:text-white hover:border-[#1b93d1] transition-all duration-300 group text-sm sm:text-base">
                   <span>View All Features</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -929,7 +905,7 @@ export default function HomePage() {
             <Statistics />
           </div>
 
-          {/* Success Stories - Updated with Navbar colors */}
+          {/* Success Stories - Matte finish */}
           <div className="mb-16 sm:mb-20 md:mb-24">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -942,20 +918,20 @@ export default function HomePage() {
                   <div className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 bg-[#1b93d1]/10 rounded-full flex items-center justify-center">
                     <FaStar className="text-sm sm:text-base md:text-lg text-[#1b93d1]" />
                   </div>
-                  <span className="text-[#1b93d1] font-semibold uppercase tracking-wider text-xs sm:text-sm">
+                  <span className="text-[#1b93d1] font-medium uppercase tracking-wider text-xs sm:text-sm">
                     Happy Endings
                   </span>
                 </div>
                 <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#223d7c] mb-2 sm:mb-3">
                   Success <span className="text-[#1b93d1]">Stories</span>
                 </h2>
-                <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/80 max-w-2xl">
+                <p className="text-sm sm:text-base md:text-lg text-[#223d7c]/70 max-w-2xl">
                   Heartwarming tales of animals who found their forever homes.
                 </p>
               </div>
               
               <Link href="/success-stories" className="hidden sm:block">
-                <button className="group inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg sm:rounded-xl font-semibold hover:bg-gradient-to-r hover:from-[#1b93d1] hover:to-[#223d7c] hover:text-white hover:border-transparent transition-all duration-300 text-xs sm:text-sm">
+                <button className="group cursor-pointer inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg sm:rounded-xl font-medium hover:bg-[#1b93d1] hover:text-white hover:border-[#1b93d1] transition-all duration-300 text-xs sm:text-sm">
                   <span>View All Stories</span>
                   <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
@@ -972,26 +948,18 @@ export default function HomePage() {
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                 >
                   <Link href={story.link} className="group block h-full">
-                    <div className="relative h-full bg-white rounded-xl sm:rounded-2xl md:rounded-3xl overflow-hidden shadow-lg border border-[#223d7c]/10 hover:shadow-2xl transition-all duration-500">
+                    <div className="relative h-full bg-white rounded-lg sm:rounded-xl md:rounded-2xl overflow-hidden border border-[#223d7c]/10 hover:border-[#1b93d1]/30 transition-all duration-300">
                       
-                      <div className="relative h-36 sm:h-40 md:h-48 overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-[#223d7c] to-[#1a2f60] opacity-90" />
-                        
-                        <div className="absolute inset-0 opacity-10">
-                          <div className="absolute top-0 right-0 w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 bg-[#1b93d1] rounded-full blur-2xl" />
-                          <div className="absolute bottom-0 left-0 w-32 sm:w-36 md:w-40 h-32 sm:h-36 md:h-40 bg-white rounded-full blur-3xl" />
-                        </div>
+                      <div className="relative h-36 sm:h-40 md:h-48 bg-[#223d7c]">
+                        <div className="absolute inset-0 bg-[#223d7c] opacity-90" />
                         
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="relative">
-                            <div className="absolute inset-0 bg-[#1b93d1] rounded-full blur-xl opacity-50 group-hover:opacity-70 transition-opacity duration-300" />
-                            <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white border-2 border-white/30 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300">
-                              {story.icon}
-                            </div>
+                          <div className="relative w-16 h-16 sm:w-20 sm:h-20 md:w-24 md:h-24 bg-white/10 rounded-full flex items-center justify-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-white border-2 border-white/30 group-hover:scale-110 transition-transform duration-300">
+                            {story.icon}
                           </div>
                         </div>
 
-                        <div className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 bg-white/20 backdrop-blur-sm rounded-full px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs text-white border border-white/30">
+                        <div className="absolute top-2 sm:top-3 md:top-4 right-2 sm:right-3 md:right-4 bg-white/20 px-2 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-xs text-white rounded-full">
                           {new Date().toLocaleDateString('en-US', { month: 'short', year: 'numeric' })}
                         </div>
                       </div>
@@ -1029,7 +997,7 @@ export default function HomePage() {
               className="text-center mt-6 sm:hidden"
             >
               <Link href="/success-stories">
-                <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg font-semibold hover:bg-gradient-to-r hover:from-[#1b93d1] hover:to-[#223d7c] hover:text-white hover:border-transparent transition-all duration-300 text-sm">
+                <button className="inline-flex items-center gap-2 px-5 py-2.5 bg-transparent border-2 border-[#223d7c] text-[#223d7c] rounded-lg font-medium hover:bg-[#1b93d1] hover:text-white hover:border-[#1b93d1] transition-all duration-300 text-sm">
                   <span>View All Stories</span>
                   <FaArrowRight />
                 </button>
@@ -1042,14 +1010,9 @@ export default function HomePage() {
             <Testimonials />
           </div>
 
-          {/* Final CTA - Updated with Navbar colors */}
-          <div className="relative py-12 sm:py-16 md:py-20 overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#223d7c] to-[#1a2f60]">
-              <div className="absolute inset-0 opacity-10">
-                <div className="absolute top-0 right-0 w-64 sm:w-80 md:w-96 h-64 sm:h-80 md:h-96 bg-[#1b93d1] rounded-full blur-3xl" />
-                <div className="absolute bottom-0 left-0 w-56 sm:w-72 md:w-80 h-56 sm:h-72 md:h-80 bg-white rounded-full blur-3xl" />
-              </div>
-            </div>
+          {/* Final CTA - Matte finish */}
+          <div className="relative py-12 sm:py-16 md:py-20">
+            <div className="absolute inset-0 bg-[#223d7c]" />
 
             <div className="relative container mx-auto px-4">
               <motion.div
@@ -1059,7 +1022,7 @@ export default function HomePage() {
                 transition={{ duration: 0.6 }}
                 className="max-w-4xl mx-auto"
               >
-                <div className="bg-white/95 backdrop-blur-sm rounded-xl sm:rounded-2xl md:rounded-3xl p-6 sm:p-8 md:p-12 lg:p-16 shadow-2xl border border-white/20">
+                <div className="bg-white rounded-lg sm:rounded-xl md:rounded-2xl p-6 sm:p-8 md:p-12 lg:p-16 border border-[#223d7c]/10">
                   <div className="text-center">
                     <motion.div
                       initial={{ scale: 0 }}
@@ -1068,8 +1031,7 @@ export default function HomePage() {
                       transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.1 }}
                       className="relative inline-block mb-4 sm:mb-6 md:mb-8"
                     >
-                      <div className="absolute inset-0 bg-[#1b93d1] rounded-full blur-xl opacity-30 animate-pulse" />
-                      <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gradient-to-br from-[#1b93d1] to-[#223d7c] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center shadow-lg transform rotate-3">
+                      <div className="relative w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-[#1b93d1] rounded-lg sm:rounded-xl md:rounded-2xl flex items-center justify-center transform rotate-3">
                         <FaHeart className="text-xl sm:text-2xl md:text-3xl lg:text-4xl text-white" />
                       </div>
                     </motion.div>
@@ -1105,7 +1067,7 @@ export default function HomePage() {
                       className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6 sm:mb-8 md:mb-10"
                     >
                       <Link href="/adopt" className="w-full sm:w-auto">
-                        <button className="group w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 bg-gradient-to-r from-[#223d7c] to-[#1a2f60] text-white font-semibold rounded-lg sm:rounded-xl hover:from-[#1a2f60] hover:to-[#0f1f18] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl text-sm sm:text-base">
+                        <button className="group cursor-pointer w-full sm:w-auto px-5 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 bg-[#223d7c] text-white font-medium rounded-lg sm:rounded-xl hover:bg-[#1a2f60] transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base">
                           <FaHeart className="group-hover:scale-110 transition-transform" />
                           <span>Adopt a Pet</span>
                           <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
@@ -1120,14 +1082,14 @@ export default function HomePage() {
 
                       <div className="flex flex-col xs:flex-row gap-2 w-full sm:w-auto">
                         <Link href="/volunteer" className="flex-1 xs:flex-initial">
-                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#223d7c] text-[#223d7c] font-semibold rounded-lg sm:rounded-xl hover:bg-gradient-to-r hover:from-[#1b93d1] hover:to-[#223d7c] hover:text-white hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                          <button className="w-full cursor-pointer px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#223d7c] text-[#223d7c] font-medium rounded-lg sm:rounded-xl hover:bg-[#1b93d1] hover:text-white hover:border-[#1b93d1] transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
                             <FaUsers className="group-hover:scale-110 transition-transform" />
                             <span>Volunteer</span>
                           </button>
                         </Link>
                         
                         <Link href="/donate" className="flex-1 xs:flex-initial">
-                          <button className="w-full px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#1b93d1] text-[#1b93d1] font-semibold rounded-lg sm:rounded-xl hover:bg-gradient-to-r hover:from-[#1b93d1] hover:to-[#223d7c] hover:text-white hover:border-transparent transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
+                          <button className="w-full cursor-pointer px-4 sm:px-5 md:px-6 py-3 sm:py-3.5 md:py-4 bg-transparent border-2 border-[#1b93d1] text-[#1b93d1] font-medium rounded-lg sm:rounded-xl hover:bg-[#1b93d1] hover:text-white transition-all duration-300 flex items-center justify-center gap-2 text-xs sm:text-sm">
                             <FaGift className="group-hover:scale-110 transition-transform" />
                             <span>Donate</span>
                           </button>
@@ -1173,7 +1135,6 @@ export default function HomePage() {
     </>
   );
 }
-
 
 
 // // app/page.tsx

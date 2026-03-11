@@ -2,61 +2,91 @@
 'use client';
 
 import Link from 'next/link';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight, FaPhone, FaCalendarCheck } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
   return (
-    <section className="relative bg-[#B6D3DE] overflow-hidden py-20">
+    <section className="relative bg-[#B6D3DE] py-20">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
 
-        {/* LEFT CONTENT */}
+        {/* LEFT CONTENT - Matte finish */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
         >
+          {/* Subtle badge - matte */}
+          <div className="inline-block px-4 py-2 bg-[#223d7c]/5 rounded-lg mb-6">
+            <span className="text-sm text-[#223d7c] font-medium">🐾 Professional Pet Care Since 2015</span>
+          </div>
+
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#223d7c] leading-tight">
             The Best Pet Groomers
             <br />
             <span className="text-[#1b93d1]">In Town</span>
           </h1>
 
-          <p className="mt-6 text-lg text-[#223d7c]/80 max-w-xl">
+          <p className="mt-4 text-lg text-[#223d7c]/70 max-w-xl">
             For a pawfect look and feel. Professional grooming,
             daycare and adoption services you can trust.
           </p>
 
+          {/* Stats - Matte finish */}
+          <div className="mt-8 flex gap-8">
+            <div>
+              <div className="text-2xl font-bold text-[#223d7c]">500+</div>
+              <div className="text-sm text-[#223d7c]/60">Happy Pets</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-[#223d7c]">8+</div>
+              <div className="text-sm text-[#223d7c]/60">Years Experience</div>
+            </div>
+            <div>
+              <div className="text-2xl font-bold text-[#223d7c]">24/7</div>
+              <div className="text-sm text-[#223d7c]/60">Care Support</div>
+            </div>
+          </div>
+
           <div className="mt-8 flex flex-wrap gap-4">
             <Link href="/adopt">
-              <button className="px-6 py-3 bg-[#223d7c] hover:bg-[#1a2f60] text-white rounded-xl font-semibold flex items-center gap-2 transition group">
+              <button className="px-6 py-3 bg-[#223d7c] hover:bg-[#1a2f60] cursor-pointer text-white rounded-lg font-medium flex items-center gap-2 transition group">
+                <FaCalendarCheck className="text-white/80" />
                 Book Appointment
-                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                <FaArrowRight className="group-hover:translate-x-1 transition-transform text-white/80" />
               </button>
             </Link>
 
             <Link href="/contact">
-              <button className="px-6 py-3 bg-[#1b93d1] hover:bg-[#157bb0] text-white rounded-xl font-semibold transition">
+              <button className="px-6 py-3 bg-white text-[#223d7c] cursor-pointer hover:bg-[#223d7c]/5 rounded-lg font-medium border border-[#223d7c]/20 flex items-center gap-2 transition">
+                <FaPhone className="text-[#223d7c]/70" />
                 Let's Chat
               </button>
             </Link>
           </div>
+
+          {/* Trust indicators - Matte finish */}
+          <div className="mt-8 flex items-center gap-4 text-sm text-[#223d7c]/60">
+            <span>✓ Licensed Professionals</span>
+            <span>✓ Safe & Clean</span>
+            <span>✓ Loving Care</span>
+          </div>
         </motion.div>
 
-        {/* RIGHT IMAGE SMALL CARD */}
+        {/* RIGHT IMAGE - Matte finish */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="flex justify-center lg:justify-end"
         >
           <div className="relative">
 
-            {/* Soft Glow Behind Card */}
-            <div className="absolute -inset-4 bg-[#1b93d1]/20 blur-2xl rounded-3xl"></div>
+            {/* Subtle background - matte finish, no glow */}
+            <div className="absolute -inset-2 bg-[#223d7c]/5 rounded-2xl"></div>
 
-            {/* Image Card */}
-            <div className="relative w-[280px] sm:w-[320px] lg:w-[360px] h-[320px] sm:h-[360px] lg:h-[400px] rounded-3xl overflow-hidden shadow-2xl border border-white/40">
+            {/* Image Card - Matte finish */}
+            <div className="relative w-[280px] sm:w-[320px] lg:w-[360px] h-[320px] sm:h-[360px] lg:h-[400px] rounded-2xl overflow-hidden border border-[#223d7c]/10">
               <img
                 src="https://images.unsplash.com/photo-1552053831-71594a27632d?w=800"
                 alt="Happy Pets"
@@ -64,6 +94,7 @@ export default function Hero() {
               />
             </div>
 
+          
           </div>
         </motion.div>
 

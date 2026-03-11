@@ -21,38 +21,32 @@ export default function EmergencyBanner() {
   return (
     <AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: 20, scale: 0.9 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 20, scale: 0.9 }}
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
         transition={{ duration: 0.3 }}
         className="fixed bottom-4 right-4 left-4 sm:left-auto z-50 max-w-full sm:max-w-md"
       >
         <div className="relative">
 
-          {/* Blue Glow */}
-          <div className="absolute -inset-1 bg-gradient-to-r from-[#1b93d1] to-[#223d7c] rounded-2xl opacity-20 blur-xl animate-pulse" />
-
-          <div className="relative bg-white border border-[#1b93d1]/30 rounded-2xl shadow-2xl overflow-hidden">
+          <div className="relative bg-white border border-[#223d7c]/10 rounded-lg shadow-lg overflow-hidden">
 
             {/* Top Accent */}
-            <div className="h-1 bg-gradient-to-r from-[#1b93d1] to-[#223d7c]" />
+            <div className="h-1 bg-[#1b93d1]" />
 
-            <div className="p-6">
+            <div className="p-5 sm:p-6">
 
               {/* Header */}
               <div className="flex justify-between items-start mb-4">
                 <div className="flex items-center gap-3">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-[#1b93d1] rounded-full blur-md opacity-40 animate-ping"></div>
-                    <div className="relative w-10 h-10 bg-gradient-to-br from-[#1b93d1] to-[#223d7c] rounded-full flex items-center justify-center">
-                      <FaAmbulance className="text-white text-lg" />
-                    </div>
+                  <div className="w-10 h-10 bg-[#1b93d1]/10 rounded-lg flex items-center justify-center">
+                    <FaAmbulance className="text-[#1b93d1] text-lg" />
                   </div>
                   <div>
                     <h3 className="text-lg font-bold text-[#223d7c]">
                       Emergency Rescue
                     </h3>
-                    <p className="text-sm text-gray-500">
+                    <p className="text-sm text-[#223d7c]/60">
                       24/7 Animal Response Team
                     </p>
                   </div>
@@ -60,17 +54,17 @@ export default function EmergencyBanner() {
 
                 <button
                   onClick={() => setIsVisible(false)}
-                  className="text-gray-400 hover:text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg p-2 transition"
+                  className="text-[#223d7c]/40 hover:text-[#223d7c]/60 bg-[#223d7c]/5 hover:bg-[#223d7c]/10 rounded-lg p-2 transition"
                 >
                   <FaTimes className="text-sm" />
                 </button>
               </div>
 
               {/* Alert Box */}
-              <div className="bg-[#1b93d1]/5 rounded-xl p-4 mb-5 border border-[#1b93d1]/20">
+              <div className="bg-[#1b93d1]/5 rounded-lg p-4 mb-4 border border-[#1b93d1]/10">
                 <div className="flex items-start gap-3">
                   <FaHeartbeat className="text-[#1b93d1] text-lg mt-1" />
-                  <p className="text-sm text-gray-700 leading-relaxed">
+                  <p className="text-sm text-[#223d7c]/70 leading-relaxed">
                     Found an injured or distressed animal? Our emergency team
                     provides immediate rescue and medical attention across Navi Mumbai.
                   </p>
@@ -80,17 +74,17 @@ export default function EmergencyBanner() {
               {/* Call Button */}
               <a
                 href="tel:+919876543210"
-                className="group flex items-center justify-between bg-gradient-to-r from-[#1b93d1]/10 to-[#223d7c]/10 hover:from-[#1b93d1]/20 hover:to-[#223d7c]/20 p-4 rounded-xl border border-[#1b93d1]/20 transition-all duration-300 hover:scale-[1.02] mb-3"
+                className="group flex items-center justify-between bg-[#f8f6f2] hover:bg-[#f0eee8] p-4 rounded-lg border border-[#223d7c]/10 transition-all duration-300 mb-3"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#1b93d1] to-[#223d7c] rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#1b93d1] rounded-lg flex items-center justify-center">
                     <FaPhoneAlt className="text-white text-xs" />
                   </div>
-                  <span className="font-medium text-gray-700">
+                  <span className="font-medium text-[#223d7c]">
                     Emergency Hotline
                   </span>
                 </div>
-                <span className="font-bold text-[#223d7c] group-hover:text-[#1b93d1] transition">
+                <span className="font-medium text-[#1b93d1]">
                   +91 98765 43210
                 </span>
               </a>
@@ -100,26 +94,26 @@ export default function EmergencyBanner() {
                 href="https://wa.me/919876543210"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-between bg-gradient-to-r from-[#223d7c]/10 to-[#1b93d1]/10 hover:from-[#223d7c]/20 hover:to-[#1b93d1]/20 p-4 rounded-xl border border-[#223d7c]/20 transition-all duration-300 hover:scale-[1.02]"
+                className="group flex items-center justify-between bg-[#f8f6f2] hover:bg-[#f0eee8] p-4 rounded-lg border border-[#223d7c]/10 transition-all duration-300"
               >
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 bg-gradient-to-br from-[#223d7c] to-[#1b93d1] rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-[#223d7c] rounded-lg flex items-center justify-center">
                     <FaWhatsapp className="text-white text-xs" />
                   </div>
-                  <span className="font-medium text-gray-700">
+                  <span className="font-medium text-[#223d7c]">
                     WhatsApp Support
                   </span>
                 </div>
-                <span className="font-bold text-[#1b93d1] group-hover:text-[#223d7c] transition">
+                <span className="font-medium text-[#1b93d1]">
                   Send Message
                 </span>
               </a>
 
               {/* Trust Badge */}
-              <div className="mt-5 pt-4 border-t border-gray-200 flex items-center justify-between">
+              <div className="mt-4 pt-4 border-t border-[#223d7c]/10 flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <FaShieldAlt className="text-[#1b93d1] text-sm" />
-                  <span className="text-xs text-gray-500">
+                  <span className="text-xs text-[#223d7c]/50">
                     Verified Emergency Service
                   </span>
                 </div>
@@ -139,8 +133,6 @@ export default function EmergencyBanner() {
     </AnimatePresence>
   );
 }
-
-
 
 
 
